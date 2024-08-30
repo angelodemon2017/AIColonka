@@ -2,26 +2,19 @@ using UnityEngine;
 
 public class PersonMovement : MonoBehaviour
 {
-    private int _currentAnimation;
-    const int idleAnimation = 1;
-    const int walkingAnimation = 10;
-    const int jumpAnimation = 35;//13;
-    const int attackAnimation1 = 32;
-    const string attackAnimationStr1 = "Atk1";
+    [SerializeField] private AnimationAdapter _animationAdapter;
     const float attack1Time = 0.8f;
-    const int attackAnimation2 = 33;
-    const string attackAnimationStr2 = "Atk2";
     const float attack2Time = 0.75f;
-    const int attackAnimation3 = 34;
-    const string attackAnimationStr3 = "Atk3";
     const float attack3Time = 1.25f;
 
-    public Animator animator;
     public float moveSpeed = 5f;
     public float rotationSpeed = 10f;
     private CharacterController _characterController;
     private Transform _cameraTransform;
     private Vector3 desiredMoveDirection;
+
+    public Transform AttackPoint;
+    public GameObject AttackZone;
 
     public LayerMask groundMask;
     public Transform groundCheck;
@@ -69,7 +62,9 @@ public class PersonMovement : MonoBehaviour
         right.Normalize();
 
         desiredMoveDirection = (forward * vertical + right * horizontal).normalized;
-        _characterController.Move(desiredMoveDirection * moveSpeed * (_isAttacking ? 0.3f : 1f));
+        _characterController.Move(desiredMoveDirection * moveSpeed * 
+            (_isAttacking ? 0.1f : 1f) * 
+            (_isGrounded ? 1f : 1.5f));
 
         if (desiredMoveDirection != Vector3.zero)
         {
@@ -139,18 +134,18 @@ public class PersonMovement : MonoBehaviour
             {
                 case 1:
                     _timeAttackAnimation = attack1Time;
-                    //                            PlayAnimate(attackAnimation1);
-                    animator.Play(attackAnimationStr1);
+                    _animationAdapter.PlayAnimationEvent(EnumAnimations.attack1);
+                    Instantiate(AttackZone, AttackPoint.position, transform.rotation);
                     break;
                 case 2:
                     _timeAttackAnimation = attack2Time;
-                    //                            PlayAnimate(attackAnimation2);
-                    animator.Play(attackAnimationStr2);
+                    _animationAdapter.PlayAnimationEvent(EnumAnimations.attack2);
+                    Instantiate(AttackZone, AttackPoint.position, transform.rotation);
                     break;
                 case 3:
                     _timeAttackAnimation = attack3Time;
-                    //                            PlayAnimate(attackAnimation3);
-                    animator.Play(attackAnimationStr3);
+                    _animationAdapter.PlayAnimationEvent(EnumAnimations.attack3);
+                    Instantiate(AttackZone, AttackPoint.position, transform.rotation);
                     break;
                 default:
                     break;
@@ -169,27 +164,18 @@ public class PersonMovement : MonoBehaviour
 
         if (!_isGrounded)
         {
-            PlayAnimate(jumpAnimation);
+            _animationAdapter.PlayAnimationEvent(EnumAnimations.jump);
         }
         else
         {
             if (desiredMoveDirection != Vector3.zero)
             {
-                PlayAnimate(walkingAnimation);
+                _animationAdapter.PlayAnimationEvent(EnumAnimations.walk);
             }
             else
             {
-                PlayAnimate(idleAnimation);
+                _animationAdapter.PlayAnimationEvent(EnumAnimations.idle);
             }
-        }
-    }
-
-    private void PlayAnimate(int numAnimation)
-    {
-        if (_currentAnimation != numAnimation)
-        {
-            animator.SetInteger("animation", numAnimation);
-            _currentAnimation = numAnimation;
         }
     }
 }

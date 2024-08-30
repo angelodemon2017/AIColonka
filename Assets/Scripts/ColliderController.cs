@@ -7,7 +7,7 @@ public class ColliderController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("anyTrigger");
+        Debug.Log($"anyTrigger {other.gameObject.name}");
         if (other.gameObject.tag == Dicts.Tags.Mellee)
         {
             ColliderAction?.Invoke(EnumAIStates.TakingDamage);

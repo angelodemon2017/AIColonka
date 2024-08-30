@@ -4,7 +4,9 @@
     walk,
     run,
     jump,
-    attack,
+    attack1,
+    attack2,
+    attack3,
     death,
     takeDamage,
 }

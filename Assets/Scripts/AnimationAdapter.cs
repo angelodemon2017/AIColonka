@@ -41,5 +41,6 @@ public class AnimationAdapter : MonoBehaviour
     public void TriggerEvent(int number)
     {
         triggerEvents[number].Invoke();
+        Debug.Log($"TriggerEvent:{number}");
     }
 }
