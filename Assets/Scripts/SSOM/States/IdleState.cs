@@ -3,23 +3,30 @@ using UnityEngine;
 [CreateAssetMenu]
 public class IdleState : State
 {
-    public override void Init(IStatesCharacter character)
+    [SerializeField] private float _timeIdle;
+
+    private float _timerIdle;
+
+    protected override void Init()
     {
-        base.Init(character);
-        IsFinished = false;
+        _timerIdle = _timeIdle;
     }
 
-    public override void Run()
+    protected override void Run()
     {
-        if (IsFinished)
+        if (_timerIdle > 0f)
         {
+            _timerIdle -= Time.deltaTime;
+        }
 
-            return;
+        if (_timerIdle < 0f)
+        {
+            IsFinished = true;
         }
     }
 
     public override bool CheckRules(IStatesCharacter character)
     {
-        return false;
+        return character.IsFinishedCurrentState();
     }
 }

@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 820631d5b1e666c4e9e53b3287960e3d, type: 3}
-  m_Name: New Idle State
+  m_Name: Idle State
   m_EditorClassIdentifier: 
-  speed: 0.05
-  check_distance: 0.5
-  NextState: {fileID: 0}
+  AvailableStates:
+  - {fileID: 11400000, guid: f35bb65eb46620d4588d000fc70d9926, type: 2}
+  Animation: 0
+  _timeIdle: 2
+  _stateEndIdle: {fileID: 11400000, guid: f35bb65eb46620d4588d000fc70d9926, type: 2}
