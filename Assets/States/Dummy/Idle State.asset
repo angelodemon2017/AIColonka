@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Idle State
   m_EditorClassIdentifier: 
   AvailableStates:
-  - {fileID: 11400000, guid: f35bb65eb46620d4588d000fc70d9926, type: 2}
+  - {fileID: 11400000, guid: 9dfcc42a4509054469f99d1ab9c9dfbb, type: 2}
+  - {fileID: 11400000}
   Animation: 0
-  _timeIdle: 2
-  _stateEndIdle: {fileID: 11400000, guid: f35bb65eb46620d4588d000fc70d9926, type: 2}
+  _timeIdle: 999

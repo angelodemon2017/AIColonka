@@ -2,11 +2,15 @@ using UnityEngine;
 
 public interface IStatesCharacter
 {
+    bool IsFinishedCurrentState();
+
+    Transform GetTransform();
+
     void PlayAnimation(EnumAnimations animation);
 
     void SetState(State state);
 
-    bool IsFinishedCurrentState();
+    bool CheckProp(EnumProps prop);
 
-    Transform GetTransform();
+    void TakeObject(GameObject keepObj);
 }

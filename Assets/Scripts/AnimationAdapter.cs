@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class AnimationAdapter : MonoBehaviour
 {
-    public Action<EnumAnimations> endAnimation;
+    public Action<EnumProps> triggerPropAction;
     private EnumAnimations _currentAnimation;
 
     [System.Serializable]
@@ -16,7 +16,7 @@ public class AnimationAdapter : MonoBehaviour
 
     public AnimationEvent[] animationEvents;
 
-    public UnityEvent[] triggerEvents;
+//    public UnityEvent[] triggerEvents;
 
     public void PlayAnimationEvent(EnumAnimations animationName)
     {
@@ -33,7 +33,12 @@ public class AnimationAdapter : MonoBehaviour
         }
     }
 
-    public void EndAnimation(EnumAnimations animationName)
+    public void TriggerAnimate(EnumProps prop)
+    {
+        triggerPropAction?.Invoke(prop);
+    }
+
+/*    public void EndAnimation(EnumAnimations animationName)
     {
         endAnimation?.Invoke(animationName);
     }
@@ -42,5 +47,5 @@ public class AnimationAdapter : MonoBehaviour
     {
         triggerEvents[number].Invoke();
         Debug.Log($"TriggerEvent:{number}");
-    }
+    }/**/
 }

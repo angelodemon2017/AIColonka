@@ -23,10 +23,10 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         target = transform.position;
-        _animationAdapter.endAnimation += OnTriggerAnimation;
+//        _animationAdapter.endAnimation += OnTriggerAnimation;
         if (_colliderController)
         {
-            _colliderController.ColliderAction += OnColliderEvent;
+//            _colliderController.ColliderAction += OnColliderEvent;
         }
     }
 
