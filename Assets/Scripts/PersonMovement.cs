@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PersonMovement : MonoBehaviour
 {
+    public static PersonMovement Instance;
     [SerializeField] private AnimationAdapter _animationAdapter;
     const float attack1Time = 0.8f;
     const float attack2Time = 0.75f;
@@ -29,7 +30,14 @@ public class PersonMovement : MonoBehaviour
     public int _stepsAttacks = 0;
     public float _timeAttackAnimation = 0;
 
+    [SerializeField] private bool _takingDamage = false;
     private bool _isAttacking => _timeAttackAnimation > 0f;
+
+    private void Awake()
+    {
+        Instance = this;
+        _animationAdapter.triggerPropAction += TrigAnimate;
+    }
 
     void Start()
     {
@@ -47,6 +55,11 @@ public class PersonMovement : MonoBehaviour
 
     private void MovePlayer()
     {
+        if (_takingDamage)
+        {
+            return;
+        }
+
         _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         float horizontal = Input.GetAxis("Horizontal");
@@ -83,7 +96,7 @@ public class PersonMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (_isAttacking)
+        if (_isAttacking || _takingDamage)
             return;
 
         if (Input.GetButtonDown("Jump") && _isGrounded)
@@ -94,7 +107,7 @@ public class PersonMovement : MonoBehaviour
 
     private void Attack()
     {
-        if (!_isGrounded)
+        if (!_isGrounded || _takingDamage)
             return;
 
         if (Input.GetButtonDown("Fire1"))
@@ -159,7 +172,7 @@ public class PersonMovement : MonoBehaviour
     
     private void Animation()
     {
-        if (_isAttacking)
+        if (_isAttacking || _takingDamage)
             return;
 
         if (!_isGrounded)
@@ -177,5 +190,38 @@ public class PersonMovement : MonoBehaviour
                 _animationAdapter.PlayAnimationEvent(EnumAnimations.idle);
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == Dicts.Tags.DangerZone)
+        {
+            TakingDamage();
+        }
+    }
+
+    private void TakingDamage()
+    {
+        _takingDamage = true;
+        _animationAdapter.PlayAnimationEvent(EnumAnimations.takeDamage);
+        Debug.Log("Player get damage");
+    }
+
+    private void TrigAnimate(EnumProps prop)
+    {
+        switch (prop)
+        {
+            case EnumProps.EndAnimate:
+                if (_animationAdapter.CurrentAnimation == EnumAnimations.takeDamage)
+                {
+                    _takingDamage = false;
+                }
+                break;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        _animationAdapter.triggerPropAction -= TrigAnimate;
     }
 }

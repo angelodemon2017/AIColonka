@@ -13,4 +13,5 @@ public interface IStatesCharacter
     bool CheckProp(EnumProps prop);
 
     void TakeObject(GameObject keepObj);
+    void InitAttackZone(GameObject attackZone);
 }

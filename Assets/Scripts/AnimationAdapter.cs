@@ -14,9 +14,8 @@ public class AnimationAdapter : MonoBehaviour
         public UnityEvent response;
     }
 
+    public EnumAnimations CurrentAnimation => _currentAnimation;
     public AnimationEvent[] animationEvents;
-
-//    public UnityEvent[] triggerEvents;
 
     public void PlayAnimationEvent(EnumAnimations animationName)
     {
@@ -35,17 +34,13 @@ public class AnimationAdapter : MonoBehaviour
 
     public void TriggerAnimate(EnumProps prop)
     {
+        Debug.Log($"TriggerAnimate {prop}");
         triggerPropAction?.Invoke(prop);
     }
 
-/*    public void EndAnimation(EnumAnimations animationName)
+    public void TriggerAnimate(int prop)
     {
-        endAnimation?.Invoke(animationName);
+        Debug.Log($"TriggerAnimate {prop}");
+        TriggerAnimate((EnumProps)prop);
     }
-
-    public void TriggerEvent(int number)
-    {
-        triggerEvents[number].Invoke();
-        Debug.Log($"TriggerEvent:{number}");
-    }/**/
 }

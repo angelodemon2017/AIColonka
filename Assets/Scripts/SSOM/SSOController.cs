@@ -9,9 +9,10 @@ public class SSOController : MonoBehaviour, IStatesCharacter, IMovableCharacter
     [SerializeField] private AnimationAdapter _animationAdapter;
     [SerializeField] private ColliderController _colliderController;
 
+    [SerializeField] private Transform _attackPoint;
     [SerializeField] private Transform _keepObjectPoint;
     [SerializeField] private State _startingState;
-    private State _currentState;
+    [SerializeField] private State _currentState;
 
     private List<Property> _props = new();
 
@@ -112,5 +113,11 @@ public class SSOController : MonoBehaviour, IStatesCharacter, IMovableCharacter
     {
         keepObj.transform.SetParent(_keepObjectPoint);
         keepObj.transform.position = _keepObjectPoint.position;
+    }
+
+    public void InitAttackZone(GameObject attackZone)
+    {
+        attackZone.transform.SetParent(_attackPoint);
+        attackZone.transform.position = _attackPoint.position;
     }
 }
