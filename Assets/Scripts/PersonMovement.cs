@@ -4,6 +4,7 @@ public class PersonMovement : MonoBehaviour
 {
     public static PersonMovement Instance;
     [SerializeField] private AnimationAdapter _animationAdapter;
+    [SerializeField] private BitsController _bitsController;
     const float attack1Time = 0.8f;
     const float attack2Time = 0.75f;
     const float attack3Time = 1.25f;
@@ -50,6 +51,7 @@ public class PersonMovement : MonoBehaviour
         MovePlayer();
         Jump();
         Attack();
+        SecondAttack();
         Animation();
     }
 
@@ -170,6 +172,17 @@ public class PersonMovement : MonoBehaviour
         }
     }
     
+    private void SecondAttack()
+    {
+        if (_takingDamage)
+            return;
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            _bitsController.Shoot();
+        }
+    }
+
     private void Animation()
     {
         if (_isAttacking || _takingDamage)
