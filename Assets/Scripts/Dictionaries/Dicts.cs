@@ -4,5 +4,6 @@
     {
         public static string Mellee = "Mellee";
         public static string DangerZone = "DangerZone";
+        public static string VirtualObject = "VirtualObject";
     }
 }
