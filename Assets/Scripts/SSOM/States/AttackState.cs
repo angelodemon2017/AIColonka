@@ -3,11 +3,11 @@ using UnityEngine;
 [CreateAssetMenu]
 public class AttackState : State
 {
-    [SerializeField] private float DistanceForTrigger;
+//    [SerializeField] private float DistanceForTrigger;
     [SerializeField] private GameObject _attackZone;
 
-    private float _currentDistance(IStatesCharacter chr) =>
-        Vector3.Distance(chr.GetTransform().position, PersonMovement.Instance.transform.position);
+//    private float _currentDistance(IStatesCharacter chr) =>
+//        Vector3.Distance(chr.GetTransform().position, PersonMovement.Instance.transform.position);
 
     protected override void Init()
     {
@@ -26,7 +26,8 @@ public class AttackState : State
 
     public override bool CheckRules(IStatesCharacter character)
     {
-        var curDis = _currentDistance(character);
-        return curDis < DistanceForTrigger;
+        return character.IsFinishedCurrentState();
+        //        var curDis = _currentDistance(character);
+        //        return curDis < DistanceForTrigger;
     }
 }

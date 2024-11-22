@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1902726057e86b146b0e56681ee927e6, type: 3}
-  m_Name: Chase State
+  m_Script: {fileID: 11500000, guid: 4106f715aa6b1874aa9395b2b20fa594, type: 3}
+  m_Name: Take Damage State
   m_EditorClassIdentifier: 
   AvailableStates:
-  - {fileID: 11400000, guid: 5d39a9aa7088b25489b3d7f7295d7a57, type: 2}
-  - {fileID: 11400000, guid: efba30544435a494baa1fd553fd71105, type: 2}
   - {fileID: 11400000, guid: 65e5e02470625fd4abca78b2839d85f1, type: 2}
-  Animation: 1
-  DistanceForTrigger: 7
-  DistanceForStopTrigger: 1
-  _chaseSpeed: 4
+  Animation: 8

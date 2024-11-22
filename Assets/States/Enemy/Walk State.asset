@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Walk State
   m_EditorClassIdentifier: 
   AvailableStates:
+  - {fileID: 11400000, guid: 5d39a9aa7088b25489b3d7f7295d7a57, type: 2}
   - {fileID: 11400000, guid: 57275877bfa85a745b70f4acf564fbf3, type: 2}
   - {fileID: 11400000, guid: 65e5e02470625fd4abca78b2839d85f1, type: 2}
   Animation: 1

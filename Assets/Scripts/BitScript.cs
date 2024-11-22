@@ -20,14 +20,12 @@ public class BitScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         SpawnDamage();
-        Debug.Log($"OnTriggerEnter {other.gameObject.name}");
         Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         SpawnDamage();
-        Debug.Log($"OnCollisionEnter {collision.gameObject.name}");
         Destroy(gameObject);
     }
 

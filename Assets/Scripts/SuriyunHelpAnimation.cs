@@ -19,6 +19,5 @@ public class SuriyunHelpAnimation : MonoBehaviour
         {
             triggerEvents[eventInt].Invoke();
         }
-//        Debug.Log($"Call SuriyunEvent:{eventInt}");
     }
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Attack State
   m_EditorClassIdentifier: 
   AvailableStates:
+  - {fileID: 11400000, guid: 5d39a9aa7088b25489b3d7f7295d7a57, type: 2}
   - {fileID: 11400000, guid: bd7d62ec0a3d38a48beaefc719bc8079, type: 2}
   Animation: 4
   DistanceForTrigger: 1.2

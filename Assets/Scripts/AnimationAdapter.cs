@@ -4,7 +4,6 @@ using UnityEngine.Events;
 
 public class AnimationAdapter : MonoBehaviour
 {
-    public Action<EnumProps> triggerPropAction;
     private EnumAnimations _currentAnimation;
 
     [System.Serializable]
@@ -31,6 +30,10 @@ public class AnimationAdapter : MonoBehaviour
             }
         }
     }
+
+    //===========================================================
+
+    public Action<EnumProps> triggerPropAction;
 
     public void TriggerAnimate(EnumProps prop)
     {
