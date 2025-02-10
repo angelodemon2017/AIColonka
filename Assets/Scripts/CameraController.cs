@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
     {
         Instance = this;
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+//        Cursor.lockState = CursorLockMode.Locked;
 //        _pivot = target.parent;
     }
 
@@ -31,10 +31,10 @@ public class CameraController : MonoBehaviour
         target = tPivot;
     }
 
-    void Update()
+    internal void UpdateMouse(float xMouse, float yMouse)
     {
-        _currentX += Input.GetAxis("Mouse X") * sensitivity;
-        _currentY -= Input.GetAxis("Mouse Y") * -sensitivity;
+        _currentX += xMouse * sensitivity;
+        _currentY -= yMouse * -sensitivity;
 
         _currentY = Mathf.Clamp(_currentY, minYAngle, maxYAngle);
     }

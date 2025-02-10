@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class PanelSelectingLevel : MonoBehaviour
@@ -9,19 +8,35 @@ public class PanelSelectingLevel : MonoBehaviour
 
     [SerializeField] private List<EnumLevels> _availableLevels;
 
-    private IEnumerable<int> AvailableLevels => _availableLevels.OfType<int>();
+    private IEnumerable<EnumLevels> AvailableLevels => _availableLevels;
 
     private void Awake()
     {
         InitButtons();
+        EventBus.Subscribe<EventKey>(CheckKey);
+        gameObject.SetActive(false);
     }
 
     private void InitButtons()
     {
+        _parentButtons.DestroyChildrens();
         foreach (var lev in AvailableLevels)
         {
             var newLev = Instantiate(_prefabLevelButtonPresent, _parentButtons);
             newLev.Init(lev);
         }
+    }
+
+    private void CheckKey(EventKey eventKey)
+    {
+        if (eventKey.pressedKey == KeyCode.L)
+        {
+            gameObject.SetActive(!gameObject.activeSelf);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        EventBus.Unsubscribe<EventKey>(CheckKey);
     }
 }
