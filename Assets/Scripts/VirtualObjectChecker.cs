@@ -26,7 +26,7 @@ public class VirtualObjectChecker : MonoBehaviour
 
     private void Update()
     {
-        _uiLabelHint.SetActive(_isVirtualObjectNear);
+//        _uiLabelHint.SetActive(_isVirtualObjectNear);
         if (Input.GetKeyDown(KeyCode.R) &&
             _isVirtualObjectNear)
         {

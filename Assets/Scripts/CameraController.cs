@@ -22,7 +22,13 @@ public class CameraController : MonoBehaviour
         Instance = this;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        _pivot = target.parent;
+//        _pivot = target.parent;
+    }
+
+    internal void SetPivot(Transform tPivot)
+    {
+        _pivot = tPivot;
+        target = tPivot;
     }
 
     void Update()

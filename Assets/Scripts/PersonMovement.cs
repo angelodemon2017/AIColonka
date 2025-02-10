@@ -3,6 +3,7 @@ using UnityEngine;
 public class PersonMovement : MonoBehaviour
 {
     public static PersonMovement Instance;
+    [SerializeField] private Transform _pivotForCamera;
     [SerializeField] private AnimationAdapter _animationAdapter;
     [SerializeField] private BitsController _bitsController;
     const float attack1Time = 0.8f;
@@ -38,6 +39,7 @@ public class PersonMovement : MonoBehaviour
     {
         Instance = this;
         _animationAdapter.triggerPropAction += TrigAnimate;
+        CameraController.Instance.SetPivot(_pivotForCamera);
     }
 
     void Start()
