@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PanelSelectingLevel : MonoBehaviour
+public class PanelSelectingLevel : MAINWindow
 {
     [SerializeField] private LevelButtonPresent _prefabLevelButtonPresent;
     [SerializeField] private Transform _parentButtons;
@@ -13,8 +13,7 @@ public class PanelSelectingLevel : MonoBehaviour
     private void Awake()
     {
         InitButtons();
-        EventBus.Subscribe<EventKey>(CheckKey);
-        gameObject.SetActive(false);
+//        EventBus.Subscribe<EventKey>(CheckKey);
     }
 
     private void InitButtons()
@@ -27,16 +26,16 @@ public class PanelSelectingLevel : MonoBehaviour
         }
     }
 
-    private void CheckKey(EventKey eventKey)
+/*    private void CheckKey(EventKey eventKey)
     {
         if (eventKey.pressedKey == KeyCode.L)
         {
             gameObject.SetActive(!gameObject.activeSelf);
         }
-    }
+    }/**/
 
     private void OnDestroy()
     {
-        EventBus.Unsubscribe<EventKey>(CheckKey);
+//        EventBus.Unsubscribe<EventKey>(CheckKey);
     }
 }

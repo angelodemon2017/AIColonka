@@ -25,6 +25,10 @@ public class LevelButtonPresent : MonoBehaviour
         StartCoroutine(LoadLevel());
     }
 
+    /// <summary>
+    /// Move out method
+    /// </summary>
+    /// <returns></returns>
     IEnumerator LoadLevel()
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(_sceneId);

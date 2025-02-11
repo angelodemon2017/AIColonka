@@ -1,15 +1,29 @@
+using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// May be delete
+/// </summary>
 public class InputFSM : MonoBehaviour
 {
-    private float _mouseX;
-    private float _mouseY;
+    [SerializeField] private List<KeyMap> _pareKeyEvents = new();
+    private Dictionary<KeyCode, EnumUIEvent> _tempMapKeyEvents = new();
 
-    void Update()
+    private void Awake()
     {
-        _mouseX = Input.GetAxis("Mouse X");
-        _mouseY = Input.GetAxis("Mouse Y");
+        InitMapKey();
+    }
 
-        CameraController.Instance.UpdateMouse(_mouseX, _mouseY);
+    private void InitMapKey()
+    {
+        _tempMapKeyEvents.Clear();
+        _pareKeyEvents.ForEach(p => _tempMapKeyEvents.Add(p.keyCode, p.uIEvent));
+    }
+
+    [System.Serializable]
+    internal class KeyMap
+    {
+        internal KeyCode keyCode;
+        internal EnumUIEvent uIEvent;
     }
 }

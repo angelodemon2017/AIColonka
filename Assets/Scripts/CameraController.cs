@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        Cursor.visible = false;
+//        Cursor.visible = false;
 //        Cursor.lockState = CursorLockMode.Locked;
 //        _pivot = target.parent;
     }

@@ -1,4 +1,7 @@
-﻿public enum EnumUIEvent
+﻿/// <summary>
+/// May be delete
+/// </summary>
+public enum EnumUIEvent
 {
     /// <summary>
     /// ESC
