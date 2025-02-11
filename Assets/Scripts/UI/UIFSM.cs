@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class UIFSM : MonoBehaviour
+public class UIFSM : MonoBehaviour, IUIFSM
 {
-
+    private IWindowFSM _currentWindow;
 
     private void Update()
     {
@@ -11,5 +11,10 @@ public class UIFSM : MonoBehaviour
             EventBus.Publish(new EventKey(KeyCode.L));
         }
 
+    }
+
+    private void CallUIEvent(EnumUIEvent uIEvent)
+    {
+        _currentWindow.PressedKey(uIEvent);
     }
 }
