@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using System;
 
 public class PanelDialogWithPeople : MAINWindow
 {
@@ -13,11 +13,14 @@ public class PanelDialogWithPeople : MAINWindow
     private Dialog _currentDialog;
     private int _currentStep = 0;
 
+    public Action NextStep;
+    public Action EndDialog;
+
     public override void StartWindow()
     {
         base.StartWindow();
         //TODO replace event bus or fix
-        EventBus.Subscribe<DialogVariantSO>(SelectVariant);
+//        EventBus.Subscribe<DialogVariantSO>(SelectVariant);
         Init();
     }
 
@@ -26,11 +29,6 @@ public class PanelDialogWithPeople : MAINWindow
         var currentDialog = ControllerDemoSaveFile.Instance.mainData.progressHistory.Dialog;
         _currentDialog = ControllerDemoSaveFile.Instance.DialogsConfig.dialogs[currentDialog];
         SelectVariant(0);
-    }
-
-    private void SelectVariant(DialogVariantSO variant)
-    {
-        SelectVariant(variant.IdStepDialog);
     }
 
     private void SelectVariant(int dialogStep)
@@ -47,10 +45,43 @@ public class PanelDialogWithPeople : MAINWindow
         _textPerson.text = dialogStep.TextPerson;
 
         _parentVariants.DestroyChildrens();
-        foreach (var vart in dialogStep.dialogVariants)
+        for (int i = 0; i < dialogStep.dialogVariants.Count; i++)
+        //        foreach (var vart in dialogStep.dialogVariants)
         {
             var diaVarPan = Instantiate(_dialogVariantPrefab, _parentVariants);
-            diaVarPan.Init(vart);
+            diaVarPan.Init(i, dialogStep.dialogVariants[i].TextVariant, SelectedVariant);
         }
+    }
+
+    private void SelectedVariant(int num)
+    {
+        var dialogVariant = _currentDialog.dialogSteps[_currentStep].dialogVariants[num];
+
+        if (dialogVariant.specEndDialog.RunNextScriptStep)
+        {
+            NextStep?.Invoke();
+        }
+
+        if (dialogVariant.specEndDialog.moveToLevel != EnumLevels.MainMenu)
+        {
+            // is trash, need screen loader
+            EventBus.ResetSubs();
+            SceneManager.LoadSceneAsync((int)dialogVariant.specEndDialog.moveToLevel);
+        }
+        else if (dialogVariant.specEndDialog.moveWindow != null)
+        {
+            UIFSM.Instance.OpenWindow(dialogVariant.specEndDialog.moveWindow);
+        }
+        else
+        {
+            SelectVariant(dialogVariant.IdStepDialog);
+        }
+    }
+
+    public override void ExitWindow()
+    {
+        base.ExitWindow();
+        EndDialog?.Invoke();
+//        EventBus.Unsubscribe<DialogVariantSO>(SelectVariant);
     }
 }

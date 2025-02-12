@@ -13,12 +13,12 @@ public class ControllerDemoSaveFile : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         Instance = this;
-        Debug.Log($"Awake ControllerDemoSaveFile");
+//        Debug.Log($"Awake ControllerDemoSaveFile");
     }
 
     private void Start()
     {
-        Debug.Log($"Start ControllerDemoSaveFile");
+//        Debug.Log($"Start ControllerDemoSaveFile");
     }
 
     private void Update()

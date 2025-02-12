@@ -50,14 +50,14 @@ public class CameraController : MonoBehaviour
         _pivot.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0f);
     }
 
-    internal void SwitchCamera(Camera secondCamera)
+    public void SwitchCamera(Camera secondCamera)
     {
         _secondCamera = secondCamera;
         _secondCamera.enabled = true;
         _mainCamera.enabled = false;
     }
 
-    internal void ResetCamera()
+    public void ResetCamera()
     {
         if (_secondCamera != null)
         {

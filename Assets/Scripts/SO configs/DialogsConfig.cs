@@ -33,11 +33,17 @@ public class DialogVariantSO : IEvent
     public SpecEndDialog specEndDialog;
 }
 
+public struct DialogVariantStruct : IEvent
+{
+    
+}
+
 [System.Serializable]
 public class SpecEndDialog
 {
     public EnumLevels moveToLevel;
     public MAINWindow moveWindow;
+    public bool RunNextScriptStep;
 
 //    public bool IsSpec => moveWindow != null || moveToLevel != EnumLevels.MainMenu;
 }

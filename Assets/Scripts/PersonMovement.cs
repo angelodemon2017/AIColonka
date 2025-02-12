@@ -40,40 +40,26 @@ public class PersonMovement : MonoBehaviour
         Instance = this;
         _animationAdapter.triggerPropAction += TrigAnimate;
         CameraController.Instance.SetPivot(_pivotForCamera);
-    }
-
-    void Start()
-    {
-        _characterController = GetComponent<CharacterController>();
         _cameraTransform = Camera.main.transform;
+        _characterController = GetComponent<CharacterController>();
     }
 
     void Update()
     {
-        MovePlayer();
-        Jump();
-        Attack();
-        SecondAttack();
         Animation();
     }
 
-    private void MovePlayer()
+    private void FixedUpdate()
+    {
+        JustMove();
+        CalcAttack();
+    }
+
+    public void OnMovePlayer(float hor, float vert)
     {
         if (_takingDamage)
         {
             return;
-        }
-
-        _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        float horizontal = 0f;
-        float vertical = 0f;
-
-        // CRUNCH! Need move control to WindowGameplay
-        if (UIFSM.Instance.IsGamePlayState)
-        {
-            horizontal = Input.GetAxis("Horizontal");
-            vertical = Input.GetAxis("Vertical");
         }
 
         Vector3 forward = _cameraTransform.forward;
@@ -85,7 +71,7 @@ public class PersonMovement : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        desiredMoveDirection = (forward * vertical + right * horizontal).normalized;
+        desiredMoveDirection = (forward * vert + right * hor).normalized;
         _characterController.Move(desiredMoveDirection * moveSpeed * 
             (_isAttacking ? 0.1f : 1f) * 
             (_isGrounded ? 1f : 1.5f));
@@ -100,43 +86,36 @@ public class PersonMovement : MonoBehaviour
         {
             _velocity.y = -2f;
         }
+    }
+
+    private void JustMove()
+    {
+        _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         _velocity.y += gravity * Time.deltaTime;
         _characterController.Move(_velocity * jumpScaleFall * Time.deltaTime);
     }
 
-    private void Jump()
+    public void OnJump()
     {
         if (_isAttacking || _takingDamage)
             return;
 
-        if (Input.GetButtonDown("Jump") && _isGrounded)
+        if (_isGrounded)
         {
             _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }
 
-    private void Attack()
+    public void OnAttack()
     {
         if (!_isGrounded || _takingDamage)
             return;
 
-        if (Input.GetButtonDown("Fire1"))
+        if (_stepsAttacks < 2)
         {
-            if (_stepsAttacks < 2)
-            {
-                _stepsAttacks++;
-                if (!_isAttacking)
-                {
-                    CalcAttack();
-                }
-            }
-        }
-
-        if (_timeAttackAnimation > 0f)
-        {
-            _timeAttackAnimation -= Time.deltaTime;
-            if (_timeAttackAnimation < 0f)
+            _stepsAttacks++;
+            if (!_isAttacking)
             {
                 CalcAttack();
             }
@@ -145,6 +124,15 @@ public class PersonMovement : MonoBehaviour
 
     private void CalcAttack()
     {
+        if (_timeAttackAnimation > 0f)
+        {
+            _timeAttackAnimation -= Time.deltaTime;
+            if (_timeAttackAnimation < 0f)
+            {
+                CalcAttack();
+            }
+        }
+
         if (_stepsAttacks > 0)
         {
             _stepsAttacks--;
@@ -180,16 +168,13 @@ public class PersonMovement : MonoBehaviour
             _currentAttackStep = 0;
         }
     }
-    
-    private void SecondAttack()
+
+    public void OnSecondAttack()
     {
         if (_takingDamage)
             return;
 
-        if (Input.GetButtonDown("Fire2"))
-        {
-            _bitsController.Shoot();
-        }
+        _bitsController.Shoot();
     }
 
     private void Animation()

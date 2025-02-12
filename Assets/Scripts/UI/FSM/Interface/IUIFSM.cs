@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IUIFSM
 {
-    void OpenWindow(MAINWindow windowFSM);
+    MAINWindow OpenWindow(MAINWindow windowFSM);
 }

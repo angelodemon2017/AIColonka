@@ -1,11 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ScriptScene : MonoBehaviour
 {
-    [SerializeField] private List<Animator> animators;
     [SerializeField] private Camera _camera;
+
+    [SerializeField] private List<UnityEvent> _events;
+    [SerializeField] private UnityEvent _eventOnEnd;
+
+    private int _scriptStep = 0;
 
     private void Awake()
     {
@@ -14,11 +18,30 @@ public class ScriptScene : MonoBehaviour
 
     public void RunScene()
     {
-        foreach (var a in animators)
-        {
-            a.Play(0);
-        }
+        _scriptStep = 0;
+        RunStep();
+    }
 
-        CameraController.Instance.SwitchCamera(_camera);
+    public void RunNextStep()
+    {
+        _scriptStep++;
+        RunStep();
+    }
+
+    public void RunStep()
+    {
+        if (_scriptStep < _events.Count)
+        {
+            _events[_scriptStep].Invoke();
+        }
+        else
+        {
+            Debug.LogWarning($"Script Step {_scriptStep} havn't in _events");
+        }
+    }
+
+    internal void EndScript()
+    {
+        _eventOnEnd?.Invoke();
     }
 }

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -10,19 +9,25 @@ public class DialogVariant : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textVariant;
     [SerializeField] private Button _buttonSelf;
 
-    private DialogVariantSO tempVart;
+//    private DialogVariantSO tempVart;
+    private int _numVariant;
 
-    internal void Init(DialogVariantSO dialogVariant)
+    public Action<int> ClickAction;
+
+    internal void Init(int dialogVariant, string descr, Action<int> callBack)
     {
-        tempVart = dialogVariant;
-
-        _textVariant.text = dialogVariant.TextVariant;
+        _numVariant = dialogVariant;
+//           tempVart = dialogVariant;
+        ClickAction += callBack;
+//        _textVariant.text = dialogVariant.TextVariant;
+        _textVariant.text = descr;
         _buttonSelf.onClick.AddListener(OnClick);
     }
 
     private void OnClick()
     {
-        if (tempVart.specEndDialog.moveToLevel != EnumLevels.MainMenu)
+        ClickAction?.Invoke(_numVariant);
+/*        if (tempVart.specEndDialog.moveToLevel != EnumLevels.MainMenu)
         {
             // is trash, need screen loader
             EventBus.ResetSubs();
@@ -34,12 +39,13 @@ public class DialogVariant : MonoBehaviour
         }
         else
         {
-            EventBus.Publish(tempVart);
-        }
+            ClickAction?.Invoke(tempVart);
+//            EventBus.Publish(tempVart);
+        }/**/
     }
-}
 
-public struct DialogSelect : IEvent
-{
-    public int IdVariant;
+    private void OnDestroy()
+    {
+        ClickAction = null;
+    }
 }

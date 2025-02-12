@@ -11,8 +11,6 @@ public class UIFSM : MonoBehaviour, IUIFSM
 
     private IWindowFSM _currentWindow;
 
-    public bool IsGamePlayState => _currentWindow.IsGamePlayState;
-
     private void Awake()
     {
         _parent = transform;
@@ -25,7 +23,7 @@ public class UIFSM : MonoBehaviour, IUIFSM
         _currentWindow.Run();
     }
 
-    public void OpenWindow(MAINWindow windowFSM)
+    public MAINWindow OpenWindow(MAINWindow windowFSM)
     {
         if (_currentWindow != null)
         {
@@ -36,6 +34,8 @@ public class UIFSM : MonoBehaviour, IUIFSM
 
         _currentWindow = Instantiate(windowFSM, _parent);
         _currentWindow.StartWindow();
+
+        return _currentWindow as MAINWindow;
     }
 
     internal void CallUIEvent(EnumUIEvent uIEvent)
