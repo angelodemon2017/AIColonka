@@ -66,8 +66,15 @@ public class PersonMovement : MonoBehaviour
 
         _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = 0f;
+        float vertical = 0f;
+
+        // CRUNCH! Need move control to WindowGameplay
+        if (UIFSM.Instance.IsGamePlayState)
+        {
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+        }
 
         Vector3 forward = _cameraTransform.forward;
         Vector3 right = _cameraTransform.right;

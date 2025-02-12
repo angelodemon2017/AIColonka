@@ -8,6 +8,8 @@ public class MAINWindow : MonoBehaviour, IWindowFSM
 
     private Dictionary<KeyCode, MAINWindow> _tempKeyCodeMapWindows = new();
 
+    public virtual bool IsGamePlayState => false;
+
     private void InitWindows()
     {
         _pareEventWindows.ForEach(p => _tempKeyCodeMapWindows.Add(p.keyCode, p.Window));

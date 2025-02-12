@@ -11,6 +11,8 @@ public class UIFSM : MonoBehaviour, IUIFSM
 
     private IWindowFSM _currentWindow;
 
+    public bool IsGamePlayState => _currentWindow.IsGamePlayState;
+
     private void Awake()
     {
         _parent = transform;

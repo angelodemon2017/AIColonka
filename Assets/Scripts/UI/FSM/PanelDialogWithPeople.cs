@@ -16,6 +16,7 @@ public class PanelDialogWithPeople : MAINWindow
     public override void StartWindow()
     {
         base.StartWindow();
+        //TODO replace event bus or fix
         EventBus.Subscribe<DialogVariantSO>(SelectVariant);
         Init();
     }
