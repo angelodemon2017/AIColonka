@@ -395,6 +395,8 @@ GameObject:
   - component: {fileID: 8894603347788195888}
   - component: {fileID: 9097947109492161810}
   - component: {fileID: 7687012706516705241}
+  - component: {fileID: 2996413382871570050}
+  - component: {fileID: 6360888911972008021}
   m_Layer: 0
   m_Name: PersonController
   m_TagString: Player
@@ -489,6 +491,46 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.88, z: 0}
+--- !u!114 &2996413382871570050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630790025869648306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c270d03993b7e1e458867809e8755ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeoutRegen: 5
+  _eventByDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6360888911972008021}
+        m_TargetAssemblyTypeName: DialogSetter, Assembly-CSharp
+        m_MethodName: SetWindow
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4233653328280678729, guid: 23102e04c1c70f34cadf55226eec21ae, type: 3}
+          m_ObjectArgumentAssemblyTypeName: MAINWindow, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6360888911972008021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630790025869648306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75af4d2149a4ba74cbd89a1557c92c6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3037384931097771826
 PrefabInstance:
   m_ObjectHideFlags: 0

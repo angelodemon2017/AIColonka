@@ -31,6 +31,7 @@ public class LevelButtonPresent : MonoBehaviour
     /// <returns></returns>
     IEnumerator LoadLevel()
     {
+        ControllerDemoSaveFile.Instance.CurrentLevel = (EnumLevels)_sceneId;
         AsyncOperation operation = SceneManager.LoadSceneAsync(_sceneId);
         EventBus.ResetSubs();
         progress.fillAmount = operation.progress;

@@ -6,6 +6,7 @@ using UnityEngine;
 public class MainData
 {
     public ProgressHistory progressHistory = new ProgressHistory();
+    public Chapter chapter = new Chapter();
 }
 
 public class ProgressHistory
@@ -26,4 +27,13 @@ public class ProgressHistory
 public class GamePlayProgress
 {
     //???
+}
+
+public class Chapter
+{
+    public int MaxHP = 100;
+    public int HPRegenBySecond = 5;
+    public int BaseDamage = 10;
+
+    public int GetMaxHP => MaxHP;
 }

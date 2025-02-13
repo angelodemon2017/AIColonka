@@ -5,7 +5,7 @@ public class ControllerDemoSaveFile : MonoBehaviour
     public static ControllerDemoSaveFile Instance;
 
     public TaskConfig TaskConfig;
-
+    public EnumLevels CurrentLevel;
     public DialogSO CurrentDialog;
 
     public int testParam;

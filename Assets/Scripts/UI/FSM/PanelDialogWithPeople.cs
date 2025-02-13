@@ -67,6 +67,7 @@ public class PanelDialogWithPeople : MAINWindow
         {
             // is trash, need screen loader
             EventBus.ResetSubs();
+            ControllerDemoSaveFile.Instance.CurrentLevel = dialogVariant.specEndDialog.moveToLevel;
             SceneManager.LoadSceneAsync((int)dialogVariant.specEndDialog.moveToLevel);
         }
         else if (dialogVariant.specEndDialog.moveWindow != null)
