@@ -33,13 +33,29 @@ public class UIFSM : MonoBehaviour, IUIFSM
         _parent.DestroyChildrens();
 
         _currentWindow = Instantiate(windowFSM, _parent);
-        _currentWindow.StartWindow();
+        StartWindow();
 
         return _currentWindow as MAINWindow;
+    }
+
+    public void StartWindow()
+    {
+        if (_currentWindow != null)
+        {
+            _currentWindow.StartWindow(); 
+        }
     }
 
     internal void CallUIEvent(EnumUIEvent uIEvent)
     {
         _currentWindow.PressedKey(uIEvent);
+    }
+
+    private void OnDestroy()
+    {
+        if (_currentWindow != null)
+        {
+            _currentWindow.ExitWindow();
+        }
     }
 }

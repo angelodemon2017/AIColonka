@@ -4,7 +4,9 @@ public class ControllerDemoSaveFile : MonoBehaviour
 {
     public static ControllerDemoSaveFile Instance;
 
-    public DialogsConfig DialogsConfig;
+    public TaskConfig TaskConfig;
+
+    public DialogSO CurrentDialog;
 
     public int testParam;
     public MainData mainData = new MainData();
@@ -19,6 +21,16 @@ public class ControllerDemoSaveFile : MonoBehaviour
     private void Start()
     {
 //        Debug.Log($"Start ControllerDemoSaveFile");
+    }
+
+    internal TaskSO GetCurrentTask()
+    {
+        return TaskConfig.GetTaskById(mainData.progressHistory.CurrentTask);
+    }
+
+    internal bool IsCurrentTask(TaskSO taskSO)
+    {
+        return TaskConfig.GetTaskById(mainData.progressHistory.CurrentTask) == taskSO;
     }
 
     private void Update()

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3cd469e3d617f04792b02362f5303ea, type: 3}
-  m_Name: Dialogs Config
+  m_Name: Dialog in License
   m_EditorClassIdentifier: 
   dialogs:
   - Name: StartDialog

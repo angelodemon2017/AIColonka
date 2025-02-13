@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(menuName = "SO/DialogsConfig", order = 1)]
 public class DialogsConfig : ScriptableObject
@@ -12,13 +10,6 @@ public class DialogsConfig : ScriptableObject
 
 [System.Serializable]
 public class Dialog
-{
-    public string Name;
-    public List<DialogStep> dialogSteps = new();
-}
-
-[CreateAssetMenu(menuName = "SO/Dialog", order = 1)]
-public class DialogSO : ScriptableObject
 {
     public string Name;
     public List<DialogStep> dialogSteps = new();

@@ -10,7 +10,7 @@ public class PanelDialogWithPeople : MAINWindow
     [SerializeField] private TextMeshProUGUI _textNamePerson;
     [SerializeField] private TextMeshProUGUI _textPerson;
 
-    private Dialog _currentDialog;
+    private DialogSO _currentDialog;
     private int _currentStep = 0;
 
     public Action NextStep;
@@ -20,14 +20,15 @@ public class PanelDialogWithPeople : MAINWindow
     {
         base.StartWindow();
         //TODO replace event bus or fix
-//        EventBus.Subscribe<DialogVariantSO>(SelectVariant);
+        //        EventBus.Subscribe<DialogVariantSO>(SelectVariant);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
         Init();
     }
 
     private void Init()
     {
-        var currentDialog = ControllerDemoSaveFile.Instance.mainData.progressHistory.Dialog;
-        _currentDialog = ControllerDemoSaveFile.Instance.DialogsConfig.dialogs[currentDialog];
+        _currentDialog = ControllerDemoSaveFile.Instance.CurrentDialog;
         SelectVariant(0);
     }
 

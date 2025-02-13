@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -22,9 +23,16 @@ public class Looker : MonoBehaviour
 
     private void Look()
     {
-        if (_target)
+        try
         {
-            transform.LookAt(_target);
+            if (_target)
+            {
+                transform.LookAt(_target);
+            }
+        }
+        catch (Exception ex)
+        {
+
         }
     }
 }

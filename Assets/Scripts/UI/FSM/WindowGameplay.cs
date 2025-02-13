@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class WindowGameplay : MAINWindow
 {
+    [SerializeField] private TaskController _taskController = new();
+
     public override void StartWindow()
     {
         base.StartWindow();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        _taskController.Init();
 //        CameraController.Instance.ResetCamera();
     }
 
@@ -40,9 +43,36 @@ public class WindowGameplay : MAINWindow
 
     public override void ExitWindow()
     {
+        _taskController.Deatcivate();
         base.ExitWindow();
         PersonMovement.Instance.OnMovePlayer(0, 0);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+    }
+}
+
+[System.Serializable]
+public class TaskController
+{
+    [SerializeField] private TaskPreview _prefabTaskPreview;
+    [SerializeField] private Transform _parentTasks;
+
+    internal void Init()
+    {
+        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate += UpdateTasks;
+        UpdateTasks();
+    }
+
+    private void UpdateTasks()
+    {
+        _parentTasks.DestroyChildrens();
+        var newPT = GameObject.Instantiate(_prefabTaskPreview, _parentTasks);
+
+        newPT.Init(ControllerDemoSaveFile.Instance.GetCurrentTask());
+    }
+
+    internal void Deatcivate()
+    {
+        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate -= UpdateTasks;
     }
 }

@@ -4,7 +4,7 @@ public class DialogTrigger : MonoBehaviour
 {
     [SerializeField] private PanelDialogWithPeople _dialogWindow;
     [SerializeField] private ScriptScene scriptScene;
-    [SerializeField] private int IdDialog;
+    [SerializeField] private DialogSO dialog;
 
     private PanelDialogWithPeople tempWindow;
 
@@ -18,7 +18,8 @@ public class DialogTrigger : MonoBehaviour
 
     private void RunScript()
     {
-        ControllerDemoSaveFile.Instance.mainData.progressHistory.Dialog = IdDialog;
+        ControllerDemoSaveFile.Instance.CurrentDialog = dialog;
+//            mainData.progressHistory.Dialog = IdDialog;
         tempWindow = (PanelDialogWithPeople)UIFSM.Instance.OpenWindow(_dialogWindow);
         tempWindow.EndDialog += EndDialog;
         if (scriptScene != null)

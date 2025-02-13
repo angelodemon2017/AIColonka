@@ -57,7 +57,7 @@ public class PersonMovement : MonoBehaviour
 
     public void OnMovePlayer(float hor, float vert)
     {
-        if (_takingDamage)
+        if (_takingDamage || _cameraTransform == null)
         {
             return;
         }
