@@ -13,8 +13,6 @@ public class CameraController : MonoBehaviour
     private float _currentX = 0f;
     private float _currentY = 0f;
 
-    private Camera _mainCamera;
-    private Camera _secondCamera;
     private Transform _pivot;
 
     public Vector3 Direct => _directPoint.position - transform.position;
@@ -22,7 +20,6 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        _mainCamera = GetComponent<Camera>();
 //        Cursor.visible = false;
 //        Cursor.lockState = CursorLockMode.Locked;
 //        _pivot = target.parent;
@@ -48,23 +45,5 @@ public class CameraController : MonoBehaviour
         transform.position = target.position + rotation * offset;
         transform.LookAt(target.position + _centerOffset);
         _pivot.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0f);
-    }
-
-    public void SwitchCamera(Camera secondCamera)
-    {
-        _secondCamera = secondCamera;
-        _secondCamera.enabled = true;
-        _mainCamera.enabled = false;
-    }
-
-    public void ResetCamera()
-    {
-        if (_secondCamera != null)
-        {
-            _secondCamera.enabled = false;
-            _secondCamera = null;
-        }
-
-        _mainCamera.enabled = true;
     }
 }

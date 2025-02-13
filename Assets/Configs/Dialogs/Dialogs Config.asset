@@ -144,3 +144,4 @@ MonoBehaviour:
           moveToLevel: 0
           moveWindow: {fileID: 2520768843938125354, guid: b2f84fba5669934468a6849e2919cdcc, type: 3}
           RunNextScriptStep: 0
+  dialogSO: {fileID: 11400000, guid: 8a9002f48d9180946a0e3da25e2eb571, type: 2}

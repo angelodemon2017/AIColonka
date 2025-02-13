@@ -834,6 +834,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 483328488}
+  - component: {fileID: 483328489}
   m_Layer: 0
   m_Name: TargetPoint1
   m_TagString: Untagged
@@ -856,6 +857,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 870044192}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &483328489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483328487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b43cffef69ae44ea33335a5241c885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetChecking: {fileID: 686576512}
+  _triggerDistance: 0.1
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 686576517}
+        m_TargetAssemblyTypeName: Mover, Assembly-CSharp
+        m_MethodName: SetTarget
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1083310585}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 483328489}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &559642487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,7 +1357,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveTarget: {fileID: 0}
   _speedMove: 0.003
-  _time: 105.13437
 --- !u!1 &740791256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,7 +1926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9060881766338289619, guid: d06f42a8e68e6bd478440bff54e85f06, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 41.7
+      value: 37.32
       objectReference: {fileID: 0}
     - target: {fileID: 9060881766338289619, guid: d06f42a8e68e6bd478440bff54e85f06, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1964,6 +2005,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8223896353947082216, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
       insertIndex: -1
       addedObject: {fileID: 851365870}
+    - targetCorrespondingSourceObject: {fileID: 8223896353947082216, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 851365872}
   m_SourcePrefab: {fileID: 100100000, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
 --- !u!1 &851365869 stripped
 GameObject:
@@ -2014,15 +2058,16 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!114 &851365871 stripped
+--- !u!114 &851365872
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7527140456041670667, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-  m_PrefabInstance: {fileID: 851365868}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851365869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eadfbd2b038d89849b6b609b15d579f1, type: 3}
+  m_Script: {fileID: 11500000, guid: a5233d1c09361df4b8764563bae8b5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &863700086
@@ -2196,8 +2241,8 @@ MonoBehaviour:
   _events:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 851365871}
-        m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
+      - m_Target: {fileID: 851365872}
+        m_TargetAssemblyTypeName: CustomCameraSwitcher, Assembly-CSharp
         m_MethodName: SwitchCamera
         m_Mode: 2
         m_Arguments:
@@ -2244,6 +2289,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 483328489}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 686576517}
@@ -2261,8 +2318,8 @@ MonoBehaviour:
   _eventOnEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 851365871}
-        m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
+      - m_Target: {fileID: 851365872}
+        m_TargetAssemblyTypeName: CustomCameraSwitcher, Assembly-CSharp
         m_MethodName: ResetCamera
         m_Mode: 1
         m_Arguments:

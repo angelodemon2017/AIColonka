@@ -7,10 +7,18 @@ using UnityEngine.SceneManagement;
 public class DialogsConfig : ScriptableObject
 {
     public List<Dialog> dialogs = new();
+    public DialogSO dialogSO;
 }
 
 [System.Serializable]
 public class Dialog
+{
+    public string Name;
+    public List<DialogStep> dialogSteps = new();
+}
+
+[CreateAssetMenu(menuName = "SO/Dialog", order = 1)]
+public class DialogSO : ScriptableObject
 {
     public string Name;
     public List<DialogStep> dialogSteps = new();

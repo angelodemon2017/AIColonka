@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -5,6 +6,8 @@ public class Mover : MonoBehaviour
 {
     [SerializeField] private Transform _moveTarget;
     [SerializeField] private float _speedMove;
+
+    public Action EndMove;
 
     private Mover()
     {
@@ -32,6 +35,10 @@ public class Mover : MonoBehaviour
         if (_moveTarget && Vector3.Distance(transform.position, _moveTarget.position) > 0.1f)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, _moveTarget.localPosition, _speedMove);
+            if (Vector3.Distance(transform.position, _moveTarget.position) < 0.1f)
+            {
+                EndMove?.Invoke();
+            }
         }
     }
 }
