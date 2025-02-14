@@ -21,4 +21,6 @@ public class DialogSetter : MonoBehaviour
     {
         UIFSM.Instance.OpenWindow(window);
     }
+
+
 }
