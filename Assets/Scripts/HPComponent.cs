@@ -5,34 +5,42 @@ public class HPComponent : MonoBehaviour
 {
     [SerializeField] private float TimeoutRegen;
     [SerializeField] private UnityEvent _eventByDeath;
+    [SerializeField] private int MaxHP;
+    [SerializeField] private int CurrentHP;
+    [SerializeField] private int _regenHP;
 
-    private int MaxHP;
-    private int CurrentHP;
-
-    private Chapter _chapter;
+//    private Chapter _chapter;
     private float _timeOut;
 
     private void Awake()
     {
-        Init();
+        CurrentHP = MaxHP;
     }
 
-    private void Init()
+    internal void OverrideStats(int maxHp, int regenHP)
     {
-        //Edit for available with mobs
-        _chapter = ControllerDemoSaveFile.Instance.mainData.chapter;
-
-        MaxHP = _chapter.GetMaxHP;
-        CurrentHP = _chapter.GetMaxHP;
+        MaxHP = maxHp;
+        CurrentHP = MaxHP;
+        _regenHP = regenHP;
     }
 
     internal void GetDamage(int damageCount)
     {
+        Debug.Log($"Getting damage {damageCount}");
         CurrentHP -= damageCount;
         _timeOut = TimeoutRegen;
         if (CurrentHP <= 0)
         {
             Kill();
+        }
+    }
+
+    internal void Heal(int healAmount)
+    {
+        CurrentHP += healAmount;
+        if (CurrentHP > MaxHP)
+        {
+            CurrentHP = MaxHP;
         }
     }
 
@@ -44,7 +52,7 @@ public class HPComponent : MonoBehaviour
 
     private void Update()
     {
-        if (CurrentHP > 0 && _chapter.HPRegenBySecond > 0)
+        if (CurrentHP > 0 && _regenHP > 0)
         {
             if (_timeOut > 0f)
             {
@@ -52,7 +60,7 @@ public class HPComponent : MonoBehaviour
             }
             else if (CurrentHP < MaxHP)
             {
-                CurrentHP += _chapter.HPRegenBySecond;
+                Heal(_regenHP);
             }
         }
     }

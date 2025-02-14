@@ -2,4 +2,5 @@
 {
     Melle,
     BitRange,
+    Range,
 }

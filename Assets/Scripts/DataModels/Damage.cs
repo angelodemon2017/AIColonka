@@ -1,13 +1,12 @@
-﻿public class Damage
+﻿[System.Serializable]
+public class Damage
 {
-    public bool _fromPlayer;
     public EnumDamageType DamageType;
     public int ValueDamage;
 
-    public Damage(EnumDamageType damageType, int damage, bool fromPlayer)
+    public Damage(EnumDamageType damageType, int damage)
     {
         DamageType = damageType;
         ValueDamage = damage;
-        _fromPlayer = fromPlayer;
     }
 }

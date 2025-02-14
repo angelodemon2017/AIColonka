@@ -6,6 +6,7 @@ public class PersonMovement : MonoBehaviour
     [SerializeField] private Transform _pivotForCamera;
     [SerializeField] private AnimationAdapter _animationAdapter;
     [SerializeField] private BitsController _bitsController;
+    [SerializeField] private ArmorVisualizator _armorVisualizator;
     const float attack1Time = 0.8f;
     const float attack2Time = 0.75f;
     const float attack3Time = 1.25f;
@@ -212,6 +213,11 @@ public class PersonMovement : MonoBehaviour
         _takingDamage = true;
         _animationAdapter.PlayAnimationEvent(EnumAnimations.takeDamage);
         Debug.Log("Player get damage");
+    }
+
+    internal void CallArmor()
+    {
+        _armorVisualizator.CallAttack(ArmorVisualizator.TypeVisualAttack.Near);
     }
 
     private void TrigAnimate(EnumProps prop)

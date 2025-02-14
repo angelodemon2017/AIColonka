@@ -46,11 +46,6 @@ public class UIFSM : MonoBehaviour, IUIFSM
         }
     }
 
-    internal void CallUIEvent(EnumUIEvent uIEvent)
-    {
-        _currentWindow.PressedKey(uIEvent);
-    }
-
     private void OnDestroy()
     {
         if (_currentWindow != null)

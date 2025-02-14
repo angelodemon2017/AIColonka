@@ -39,6 +39,11 @@ public class WindowGameplay : MAINWindow
         {
             PersonMovement.Instance.OnSecondAttack();
         }
+
+        if (Input.GetButtonDown("Fire3"))
+        {
+            PersonMovement.Instance.CallArmor();
+        }
     }
 
     public override void ExitWindow()

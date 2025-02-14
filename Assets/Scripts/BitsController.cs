@@ -12,7 +12,7 @@ public class BitsController : MonoBehaviour
     [SerializeField] private float _speedShoot;
 
     private int _valueDamage = 1;
-    private Damage damage => new Damage(EnumDamageType.BitRange, _valueDamage, true);
+    private Damage damage => new Damage(EnumDamageType.BitRange, _valueDamage);
 
     private void Awake()
     {

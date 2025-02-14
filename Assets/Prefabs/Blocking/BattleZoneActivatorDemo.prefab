@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 786802938756585667}
   - component: {fileID: 8520315543689344272}
   - component: {fileID: 8909398699895243422}
-  - component: {fileID: 4968500654568288958}
+  - component: {fileID: 5351319397589345408}
+  - component: {fileID: 2169135358374710054}
   m_Layer: 0
-  m_Name: BattleZoneActivator
+  m_Name: BattleZoneActivatorDemo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a85b208e3d8f184f9df6eba76de130f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4968500654568288958
+--- !u!114 &5351319397589345408
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,11 +129,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3187883763837073132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1867185c2c2847f43bc68de667e2649f, type: 3}
+  m_Script: {fileID: 11500000, guid: c270d03993b7e1e458867809e8755ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _needTask: {fileID: 0}
-  _unityEvent:
+  TimeoutRegen: 0
+  _eventByDeath:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8909398699895243422}
@@ -147,3 +148,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 786802938756585667}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  MaxHP: 20
+  CurrentHP: 0
+  _regenHP: 0
+--- !u!114 &2169135358374710054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3187883763837073132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdeeeab153a131f40adb06c7f1f1a765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hpComponent: {fileID: 5351319397589345408}
+  whoIs: 4
+  _damageProtected: []
+  _collisionEvents: []
+  _collider: {fileID: 0}

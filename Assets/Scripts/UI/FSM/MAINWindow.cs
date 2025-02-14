@@ -14,14 +14,6 @@ public class MAINWindow : MonoBehaviour, IWindowFSM
             //_tempMapWindows.Add(p.uIEvent, p.Window));
     }
 
-    public void PressedKey(EnumUIEvent uIEvent)
-    {
-/*        if (_tempMapWindows.TryGetValue(uIEvent, out MAINWindow window))
-        {
-            UIFSM.Instance.OpenWindow(window);
-        }/**/
-    }
-
     public virtual void Run()
     {
         foreach (var kc in _tempKeyCodeMapWindows)
@@ -47,7 +39,6 @@ public class MAINWindow : MonoBehaviour, IWindowFSM
     internal class PareEventWindow
     {
         public KeyCode keyCode;
-        public EnumUIEvent uIEvent;
         public MAINWindow Window;
     }
 }
