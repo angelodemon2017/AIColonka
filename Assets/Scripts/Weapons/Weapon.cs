@@ -5,15 +5,22 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] protected Damage _damage;
     [SerializeField] protected WhoIs WhoIs;
-    
+    protected Transform _avTransform;
+    protected Transform _target;
+    protected Quaternion _rotate;
+
     private void OnValidate()
     {
         WhoIs = GetComponent<WhoIs>();
     }
 
-    internal void Init(EnumWhoIs whoIs)
+    internal void Init(EnumWhoIs whoIs, Transform AVtransform = null, Transform target = null, Quaternion rotation = new Quaternion())
     {
         WhoIs.whoIs = whoIs;
+        _avTransform = AVtransform;
+        _target = target;
+        _rotate = rotation;
+
         StartAttack();
     }
 

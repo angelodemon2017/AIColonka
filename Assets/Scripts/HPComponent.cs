@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,6 +12,8 @@ public class HPComponent : MonoBehaviour
 
 //    private Chapter _chapter;
     private float _timeOut;
+
+    internal Action<float, float, float> ChangeHP;
 
     private void Awake()
     {
@@ -26,13 +29,17 @@ public class HPComponent : MonoBehaviour
 
     internal void GetDamage(int damageCount)
     {
+        float lastHP = CurrentHP;
         Debug.Log($"Getting damage {damageCount}");
         CurrentHP -= damageCount;
         _timeOut = TimeoutRegen;
         if (CurrentHP <= 0)
         {
+            CurrentHP = 0;
             Kill();
         }
+
+        ChangeHP?.Invoke(lastHP, CurrentHP, MaxHP);
     }
 
     internal void Heal(int healAmount)
@@ -42,6 +49,8 @@ public class HPComponent : MonoBehaviour
         {
             CurrentHP = MaxHP;
         }
+
+        ChangeHP?.Invoke(CurrentHP, CurrentHP, MaxHP);
     }
 
     public void Kill()

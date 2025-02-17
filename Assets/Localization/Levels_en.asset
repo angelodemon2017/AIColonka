@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Levels_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: d1caddb45d2f44047b5075f7e269a706, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 83948642304
+    m_Localized: Main menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 378791436288
+    m_Localized: Dialogs rooms
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2284716728320
+    m_Localized: Subconscious
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2209789681664
+    m_Localized: Psycology room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2177036361728
+    m_Localized: BD Server
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2132304109568
+    m_Localized: Market place
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2088553324544
+    m_Localized: Art host
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2044349554688
+    m_Localized: War polygon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1968914997248
+    m_Localized: Library archive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1890615730176
+    m_Localized: Black market
+    m_Metadata:
+      m_Items: []
+  - m_Id: 977901625344
+    m_Localized: Center license update
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777959153664
+    m_Localized: Home station
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

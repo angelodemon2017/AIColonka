@@ -1,8 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 public class WindowGameplay : MAINWindow
 {
     [SerializeField] private TaskController _taskController = new();
+    [SerializeField] private PanelHP _panelHP;
 
     public override void StartWindow()
     {
@@ -10,12 +12,27 @@ public class WindowGameplay : MAINWindow
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         _taskController.Init();
+        StartCoroutine(Subs());
 //        CameraController.Instance.ResetCamera();
+    }
+
+    IEnumerator Subs()
+    {
+        while (PersonMovement.Instance == null)
+        {
+            yield return null;
+        }
+        PersonMovement.Instance.GetHPComponent.ChangeHP += _panelHP.UpdateHP;
     }
 
     public override void Run()
     {
         base.Run();
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            PersonMovement.Instance.GetHPComponent.GetDamage(9);
+        }
 
         CameraController.Instance.UpdateMouse(
             Input.GetAxis("Mouse X"),

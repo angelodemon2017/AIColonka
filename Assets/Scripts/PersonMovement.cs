@@ -7,6 +7,8 @@ public class PersonMovement : MonoBehaviour
     [SerializeField] private AnimationAdapter _animationAdapter;
     [SerializeField] private BitsController _bitsController;
     [SerializeField] private ArmorVisualizator _armorVisualizator;
+    [SerializeField] private Transform _pointOfTargetForEnemy;
+    [SerializeField] private HPComponent _hpComponent;
     const float attack1Time = 0.8f;
     const float attack2Time = 0.75f;
     const float attack3Time = 1.25f;
@@ -35,6 +37,8 @@ public class PersonMovement : MonoBehaviour
 
     [SerializeField] private bool _takingDamage = false;
     private bool _isAttacking => _timeAttackAnimation > 0f;
+    internal Transform PointOfTargetForEnemy => _pointOfTargetForEnemy;
+    internal HPComponent GetHPComponent => _hpComponent;
 
     private void Awake()
     {

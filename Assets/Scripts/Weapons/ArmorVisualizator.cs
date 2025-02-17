@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(WhoIs))]
 public class ArmorVisualizator : MonoBehaviour
 {
     [SerializeField] private WhoIs _whoIs;
@@ -11,6 +10,12 @@ public class ArmorVisualizator : MonoBehaviour
     [SerializeField] private List<Transform> _points3;
 
     [SerializeField] private Weapon _weaponFrefab;
+    [SerializeField] private Transform _target;
+
+    internal void SetTarget(Transform newTarget)
+    {
+        _target = newTarget;
+    }
 
     internal void CallAttack(TypeVisualAttack typeAttack)
     {
@@ -27,13 +32,18 @@ public class ArmorVisualizator : MonoBehaviour
     private void CallNearAttack()
     {
         var tempTrans = _points1.GetRandom();
-        var tempWeapon = Instantiate(_weaponFrefab,
-            tempTrans.position,
+        var tempWeapon = Instantiate(_weaponFrefab);
+/*            tempTrans.position,
+            _whoIs.whoIs == EnumWhoIs.Player ?
+                CameraController.Instance.transform.transform.rotation :
+                tempTrans.rotation);/**/
+//            tempTrans);
+        tempWeapon.Init(_whoIs.whoIs,
+            tempTrans,
+            _target,
             _whoIs.whoIs == EnumWhoIs.Player ?
                 CameraController.Instance.transform.transform.rotation :
                 tempTrans.rotation);
-//            tempTrans);
-        tempWeapon.Init(_whoIs.whoIs);
     }
 
     public enum TypeVisualAttack

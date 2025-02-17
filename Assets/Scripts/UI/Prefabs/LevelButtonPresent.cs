@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.Localization.Settings;
 
 public class LevelButtonPresent : MonoBehaviour
 {
@@ -15,8 +16,20 @@ public class LevelButtonPresent : MonoBehaviour
 
     internal void Init(EnumLevels numLevel)
     {
+        var textKey = Localizations.Levels.MapLevelKeys[numLevel];
+        var op = LocalizationSettings.StringDatabase.GetLocalizedStringAsync(
+            Localizations.Levels.LevelsTable, textKey);
+        if (op.IsDone)
+            Debug.Log(op.Result);
+        else
+            op.Completed += (op) => 
+            {
+                _labelPresent.text = op.Result;
+//                Debug.Log(op.Result); 
+            };
+
         _selfButton.onClick.AddListener(OnClickButton);
-        _labelPresent.text = numLevel.ToString();
+//        _labelPresent.text = numLevel.ToString();
         _sceneId = (int)numLevel;
     }
 

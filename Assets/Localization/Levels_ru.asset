@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Levels_ru
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: ru
+  m_SharedData: {fileID: 11400000, guid: d1caddb45d2f44047b5075f7e269a706, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 83948642304
+    m_Localized: "\u0413\u043B\u0430\u0432\u043D\u043E\u0435 \u043C\u0435\u043D\u044E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 378791436288
+    m_Localized: "\u041A\u043E\u043C\u043D\u0430\u0442\u044B \u0434\u0438\u0430\u043B\u043E\u0433\u043E\u0432"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2284716728320
+    m_Localized: "\u041F\u043E\u0434\u0441\u043E\u0437\u043D\u0430\u043D\u0438\u0435"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2209789681664
+    m_Localized: "\u041A\u043E\u043C\u043D\u0430\u0442\u0430 \u043F\u0441\u0438\u0445\u043E\u0442\u0435\u0440\u0430\u043F\u0435\u0432\u0442\u0430"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2177036361728
+    m_Localized: "\u0421\u0435\u0440\u0432\u0435\u0440 \u0411\u0414"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2132304109568
+    m_Localized: "\u0411\u0438\u0440\u0436\u0430"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2088553324544
+    m_Localized: "\u0410\u0440\u0442 \u0445\u043E\u0441\u0442"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2044349554688
+    m_Localized: "\u0412\u043E\u0435\u043D\u043D\u044B\u0439 \u043F\u043E\u043B\u0438\u0433\u043E\u043D"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1968914997248
+    m_Localized: "\u0410\u0440\u0445\u0438\u0432 \u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0438"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1890615730176
+    m_Localized: "\u0427\u0451\u0440\u043D\u044B\u0439 \u0440\u044B\u043D\u043E\u043A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 977901625344
+    m_Localized: "\u0426\u0435\u043D\u0442\u0440 \u043E\u0444.\u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0439"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777959153664
+    m_Localized: "\u0414\u043E\u043C\u0430\u0448\u043D\u044F\u044F \u0441\u0442\u0430\u043D\u0446\u0438\u044F"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

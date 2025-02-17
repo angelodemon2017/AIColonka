@@ -8,7 +8,7 @@ public class WhoIs : MonoBehaviour
     [SerializeField] internal EnumWhoIs whoIs;
     [SerializeField] private List<DamageKoef> _damageProtected;
     [SerializeField] private List<CollisionEvent> _collisionEvents;
-    [SerializeField] private Collider _collider;
+//    [SerializeField] private Collider _collider;
 
     private Dictionary<EnumCollisionResult, UnityEvent<WhoIs>> _cashEvents = new();
     private Dictionary<EnumDamageType, int> _cashDamages = new();
@@ -32,6 +32,7 @@ public class WhoIs : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log($"!!!OnTriggerEnter");
         CheckCollider(other.gameObject);
     }
 

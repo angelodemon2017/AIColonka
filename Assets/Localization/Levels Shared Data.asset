@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Levels Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Levels
+  m_TableCollectionNameGuidString: d1caddb45d2f44047b5075f7e269a706
+  m_Entries:
+  - m_Id: 83948642304
+    m_Key: MAIN_MENU
+    m_Metadata:
+      m_Items: []
+  - m_Id: 378791436288
+    m_Key: DIALOGS_ROOMS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777959153664
+    m_Key: HOMES_STATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 977901625344
+    m_Key: CENTER_LICENSE_UPDATE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1890615730176
+    m_Key: BLACK_MARKET
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1968914997248
+    m_Key: LIBRARY_ARCHIVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2044349554688
+    m_Key: WAR_POLYGON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2088553324544
+    m_Key: ART_HOST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2132304109568
+    m_Key: MARKET_PLACE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2177036361728
+    m_Key: BDSERVER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2209789681664
+    m_Key: PSYCOLOGY_ROOM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2284716728320
+    m_Key: SUBCONSCIOUS
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7929186744926732317
+  references:
+    version: 2
+    RefIds:
+    - rid: 7929186744926732317
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1739692662462
