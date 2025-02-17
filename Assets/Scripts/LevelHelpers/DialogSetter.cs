@@ -14,7 +14,7 @@ public class DialogSetter : MonoBehaviour
 
     public void SetTask(int idTask)
     {
-        ControllerDemoSaveFile.Instance.mainData.progressHistory.SetTask(idTask);
+        ControllerDemoSaveFile.Instance.mainData.SetTask(idTask);
     }
 
     public void SetWindow(MAINWindow window)

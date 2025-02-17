@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,7 +11,7 @@ public class HPComponent : MonoBehaviour
     [SerializeField] private int CurrentHP;
     [SerializeField] private int _regenHP;
 
-//    private Chapter _chapter;
+    private float _lastHP;
     private float _timeOut;
 
     internal Action<float, float, float> ChangeHP;
@@ -20,16 +21,20 @@ public class HPComponent : MonoBehaviour
         CurrentHP = MaxHP;
     }
 
+//    IEnumerator CrunchUpdate
+
     internal void OverrideStats(int maxHp, int regenHP)
     {
         MaxHP = maxHp;
         CurrentHP = MaxHP;
         _regenHP = regenHP;
+
+        OnChangeHP();
     }
 
     internal void GetDamage(int damageCount)
     {
-        float lastHP = CurrentHP;
+        _lastHP = CurrentHP;
         Debug.Log($"Getting damage {damageCount}");
         CurrentHP -= damageCount;
         _timeOut = TimeoutRegen;
@@ -38,8 +43,7 @@ public class HPComponent : MonoBehaviour
             CurrentHP = 0;
             Kill();
         }
-
-        ChangeHP?.Invoke(lastHP, CurrentHP, MaxHP);
+        OnChangeHP();
     }
 
     internal void Heal(int healAmount)
@@ -49,8 +53,12 @@ public class HPComponent : MonoBehaviour
         {
             CurrentHP = MaxHP;
         }
+        OnChangeHP();
+    }
 
-        ChangeHP?.Invoke(CurrentHP, CurrentHP, MaxHP);
+    internal void OnChangeHP()
+    {
+        ChangeHP?.Invoke(_lastHP, CurrentHP, MaxHP);
     }
 
     public void Kill()
@@ -70,6 +78,7 @@ public class HPComponent : MonoBehaviour
             else if (CurrentHP < MaxHP)
             {
                 Heal(_regenHP);
+                _timeOut = 0.5f;
             }
         }
     }

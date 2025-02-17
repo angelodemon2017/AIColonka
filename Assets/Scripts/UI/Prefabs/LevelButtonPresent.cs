@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
-using System.Collections;
-using UnityEngine.Localization.Settings;
+using System;
+using System.Threading.Tasks;
 
 public class LevelButtonPresent : MonoBehaviour
 {
@@ -14,40 +13,21 @@ public class LevelButtonPresent : MonoBehaviour
 
     private int _sceneId;
 
-    internal void Init(EnumLevels numLevel)
-    {
-        var textKey = Localizations.Levels.MapLevelKeys[numLevel];
-        var op = LocalizationSettings.StringDatabase.GetLocalizedStringAsync(
-            Localizations.Levels.LevelsTable, textKey);
-        if (op.IsDone)
-            Debug.Log(op.Result);
-        else
-            op.Completed += (op) => 
-            {
-                _labelPresent.text = op.Result;
-//                Debug.Log(op.Result); 
-            };
+    private Action<int> ClickAction;
 
+    internal async Task InitAsync(EnumLevels numLevel, Action<int> callBack)
+    {
         _selfButton.onClick.AddListener(OnClickButton);
-//        _labelPresent.text = numLevel.ToString();
         _sceneId = (int)numLevel;
+        ClickAction += callBack;
+
+        _labelPresent.text = await Localizations.GetLocalizedText(
+            Localizations.Levels.LevelsTable,
+            Localizations.Levels.MapLevelKeys[numLevel]);
     }
 
     private void OnClickButton()
     {
-        StartCoroutine(LoadLevel());
-    }
-
-    /// <summary>
-    /// Move out method
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator LoadLevel()
-    {
-        ControllerDemoSaveFile.Instance.CurrentLevel = (EnumLevels)_sceneId;
-        AsyncOperation operation = SceneManager.LoadSceneAsync(_sceneId);
-        EventBus.ResetSubs();
-        progress.fillAmount = operation.progress;
-        yield return null;
+        ClickAction?.Invoke(_sceneId);
     }
 }

@@ -5,10 +5,19 @@ using UnityEngine;
 public class Looker : MonoBehaviour
 {
     [SerializeField] private Transform _target;
+    [SerializeField] private bool AtCamera;
 
     private Looker()
     {
         EditorApplication.update += Look;
+    }
+
+    private void Awake()
+    {
+        if (AtCamera)
+        {
+            _target = CameraController.Instance.transform;
+        }
     }
 
     private void FixedUpdate()

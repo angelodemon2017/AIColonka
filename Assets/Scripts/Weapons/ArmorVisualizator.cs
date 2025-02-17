@@ -33,11 +33,6 @@ public class ArmorVisualizator : MonoBehaviour
     {
         var tempTrans = _points1.GetRandom();
         var tempWeapon = Instantiate(_weaponFrefab);
-/*            tempTrans.position,
-            _whoIs.whoIs == EnumWhoIs.Player ?
-                CameraController.Instance.transform.transform.rotation :
-                tempTrans.rotation);/**/
-//            tempTrans);
         tempWeapon.Init(_whoIs.whoIs,
             tempTrans,
             _target,

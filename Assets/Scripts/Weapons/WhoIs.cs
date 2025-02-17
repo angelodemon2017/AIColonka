@@ -32,13 +32,13 @@ public class WhoIs : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"!!!OnTriggerEnter");
+//        Debug.Log($"!!!OnTriggerEnter");
         CheckCollider(other.gameObject);
     }
 
     private void CheckCollider(GameObject checkGO)
     {
-        Debug.Log($"CheckCollider {checkGO.name}");
+//        Debug.Log($"CheckCollider {checkGO.name}");
         if (checkGO.TryGetComponent(out WhoIs isWho))
         {
             if (_cashEvents.TryGetValue(whoIs.GetColResult(isWho.whoIs), out UnityEvent<WhoIs> _event))

@@ -17,7 +17,6 @@ public class SSOController : MonoBehaviour, IStatesCharacter, IMovableCharacter
     private List<Property> _props = new();
 
     public bool IsFinishedCurrentState() => _currentState.IsFinished;
-
     public Transform GetTransform() => transform;
     public NavMeshAgent GetNavMeshAgent() => _navMeshAgent;
 

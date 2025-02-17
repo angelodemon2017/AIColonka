@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class WindowGameplay : MAINWindow
 {
     [SerializeField] private TaskController _taskController = new();
     [SerializeField] private PanelHP _panelHP;
+    [SerializeField] private TextMeshProUGUI _debugTestParam;
 
     public override void StartWindow()
     {
@@ -13,26 +15,22 @@ public class WindowGameplay : MAINWindow
         Cursor.lockState = CursorLockMode.Locked;
         _taskController.Init();
         StartCoroutine(Subs());
-//        CameraController.Instance.ResetCamera();
+        _debugTestParam.text = $"{ControllerDemoSaveFile.Instance.mainData.testSaveParam}";
     }
 
     IEnumerator Subs()
     {
         while (PersonMovement.Instance == null)
         {
-            yield return null;
+            yield return new WaitForSeconds(0.1f);
         }
         PersonMovement.Instance.GetHPComponent.ChangeHP += _panelHP.UpdateHP;
+        PersonMovement.Instance.GetHPComponent.OnChangeHP();
     }
 
     public override void Run()
     {
         base.Run();
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            PersonMovement.Instance.GetHPComponent.GetDamage(9);
-        }
 
         CameraController.Instance.UpdateMouse(
             Input.GetAxis("Mouse X"),
@@ -70,6 +68,8 @@ public class WindowGameplay : MAINWindow
         PersonMovement.Instance.OnMovePlayer(0, 0);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+
+        PersonMovement.Instance.GetHPComponent.ChangeHP -= _panelHP.UpdateHP;
     }
 }
 

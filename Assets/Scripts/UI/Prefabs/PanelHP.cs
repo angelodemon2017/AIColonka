@@ -25,9 +25,9 @@ public class PanelHP : MonoBehaviour
         UpdateUI();
     }
 
-    private void UpdateUI()
+    internal void UpdateUI()
     {
-        _textHP.text = $"{(int)_currentHP}/{(int)_maxHP}";
+        _textHP.text = $"{(int)_currentHP}/{(int)_maxHP} HP";
         _tempHPpImage.fillAmount = _tempHP / _maxHP;
         _hpImage.fillAmount = _currentHP / _maxHP;
     }
@@ -43,7 +43,7 @@ public class PanelHP : MonoBehaviour
                 UpdateUI();
                 if (_timeShow < 0f)
                 {
-
+                    _tempHP = _currentHP;
                 }
             }
         }

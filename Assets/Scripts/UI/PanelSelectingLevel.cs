@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PanelSelectingLevel : MAINWindow
 {
+    [SerializeField] private SceneLevelLoader _sceneLevelLoader;
     [SerializeField] private LevelButtonPresent _prefabLevelButtonPresent;
     [SerializeField] private Transform _parentButtons;
 
@@ -13,7 +14,6 @@ public class PanelSelectingLevel : MAINWindow
     private void Awake()
     {
         InitButtons();
-//        EventBus.Subscribe<EventKey>(CheckKey);
     }
 
     private void InitButtons()
@@ -22,17 +22,14 @@ public class PanelSelectingLevel : MAINWindow
         foreach (var lev in AvailableLevels)
         {
             var newLev = Instantiate(_prefabLevelButtonPresent, _parentButtons);
-            newLev.Init(lev);
+            newLev.InitAsync(lev, SelectVariant);
         }
     }
 
-/*    private void CheckKey(EventKey eventKey)
+    private void SelectVariant(int selectedVariant)
     {
-        if (eventKey.pressedKey == KeyCode.L)
-        {
-            gameObject.SetActive(!gameObject.activeSelf);
-        }
-    }/**/
+        _sceneLevelLoader.LoadLevel((EnumLevels)selectedVariant);
+    }
 
     private void OnDestroy()
     {

@@ -1,7 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using UnityEngine.Localization.Settings;
 
 public static class Localizations
 {
+    public static async Task<string> GetLocalizedText(string table, string key)
+    {
+        var op = LocalizationSettings.StringDatabase.GetLocalizedStringAsync(table, key);
+
+        await op.Task;
+
+        return op.Result;
+    }
+
     public static class Levels
     {
         public static Dictionary<EnumLevels, string> MapLevelKeys = new()

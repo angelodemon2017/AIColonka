@@ -1,10 +1,10 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 using System;
 
 public class PanelDialogWithPeople : MAINWindow
 {
+    [SerializeField] private SceneLevelLoader _sceneLevelLoader;
     [SerializeField] private DialogVariant _dialogVariantPrefab;
     [SerializeField] private Transform _parentVariants;
     [SerializeField] private TextMeshProUGUI _textNamePerson;
@@ -47,7 +47,6 @@ public class PanelDialogWithPeople : MAINWindow
 
         _parentVariants.DestroyChildrens();
         for (int i = 0; i < dialogStep.dialogVariants.Count; i++)
-        //        foreach (var vart in dialogStep.dialogVariants)
         {
             var diaVarPan = Instantiate(_dialogVariantPrefab, _parentVariants);
             diaVarPan.Init(i, dialogStep.dialogVariants[i].TextVariant, SelectedVariant);
@@ -65,10 +64,7 @@ public class PanelDialogWithPeople : MAINWindow
 
         if (dialogVariant.specEndDialog.moveToLevel != EnumLevels.MainMenu)
         {
-            // is trash, need screen loader
-            EventBus.ResetSubs();
-            ControllerDemoSaveFile.Instance.CurrentLevel = dialogVariant.specEndDialog.moveToLevel;
-            SceneManager.LoadSceneAsync((int)dialogVariant.specEndDialog.moveToLevel);
+            _sceneLevelLoader.LoadLevel(dialogVariant.specEndDialog.moveToLevel);
         }
         else if (dialogVariant.specEndDialog.moveWindow != null)
         {
