@@ -16,6 +16,8 @@ public class AnimationAdapter : MonoBehaviour
     public EnumAnimations CurrentAnimation => _currentAnimation;
     public AnimationEvent[] animationEvents;
 
+    public Action EndAnimation;
+
     public void PlayAnimationEvent(EnumAnimations animationName)
     {
         if (_currentAnimation != animationName)
@@ -35,15 +37,20 @@ public class AnimationAdapter : MonoBehaviour
 
     public Action<EnumProps> triggerPropAction;
 
+    public void EndAnimate()
+    {
+        EndAnimation?.Invoke();
+    }
+
     public void TriggerAnimate(EnumProps prop)
     {
-        Debug.Log($"TriggerAnimate {prop}");
+//        Debug.Log($"TriggerAnimate {prop}");
         triggerPropAction?.Invoke(prop);
     }
 
     public void TriggerAnimate(int prop)
     {
-        Debug.Log($"TriggerAnimate {prop}");
+//        Debug.Log($"TriggerAnimate {prop}");
         TriggerAnimate((EnumProps)prop);
     }
 }

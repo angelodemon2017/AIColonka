@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "FSM/State/WorkerState", order = 1)]
 public class WorkerState : State
 {
     private UnityEngine.AI.NavMeshAgent _navMeshAgent;

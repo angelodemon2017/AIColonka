@@ -52,8 +52,8 @@ using System.Collections;
             orgVectColCenter = col.center;
         }
 
-
-        void FixedUpdate()
+    [System.Obsolete]
+    void FixedUpdate()
         {
             float h = Input.GetAxis("Horizontal");
             float v = Input.GetAxis("Vertical");

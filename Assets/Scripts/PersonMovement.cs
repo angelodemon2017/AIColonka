@@ -50,6 +50,11 @@ public class PersonMovement : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
     }
 
+    private void Start()
+    {
+        enabled = false;
+    }
+
     void Update()
     {
         Animation();

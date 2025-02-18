@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "FSM/State/PreparingAttackState", order = 1)]
 public class PreparingAttackState : State
 {
     [SerializeField] private float DistanceForTrigger;

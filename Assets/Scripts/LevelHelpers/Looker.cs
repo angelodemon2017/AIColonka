@@ -39,9 +39,6 @@ public class Looker : MonoBehaviour
                 transform.LookAt(_target);
             }
         }
-        catch (Exception ex)
-        {
-
-        }
+        catch (Exception) { }
     }
 }

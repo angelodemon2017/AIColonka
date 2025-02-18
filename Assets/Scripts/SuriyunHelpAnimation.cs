@@ -15,6 +15,7 @@ public class SuriyunHelpAnimation : MonoBehaviour
 
     public void SuriyunEvent(int eventInt)
     {
+//        Debug.LogError($"SuriyunEvent {eventInt}");
         if (triggerEvents.Length > 0)
         {
             triggerEvents[eventInt].Invoke();

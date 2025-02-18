@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "FSM/State/TakeDamageState", order = 1)]
 public class TakeDamageState : State
 {
     protected override void Run()

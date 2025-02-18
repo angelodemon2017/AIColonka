@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: 2996413382871570050}
   - component: {fileID: 6360888911972008021}
   - component: {fileID: 5087740095407099654}
+  - component: {fileID: 4176115940965244519}
   m_Layer: 0
   m_Name: PersonController
   m_TagString: Player
@@ -469,8 +470,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a027cbeb3fbeb4d8ff0d1c4c003605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hpComponent: {fileID: 2996413382871570050}
+  _armorVisualizator: {fileID: 7345525404414865451}
+  _fallingController: {fileID: 4176115940965244519}
+  _characterController: {fileID: 7687012706516705241}
   _animationAdapter: {fileID: 871612990593034783}
   _startState: {fileID: 11400000, guid: b1080cc1a0096aa49a786b2ababb6b53, type: 2}
+  _currentState: {fileID: 0}
 --- !u!114 &9097947109492161810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,7 +484,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8630790025869648306}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f2130a8a9308cf49b0da921dfb5a4d1, type: 3}
   m_Name: 
@@ -590,6 +596,25 @@ MonoBehaviour:
   whoIs: 1
   _damageProtected: []
   _collisionEvents: []
+--- !u!114 &4176115940965244519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630790025869648306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7868bed95e17f24eb9aaaf8e2d295bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheck: {fileID: 8899388386803264703}
+  groundDistance: 0.4
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  _characterController: {fileID: 7687012706516705241}
+  JumpScaleFall: 3
 --- !u!1001 &3037384931097771826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2240,6 +2265,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - animationName: 9
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6020142001038055672}
+          m_TargetAssemblyTypeName: SuriyunHelpAnimation, Assembly-CSharp
+          m_MethodName: PlayAnimate
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 34
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &6020142001038055672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2261,6 +2302,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: AnimationAdapter, Assembly-CSharp
         m_MethodName: TriggerAnimate
         m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 871612990593034783}
+        m_TargetAssemblyTypeName: AnimationAdapter, Assembly-CSharp
+        m_MethodName: EndAnimate
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

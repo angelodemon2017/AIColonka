@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "FSM/State/IdleState", order = 1)]
 public class IdleState : State
 {
     [SerializeField] private float _timeIdle;

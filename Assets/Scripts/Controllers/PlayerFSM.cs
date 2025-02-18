@@ -2,34 +2,46 @@ using UnityEngine;
 
 public class PlayerFSM : MonoBehaviour, IStatesCharacter
 {
+    public static PlayerFSM Instance;
+
+    [SerializeField] private HPComponent _hpComponent;
+    [SerializeField] private ArmorVisualizator _armorVisualizator;
+    [SerializeField] private FallingController _fallingController;
+//    [SerializeField] private CharacterController _characterController;
+
     [SerializeField] private AnimationAdapter _animationAdapter;
     [SerializeField] private PlayerState _startState;
 
-    private PlayerState _currentState;
+    [SerializeField] private PlayerState _currentState;
     private Transform _transform;
-    private Vector3 _velocity;
-    private bool _isGrounded;
 
-    internal Vector3 Velocity => _velocity;
-    internal bool IsGrounded => _isGrounded;
+    #region properties
+
+    internal ArmorVisualizator GetArmorVisualizator => _armorVisualizator;
     internal AnimationAdapter AnimationAdapter => _animationAdapter;
     public Transform GetTransform() => _transform;
     public bool IsFinishedCurrentState() => _currentState.IsFinished;
+    internal FallingController GetFallingController => _fallingController;
+    internal HPComponent HPComponent => _hpComponent;
+
+    #endregion
 
     private void Awake()
     {
+        Instance = this;
         _transform = transform;
+        _animationAdapter.EndAnimation += EndCurrentAnimate;
         SetState(_startState);
-    }
-
-    internal void SetYVelocity(float y)
-    {
-        _velocity.y = y;
     }
 
     private void Update()
     {
         _currentState.RunState();
+    }
+
+    private void EndCurrentAnimate()
+    {
+        _currentState.EndCurrentAnimation();
     }
 
     internal void CallPlayerAction(EnumAnimations playerAction)
@@ -39,10 +51,7 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
     internal void CallAxisHorVer(float hor, float ver)
     {
-//        if (hor != 0 || ver != 0)
-//        {
-            _currentState.CallAxisHorVer(hor, ver);
-//        }
+        _currentState.CallAxisHorVer(hor, ver);
     }
 
     public void SetState(State state)
@@ -65,4 +74,10 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     public void PlayAnimation(EnumAnimations animation) { }
 
     public void TakeObject(GameObject keepObj) { }
+
+    private void OnDestroy()
+    {
+        Instance = null;
+        _animationAdapter.EndAnimation -= EndCurrentAnimate;
+    }
 }

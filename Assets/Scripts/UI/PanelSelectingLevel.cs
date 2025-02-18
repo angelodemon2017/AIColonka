@@ -16,13 +16,13 @@ public class PanelSelectingLevel : MAINWindow
         InitButtons();
     }
 
-    private void InitButtons()
+    private async void InitButtons()
     {
         _parentButtons.DestroyChildrens();
         foreach (var lev in AvailableLevels)
         {
             var newLev = Instantiate(_prefabLevelButtonPresent, _parentButtons);
-            newLev.InitAsync(lev, SelectVariant);
+            await newLev.InitAsync(lev, SelectVariant);
         }
     }
 

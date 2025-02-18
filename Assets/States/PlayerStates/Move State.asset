@@ -13,8 +13,15 @@ MonoBehaviour:
   m_Name: Move State
   m_EditorClassIdentifier: 
   AvailableStates:
+  - {fileID: 11400000, guid: 1b032fd53a533cd4eb3944ed7df939d9, type: 2}
   - {fileID: 11400000, guid: b1080cc1a0096aa49a786b2ababb6b53, type: 2}
   Animation: 1
-  AvailableControlStates: []
+  AvailableControlStates:
+  - playerAction: 3
+    playerState: {fileID: 11400000, guid: e51c3c12e0367854da79dd192fe98d2c, type: 2}
+  - playerAction: 6
+    playerState: {fileID: 11400000, guid: 9b10c0c41e15deb4988c3a900deea5ff, type: 2}
+  - playerAction: 4
+    playerState: {fileID: 11400000, guid: 02a44b3d3e89f2248ad418c16a6a8761, type: 2}
   moveSpeed: 0.02
   rotationSpeed: 10

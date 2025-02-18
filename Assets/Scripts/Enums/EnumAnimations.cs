@@ -9,4 +9,5 @@
     attack3,
     death,
     takeDamage,
+    armorVisualAttack,
 }

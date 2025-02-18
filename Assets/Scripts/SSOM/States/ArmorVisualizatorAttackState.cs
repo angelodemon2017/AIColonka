@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "FSM/State/ArmorVisualizatorAttackState", order = 1)]
 public class ArmorVisualizatorAttackState : State
 {
     private ArmorVisualizator _armorVisualizator;

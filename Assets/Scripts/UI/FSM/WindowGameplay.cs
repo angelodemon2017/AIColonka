@@ -22,14 +22,13 @@ public class WindowGameplay : MAINWindow
 
     IEnumerator Subs()
     {
-        while (PersonMovement.Instance == null)
+        while (PlayerFSM.Instance == null)
         {
             yield return new WaitForSeconds(0.1f);
         }
-        PersonMovement.Instance.GetHPComponent.ChangeHP += _panelHP.UpdateHP;
-        PersonMovement.Instance.GetHPComponent.OnChangeHP();
-
-        _playerFSM = PersonMovement.Instance.GetComponent<PlayerFSM>();
+        _playerFSM = PlayerFSM.Instance;
+        _playerFSM.HPComponent.ChangeHP += _panelHP.UpdateHP;
+        _playerFSM.HPComponent.OnChangeHP();
     }
 
     public override void Run()
@@ -42,7 +41,6 @@ public class WindowGameplay : MAINWindow
 
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
-        //        PersonMovement.Instance.OnMovePlayer(horizontal, vertical);
 
         if (horizontal != 0 || vertical != 0)
         {
@@ -51,25 +49,21 @@ public class WindowGameplay : MAINWindow
 
         if (Input.GetButtonDown("Jump"))
         {
-//            PersonMovement.Instance.OnJump();
             _playerFSM.CallPlayerAction(EnumAnimations.jump);
         }
 
         if (Input.GetButtonDown("Fire1"))
         {
-//            PersonMovement.Instance.OnAttack();
             _playerFSM.CallPlayerAction(EnumAnimations.attack1);
         }
 
         if (Input.GetButtonDown("Fire2"))
         {
-//            PersonMovement.Instance.OnSecondAttack();
             _playerFSM.CallPlayerAction(EnumAnimations.attack2);
         }
 
         if (Input.GetButtonDown("Fire3"))
         {
-//            PersonMovement.Instance.CallArmor();
             _playerFSM.CallPlayerAction(EnumAnimations.attack3);
         }
     }
@@ -78,11 +72,11 @@ public class WindowGameplay : MAINWindow
     {
         _taskController.Deatcivate();
         base.ExitWindow();
-        PersonMovement.Instance.OnMovePlayer(0, 0);
+//        PersonMovement.Instance.OnMovePlayer(0, 0);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
 
-        PersonMovement.Instance.GetHPComponent.ChangeHP -= _panelHP.UpdateHP;
+        _playerFSM.HPComponent.ChangeHP -= _panelHP.UpdateHP;
     }
 }
 

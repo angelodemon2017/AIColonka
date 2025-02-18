@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "FSM/State/RelaxAfterAttackState", order = 1)]
 public class RelaxAfterAttackState : State
 {
     [SerializeField] private float TimeForRelax;
