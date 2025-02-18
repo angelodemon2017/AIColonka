@@ -35,7 +35,7 @@ public class HPComponent : MonoBehaviour
     internal void GetDamage(int damageCount)
     {
         _lastHP = CurrentHP;
-        Debug.Log($"Getting damage {damageCount}");
+//        Debug.Log($"Getting damage {damageCount}");
         CurrentHP -= damageCount;
         _timeOut = TimeoutRegen;
         if (CurrentHP <= 0)

@@ -153,11 +153,23 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 786802938756585667}
         m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
+        m_MethodName: set_material
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2100000, guid: ef31ef8aafa7800418822ba9ab51f81f, type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6691071609813240105}
+        m_TargetAssemblyTypeName: EntityFSM, Assembly-CSharp
+        m_MethodName: SetState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 3d7621fd859956e40821940a1d032f55, type: 2}
+          m_ObjectArgumentAssemblyTypeName: State, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -197,6 +209,7 @@ MonoBehaviour:
   _armorVisualizator: {fileID: 3381510569608658928}
   _UIpanelHP: {fileID: 4731362345238429230}
   _hpComponent: {fileID: 5351319397589345408}
+  _startState: {fileID: 11400000, guid: aee3c8e394bf1be4b9fb842dc14423fa, type: 2}
 --- !u!1 &6200121764912367852
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +239,7 @@ RectTransform:
   m_GameObject: {fileID: 6200121764912367852}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: -0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6483020675107670387}

@@ -1,31 +1,62 @@
-using System.Collections;
 using UnityEngine;
 
-public class EntityFSM : MonoBehaviour
+public class EntityFSM : MonoBehaviour, IStatesCharacter
 {
     [SerializeField] private ArmorVisualizator _armorVisualizator;
     [SerializeField] private PanelHP _UIpanelHP;
     [SerializeField] private HPComponent _hpComponent;
+    [SerializeField] private State _startState;
+
+    private State _currentState;
+
+    internal ArmorVisualizator GetArmorVisualizator => _armorVisualizator;
 
     private void Awake()
     {
-        StartCoroutine(Launch());
         _hpComponent.ChangeHP += _UIpanelHP.UpdateHP;
         _hpComponent.OnChangeHP();
+
+        SetState(_startState);
     }
 
-    IEnumerator Launch()
+    private void Update()
     {
-        _armorVisualizator.SetTarget(PersonMovement.Instance.PointOfTargetForEnemy);
-        _armorVisualizator.CallAttack(ArmorVisualizator.TypeVisualAttack.Middle);
+        _currentState.RunState();
+    }
 
-        yield return new WaitForSeconds(2f);
+    public void SetState(State state)
+    {
+        if (_currentState == state)
+        {
+            return;
+        }
 
-        StartCoroutine(Launch());
+        _currentState?.ExitState();
+
+        _currentState = Instantiate(state);
+        _currentState.InitState(this);
     }
 
     private void OnDestroy()
     {
         _hpComponent.ChangeHP -= _UIpanelHP.UpdateHP;
     }
+
+    public bool IsFinishedCurrentState()
+    {
+        return _currentState.IsFinished;
+    }
+
+    public Transform GetTransform()
+    {
+        return transform;
+    }
+
+    public void PlayAnimation(EnumAnimations animation) { }
+
+    public bool CheckProp(EnumProps prop) { return true; }
+
+    public void TakeObject(GameObject keepObj) { }
+
+    public void InitAttackZone(GameObject attackZone) { }
 }

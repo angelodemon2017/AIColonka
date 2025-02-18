@@ -25,10 +25,10 @@ public class CameraController : MonoBehaviour
 //        _pivot = target.parent;
     }
 
-    internal void SetPivot(Transform tPivot)
+    internal void SetPivot(Transform tPivot, Transform pLook)
     {
         _pivot = tPivot;
-        target = tPivot;
+        target = pLook;
     }
 
     internal void UpdateMouse(float xMouse, float yMouse)

@@ -8,6 +8,8 @@ public class WindowGameplay : MAINWindow
     [SerializeField] private PanelHP _panelHP;
     [SerializeField] private TextMeshProUGUI _debugTestParam;
 
+    private PlayerFSM _playerFSM;
+
     public override void StartWindow()
     {
         base.StartWindow();
@@ -26,6 +28,8 @@ public class WindowGameplay : MAINWindow
         }
         PersonMovement.Instance.GetHPComponent.ChangeHP += _panelHP.UpdateHP;
         PersonMovement.Instance.GetHPComponent.OnChangeHP();
+
+        _playerFSM = PersonMovement.Instance.GetComponent<PlayerFSM>();
     }
 
     public override void Run()
@@ -38,26 +42,35 @@ public class WindowGameplay : MAINWindow
 
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
-        PersonMovement.Instance.OnMovePlayer(horizontal, vertical);
+        //        PersonMovement.Instance.OnMovePlayer(horizontal, vertical);
+
+        if (horizontal != 0 || vertical != 0)
+        {
+            _playerFSM.CallAxisHorVer(horizontal, vertical);
+        }
 
         if (Input.GetButtonDown("Jump"))
         {
-            PersonMovement.Instance.OnJump();
+//            PersonMovement.Instance.OnJump();
+            _playerFSM.CallPlayerAction(EnumAnimations.jump);
         }
 
         if (Input.GetButtonDown("Fire1"))
         {
-            PersonMovement.Instance.OnAttack();
+//            PersonMovement.Instance.OnAttack();
+            _playerFSM.CallPlayerAction(EnumAnimations.attack1);
         }
 
         if (Input.GetButtonDown("Fire2"))
         {
-            PersonMovement.Instance.OnSecondAttack();
+//            PersonMovement.Instance.OnSecondAttack();
+            _playerFSM.CallPlayerAction(EnumAnimations.attack2);
         }
 
         if (Input.GetButtonDown("Fire3"))
         {
-            PersonMovement.Instance.CallArmor();
+//            PersonMovement.Instance.CallArmor();
+            _playerFSM.CallPlayerAction(EnumAnimations.attack3);
         }
     }
 

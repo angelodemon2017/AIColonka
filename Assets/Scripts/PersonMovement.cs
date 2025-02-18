@@ -4,6 +4,7 @@ public class PersonMovement : MonoBehaviour
 {
     public static PersonMovement Instance;
     [SerializeField] private Transform _pivotForCamera;
+    [SerializeField] private Transform _pointCenterOfOrbit;
     [SerializeField] private AnimationAdapter _animationAdapter;
     [SerializeField] private BitsController _bitsController;
     [SerializeField] private ArmorVisualizator _armorVisualizator;
@@ -44,7 +45,7 @@ public class PersonMovement : MonoBehaviour
     {
         Instance = this;
         _animationAdapter.triggerPropAction += TrigAnimate;
-        CameraController.Instance.SetPivot(_pivotForCamera);
+        CameraController.Instance.SetPivot(_pointCenterOfOrbit, _pivotForCamera);
         _cameraTransform = Camera.main.transform;
         _characterController = GetComponent<CharacterController>();
     }
