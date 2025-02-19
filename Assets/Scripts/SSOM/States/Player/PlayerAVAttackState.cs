@@ -6,7 +6,7 @@ public class PlayerAVAttackState : PlayerState
     private ArmorVisualizator _armorVisualizator;
     private FallingController _fallingController;
 
-    private float _timeOut = 0.5f;
+    private float _timeOut = 0.75f;
 
     protected override void Init()
     {
@@ -20,7 +20,7 @@ public class PlayerAVAttackState : PlayerState
         Vector3 forward = Camera.main.transform.forward;
         forward.y = 0f;
 
-        playerFSM.GetTransform().rotation = Quaternion.LookRotation(forward.normalized);
+        playerFSM.AnimationAdapter.transform.rotation = Quaternion.LookRotation(forward.normalized);
     }
 
     private ArmorVisualizator.TypeVisualAttack GetTypeAttack()

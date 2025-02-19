@@ -14,6 +14,7 @@ public class HPComponent : MonoBehaviour
     private float _lastHP;
     private float _timeOut;
 
+    internal Action Death;
     internal Action<float, float, float> ChangeHP;
 
     private void Awake()
@@ -64,6 +65,7 @@ public class HPComponent : MonoBehaviour
     public void Kill()
     {
         CurrentHP = 0;
+        Death?.Invoke();
         _eventByDeath?.Invoke();
     }
 

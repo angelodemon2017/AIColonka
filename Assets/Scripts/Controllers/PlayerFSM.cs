@@ -8,7 +8,6 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     [SerializeField] private HPComponent _hpComponent;
     [SerializeField] private ArmorVisualizator _armorVisualizator;
     [SerializeField] private FallingController _fallingController;
-//    [SerializeField] private CharacterController _characterController;
 
     [SerializeField] private AnimationAdapter _animationAdapter;
     [SerializeField] private PlayerState _startState;
@@ -37,8 +36,6 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
         CameraController.Instance.SetPivot(
             _points.PointOfMoveCamera,
             _points.PointOfLookCamera);
-
-        _points.PointOfCenterOrbit.SetParent(null);
     }
 
     private void Update()
@@ -91,36 +88,5 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     {
         Instance = null;
         _animationAdapter.EndAnimation -= EndCurrentAnimate;
-    }
-
-    [System.Serializable]
-    public class Points
-    {
-        private float _currentX = 0f;
-        private float _currentY = 0f;
-        private Vector3 _direct;
-        public float sensitivity = 10f;
-        public float minYAngle = -20f;
-        public float maxYAngle = 60f;
-
-        public Transform PointOfLookCamera;
-        public Transform PointOfMoveCamera;
-        public Transform PointOfCenterOrbit;
-        public Transform PointOfTargetForEnemy;
-
-        internal void Move(float xMouse, float yMouse)
-        {
-            _currentX += xMouse * sensitivity;
-            _currentY -= yMouse * -sensitivity;
-
-            _currentY = Mathf.Clamp(_currentY, minYAngle, maxYAngle);
-
-            PointOfCenterOrbit.rotation = Quaternion.Euler(0, _currentX, 0f);
-        }
-
-        internal void FixUpd()
-        {
-//            PointOfCenterOrbit.rotation = Quaternion.Euler(0, _currentX, 0f);
-        }
     }
 }

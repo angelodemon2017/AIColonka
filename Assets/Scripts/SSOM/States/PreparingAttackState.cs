@@ -8,7 +8,7 @@ public class PreparingAttackState : State
     private float _timerPreparing;
 
     private float _currentDistance(IStatesCharacter chr) =>
-        Vector3.Distance(chr.GetTransform().position, PersonMovement.Instance.transform.position);
+        Vector3.Distance(chr.GetTransform().position, PlayerFSM.Instance.transform.position);
 
     protected override void Init()
     {

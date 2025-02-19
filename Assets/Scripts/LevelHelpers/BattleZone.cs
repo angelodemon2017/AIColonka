@@ -50,14 +50,14 @@ public class BattleZone : MonoBehaviour
     private void Deactivate()
     {
         OnOffGOs();
-        _battleZoneActivators.ForEach(a => Destroy(a.gameObject));
+        _battleZoneActivators?.ForEach(a => Destroy(a?.gameObject));
         _battleZoneActivators.Clear();
         _eventByEndBattle?.Invoke();
     }
 
     private void OnOffGOs()
     {
-        _onOffObjects.ForEach(o => o.gameObject.SetActive(!o.gameObject.activeSelf));
+        _onOffObjects.ForEach(o => o?.gameObject?.SetActive(!o.gameObject.activeSelf));
     }
 
     [System.Serializable]

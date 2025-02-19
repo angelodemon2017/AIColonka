@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 1556258204648916895}
   - component: {fileID: 2403817116098443267}
   - component: {fileID: 4576055793567417791}
-  - component: {fileID: 6639168508873752744}
   m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -143,14 +142,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _directPoint: {fileID: 420079407833979620}
-  target: {fileID: 0}
+  lookTarget: {fileID: 0}
   _centerOffset: {x: 0, y: 1.25, z: 0}
   offset: {x: 0, y: 1, z: 3}
   sensitivity: 4
   minYAngle: -30
   maxYAngle: 5
   _looker: {fileID: 4576055793567417791}
-  _mover: {fileID: 6639168508873752744}
+  _mover: {fileID: 0}
 --- !u!114 &1965014916622025623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,17 +285,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   AtCamera: 0
---- !u!114 &6639168508873752744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8223896353947082216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b075cea8841d4e44ae0be6a4799d70a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveTarget: {fileID: 0}
-  _speedMove: 0.1

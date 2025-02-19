@@ -1,17 +1,22 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class WindowGameplay : MAINWindow
 {
+    public static WindowGameplay Instance;
+
     [SerializeField] private TaskController _taskController = new();
     [SerializeField] private PanelHP _panelHP;
     [SerializeField] private TextMeshProUGUI _debugTestParam;
+    [SerializeField] private Image _target;
 
     private PlayerFSM _playerFSM;
 
     public override void StartWindow()
     {
+        Instance = this;
         base.StartWindow();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -29,6 +34,7 @@ public class WindowGameplay : MAINWindow
         _playerFSM = PlayerFSM.Instance;
         _playerFSM.HPComponent.ChangeHP += _panelHP.UpdateHP;
         _playerFSM.HPComponent.OnChangeHP();
+        CancelTarget();
     }
 
     public override void Run()
@@ -77,25 +83,33 @@ public class WindowGameplay : MAINWindow
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (CameraController.Instance.EnemyInTarget)
+            if (_playerFSM.GetPoints.EnemyIsTarget)
             {
                 CancelTarget();
             }
-            else if (EntityRepository.Instance.HaveEnemies())
+            else if(EntityRepository.Instance.HaveEnemies())
             {
-                CameraController.Instance.SetEnemyTarget(
+                _playerFSM.GetPoints.SetHoldTarget(
                     EntityRepository.Instance.GetNearestEnemy(PlayerFSM.Instance.transform.position));
+                _target.enabled = true;
             }
+        }
+
+        if (_target.enabled)
+        {
+            _target.rectTransform.position = Camera.main.WorldToScreenPoint(_playerFSM.GetPoints.TargetEnemy.transform.position);
         }
     }
 
     internal void CancelTarget()
     {
-        CameraController.Instance.CancelEnemyTarget();
+        _target.enabled = false;
+        _playerFSM.GetPoints.CancelTarget();
     }
 
     public override void ExitWindow()
     {
+        Instance = null;
         _taskController.Deatcivate();
         base.ExitWindow();
 //        PersonMovement.Instance.OnMovePlayer(0, 0);

@@ -4,7 +4,7 @@ public class CameraController : MonoBehaviour
 {
     public static CameraController Instance;
     [SerializeField] private Transform _directPoint;
-    public Transform target;
+    public Transform lookTarget;
     [SerializeField] private Vector3 _centerOffset;
     public Vector3 offset = new Vector3(0, 5, -10);
     public float sensitivity = 10f;
@@ -14,7 +14,6 @@ public class CameraController : MonoBehaviour
     private float _currentY = 0f;
 
     [SerializeField] private Looker _looker;
-    [SerializeField] private Mover _mover;
 
     private Transform _pivot;
     private WhoIs _targetEnemy;
@@ -31,11 +30,12 @@ public class CameraController : MonoBehaviour
     internal void SetPivot(Transform tPivot, Transform pLook)
     {
         _pivot = tPivot;
-        target = pLook;
+        lookTarget = pLook;
 
-        _mover.SetPosition(_pivot);
-        _looker.SetTarget(target);
-        _mover.SetTarget(_pivot);
+        _looker.SetTarget(lookTarget);
+
+        transform.position = _pivot.position;
+        transform.SetParent(_pivot);
     }
 
     internal void UpdateMouse(float xMouse, float yMouse)
@@ -58,6 +58,7 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
+//        transform.position = Vector3.Lerp(transform.position, _pivot.position, 0.99f);
 /*        Quaternion rotation = Quaternion.Euler(_currentY, _currentX, 0);
         transform.position = target.position + rotation * offset;
         transform.LookAt(target.position + _centerOffset);

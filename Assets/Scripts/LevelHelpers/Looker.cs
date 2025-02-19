@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Looker : MonoBehaviour
 {
+    [SerializeField] private bool IsSettings;
     [SerializeField] private Transform _target;
     [SerializeField] private bool AtCamera;
 
     private Looker()
     {
-        EditorApplication.update += Look;
+        if (IsSettings)
+        {
+            EditorApplication.update += Look;
+        }
     }
 
     private void Awake()

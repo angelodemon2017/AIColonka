@@ -6,6 +6,7 @@ public class PlayerMoveState : PlayerState
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 10f;
 
+    private Transform _avatarTransform;
     private Transform _characterTransform;
     private Transform _cameraTransform;
     private Vector3 desiredMoveDirection;
@@ -20,6 +21,7 @@ public class PlayerMoveState : PlayerState
         _cameraTransform = Camera.main.transform;
         _characterTransform = Character.GetTransform();
         _characterController = _characterTransform.GetComponent<CharacterController>();
+        _avatarTransform = playerFSM.AnimationAdapter.transform;
     }
 
     internal override void CallAxisHorVer(float hor, float ver)
@@ -40,7 +42,7 @@ public class PlayerMoveState : PlayerState
         if (desiredMoveDirection != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(desiredMoveDirection);
-            _characterTransform.rotation = Quaternion.Slerp(_characterTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            _avatarTransform.rotation = Quaternion.Slerp(_avatarTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
         if (playerFSM.GetFallingController.IsGrounded && playerFSM.GetFallingController.IsFalling)

@@ -6,12 +6,13 @@ public class Mover : MonoBehaviour
 {
     [SerializeField] private Transform _moveTarget;
     [SerializeField] private float _speedMove;
+    [SerializeField] private float _distanceToTarget = 0.1f;
 
     public Action EndMove;
 
     private Mover()
     {
-        EditorApplication.update += JustMove;
+//        EditorApplication.update += JustMove;
     }
 
     private void FixedUpdate()
@@ -32,11 +33,10 @@ public class Mover : MonoBehaviour
 
     private void JustMove()
     {
-        if (_moveTarget && Vector3.Distance(transform.position, _moveTarget.position) > 0.1f)
+        if (_moveTarget && Vector3.Distance(transform.position, _moveTarget.position) > _distanceToTarget)
         {
-//            transform.localPosition = Vector3.Lerp(transform.localPosition, _moveTarget.localPosition, _speedMove);
-            transform.position = Vector3.Lerp(transform.position, _moveTarget.position, _speedMove);
-            if (Vector3.Distance(transform.position, _moveTarget.position) < 0.1f)
+            transform.position = Vector3.Lerp(transform.position, _moveTarget.position, _speedMove * Time.fixedDeltaTime);
+            if (Vector3.Distance(transform.position, _moveTarget.position) < _distanceToTarget)
             {
                 EndMove?.Invoke();
             }

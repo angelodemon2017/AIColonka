@@ -10,7 +10,7 @@ public class ChaseState : State
     private UnityEngine.AI.NavMeshAgent _navMeshAgent;
 
     private float _currentDistance(IStatesCharacter chr) => 
-        Vector3.Distance(chr.GetTransform().position, PersonMovement.Instance.transform.position);
+        Vector3.Distance(chr.GetTransform().position, PlayerFSM.Instance.transform.position);
 
     protected override void Init()
     {
@@ -21,7 +21,7 @@ public class ChaseState : State
     protected override void Run() 
     {
         var curDis = _currentDistance(Character);
-        _navMeshAgent.SetDestination(PersonMovement.Instance.transform.position);
+        _navMeshAgent.SetDestination(PlayerFSM.Instance.transform.position);
 
         if (curDis < DistanceForStopTrigger)
         {

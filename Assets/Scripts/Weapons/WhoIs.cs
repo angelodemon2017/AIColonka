@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,6 +14,8 @@ public class WhoIs : MonoBehaviour
     private Dictionary<EnumCollisionResult, UnityEvent<WhoIs>> _cashEvents = new();
     private Dictionary<EnumDamageType, int> _cashDamages = new();
 
+    public Action OnDeath;
+
     private void Awake()
     {
         _damageProtected.ForEach(d => _cashDamages.Add(d.DamageType, d.PercentDamage));
@@ -22,6 +25,10 @@ public class WhoIs : MonoBehaviour
         {
             var chap = ControllerDemoSaveFile.Instance.mainData.chapter;
             _hpComponent.OverrideStats(chap.MaxHP, chap.HPRegenBySecond);
+        }
+        else if(_hpComponent)
+        {
+            _hpComponent.Death += Death;
         }
     }
 
@@ -70,6 +77,11 @@ public class WhoIs : MonoBehaviour
 
             _hpComponent.GetDamage(totalDam);
         }
+    }
+
+    private void Death()
+    {
+        OnDeath?.Invoke();
     }
 }
 
