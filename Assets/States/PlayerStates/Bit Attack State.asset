@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2933def0860c6684b9816ad381d0c373, type: 3}
-  m_Name: Falling State
+  m_Script: {fileID: 11500000, guid: eaee458686750a34196f40575cbaba84, type: 3}
+  m_Name: Bit Attack State
   m_EditorClassIdentifier: 
   AvailableStates:
   - {fileID: 11400000, guid: b1080cc1a0096aa49a786b2ababb6b53, type: 2}
-  Animation: 3
+  Animation: 9
   AvailableControlStates:
-  - playerAction: 4
-    playerState: {fileID: 11400000, guid: 9b10c0c41e15deb4988c3a900deea5ff, type: 2}
   - playerAction: 3
-    playerState: {fileID: 11400000, guid: 88af69f647b43a94b90299e18232190a, type: 2}
+    playerState: {fileID: 11400000}
+  _bitShooter: {fileID: 4063225489199983808, guid: 5aa1e10f7ca21c54f867fa279eb46382, type: 3}

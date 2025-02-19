@@ -37,6 +37,8 @@ public class BattleZone : MonoBehaviour
                 }
             }
         }
+        //TODO refactor to messageBroker
+        PlayerFSM.Instance.BitsController.UpdateMode();
     }
 
     internal void CheckZone()
@@ -53,6 +55,8 @@ public class BattleZone : MonoBehaviour
         _battleZoneActivators?.ForEach(a => Destroy(a?.gameObject));
         _battleZoneActivators.Clear();
         _eventByEndBattle?.Invoke();
+        //TODO refactor to messageBroker
+        PlayerFSM.Instance.BitsController.UpdateMode();
     }
 
     private void OnOffGOs()

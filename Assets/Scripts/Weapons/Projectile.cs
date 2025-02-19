@@ -10,7 +10,10 @@ public class Projectile : Weapon
 
     internal override void StartAttack()
     {
-        transform.position = _avTransform.position;
+        if (_avTransform)
+        {
+            transform.position = _avTransform.position;
+        }
         transform.rotation = _rotate;
         _direction = transform.forward;
 

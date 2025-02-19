@@ -23,5 +23,7 @@ MonoBehaviour:
     playerState: {fileID: 11400000, guid: 9b10c0c41e15deb4988c3a900deea5ff, type: 2}
   - playerAction: 2
     playerState: {fileID: 11400000, guid: 02a44b3d3e89f2248ad418c16a6a8761, type: 2}
+  - playerAction: 3
+    playerState: {fileID: 11400000, guid: 88af69f647b43a94b90299e18232190a, type: 2}
   moveSpeed: 6
   rotationSpeed: 10

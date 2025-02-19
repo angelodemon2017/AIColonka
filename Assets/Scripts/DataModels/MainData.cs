@@ -6,6 +6,7 @@ public class MainData
     public int testSaveParam = 0;
     public ProgressHistory progressHistory = new ProgressHistory();
     public Chapter chapter = new Chapter();
+    public GamePlayProgress gamePlayProgress = new GamePlayProgress();
 
     public bool EmptyData => progressHistory.CurrentTask == 0;
 
@@ -40,9 +41,10 @@ public class ProgressHistory
     }
 }
 
+[System.Serializable]
 public class GamePlayProgress
 {
-    //???
+    public int BattleBits;
 }
 
 [Serializable]

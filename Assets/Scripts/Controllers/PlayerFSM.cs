@@ -4,6 +4,8 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 {
     public static PlayerFSM Instance;
 
+    [SerializeField] private BitsController _bitsController;
+    [SerializeField] private int _combo;
     [SerializeField] private Points _points;
     [SerializeField] private HPComponent _hpComponent;
     [SerializeField] private ArmorVisualizator _armorVisualizator;
@@ -25,6 +27,15 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     internal HPComponent HPComponent => _hpComponent;
     internal Transform PointOfTargetForEnemy => _points.PointOfTargetForEnemy;
     internal Points GetPoints => _points;
+    internal BitsController BitsController => _bitsController;
+    internal int Combo 
+    {
+        get => _combo;
+        set 
+        {
+            _combo = value;
+        }
+    }
     #endregion
 
     private void Awake()
