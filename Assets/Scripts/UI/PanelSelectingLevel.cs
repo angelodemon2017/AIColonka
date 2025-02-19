@@ -9,7 +9,10 @@ public class PanelSelectingLevel : MAINWindow
 
     [SerializeField] private List<EnumLevels> _availableLevels;
 
-    private IEnumerable<EnumLevels> AvailableLevels => _availableLevels;
+    private IEnumerable<EnumLevels> AvailableLevels =>
+        ControllerDemoSaveFile.Instance.IsDebug ?
+        _availableLevels :
+        ControllerDemoSaveFile.Instance.GetCurrentTask().AvailableLevels;
 
     private void Awake()
     {

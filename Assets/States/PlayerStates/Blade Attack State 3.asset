@@ -16,3 +16,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b1080cc1a0096aa49a786b2ababb6b53, type: 2}
   Animation: 6
   AvailableControlStates: []
+  _attackZone: {fileID: 996953359522192065, guid: 286c3c0dcae7f0b49a19cb8fa5d71323, type: 3}
+  _damage:
+    DamageType: 0
+    ValueDamage: 8
+  _size: 0.8

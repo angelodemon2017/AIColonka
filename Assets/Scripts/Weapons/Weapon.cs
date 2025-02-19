@@ -24,6 +24,11 @@ public class Weapon : MonoBehaviour
         StartAttack();
     }
 
+    internal void SetDamage(Damage damage)
+    {
+        _damage = new Damage(damage.DamageType, damage.ValueDamage);
+    }
+
     internal virtual void StartAttack()
     {
 

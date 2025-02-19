@@ -34,16 +34,17 @@ public class WhoIs : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+//        Debug.Log($"!!!OnCollisionEnter {collision.gameObject.name} & {gameObject.name}");
         CheckCollider(collision.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-//        Debug.Log($"!!!OnTriggerEnter");
+//        Debug.Log($"!!!OnTriggerEnter {other.name} & {gameObject.name}");
         CheckCollider(other.gameObject);
     }
 
-    private void CheckCollider(GameObject checkGO)
+    internal void CheckCollider(GameObject checkGO)
     {
 //        Debug.Log($"CheckCollider {checkGO.name}");
         if (checkGO.TryGetComponent(out WhoIs isWho))

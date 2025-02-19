@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5351319397589345408}
   - component: {fileID: 2169135358374710054}
   - component: {fileID: 6691071609813240105}
+  - component: {fileID: 437531204494416785}
   m_Layer: 0
   m_Name: BattleZoneActivatorDemo
   m_TagString: Untagged
@@ -175,7 +176,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  MaxHP: 20
+  MaxHP: 100
   CurrentHP: 0
   _regenHP: 0
 --- !u!114 &2169135358374710054
@@ -210,6 +211,27 @@ MonoBehaviour:
   _UIpanelHP: {fileID: 4731362345238429230}
   _hpComponent: {fileID: 5351319397589345408}
   _startState: {fileID: 11400000, guid: aee3c8e394bf1be4b9fb842dc14423fa, type: 2}
+--- !u!65 &437531204494416785
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3187883763837073132}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6200121764912367852
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d50a5dcd1f32f4584b5a07a6522905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsSettings: 0
   _target: {fileID: 0}
   AtCamera: 1
 --- !u!1001 &680368721303950645

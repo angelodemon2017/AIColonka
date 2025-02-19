@@ -4,11 +4,11 @@ public class ControllerDemoSaveFile : MonoBehaviour
 {
     public static ControllerDemoSaveFile Instance;
 
+    public bool IsDebug;
     public TaskConfig TaskConfig;
     public EnumLevels CurrentLevel;
     public DialogSO CurrentDialog;
 
-    public int testParam;
     public MainData mainData = new MainData();
 
     private void Awake()
@@ -31,13 +31,5 @@ public class ControllerDemoSaveFile : MonoBehaviour
     internal bool IsCurrentTask(TaskSO taskSO)
     {
         return TaskConfig.GetTaskById(mainData.progressHistory.CurrentTask) == taskSO;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            testParam++;
-        }
     }
 }

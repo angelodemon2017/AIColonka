@@ -3,6 +3,8 @@
 [System.Serializable]
 public class Points
 {
+    public Transform PointAttackZone1;
+
     public float Xsensitivity = 10f;
     public float Ysensitivity = 1f;
 

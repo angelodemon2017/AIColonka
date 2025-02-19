@@ -270,10 +270,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ae651321dc48b499550e8bdc8edc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsDebug: 1
   TaskConfig: {fileID: 11400000, guid: 9a0256040687cb5408bf70905814f3ab, type: 2}
   CurrentLevel: 0
   CurrentDialog: {fileID: 11400000, guid: 3c8e85e469ac683429c3ce83f68ac61a, type: 2}
   testParam: 0
+  mainData:
+    testSaveParam: 0
+    progressHistory:
+      CurrentScene: 0
+      RoomConfig: 0
+      CurrentTask: 0
+    chapter:
+      MaxHP: 100
+      HPRegenBySecond: 2
+      BaseDamage: 10
 --- !u!4 &1014886202
 Transform:
   m_ObjectHideFlags: 0
