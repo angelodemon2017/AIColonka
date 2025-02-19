@@ -13,6 +13,8 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
 
     private void Awake()
     {
+        EntityRepository.Instance.AddWho(_armorVisualizator.GetWhoIs);
+
         _hpComponent.ChangeHP += _UIpanelHP.UpdateHP;
         _hpComponent.OnChangeHP();
 

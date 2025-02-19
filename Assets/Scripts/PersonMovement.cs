@@ -43,11 +43,11 @@ public class PersonMovement : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+/*        Instance = this;
         _animationAdapter.triggerPropAction += TrigAnimate;
         CameraController.Instance.SetPivot(_pointCenterOfOrbit, _pivotForCamera);
         _cameraTransform = Camera.main.transform;
-        _characterController = GetComponent<CharacterController>();
+        _characterController = GetComponent<CharacterController>();/**/
     }
 
     private void Start()

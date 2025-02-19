@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2101455354792286828}
   - component: {fileID: 4259592149644198849}
+  - component: {fileID: 2958754950827358287}
   m_Layer: 0
   m_Name: PlayerSpawn
   m_TagString: Untagged
@@ -46,3 +47,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 8630790025869648306, guid: b6ee468e1a9b1bf4cb071a0f780e64b9, type: 3}
   _points: []
+--- !u!114 &2958754950827358287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7138411004315174083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0573e9cfe9be0634bac6616f3f1aceae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _whoAre: []

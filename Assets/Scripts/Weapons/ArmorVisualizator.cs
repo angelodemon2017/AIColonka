@@ -12,6 +12,8 @@ public class ArmorVisualizator : MonoBehaviour
     [SerializeField] private Weapon _weaponFrefab;
     [SerializeField] private Transform _target;
 
+    internal WhoIs GetWhoIs => _whoIs;
+
     internal void SetTarget(Transform newTarget)
     {
         _target = newTarget;

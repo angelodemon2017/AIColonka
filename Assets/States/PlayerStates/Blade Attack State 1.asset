@@ -16,5 +16,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b1080cc1a0096aa49a786b2ababb6b53, type: 2}
   Animation: 4
   AvailableControlStates:
-  - playerAction: 4
+  - playerAction: 2
     playerState: {fileID: 11400000, guid: b7e343b2f58b3ec43b9393d0b3b6ef2a, type: 2}

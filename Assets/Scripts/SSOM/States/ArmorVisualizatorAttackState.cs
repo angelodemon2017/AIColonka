@@ -10,7 +10,7 @@ public class ArmorVisualizatorAttackState : State
         if (Character is EntityFSM entityFSM)
         {
             _armorVisualizator = entityFSM.GetArmorVisualizator;
-            _armorVisualizator.SetTarget(PersonMovement.Instance.PointOfTargetForEnemy);
+            _armorVisualizator.SetTarget(PlayerFSM.Instance.PointOfTargetForEnemy);
             _armorVisualizator.CallAttack(ArmorVisualizator.TypeVisualAttack.Middle);
         }
         else

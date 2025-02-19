@@ -4,6 +4,7 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 {
     public static PlayerFSM Instance;
 
+    [SerializeField] private Points _points;
     [SerializeField] private HPComponent _hpComponent;
     [SerializeField] private ArmorVisualizator _armorVisualizator;
     [SerializeField] private FallingController _fallingController;
@@ -23,7 +24,8 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     public bool IsFinishedCurrentState() => _currentState.IsFinished;
     internal FallingController GetFallingController => _fallingController;
     internal HPComponent HPComponent => _hpComponent;
-
+    internal Transform PointOfTargetForEnemy => _points.PointOfTargetForEnemy;
+    internal Points GetPoints => _points;
     #endregion
 
     private void Awake()
@@ -32,6 +34,11 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
         _transform = transform;
         _animationAdapter.EndAnimation += EndCurrentAnimate;
         SetState(_startState);
+        CameraController.Instance.SetPivot(
+            _points.PointOfMoveCamera,
+            _points.PointOfLookCamera);
+
+        _points.PointOfCenterOrbit.SetParent(null);
     }
 
     private void Update()
@@ -39,12 +46,17 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
         _currentState.RunState();
     }
 
+    private void FixedUpdate()
+    {
+        _points.FixUpd();
+    }
+
     private void EndCurrentAnimate()
     {
         _currentState.EndCurrentAnimation();
     }
 
-    internal void CallPlayerAction(EnumAnimations playerAction)
+    internal void CallPlayerAction(EnumPlayerControlActions playerAction)
     {
         _currentState.CallPlayerAction(playerAction);
     }
@@ -79,5 +91,36 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     {
         Instance = null;
         _animationAdapter.EndAnimation -= EndCurrentAnimate;
+    }
+
+    [System.Serializable]
+    public class Points
+    {
+        private float _currentX = 0f;
+        private float _currentY = 0f;
+        private Vector3 _direct;
+        public float sensitivity = 10f;
+        public float minYAngle = -20f;
+        public float maxYAngle = 60f;
+
+        public Transform PointOfLookCamera;
+        public Transform PointOfMoveCamera;
+        public Transform PointOfCenterOrbit;
+        public Transform PointOfTargetForEnemy;
+
+        internal void Move(float xMouse, float yMouse)
+        {
+            _currentX += xMouse * sensitivity;
+            _currentY -= yMouse * -sensitivity;
+
+            _currentY = Mathf.Clamp(_currentY, minYAngle, maxYAngle);
+
+            PointOfCenterOrbit.rotation = Quaternion.Euler(0, _currentX, 0f);
+        }
+
+        internal void FixUpd()
+        {
+//            PointOfCenterOrbit.rotation = Quaternion.Euler(0, _currentX, 0f);
+        }
     }
 }

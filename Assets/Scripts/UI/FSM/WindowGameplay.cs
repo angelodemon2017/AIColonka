@@ -35,9 +35,17 @@ public class WindowGameplay : MAINWindow
     {
         base.Run();
 
-        CameraController.Instance.UpdateMouse(
-            Input.GetAxis("Mouse X"),
-            Input.GetAxis("Mouse Y"));
+        /*        CameraController.Instance.UpdateMouse(
+                    Input.GetAxis("Mouse X"),
+                    Input.GetAxis("Mouse Y"));/**/
+
+        var mX = Input.GetAxis("Mouse X");
+        var mY = Input.GetAxis("Mouse Y");
+
+        if (mX != 0 || mY != 0)
+        {
+            _playerFSM?.GetPoints.Move(mX, mY);
+        }
 
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
@@ -49,23 +57,41 @@ public class WindowGameplay : MAINWindow
 
         if (Input.GetButtonDown("Jump"))
         {
-            _playerFSM.CallPlayerAction(EnumAnimations.jump);
+            _playerFSM.CallPlayerAction(EnumPlayerControlActions.Jump);
         }
 
         if (Input.GetButtonDown("Fire1"))
         {
-            _playerFSM.CallPlayerAction(EnumAnimations.attack1);
+            _playerFSM.CallPlayerAction(EnumPlayerControlActions.BladeAttack);
         }
 
         if (Input.GetButtonDown("Fire2"))
         {
-            _playerFSM.CallPlayerAction(EnumAnimations.attack2);
+            _playerFSM.CallPlayerAction(EnumPlayerControlActions.BitAttack);
         }
 
         if (Input.GetButtonDown("Fire3"))
         {
-            _playerFSM.CallPlayerAction(EnumAnimations.attack3);
+            _playerFSM.CallPlayerAction(EnumPlayerControlActions.AVAttack);
         }
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (CameraController.Instance.EnemyInTarget)
+            {
+                CancelTarget();
+            }
+            else if (EntityRepository.Instance.HaveEnemies())
+            {
+                CameraController.Instance.SetEnemyTarget(
+                    EntityRepository.Instance.GetNearestEnemy(PlayerFSM.Instance.transform.position));
+            }
+        }
+    }
+
+    internal void CancelTarget()
+    {
+        CameraController.Instance.CancelEnemyTarget();
     }
 
     public override void ExitWindow()

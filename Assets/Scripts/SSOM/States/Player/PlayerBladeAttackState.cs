@@ -3,9 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "FSM/PlayerState/PlayerBladeAttackState", order = 1)]
 public class PlayerBladeAttackState : PlayerState
 {
-    private EnumAnimations _lastAction = EnumAnimations.idle;
+    private EnumPlayerControlActions _lastAction = EnumPlayerControlActions.None;
 
-    internal override void CallPlayerAction(EnumAnimations playerAction)
+    internal override void CallPlayerAction(EnumPlayerControlActions playerAction)
     {
         _lastAction = playerAction;
     }

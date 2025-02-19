@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerState : State
 {
     [SerializeField] protected List<PareStateEnumAnim> AvailableControlStates;
-    protected Dictionary<EnumAnimations, PlayerState> _availableControlStates = new();
+    protected Dictionary<EnumPlayerControlActions, PlayerState> _availableControlStates = new();
 
     protected PlayerFSM playerFSM;
 
@@ -15,7 +15,7 @@ public class PlayerState : State
         playerFSM = Character as PlayerFSM;
     }
 
-    internal virtual void CallPlayerAction(EnumAnimations playerAction)
+    internal virtual void CallPlayerAction(EnumPlayerControlActions playerAction)
     {
         if (_availableControlStates.TryGetValue(playerAction, out PlayerState playerState))
         {
@@ -42,7 +42,7 @@ public class PlayerState : State
     [System.Serializable]
     public class PareStateEnumAnim
     {
-        public EnumAnimations playerAction;
+        public EnumPlayerControlActions playerAction;
         public PlayerState playerState;
     }
 }
