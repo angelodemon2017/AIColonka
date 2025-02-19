@@ -787,8 +787,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _points:
-    Xsensitivity: 2
-    Ysensitivity: 0.05
+    Xsensitivity: 20
+    Ysensitivity: 0.3
     _totalSensitiv: 20
     _totalHorSensitiv: 15
     PointOfLookCamera: {fileID: 7198240099219115327}

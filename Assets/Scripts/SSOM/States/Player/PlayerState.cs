@@ -34,6 +34,11 @@ public class PlayerState : State
         playerFSM.AnimationAdapter.PlayAnimationEvent(Animation);
     }
 
+    internal override void FixedRun()
+    {
+        base.FixedRun();
+    }
+
     public override bool CheckRules(IStatesCharacter character)
     {
         return character.IsFinishedCurrentState();

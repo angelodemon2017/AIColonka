@@ -26,6 +26,8 @@ public abstract class State : ScriptableObject
 
     protected virtual void Run() { }
 
+    internal virtual void FixedRun() { }
+
     protected void CheckTransitions()
     {
         for (int i = 0; i < AvailableStates.Count; i++)

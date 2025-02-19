@@ -19,13 +19,13 @@ public class Points
 
     private float _currentX = 0f;
     private float _verticalPosit = 0.5f;
-    private float _cashMinDistance = 0f;
 
     private Vector3 _middlePoint;
     private Vector3 _middlePoint2;
 
     private WhoIs _holdTarget;
     private Vector3 _tempPosit;
+    private float _cashMinDistance = 0f;
 
     private float minDistance
     {

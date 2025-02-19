@@ -23,6 +23,11 @@ public class UIFSM : MonoBehaviour, IUIFSM
         _currentWindow.Run();
     }
 
+    private void FixedUpdate()
+    {
+        _currentWindow.FixedRun();
+    }
+
     public MAINWindow OpenWindow(MAINWindow windowFSM)
     {
         if (_currentWindow != null)

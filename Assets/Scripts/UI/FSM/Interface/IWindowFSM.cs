@@ -6,5 +6,7 @@ public interface IWindowFSM
 
     void Run();
 
+    void FixedRun();
+
     void ExitWindow();
 }

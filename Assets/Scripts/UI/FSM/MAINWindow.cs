@@ -25,6 +25,11 @@ public class MAINWindow : MonoBehaviour, IWindowFSM
         }
     }
 
+    public virtual void FixedRun()
+    {
+
+    }
+
     public virtual void StartWindow()
     {
         InitWindows();

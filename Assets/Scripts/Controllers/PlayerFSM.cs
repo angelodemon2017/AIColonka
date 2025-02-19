@@ -45,6 +45,7 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
     private void FixedUpdate()
     {
+        _currentState.FixedRun();
         _points.FixUpd();
     }
 

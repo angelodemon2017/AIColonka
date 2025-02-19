@@ -37,12 +37,12 @@ public class PlayerMoveState : PlayerState
         right.Normalize();
 
         desiredMoveDirection = (forward * ver + right * hor).normalized;
-        _characterController.Move(desiredMoveDirection * moveSpeed);
+        _characterController.Move(desiredMoveDirection * moveSpeed * Time.fixedDeltaTime);
 
         if (desiredMoveDirection != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(desiredMoveDirection);
-            _avatarTransform.rotation = Quaternion.Slerp(_avatarTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            _avatarTransform.rotation = Quaternion.Slerp(_avatarTransform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
 
         if (playerFSM.GetFallingController.IsGrounded && playerFSM.GetFallingController.IsFalling)
@@ -54,13 +54,18 @@ public class PlayerMoveState : PlayerState
     protected override void Run()
     {
         base.Run();
+    }
+
+    internal override void FixedRun()
+    {
+        base.FixedRun();
 
         if (_timeOut <= 0f && _characterController.velocity == Vector3.zero)
         {
             IsFinished = true;
         }
 
-        _timeOut -= Time.deltaTime;
+        _timeOut -= Time.fixedDeltaTime;
     }
 
     public override bool CheckRules(IStatesCharacter character)

@@ -41,26 +41,6 @@ public class WindowGameplay : MAINWindow
     {
         base.Run();
 
-        /*        CameraController.Instance.UpdateMouse(
-                    Input.GetAxis("Mouse X"),
-                    Input.GetAxis("Mouse Y"));/**/
-
-        var mX = Input.GetAxis("Mouse X");
-        var mY = Input.GetAxis("Mouse Y");
-
-        if (mX != 0 || mY != 0)
-        {
-            _playerFSM?.GetPoints.Move(mX, mY);
-        }
-
-        var horizontal = Input.GetAxis("Horizontal");
-        var vertical = Input.GetAxis("Vertical");
-
-        if (horizontal != 0 || vertical != 0)
-        {
-            _playerFSM.CallAxisHorVer(horizontal, vertical);
-        }
-
         if (Input.GetButtonDown("Jump"))
         {
             _playerFSM.CallPlayerAction(EnumPlayerControlActions.Jump);
@@ -101,6 +81,27 @@ public class WindowGameplay : MAINWindow
         }
     }
 
+    public override void FixedRun()
+    {
+        base.FixedRun();
+
+        var mX = Input.GetAxis("Mouse X");
+        var mY = Input.GetAxis("Mouse Y");
+
+        if (mX != 0 || mY != 0)
+        {
+            _playerFSM?.GetPoints.Move(mX, mY);
+        }
+
+        var horizontal = Input.GetAxis("Horizontal");
+        var vertical = Input.GetAxis("Vertical");
+
+        if (horizontal != 0 || vertical != 0)
+        {
+            _playerFSM.CallAxisHorVer(horizontal, vertical);
+        }
+    }
+
     internal void CancelTarget()
     {
         _target.enabled = false;
@@ -112,7 +113,6 @@ public class WindowGameplay : MAINWindow
         Instance = null;
         _taskController.Deatcivate();
         base.ExitWindow();
-//        PersonMovement.Instance.OnMovePlayer(0, 0);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
 
