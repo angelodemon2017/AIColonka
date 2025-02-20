@@ -3,32 +3,38 @@ using UnityEngine;
 
 public class BitsController : MonoBehaviour
 {
-    [SerializeField] private Transform _attackPoint;
-    [SerializeField] private List<Transform> _bits = new();
-    [SerializeField] private GameObject _bit;
-    [SerializeField] private Transform _parent;
-    [SerializeField] private float _speedRotate;
-    [SerializeField] private BitScript _bitScript;
-    [SerializeField] private float _speedShoot;
     [SerializeField] private List<BitOrbit> _orbits = new();
     [SerializeField] private List<BitOrbitConfig> _bitOrbitConfigs = new();
 
     [SerializeField] private Material _peaceBitMaterial;
     [SerializeField] private Material _fightBitMaterial;
 
-    private int _valueDamage = 1;
-    private Damage damage => new Damage(EnumDamageType.BitRange, _valueDamage);
+    private BitOrbitConfig currentConfig => _bitOrbitConfigs[ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits];
     private bool isFighing => EntityRepository.Instance.HaveEnemies();
 
     private void Awake()
     {
-        SetBits();
+        SetBits(true);
     }
 
-    internal void Show(bool isShow = true)
+/*    internal void Show(bool isShow = true)
     {
-        _orbits.ForEach(o => o.gameObject.SetActive(isShow));
-    }
+        var config = currentConfig;
+
+        //        _orbits.ForEach(o => o.gameObject.SetActive(isShow));
+
+        for (int i = 0; i < 3; i++)
+        {
+            _orbits[i].transform.localRotation =
+                Quaternion.Euler(0f, config.orbitConfigs[i].swift, 0);// _orbits[i].transform.parent.localRotation.eulerAngles.z);
+        }
+        _orbits[0].OnOffBits(config.orbitConfigs[0].countBit, 0.1f, isShow);
+        _orbits[1].OnOffBits(config.orbitConfigs[1].countBit, 
+            0.1f * config.orbitConfigs[0].countBit, isShow);
+        _orbits[2].OnOffBits(config.orbitConfigs[2].countBit,
+            0.1f * (config.orbitConfigs[0].countBit + config.orbitConfigs[1].countBit),
+            isShow);
+    }/**/
 
     private void Update()
     {
@@ -37,19 +43,19 @@ public class BitsController : MonoBehaviour
             ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits--;
             ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits =
                 Mathf.Clamp(ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits, 0, 9);
-            SetBits();
+            SetBits(true);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits++;
             ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits =
                 Mathf.Clamp(ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits, 0, 9);
-            SetBits();
+            SetBits(true);
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            SetBits();
+            SetBits(true);
         }
     }
 
@@ -63,15 +69,25 @@ public class BitsController : MonoBehaviour
         }
     }
 
-    private void SetBits()
+    internal void SetBits(bool isOn)
     {
-        var config = _bitOrbitConfigs[ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits];
+        var config = currentConfig;
         for (int i = 0; i < 3; i++)
         {
-            _orbits[i].SetBits(config.orbitConfigs[i].countBit);
+            _orbits[i].SetBits(config.orbitConfigs[i].countBit, CountBefore(i), isOn);
             _orbits[i].transform.localRotation =
                 Quaternion.Euler(0f, config.orbitConfigs[i].swift, 0);// _orbits[i].transform.parent.localRotation.eulerAngles.z);
         }
+    }/**/
+
+    private int CountBefore(int orbit)
+    {
+        int total = 0;
+        for (int i = 0; i < orbit; i++)
+        {
+            total += currentConfig.orbitConfigs[i].countBit;
+        }
+        return total;
     }
 
     [System.Serializable]

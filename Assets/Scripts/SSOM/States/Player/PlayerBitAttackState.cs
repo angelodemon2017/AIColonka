@@ -14,7 +14,7 @@ public class PlayerBitAttackState : PlayerState
     protected override void Init()
     {
         base.Init();
-        playerFSM.BitsController.Show(false);
+        playerFSM.BitsController.SetBits(false);
 
         _fallingController = playerFSM.GetFallingController;
         _fallingController.SwitchGravity();
@@ -75,7 +75,7 @@ public class PlayerBitAttackState : PlayerState
             playerFSM.Combo++;
         }
 
-        playerFSM.BitsController.Show();
+        playerFSM.BitsController.SetBits(true);
     }
 
     public override bool CheckRules(IStatesCharacter character)

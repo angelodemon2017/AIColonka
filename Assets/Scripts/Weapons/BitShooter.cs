@@ -1,15 +1,20 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BitShooter : Weapon
 {
+    [SerializeField] private List<DamageConfig> _damageConfigs = new();
     [SerializeField] private Projectile _projectile;
 
+    private DamageConfig _curDamConf;
     private PlayerBitAttackState _playerBitAttackState;
 
     internal override void StartAttack()
     {
         base.StartAttack();
+
+        _curDamConf = _damageConfigs[Mathf.Clamp(ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits, 0, _damageConfigs.Count - 1)];
 
         if (PlayerFSM.Instance.GetPoints.EnemyIsTarget)
         {
@@ -41,6 +46,9 @@ public class BitShooter : Weapon
             target: _target,
             rotation: transform.rotation);
 
+        bit.SetDamage(new Damage(EnumDamageType.BitRange, 
+            _curDamConf.BaseDamage + (int)(_curDamConf.MultOrder * ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits - count)));
+
         yield return new WaitForSeconds(0.15f);
 
         if (count > 0)
@@ -51,5 +59,13 @@ public class BitShooter : Weapon
         {
             _playerBitAttackState?.EndCurrentAnimation();
         }
+    }
+
+    [System.Serializable]
+    public class DamageConfig
+    {
+        public float WaitBetweenShoot;
+        public int BaseDamage;
+        public float MultOrder;
     }
 }

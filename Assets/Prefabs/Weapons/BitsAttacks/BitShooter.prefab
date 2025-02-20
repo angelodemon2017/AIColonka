@@ -49,6 +49,16 @@ MonoBehaviour:
     DamageType: 1
     ValueDamage: 2
   WhoIs: {fileID: 8333833047574119067}
+  _damageConfigs:
+  - WaitBetweenShoot: 0.1
+    BaseDamage: 2
+    MultOrder: 1
+  - WaitBetweenShoot: 0.1
+    BaseDamage: 2
+    MultOrder: 1
+  - WaitBetweenShoot: 0.1
+    BaseDamage: 2
+    MultOrder: 1
   _projectile: {fileID: 2635455051192399494, guid: 55c93fb6533303b488145a326671cee1, type: 3}
 --- !u!114 &8333833047574119067
 MonoBehaviour:
