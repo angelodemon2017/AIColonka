@@ -48,7 +48,7 @@ public class SSOController : MonoBehaviour, IStatesCharacter, IMovableCharacter
         _animationAdapter.PlayAnimationEvent(animation);
     }
 
-    public void SetState(State state)
+    public void SetState(State state, bool ignoreEqual = false)
     {
         if (_currentState == state)
         {

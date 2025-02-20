@@ -26,7 +26,7 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
         _currentState.RunState();
     }
 
-    public void SetState(State state)
+    public void SetState(State state, bool ignoreEqual = false)
     {
         if (_currentState == state)
         {

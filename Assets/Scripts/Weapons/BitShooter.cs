@@ -13,21 +13,47 @@ public class BitShooter : BitWeapon
     {
         base.StartAttack();
 
-        transform.position = Points.PointOfLookCamera.position;
-        transform.rotation = Camera.main.transform.rotation;
-
-        _curDamConf = _damageConfigs[Mathf.Clamp(BitLevel, 0, _damageConfigs.Count - 1)];
-
-        if (PlayerFSM.Instance.GetPoints.EnemyIsTarget)
+        if (PlayerBitAttackState.IsAir)
         {
-            transform.LookAt(PlayerFSM.Instance.GetPoints.TargetEnemy.transform);
+            if (Points.EnemyIsTarget)
+            {
+                var tempPos = _target.position;
+                tempPos.y = Points.PointOfTargetForEnemy.position.y + 5f;
+                transform.position = tempPos;
+
+                transform.LookAt(Points.TargetEnemy.transform);
+            }
+            else
+            {
+                Vector3 forward = Camera.main.transform.forward.normalized * 2f;
+                forward.y = 2f;
+
+                var tempPos = Points.PointOfTargetForEnemy.position;
+                transform.position = tempPos + forward;
+
+                transform.rotation = Quaternion.LookRotation(Vector3.down);
+            }
         }
         else
         {
-            transform.rotation = _rotate;
+            var tempPos = Points.PointOfLookCamera.position;
+            tempPos.y += 0.5f;
+            transform.position = tempPos;
+
+            if (Points.EnemyIsTarget)
+            {
+                transform.LookAt(_target);
+            }
+            else
+            {
+                transform.rotation = _rotate;
+            }
         }
 
-        StartCoroutine(Shoot(ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits - 1));
+        _curDamConf = _damageConfigs[Mathf.Clamp(BitLevel, 0, _damageConfigs.Count - 1)];
+
+
+        StartCoroutine(Shoot(BitLevel - 1));
     }
 
     IEnumerator Shoot(int count)
@@ -55,6 +81,7 @@ public class BitShooter : BitWeapon
         else
         {
             EndBitAttack();
+            Destroy(gameObject);
         }
     }
 

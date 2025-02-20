@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2517321610715725221}
   - component: {fileID: 1778351557213014094}
   - component: {fileID: 4965093994204168611}
-  - component: {fileID: 682548265409441569}
+  - component: {fileID: 2673654336546665703}
   m_Layer: 0
   m_Name: Bit
   m_TagString: Player
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6993309131271573654}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 92421281778356442bc3d0d383697c0f, type: 2}
+  - {fileID: 2100000, guid: ef31ef8aafa7800418822ba9ab51f81f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,8 +106,8 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0.0000009536743, z: 0.000005722046}
---- !u!65 &682548265409441569
-BoxCollider:
+--- !u!135 &2673654336546665703
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -125,8 +125,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 5, z: 20}
-  m_Center: {x: 0, y: -2, z: -10}
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: -2}
 --- !u!1 &7694174125773272348
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,8 +140,8 @@ GameObject:
   - component: {fileID: 943678645595025540}
   - component: {fileID: 7133387648452669744}
   m_Layer: 0
-  m_Name: FastAttackBit
-  m_TagString: Player
+  m_Name: FastBitOfDiskAttack
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -208,12 +208,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage:
     DamageType: 1
-    ValueDamage: 2
+    ValueDamage: 1
   WhoIs: {fileID: 5586700805555497565}
   _sphereCollider: {fileID: 4965093994204168611}
   _size: 2
   _multHit: 1
-  _timeOut: 2
+  _timeOut: 3
 --- !u!54 &7133387648452669744
 Rigidbody:
   m_ObjectHideFlags: 0

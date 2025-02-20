@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AvailableStates:
   - {fileID: 11400000, guid: b1080cc1a0096aa49a786b2ababb6b53, type: 2}
-  Animation: 0
+  Animation: 10
   AvailableControlStates:
   - playerAction: 3
     playerState: {fileID: 11400000}
+  - playerAction: 2
+    playerState: {fileID: 11400000, guid: b7e343b2f58b3ec43b9393d0b3b6ef2a, type: 2}
   _bitWeapons:
+  - {fileID: 4063225489199983808, guid: 5aa1e10f7ca21c54f867fa279eb46382, type: 3}
   - {fileID: 1142338381807009057, guid: 89b2693eeebc7ac46b05702a8078ad02, type: 3}
+  - {fileID: 5257541251581287725, guid: abb67fdeacc1fb942a04cc42fa347738, type: 3}

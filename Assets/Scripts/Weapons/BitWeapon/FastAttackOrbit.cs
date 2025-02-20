@@ -10,22 +10,25 @@ public class FastAttackOrbit : BitWeapon
     [SerializeField] private int _stepAccelerate = 5;
     [SerializeField] private float _precentAccelerate = 50f;
     [SerializeField] private float _delayStepAccelrate = 0.2f;
+    [SerializeField] private float _timeLifeAfterEnd = 1f;
 
     private Vector3 _swiftPos = Vector3.zero;
+
+    protected virtual float Yswift => Random.Range(0.25f, 0.75f);
+    protected virtual Transform spawnPoint => Points.PointOfTargetForEnemy;
 
     internal override void StartAttack()
     {
         base.StartAttack();
 
-        transform.position = Points.PointOfTargetForEnemy.position;
-//        transform.rotation = Quaternion.identity;
+        transform.position = spawnPoint.position;
 
         StartCoroutine(AddBit(BitLevel - 1));
     }
 
     IEnumerator AddBit(int countOrder)
     {
-        _swiftPos.y = Random.Range(0.25f, 0.75f);
+        _swiftPos.y = Yswift;
         var newW = Instantiate(_weaponPrefab, transform.position + _swiftPos, transform.rotation, transform);
         newW.SetDamage(_damage);
         _bitOrbit.AddBitTransform(newW.transform);
@@ -41,6 +44,7 @@ public class FastAttackOrbit : BitWeapon
         else
         {
             StartCoroutine(AddSpeed(_stepAccelerate));
+            EndBitAttack();
         }
     }
 
@@ -56,7 +60,7 @@ public class FastAttackOrbit : BitWeapon
         }
         else
         {
-            EndBitAttack();
+            Destroy(gameObject, _timeLifeAfterEnd);
         }
     }
 }

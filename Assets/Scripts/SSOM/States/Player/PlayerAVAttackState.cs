@@ -11,8 +11,15 @@ public class PlayerAVAttackState : PlayerState
     protected override void Init()
     {
         base.Init();
+
         _fallingController = playerFSM.GetFallingController;
         _fallingController.SwitchGravity();
+
+        if (!_fallingController.AvailableActionInAir)
+        {
+            IsFinished = true;
+            return;
+        }
 
         _armorVisualizator = playerFSM.GetArmorVisualizator;
         _armorVisualizator.CallAttack(GetTypeAttack());

@@ -62,7 +62,10 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
     private void EndCurrentAnimate()
     {
-        _currentState.EndCurrentAnimation(0f);
+        if (_currentState.IsBladeAttack)
+        {
+            _currentState.EndCurrentAnimation(0f);
+        }
     }
 
     internal void CallPlayerAction(EnumPlayerControlActions playerAction)
@@ -75,9 +78,9 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
         _currentState.CallAxisHorVer(hor, ver);
     }
 
-    public void SetState(State state)
+    public void SetState(State state, bool ignoreEqual = false)
     {
-        if (_currentState == state)
+        if (_currentState == state && !ignoreEqual)
         {
             return;
         }

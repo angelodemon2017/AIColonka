@@ -9,6 +9,8 @@ public class PlayerBladeAttackState : PlayerState
 
     private EnumPlayerControlActions _lastAction = EnumPlayerControlActions.None;
 
+    internal override bool IsBladeAttack => true;
+
     protected override void Init()
     {
         base.Init();
@@ -41,6 +43,25 @@ public class PlayerBladeAttackState : PlayerState
         else
         {
             IsFinished = true;
+        }
+    }
+
+    public override void ExitState()
+    {
+        base.ExitState();
+
+        ComboChecker();
+    }
+
+    private void ComboChecker()
+    {
+        if (_lastAction == EnumPlayerControlActions.None)
+        {
+            playerFSM.Combo = 0;
+        }
+        else
+        {
+            playerFSM.Combo++;
         }
     }
 

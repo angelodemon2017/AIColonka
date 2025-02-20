@@ -7,6 +7,7 @@ public class BitWeapon : Weapon
     private Points _points;
 
     protected Points Points => _points;
+    protected PlayerBitAttackState PlayerBitAttackState => _playerBitAttackState;
 
     /// <summary>
     /// Count of bit

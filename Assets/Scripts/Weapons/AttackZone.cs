@@ -6,7 +6,7 @@ public class AttackZone : Weapon
     [SerializeField] private SphereCollider _sphereCollider;
     [SerializeField] private float _size = 1f;
     [SerializeField] private bool _multHit;
-    private float _timeOut = 1f;
+    [SerializeField] private float _timeOut = 1f;
 
     private HashSet<WhoIs> _wasAttacked = new();
     

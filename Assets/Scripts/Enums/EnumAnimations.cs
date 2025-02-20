@@ -10,4 +10,5 @@
     death,
     takeDamage,
     armorVisualAttack,
+    bitController,
 }

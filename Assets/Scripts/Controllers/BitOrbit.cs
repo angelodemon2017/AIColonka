@@ -40,7 +40,10 @@ public class BitOrbit : MonoBehaviour
             StartCoroutine(OnOffBit(i < count && isOn, i, i + addOrder));
             if (i < count)
             {
-                _bits[i].localRotation = Quaternion.Euler(0f, 360f / count * i, 0f);
+                if (_bits[i])
+                {
+                    _bits[i].localRotation = Quaternion.Euler(0f, 360f / count * i, 0f);
+                }
             }
         }
     }
@@ -49,6 +52,9 @@ public class BitOrbit : MonoBehaviour
     {
         yield return new WaitForSeconds(_onOffPeriod * order);
 
-        _bits[index].gameObject.SetActive(isOn);
+        if (_bits[index])
+        {
+            _bits[index].gameObject.SetActive(isOn);
+        }
     }
 }

@@ -27,7 +27,8 @@ public class ZoneTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == Dicts.Tags.Player)
+        if(other.name == Dicts.SpecNames.Player)
+        //??if (other.tag == Dicts.Tags.Player)
         {
             RunScript();
         }

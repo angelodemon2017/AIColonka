@@ -274,7 +274,6 @@ MonoBehaviour:
   TaskConfig: {fileID: 11400000, guid: 9a0256040687cb5408bf70905814f3ab, type: 2}
   CurrentLevel: 0
   CurrentDialog: {fileID: 11400000, guid: 3c8e85e469ac683429c3ce83f68ac61a, type: 2}
-  testParam: 0
   mainData:
     testSaveParam: 0
     progressHistory:
@@ -285,6 +284,8 @@ MonoBehaviour:
       MaxHP: 100
       HPRegenBySecond: 2
       BaseDamage: 10
+    gamePlayProgress:
+      BattleBits: 0
 --- !u!4 &1014886202
 Transform:
   m_ObjectHideFlags: 0

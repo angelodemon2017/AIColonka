@@ -8,6 +8,9 @@ public class PlayerState : State
 
     protected PlayerFSM playerFSM;
 
+    internal PlayerFSM PlayerFSM => playerFSM;
+    internal virtual bool IsBladeAttack => false;
+
     protected override void Init()
     {
         AvailableControlStates.ForEach(acs =>
@@ -29,8 +32,13 @@ public class PlayerState : State
     {
         if (timeEnd <= 0f)
         {
-            IsFinished = true;
+            SetFinished();
         }
+    }
+
+    protected virtual void SetFinished()
+    {
+        IsFinished = true;
     }
 
     protected override void Run()

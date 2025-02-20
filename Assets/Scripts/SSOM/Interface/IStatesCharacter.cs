@@ -8,7 +8,7 @@ public interface IStatesCharacter
 
     void PlayAnimation(EnumAnimations animation);
 
-    void SetState(State state);
+    void SetState(State state, bool ignoreEqual = false);
 
     bool CheckProp(EnumProps prop);
 

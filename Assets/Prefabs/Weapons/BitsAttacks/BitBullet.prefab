@@ -167,6 +167,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - _collisionResult: 1
+    _collisionEvent:
+      m_PersistentCalls:
+        m_Calls: []
   - _collisionResult: 2
     _collisionEvent:
       m_PersistentCalls:

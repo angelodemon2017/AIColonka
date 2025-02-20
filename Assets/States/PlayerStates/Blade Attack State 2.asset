@@ -18,6 +18,10 @@ MonoBehaviour:
   AvailableControlStates:
   - playerAction: 2
     playerState: {fileID: 11400000, guid: e272fefe797791842965364e42df7bbd, type: 2}
+  - playerAction: 3
+    playerState: {fileID: 11400000, guid: 88af69f647b43a94b90299e18232190a, type: 2}
+  - playerAction: 4
+    playerState: {fileID: 11400000, guid: 9b10c0c41e15deb4988c3a900deea5ff, type: 2}
   _attackZone: {fileID: 996953359522192065, guid: 286c3c0dcae7f0b49a19cb8fa5d71323, type: 3}
   _damage:
     DamageType: 0
