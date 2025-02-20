@@ -49,6 +49,7 @@ MonoBehaviour:
     DamageType: 1
     ValueDamage: 2
   WhoIs: {fileID: 8333833047574119067}
+  _timeForEndAttack: 0.2
   _damageConfigs:
   - WaitBetweenShoot: 0.1
     BaseDamage: 2

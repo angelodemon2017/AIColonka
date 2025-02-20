@@ -30,9 +30,9 @@ public class PlayerBladeAttackState : PlayerState
 
     }
 
-    internal override void EndCurrentAnimation()
+    internal override void EndCurrentAnimation(float timeEnd = 0)
     {
-        base.EndCurrentAnimation();
+        base.EndCurrentAnimation(timeEnd);
 
         if (_availableControlStates.TryGetValue(_lastAction, out PlayerState playerState))
         {

@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "FSM/PlayerState/PlayerBitAttackState", order = 1)]
 public class PlayerBitAttackState : PlayerState
 {
-    [SerializeField] private BitShooter _bitShooter;
+    [SerializeField] private List<BitWeapon> _bitWeapons = new();
 
     private FallingController _fallingController;
 
@@ -19,11 +20,9 @@ public class PlayerBitAttackState : PlayerState
         _fallingController = playerFSM.GetFallingController;
         _fallingController.SwitchGravity();
 
-        var w = Instantiate(_bitShooter, 
-            playerFSM.GetPoints.PointOfLookCamera.position,
-            Camera.main.transform.rotation);
+        var w = Instantiate(_bitWeapons.GetRandom());
 
-        w.SetPBAS(this);
+        w.SetPBAS(this, playerFSM.GetPoints);
         w.Init(EnumWhoIs.Player,
             playerFSM.GetPoints.PointOfLookCamera,
             playerFSM.GetPoints.EnemyIsTarget ?
@@ -33,7 +32,7 @@ public class PlayerBitAttackState : PlayerState
 
         Vector3 forward = Camera.main.transform.forward;
         forward.y = 0f;
-        playerFSM.AnimationAdapter.transform.rotation = Quaternion.LookRotation(forward.normalized);
+        playerFSM.AnimationAdapter.transform.rotation = Quaternion.LookRotation(forward);
     }
 
     internal override void CallPlayerAction(EnumPlayerControlActions playerAction)
@@ -55,10 +54,10 @@ public class PlayerBitAttackState : PlayerState
         }
     }
 
-    internal override void EndCurrentAnimation()
+    internal override void EndCurrentAnimation(float timeEnd)
     {
-        base.EndCurrentAnimation();
-        _timeOut = 0.5f;
+        base.EndCurrentAnimation(timeEnd);
+        _timeOut = timeEnd;
     }
 
     public override void ExitState()

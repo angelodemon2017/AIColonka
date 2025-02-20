@@ -25,7 +25,13 @@ public class PlayerState : State
 
     internal virtual void CallAxisHorVer(float hor, float ver) { }
 
-    internal virtual void EndCurrentAnimation() { }
+    internal virtual void EndCurrentAnimation(float timeEnd) 
+    {
+        if (timeEnd <= 0f)
+        {
+            IsFinished = true;
+        }
+    }
 
     protected override void Run()
     {

@@ -4,6 +4,11 @@ public class Rotator : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
+    internal void AddSpeed(float percent)
+    {
+        _speed += _speed * percent / 100f;
+    }
+
     internal void SetSpeed(float speed)
     {
         _speed = speed;

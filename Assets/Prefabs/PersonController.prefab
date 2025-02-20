@@ -47,13 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14642d4a5e30c2e4a8b17b8afbdc4a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackPoint: {fileID: 5494170523584613942}
-  _bits: []
-  _bit: {fileID: 2690838663232665676, guid: 00301a2e216cd024c9c926f584483564, type: 3}
-  _parent: {fileID: 7029372423329670528}
-  _speedRotate: -1.5
-  _bitScript: {fileID: 284691898790036751, guid: dcc3cb9f886d7ac4f992e54b4fc9a48e, type: 3}
-  _speedShoot: 500
   _orbits:
   - {fileID: 9181566261014046718}
   - {fileID: 5812029721117945758}
@@ -745,7 +738,7 @@ Transform:
   m_GameObject: {fileID: 3972177567460372651}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -845,6 +838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotator: {fileID: 910350095650174490}
+  _onOffPeriod: 0.1
   _bits:
   - {fileID: 5683134745402992641}
   - {fileID: 89405060805884186}
@@ -1039,6 +1033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotator: {fileID: 3157174561113024590}
+  _onOffPeriod: 0.1
   _bits:
   - {fileID: 549327261362682296}
   - {fileID: 3250624203013316212}
@@ -1315,6 +1310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotator: {fileID: 1984517601169727596}
+  _onOffPeriod: 0.1
   _bits:
   - {fileID: 3674796030214398770}
   - {fileID: 461995464841714105}

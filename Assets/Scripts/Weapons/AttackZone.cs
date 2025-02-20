@@ -4,8 +4,9 @@ using UnityEngine;
 public class AttackZone : Weapon
 {
     [SerializeField] private SphereCollider _sphereCollider;
+    [SerializeField] private float _size = 1f;
+    [SerializeField] private bool _multHit;
     private float _timeOut = 1f;
-    private float _size = 1f;
 
     private HashSet<WhoIs> _wasAttacked = new();
     
@@ -28,7 +29,7 @@ public class AttackZone : Weapon
     {
         base.TakeCollision(whoIs);
 
-        if (_wasAttacked.Add(whoIs))
+        if (_wasAttacked.Add(whoIs) || _multHit)
         {
             whoIs.TakeDamage(_damage);
         }

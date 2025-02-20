@@ -62,7 +62,7 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
     private void EndCurrentAnimate()
     {
-        _currentState.EndCurrentAnimation();
+        _currentState.EndCurrentAnimation(0f);
     }
 
     internal void CallPlayerAction(EnumPlayerControlActions playerAction)

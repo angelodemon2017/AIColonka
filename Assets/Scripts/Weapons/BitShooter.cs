@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BitShooter : Weapon
+public class BitShooter : BitWeapon
 {
     [SerializeField] private List<DamageConfig> _damageConfigs = new();
     [SerializeField] private Projectile _projectile;
 
     private DamageConfig _curDamConf;
-    private PlayerBitAttackState _playerBitAttackState;
 
     internal override void StartAttack()
     {
         base.StartAttack();
 
-        _curDamConf = _damageConfigs[Mathf.Clamp(ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits, 0, _damageConfigs.Count - 1)];
+        transform.position = Points.PointOfLookCamera.position;
+        transform.rotation = Camera.main.transform.rotation;
+
+        _curDamConf = _damageConfigs[Mathf.Clamp(BitLevel, 0, _damageConfigs.Count - 1)];
 
         if (PlayerFSM.Instance.GetPoints.EnemyIsTarget)
         {
@@ -26,11 +28,6 @@ public class BitShooter : Weapon
         }
 
         StartCoroutine(Shoot(ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits - 1));
-    }
-
-    internal void SetPBAS(PlayerBitAttackState playerBitAttackState)
-    {
-        _playerBitAttackState = playerBitAttackState;
     }
 
     IEnumerator Shoot(int count)
@@ -47,7 +44,7 @@ public class BitShooter : Weapon
             rotation: transform.rotation);
 
         bit.SetDamage(new Damage(EnumDamageType.BitRange, 
-            _curDamConf.BaseDamage + (int)(_curDamConf.MultOrder * ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits - count)));
+            _curDamConf.BaseDamage + (int)(_curDamConf.MultOrder * BitLevel - count)));
 
         yield return new WaitForSeconds(0.15f);
 
@@ -57,7 +54,7 @@ public class BitShooter : Weapon
         }
         else
         {
-            _playerBitAttackState?.EndCurrentAnimation();
+            EndBitAttack();
         }
     }
 
