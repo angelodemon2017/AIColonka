@@ -30,7 +30,7 @@ public class Projectile : AVWeapon
     {
         _startSpeed += _accelSpeed;
 
-        transform.position += _direction * _startSpeed * Time.deltaTime;
+        transform.position += _direction * _startSpeed * Time.fixedDeltaTime;
     }
 
     public override void TakeCollision(WhoIs whoIs)

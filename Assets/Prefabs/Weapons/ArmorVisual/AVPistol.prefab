@@ -184,4 +184,5 @@ MonoBehaviour:
   _projectile: {fileID: -5650407497827404615, guid: 382ca965b933c35408ede0a7ae55790d, type: 3}
   _spawnPoint: {fileID: 7425474071680170717}
   _beforeShot: 0.1
-  _afterShot: 0.3
+  _afterShot: 1
+  _speed: 0.5

@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8768553855555515534}
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20aed914bcd3c340ba570d06cba9824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 50
+  _speed: 10
 --- !u!1 &3386240435541391290
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +145,8 @@ MonoBehaviour:
   - {fileID: 5095455691208105772}
   _weaponVariants:
   - {fileID: 1523243678034186752, guid: 7238e317cb0cec0488c027c428e10b75, type: 3}
+  - {fileID: 1523243678034186752, guid: ddc67dfa44f6e7a449acb1dce038f20e, type: 3}
+  - {fileID: 953380970497692331, guid: 4dcbf7c6190db9d47829acdc4aab7b73, type: 3}
   _countSpawn: 10
   _intervalSpawn: 0.1
 --- !u!114 &4985355747473541939

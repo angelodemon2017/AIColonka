@@ -36,11 +36,11 @@ public class CameraController : MonoBehaviour
         transform.SetParent(_pivot);
     }
 
-/*    internal void UpdateMouse(float xMouse, float yMouse)
-    {
-        _currentX += xMouse * sensitivity;
-        _currentY -= yMouse * -sensitivity;
+    /*    internal void UpdateMouse(float xMouse, float yMouse)
+        {
+            _currentX += xMouse * sensitivity;
+            _currentY -= yMouse * -sensitivity;
 
-        _currentY = Mathf.Clamp(_currentY, minYAngle, maxYAngle);
-    }/**/
+            _currentY = Mathf.Clamp(_currentY, minYAngle, maxYAngle);
+        }/**/
 }

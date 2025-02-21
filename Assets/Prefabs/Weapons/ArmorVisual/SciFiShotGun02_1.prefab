@@ -153,3 +153,4 @@ MonoBehaviour:
   _spawnPoint: {fileID: 7425474071680170717}
   _beforeShot: 0.1
   _afterShot: 0.3
+  _speed: 0.5
