@@ -21,8 +21,8 @@ public class PlayerBitAttackState : PlayerState
 
         _fallingController = playerFSM.GetFallingController;
 
-        if ((IsAir && !_fallingController.AvailableActionInAir) || 
-            ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits <= 0)
+        if (IsAir && !_fallingController.AvailableActionInAir)// || 
+//            ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits <= 0)
         {
             IsFinished = true;
             return;

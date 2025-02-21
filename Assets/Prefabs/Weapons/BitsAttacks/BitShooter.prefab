@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1727830917689719796}
   - component: {fileID: 4063225489199983808}
   - component: {fileID: 8333833047574119067}
+  - component: {fileID: -592674870252798233}
   m_Layer: 0
   m_Name: BitShooter
   m_TagString: Untagged
@@ -50,6 +51,7 @@ MonoBehaviour:
     ValueDamage: 2
   WhoIs: {fileID: 8333833047574119067}
   _timeForEndAttack: 1
+  _periodicActivator: {fileID: -592674870252798233}
   _damageConfigs:
   - WaitBetweenShoot: 0.1
     BaseDamage: 2
@@ -77,3 +79,15 @@ MonoBehaviour:
   whoIs: 0
   _damageProtected: []
   _collisionEvents: []
+--- !u!114 &-592674870252798233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425879577499369233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ebb405de80a404b9e3073a50b6fb9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

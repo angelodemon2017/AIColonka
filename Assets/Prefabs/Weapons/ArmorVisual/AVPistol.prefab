@@ -179,7 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage:
     DamageType: 2
-    ValueDamage: 10
+    ValueDamage: 5
   WhoIs: {fileID: 5946175661999580042}
   _projectile: {fileID: -5650407497827404615, guid: 382ca965b933c35408ede0a7ae55790d, type: 3}
   _spawnPoint: {fileID: 7425474071680170717}

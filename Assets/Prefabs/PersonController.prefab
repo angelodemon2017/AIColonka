@@ -3705,6 +3705,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5087740095407099654}
     - target: {fileID: 2854347910594390725, guid: 8252e9fa81da90c4f95cbebf14f9b75b, type: 3}
+      propertyPath: _specWeapon
+      value: 
+      objectReference: {fileID: 2829242045391599170, guid: 1a79c1b0f43aecc4a9a30558d429a2c4, type: 3}
+    - target: {fileID: 2854347910594390725, guid: 8252e9fa81da90c4f95cbebf14f9b75b, type: 3}
       propertyPath: _fallingController
       value: 
       objectReference: {fileID: 4176115940965244519}

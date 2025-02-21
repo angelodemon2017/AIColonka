@@ -1,9 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BitShooter : BitWeapon
 {
+    [SerializeField] private PeriodicActivator _periodicActivator;
     [SerializeField] private List<DamageConfig> _damageConfigs = new();
     [SerializeField] private Projectile _projectile;
 
@@ -52,11 +52,10 @@ public class BitShooter : BitWeapon
 
         _curDamConf = _damageConfigs[Mathf.Clamp(BitLevel, 0, _damageConfigs.Count - 1)];
 
-
-        StartCoroutine(Shoot(BitLevel - 1));
+        _periodicActivator.InitAndStart(SpawnAndShoot, BitLevel - 1, 0.15f, EndSpawning);
     }
 
-    IEnumerator Shoot(int count)
+    private void SpawnAndShoot(int count)
     {
         var fromVect = new Vector3(Random.Range(-0.3f, 0.3f),
             Random.Range(-0.3f, 0.3f),
@@ -65,24 +64,18 @@ public class BitShooter : BitWeapon
         var bit = Instantiate(_projectile, transform.position + fromVect, transform.rotation);
         bit.Init(
             WhoIs.whoIs,
-//            transform,
+            //            transform,
             target: _target,
             rotation: transform.rotation);
 
-        bit.SetDamage(new Damage(EnumDamageType.BitRange, 
+        bit.SetDamage(new Damage(EnumDamageType.BitRange,
             _curDamConf.BaseDamage + (int)(_curDamConf.MultOrder * BitLevel - count)));
+    }
 
-        yield return new WaitForSeconds(0.15f);
-
-        if (count > 0)
-        {
-            StartCoroutine(Shoot(count - 1));
-        }
-        else
-        {
-            EndBitAttack();
-            Destroy(gameObject);
-        }
+    private void EndSpawning()
+    {
+        EndBitAttack();
+        Destroy(gameObject);
     }
 
     [System.Serializable]

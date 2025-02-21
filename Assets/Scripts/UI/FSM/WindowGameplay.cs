@@ -51,12 +51,12 @@ public class WindowGameplay : MAINWindow
             _playerFSM.CallPlayerAction(EnumPlayerControlActions.BladeAttack);
         }
 
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") && ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits > 0)
         {
             _playerFSM.CallPlayerAction(EnumPlayerControlActions.BitAttack);
         }
 
-        if (Input.GetButtonDown("Fire3"))
+        if (Input.GetButtonDown("Fire3") && ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.AVPower >= 0)
         {
             _playerFSM.CallPlayerAction(EnumPlayerControlActions.AVAttack);
         }
