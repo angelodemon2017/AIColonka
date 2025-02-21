@@ -7,6 +7,9 @@ public class MainData
     public ProgressHistory progressHistory = new ProgressHistory();
     public Chapter chapter = new Chapter();
     public GamePlayProgress gamePlayProgress = new GamePlayProgress();
+    public LevelsState levelsState = new LevelsState();
+
+    public Action BitUpgrade;
 
     public bool EmptyData => progressHistory.CurrentTask == 0;
 
@@ -19,8 +22,30 @@ public class MainData
     internal void SetLevel(EnumLevels enumLevel)
     {
         testSaveParam++;
-//        Debug.LogWarning($"SetLevel {enumLevel}");
         progressHistory.CurrentScene = (int)enumLevel;
+        SaveController.Save(this);
+    }
+
+    internal bool WasPick(EnumLevelProp levelProp)
+    {
+        return levelsState.WasPick(levelProp);
+    }
+
+    internal void PickProp(EnumLevelProp levelProp)
+    {
+        levelsState.PickProp(levelProp);
+
+        if ((levelProp | EnumLevelProp.IsBits) == EnumLevelProp.IsBits)
+        {
+            gamePlayProgress.BitUpgrade();
+
+            BitUpgrade?.Invoke();
+        }
+        if ((levelProp | EnumLevelProp.IsAVs) == EnumLevelProp.IsAVs)
+        {
+            gamePlayProgress.AVPUpgrade();
+        }
+
         SaveController.Save(this);
     }
 }
@@ -41,11 +66,37 @@ public class ProgressHistory
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class GamePlayProgress
 {
     public int BattleBits;
     public int AVPower;
+
+    public void BitUpgrade()
+    {
+        BattleBits++;
+    }
+
+    public void AVPUpgrade()
+    {
+        AVPower++;
+    }
+}
+
+[Serializable]
+public class LevelsState
+{
+    public EnumLevelProp LevelProps = EnumLevelProp.None;
+
+    public bool WasPick(EnumLevelProp prop)
+    {
+        return (LevelProps & prop) == prop;
+    }
+
+    public void PickProp(EnumLevelProp prop)
+    {
+        LevelProps |= prop;
+    }
 }
 
 [Serializable]

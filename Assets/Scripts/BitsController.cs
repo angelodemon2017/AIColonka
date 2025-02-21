@@ -9,32 +9,24 @@ public class BitsController : MonoBehaviour
     [SerializeField] private Material _peaceBitMaterial;
     [SerializeField] private Material _fightBitMaterial;
 
-    private BitOrbitConfig currentConfig => _bitOrbitConfigs[ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits];
+    private BitOrbitConfig currentConfig => _bitOrbitConfigs[currentBit];
     private bool isFighing => EntityRepository.Instance.HaveEnemies();
+    private int currentBit => ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits;
 
     private void Awake()
     {
-        SetBits(true);
+        ControllerDemoSaveFile.Instance.mainData.BitUpgrade += ShowAll;
     }
 
-/*    internal void Show(bool isShow = true)
+    private void Start()
     {
-        var config = currentConfig;
+        ShowAll();
+    }
 
-        //        _orbits.ForEach(o => o.gameObject.SetActive(isShow));
-
-        for (int i = 0; i < 3; i++)
-        {
-            _orbits[i].transform.localRotation =
-                Quaternion.Euler(0f, config.orbitConfigs[i].swift, 0);// _orbits[i].transform.parent.localRotation.eulerAngles.z);
-        }
-        _orbits[0].OnOffBits(config.orbitConfigs[0].countBit, 0.1f, isShow);
-        _orbits[1].OnOffBits(config.orbitConfigs[1].countBit, 
-            0.1f * config.orbitConfigs[0].countBit, isShow);
-        _orbits[2].OnOffBits(config.orbitConfigs[2].countBit,
-            0.1f * (config.orbitConfigs[0].countBit + config.orbitConfigs[1].countBit),
-            isShow);
-    }/**/
+    private void ShowAll()
+    {
+        SetBits(true);
+    }
 
     private void Update()
     {
@@ -42,14 +34,14 @@ public class BitsController : MonoBehaviour
         {
             ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits--;
             ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits =
-                Mathf.Clamp(ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits, 0, 9);
+                Mathf.Clamp(currentBit, 0, 9);
             SetBits(true);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits++;
             ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits =
-                Mathf.Clamp(ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits, 0, 9);
+                Mathf.Clamp(currentBit, 0, 9);
             SetBits(true);
         }
 
@@ -71,6 +63,7 @@ public class BitsController : MonoBehaviour
 
     internal void SetBits(bool isOn)
     {
+        Debug.Log($"show bits:{currentBit}");
         var config = currentConfig;
         for (int i = 0; i < 3; i++)
         {
@@ -88,6 +81,11 @@ public class BitsController : MonoBehaviour
             total += currentConfig.orbitConfigs[i].countBit;
         }
         return total;
+    }
+
+    private void OnDestroy()
+    {
+        ControllerDemoSaveFile.Instance.mainData.BitUpgrade -= ShowAll;
     }
 
     [System.Serializable]

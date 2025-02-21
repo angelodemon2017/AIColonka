@@ -18,11 +18,6 @@ public class ControllerDemoSaveFile : MonoBehaviour
 //        Debug.Log($"Awake ControllerDemoSaveFile");
     }
 
-    private void Start()
-    {
-//        Debug.Log($"Start ControllerDemoSaveFile");
-    }
-
     internal TaskSO GetCurrentTask()
     {
         return TaskConfig.GetTaskById(mainData.progressHistory.CurrentTask);
@@ -31,5 +26,13 @@ public class ControllerDemoSaveFile : MonoBehaviour
     internal bool IsCurrentTask(TaskSO taskSO)
     {
         return TaskConfig.GetTaskById(mainData.progressHistory.CurrentTask) == taskSO;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Debug.Log($"XText:{(int)mainData.levelsState.LevelProps}");
+        }
     }
 }
