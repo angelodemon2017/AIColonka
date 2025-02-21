@@ -112,6 +112,8 @@ MonoBehaviour:
   WhoIs: {fileID: 2740253745079568826}
   _startSpeed: 2
   _accelSpeed: 1
+  _timeOut: 8
+  _destroyAtCollision: 1
 --- !u!114 &2740253745079568826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +162,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  _collider: {fileID: 4792239221087960869}
 --- !u!136 &4792239221087960869
 CapsuleCollider:
   m_ObjectHideFlags: 0

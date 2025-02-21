@@ -47,6 +47,7 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
         CameraController.Instance.SetPivot(
             _points.PointOfMoveCamera,
             _points.PointOfLookCamera);
+        _armorVisualizator.SetPoints(_points);
     }
 
     private void Update()
@@ -103,5 +104,11 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     {
         Instance = null;
         _animationAdapter.EndAnimation -= EndCurrentAnimate;
+    }
+
+    [ContextMenu("CallAVA")]
+    private void CallAV()
+    {
+        CallPlayerAction(EnumPlayerControlActions.AVAttack);
     }
 }

@@ -45,6 +45,7 @@ public class ProgressHistory
 public class GamePlayProgress
 {
     public int BattleBits;
+    public int AVPower;
 }
 
 [Serializable]

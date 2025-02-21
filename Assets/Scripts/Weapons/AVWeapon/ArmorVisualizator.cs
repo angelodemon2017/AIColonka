@@ -5,18 +5,27 @@ public class ArmorVisualizator : MonoBehaviour
 {
     [SerializeField] private WhoIs _whoIs;
 
+    [SerializeField] private FallingController _fallingController;
     [SerializeField] private List<Transform> _points1;
     [SerializeField] private List<Transform> _points2;
     [SerializeField] private List<Transform> _points3;
 
-    [SerializeField] private Weapon _weaponFrefab;
+    [SerializeField] private List<AVWeapon> _avWeapon;
     [SerializeField] private Transform _target;
 
+    private Points _points;
+
+    private int levelAVPower => ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.AVPower;
     internal WhoIs GetWhoIs => _whoIs;
 
     internal void SetTarget(Transform newTarget)
     {
         _target = newTarget;
+    }
+
+    internal void SetPoints(Points points)
+    {
+        _points = points;
     }
 
     internal void CallAttack(TypeVisualAttack typeAttack)
@@ -34,10 +43,13 @@ public class ArmorVisualizator : MonoBehaviour
     private void CallNearAttack()
     {
         var tempTrans = _points1.GetRandom();
-        var tempWeapon = Instantiate(_weaponFrefab);
+        var tempWeapon = Instantiate(_avWeapon.GetRandom());
+        tempWeapon.InitAVW(levelAVPower, isAir: !_fallingController.IsGrounded);
         tempWeapon.Init(_whoIs.whoIs,
             tempTrans,
-            _target,
+            _points.EnemyIsTarget ?
+                _points.TargetEnemy.transform :
+                null,
             _whoIs.whoIs == EnumWhoIs.Player ?
                 CameraController.Instance.transform.transform.rotation :
                 tempTrans.rotation);

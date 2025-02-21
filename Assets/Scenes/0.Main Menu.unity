@@ -286,6 +286,7 @@ MonoBehaviour:
       BaseDamage: 10
     gamePlayProgress:
       BattleBits: 0
+      AVPower: 0
 --- !u!4 &1014886202
 Transform:
   m_ObjectHideFlags: 0

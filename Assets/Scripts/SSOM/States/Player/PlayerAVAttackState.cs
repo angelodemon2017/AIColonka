@@ -8,18 +8,21 @@ public class PlayerAVAttackState : PlayerState
 
     private float _timeOut = 0.75f;
 
+    internal bool IsAir => !playerFSM.GetFallingController.IsGrounded;
+
     protected override void Init()
     {
         base.Init();
 
         _fallingController = playerFSM.GetFallingController;
-        _fallingController.SwitchGravity();
 
-        if (!_fallingController.AvailableActionInAir)
+        if (IsAir && !_fallingController.AvailableActionInAir)
         {
             IsFinished = true;
             return;
         }
+
+        _fallingController.SwitchGravity();
 
         _armorVisualizator = playerFSM.GetArmorVisualizator;
         _armorVisualizator.CallAttack(GetTypeAttack());

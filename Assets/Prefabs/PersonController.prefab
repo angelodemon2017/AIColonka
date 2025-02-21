@@ -3704,6 +3704,10 @@ PrefabInstance:
       propertyPath: _whoIs
       value: 
       objectReference: {fileID: 5087740095407099654}
+    - target: {fileID: 2854347910594390725, guid: 8252e9fa81da90c4f95cbebf14f9b75b, type: 3}
+      propertyPath: _fallingController
+      value: 
+      objectReference: {fileID: 4176115940965244519}
     - target: {fileID: 8181849969019009957, guid: 8252e9fa81da90c4f95cbebf14f9b75b, type: 3}
       propertyPath: m_Name
       value: ArmorVisualizator

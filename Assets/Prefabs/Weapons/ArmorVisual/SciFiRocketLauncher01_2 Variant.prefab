@@ -143,16 +143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdeeeab153a131f40adb06c7f1f1a765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hpComponent: {fileID: 0}
   whoIs: 0
-  _enemyCollisionEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  _friendCollisionEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  _anyCollisionEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  _damageProtected: []
+  _collisionEvents: []
 --- !u!114 &953380970497692331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +159,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae0c3560b147b3499aaa57de6a90b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage:
+    DamageType: 2
+    ValueDamage: 0
   WhoIs: {fileID: 5851035839497135222}
   _projectile: {fileID: 751021162480697255, guid: 4259604481b64ec44b5276a3b47d7eb7, type: 3}
   _spawnPoint: {fileID: 2481651195660742379}
+  _beforeShot: 0.5
+  _afterShot: 0.5

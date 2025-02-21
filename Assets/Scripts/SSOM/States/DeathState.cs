@@ -6,7 +6,8 @@ public class DeathState : State
     protected override void Init()
     {
         base.Init();
-        if (Character is EntityFSM entityFSM && entityFSM.GetArmorVisualizator.GetWhoIs.whoIs != EnumWhoIs.Player)
+        if (Character is EntityFSM entityFSM &&
+            entityFSM.GetArmorVisualizator.GetWhoIs.whoIs != EnumWhoIs.Player)
         {
             EntityRepository.Instance.RemoveWho(entityFSM.GetArmorVisualizator.GetWhoIs);
         }
