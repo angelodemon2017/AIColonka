@@ -25,6 +25,7 @@ public class Points
     private Vector3 _middlePoint;
     private Vector3 _middlePoint2;
 
+    [SerializeField] private LayerMask layerMask;
     private WhoIs _holdTarget;
     private Vector3 _tempPosit;
     private float _cashMinDistance = 0f;
@@ -52,14 +53,14 @@ public class Points
     internal void SetHoldTarget(WhoIs newTarget)
     {
         _holdTarget = newTarget;
-        _holdTarget.OnDeath += WindowGameplay.Instance.CancelTarget;
+        _holdTarget.OnDeath += WindowGameplay.Instance.TrySetTarget;
     }
 
     internal void CancelTarget()
     {
         if (_holdTarget)
         {
-            _holdTarget.OnDeath -= WindowGameplay.Instance.CancelTarget;
+            _holdTarget.OnDeath -= WindowGameplay.Instance.TrySetTarget;
             _holdTarget = null;
         }
         _currentX = PointOfCenterOrbit.rotation.eulerAngles.y;
@@ -83,8 +84,8 @@ public class Points
     internal void FixUpd()
     {
         ray = new Ray(PointOfTargetForEnemy.position, PointOfMoveCamera.position - PointOfTargetForEnemy.position);
-        Physics.Raycast(ray, out hit, minDistance);
-        if (hit.collider && hit.collider.tag != Dicts.Tags.Player)
+        Physics.Raycast(ray, out hit, minDistance, layerMask);
+        if (hit.collider)
         {
             _transCol = hit.collider.transform;
             _distanceToWall = Vector3.Distance(PointOfLookCamera.position, hit.point);

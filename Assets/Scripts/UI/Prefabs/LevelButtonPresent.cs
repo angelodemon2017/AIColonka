@@ -22,7 +22,7 @@ public class LevelButtonPresent : MonoBehaviour
         ClickAction += callBack;
 
         _labelPresent.text = await Localizations.GetLocalizedText(
-            Localizations.Levels.LevelsTable,
+            Localizations.Tables.LevelsTable,
             Localizations.Levels.MapLevelKeys[numLevel]);
     }
 

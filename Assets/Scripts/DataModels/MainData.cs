@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class MainData
@@ -12,6 +13,12 @@ public class MainData
     public Action BitUpgrade;
 
     public bool EmptyData => progressHistory.CurrentTask == 0;
+
+    public void SetTask(TaskSO task)
+    {
+        progressHistory.SetTask(task.Key);
+        SaveController.Save(this);
+    }
 
     public void SetTask(int newTask)
     {
@@ -37,16 +44,28 @@ public class MainData
 
         if ((levelProp | EnumLevelProp.IsBits) == EnumLevelProp.IsBits)
         {
-            gamePlayProgress.BitUpgrade();
-
-            BitUpgrade?.Invoke();
+            AddBits(1);
         }
         if ((levelProp | EnumLevelProp.IsAVs) == EnumLevelProp.IsAVs)
         {
-            gamePlayProgress.AVPUpgrade();
+            AddAVP(1);
         }
 
         SaveController.Save(this);
+    }
+
+    internal void AddBits(int bits)
+    {
+        gamePlayProgress.BitAdd(bits);
+
+        BitUpgrade?.Invoke();
+    }
+
+    internal void AddAVP(int power)
+    {
+        gamePlayProgress.AVPUpgrade();
+
+        BitUpgrade?.Invoke();
     }
 }
 
@@ -58,11 +77,25 @@ public class ProgressHistory
     public int CurrentScene;
     public int RoomConfig = 0;
     public int CurrentTask = 0;
+    public string KeyMainTask;
+    public List<string> WasDones = new();
+
+    public void SetTask(string keyTask)
+    {
+        WasDones.Add(KeyMainTask);
+        KeyMainTask = keyTask;
+        TaskUpdate?.Invoke();
+    }
 
     public void SetTask(int newTask)
     {
         CurrentTask = newTask;
         TaskUpdate?.Invoke();
+    }
+
+    public bool IsWasDone(string keyTask)
+    {
+        return WasDones.Contains(keyTask);
     }
 }
 
@@ -71,6 +104,12 @@ public class GamePlayProgress
 {
     public int BattleBits;
     public int AVPower;
+
+    public void BitAdd(int bits)
+    {
+        BattleBits += bits;
+        BattleBits = Math.Clamp(BattleBits, 0, 9);
+    }
 
     public void BitUpgrade()
     {

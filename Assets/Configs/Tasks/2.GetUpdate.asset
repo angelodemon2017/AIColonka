@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a809a06096ea9084d82a13077ebd7161, type: 3}
   m_Name: 2.GetUpdate
   m_EditorClassIdentifier: 
+  Key: 2getUpdate
   Name: "\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435"
   Description: "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435"
   AvailableLevels: 03000000

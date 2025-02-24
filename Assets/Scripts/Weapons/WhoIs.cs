@@ -14,6 +14,7 @@ public class WhoIs : MonoBehaviour
     private Dictionary<EnumCollisionResult, UnityEvent<WhoIs>> _cashEvents = new();
     private Dictionary<EnumDamageType, int> _cashDamages = new();
 
+    internal bool IsAlive => _hpComponent.IsAlive;
     public Action OnDeath;
 
     private void Awake()
@@ -49,8 +50,13 @@ public class WhoIs : MonoBehaviour
 //        Debug.Log($"CheckCollider {checkGO.name}");
         if (checkGO.TryGetComponent(out WhoIs isWho))
         {
-            if (_cashEvents.TryGetValue(whoIs.GetColResult(isWho.whoIs), out UnityEvent<WhoIs> _event))
+            var colRes = whoIs.GetColResult(isWho.whoIs);
+            if (_cashEvents.TryGetValue(colRes, out UnityEvent<WhoIs> _event))
             {
+                if (colRes == EnumCollisionResult.Enemy && whoIs == EnumWhoIs.Player)
+                {
+                    PlayerFSM.Instance.Hit++;
+                }
 //                _collider.enabled = false;
                 _event?.Invoke(isWho);
             }

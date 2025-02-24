@@ -8,15 +8,19 @@ public abstract class State : ScriptableObject
     [SerializeField] protected List<State> AvailableStates;
     [SerializeField] protected EnumAnimations Animation;
 
+    protected virtual EnumAnimations GetAnimation => Animation;
+
     public void InitState(IStatesCharacter character)
     {
         IsFinished = false;
         Character = character;
-        Character.PlayAnimation(Animation);
         Init();
+        Character.PlayAnimation(GetAnimation);
     }
 
     protected virtual void Init() { }
+
+    internal virtual void CheckAndUpdateState() { }
 
     public void RunState()
     {

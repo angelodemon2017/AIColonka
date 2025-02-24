@@ -5,6 +5,7 @@ public class ZoneTrigger : MonoBehaviour
 {
     [SerializeField] private TaskSO _needTask;
     [SerializeField] private UnityEvent _unityEvent;
+    [SerializeField] private UnityEvent<GameObject> _enterObject;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class ZoneTrigger : MonoBehaviour
         //??if (other.tag == Dicts.Tags.Player)
         {
             RunScript();
+            _enterObject?.Invoke(other.gameObject);
         }
     }
 

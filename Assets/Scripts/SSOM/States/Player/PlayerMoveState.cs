@@ -6,6 +6,8 @@ public class PlayerMoveState : PlayerState
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 10f;
 
+    [SerializeField] private EnumAnimations slowMoveAnimate;
+
     private Transform _avatarTransform;
     private Transform _characterTransform;
     private Transform _cameraTransform;
@@ -13,6 +15,15 @@ public class PlayerMoveState : PlayerState
     private CharacterController _characterController;
 
     private float _timeOut = 0.1f;
+
+    private float totalSpeed => IsSlowMove ?
+        moveSpeed / 2f :
+        moveSpeed;
+    private bool IsSlowMove => playerFSM.AdditionalStates.IsSlow;
+    protected override EnumAnimations GetAnimation =>
+        IsSlowMove ?
+        slowMoveAnimate :
+        Animation;
 
     protected override void Init()
     {
@@ -23,6 +34,12 @@ public class PlayerMoveState : PlayerState
         _characterController = _characterTransform.GetComponent<CharacterController>();
         _avatarTransform = playerFSM.AnimationAdapter.transform;
     }
+
+/*    internal override void CheckAndUpdateState()
+    {
+        base.CheckAndUpdateState();
+        Character.PlayAnimation(GetAnimation);
+    }/**/
 
     internal override void CallAxisHorVer(float hor, float ver)
     {
@@ -37,7 +54,7 @@ public class PlayerMoveState : PlayerState
         right.Normalize();
 
         desiredMoveDirection = (forward * ver + right * hor).normalized;
-        _characterController.Move(desiredMoveDirection * moveSpeed * Time.fixedDeltaTime);
+        _characterController.Move(desiredMoveDirection * totalSpeed * Time.fixedDeltaTime);
 
         if (desiredMoveDirection != Vector3.zero)
         {

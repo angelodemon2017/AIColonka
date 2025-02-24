@@ -16,7 +16,7 @@ public class DialogTrigger : MonoBehaviour
         }
     }
 
-    private void RunScript()
+    public void RunScript()
     {
         ControllerDemoSaveFile.Instance.CurrentDialog = dialog;
 //            mainData.progressHistory.Dialog = IdDialog;

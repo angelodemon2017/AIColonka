@@ -1,11 +1,15 @@
+using System;
 using UnityEngine;
 
 public class PlayerFSM : MonoBehaviour, IStatesCharacter
 {
     public static PlayerFSM Instance;
 
+    [SerializeField] private VirtualObjectChecker _virtualObjectChecker;
+    [SerializeField] private AdditionalStates _additionalStates;
     [SerializeField] private BitsController _bitsController;
     [SerializeField] private int _combo;
+    [SerializeField] private int _hit;
     [SerializeField] private Points _points;
     [SerializeField] private HPComponent _hpComponent;
     [SerializeField] private ArmorVisualizator _armorVisualizator;
@@ -15,10 +19,14 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     [SerializeField] private PlayerState _startState;
 
     [SerializeField] private PlayerState _currentState;
+
     private Transform _transform;
+    private float _hitUpdate;
+
+    internal Action OnUpdatePlayer;
 
     #region properties
-
+    internal AdditionalStates AdditionalStates => _additionalStates;
     internal ArmorVisualizator GetArmorVisualizator => _armorVisualizator;
     internal AnimationAdapter AnimationAdapter => _animationAdapter;
     public Transform GetTransform() => _transform;
@@ -28,12 +36,27 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     internal Transform PointOfTargetForEnemy => _points.PointOfTargetForEnemy;
     internal Points GetPoints => _points;
     internal BitsController BitsController => _bitsController;
+    internal VirtualObjectChecker virtualObjectChecker => _virtualObjectChecker;
     internal int Combo 
     {
         get => _combo;
         set 
         {
             _combo = value;
+            OnUpdatePlayer?.Invoke();
+        }
+    }
+    internal int Hit 
+    {
+        get => _hit;
+        set 
+        {
+            _hit = value;
+            if (_hit > 0)
+            {
+                _hitUpdate = 3f;
+            }
+            OnUpdatePlayer?.Invoke();
         }
     }
     #endregion
@@ -50,6 +73,17 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
         _armorVisualizator.SetPoints(_points);
     }
 
+    internal void SetSlowState(bool isSlow)
+    {
+        _additionalStates.SetSlow(isSlow);
+//        _currentState.CheckAndUpdateState();
+    }
+
+    internal void CallTryRelease()
+    {
+        _virtualObjectChecker.CallRelease();
+    }
+
     private void Update()
     {
         _currentState.RunState();
@@ -59,6 +93,14 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     {
         _currentState.FixedRun();
         _points.FixUpd();
+        if (_hitUpdate > 0f)
+        {
+            _hitUpdate -= Time.fixedDeltaTime;
+            if (_hitUpdate <= 0f)
+            {
+                Hit = 0;
+            }
+        }
     }
 
     private void EndCurrentAnimate()

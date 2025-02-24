@@ -29,13 +29,7 @@ public class Weapon : MonoBehaviour
         _damage = new Damage(damage.DamageType, damage.ValueDamage);
     }
 
-    internal virtual void StartAttack()
-    {
+    internal virtual void StartAttack() { }
 
-    }
-
-    public virtual void TakeCollision(WhoIs whoIs)
-    {
-
-    }
+    public virtual void TakeCollision(WhoIs whoIs) { }
 }

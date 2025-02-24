@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevepProp : MonoBehaviour
 {
     [SerializeField] private EnumLevelProp _levelProp;
+    [SerializeField] private UnityEvent _eventWasPick;
 
     private void Awake()
     {
@@ -14,6 +16,7 @@ public class LevepProp : MonoBehaviour
         if (ControllerDemoSaveFile.Instance.mainData.WasPick(_levelProp))
         {
             Destroy(gameObject);
+            _eventWasPick?.Invoke();
         }
     }
 

@@ -13,6 +13,13 @@ public static class Localizations
         return op.Result;
     }
 
+    public static class Tables
+    {
+        public static string LevelsTable = "Levels";
+        public static string BackTalksTable = "BackTalks";
+        public static string GamePlay = "GamePlay";
+    }
+
     public static class Levels
     {
         public static Dictionary<EnumLevels, string> MapLevelKeys = new()
@@ -31,7 +38,6 @@ public static class Localizations
             { EnumLevels.Subconscious, SUBCONSCIOUS },
         };
 
-        public static string LevelsTable = "Levels";
         public const string MAIN_MENU = "MAIN_MENU";
         public const string DIALOGS_ROOMS = "DIALOGS_ROOMS";
         public const string HOMES_STATION = "HOMES_STATION";
@@ -44,5 +50,17 @@ public static class Localizations
         public const string BDSERVER = "BDSERVER";
         public const string PSYCOLOGY_ROOM = "PSYCOLOGY_ROOM";
         public const string SUBCONSCIOUS = "SUBCONSCIOUS";
+    }
+
+    public static class BackGroundTalk
+    {
+        public const string WAR_TALK1 = "WAR_TALK1";
+        public const string WAR_TALK2 = "WAR_TALK2";
+        public const string WAR_TALK3 = "WAR_TALK3";
+    }
+
+    public static class GamePlay
+    {
+        public const string TALK = "TALK";
     }
 }

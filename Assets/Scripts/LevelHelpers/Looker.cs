@@ -34,6 +34,7 @@ public class Looker : MonoBehaviour
         _target = newTarget;
     }
 
+    [ContextMenu("LookUpdate")]
     private void Look()
     {
         try

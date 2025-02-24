@@ -11,11 +11,12 @@ public class BitsController : MonoBehaviour
 
     private BitOrbitConfig currentConfig => _bitOrbitConfigs[currentBit];
     private bool isFighing => EntityRepository.Instance.HaveEnemies();
-    private int currentBit => ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits;
+    private MainData _mainData => ControllerDemoSaveFile.Instance.mainData;
+    private int currentBit => _mainData.gamePlayProgress.BattleBits;
 
     private void Awake()
     {
-        ControllerDemoSaveFile.Instance.mainData.BitUpgrade += ShowAll;
+        _mainData.BitUpgrade += ShowAll;
     }
 
     private void Start()
@@ -32,17 +33,11 @@ public class BitsController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits--;
-            ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits =
-                Mathf.Clamp(currentBit, 0, 9);
-            SetBits(true);
+            _mainData.AddBits(-1);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits++;
-            ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits =
-                Mathf.Clamp(currentBit, 0, 9);
-            SetBits(true);
+            _mainData.AddBits(1);
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -63,7 +58,7 @@ public class BitsController : MonoBehaviour
 
     internal void SetBits(bool isOn)
     {
-        Debug.Log($"show bits:{currentBit}");
+//        Debug.Log($"show bits:{currentBit}");
         var config = currentConfig;
         for (int i = 0; i < 3; i++)
         {

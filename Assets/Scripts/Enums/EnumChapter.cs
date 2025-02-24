@@ -33,4 +33,5 @@
     /// Shadow, pohot
     /// </summary>
     Lustreon,
+    BM_Master,
 }

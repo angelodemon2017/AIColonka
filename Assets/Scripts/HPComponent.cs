@@ -17,6 +17,8 @@ public class HPComponent : MonoBehaviour
     internal Action Death;
     internal Action<float, float, float> ChangeHP;
 
+    internal bool IsAlive => CurrentHP > 0;
+
     private void Awake()
     {
         CurrentHP = MaxHP;

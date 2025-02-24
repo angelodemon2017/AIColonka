@@ -1,36 +1,79 @@
+using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System.Threading.Tasks;
 
 public class VirtualObjectChecker : MonoBehaviour
 {
-    [SerializeField] private GameObject _uiLabelHint;
-    [SerializeField] private VirtualObject _virtualObjectTemp;
-    private bool _isVirtualObjectNear => _virtualObjectTemp != null;
+    [SerializeField] private Transform _checkPoint;
+
+    [SerializeField] private HashSet<IHinter> _hintsH = new();
+    
+    private IHinter _lastTransform;
+
+    internal IHinter LastHH => _lastTransform;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == Dicts.Tags.VirtualObject)
-        {
-            Debug.Log($"OnTriggerExit={other.name}");
-            _virtualObjectTemp = other.GetComponent<VirtualObject>();
-        }
+        _hintsH.Add(other.GetComponent<IHinter>());
+        CheckHints();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == Dicts.Tags.VirtualObject)
+        _hintsH.Remove(other.GetComponent<IHinter>());
+        CheckHints();
+    }
+
+    internal void CheckHints()
+    {
+        if (_hintsH.Count > 0)
         {
-            Debug.Log($"OnTriggerExit={other.name}");
-            _virtualObjectTemp = null;
+            _lastTransform = _hintsH
+                .OrderBy(h => Vector3.Distance(h.GetTransform.position, _checkPoint.position))
+                .FirstOrDefault();
+        }
+        else
+        {
+            _lastTransform = null;
+        }
+        ShowHintAsync();
+    }
+
+    internal void CallRelease()
+    {
+        _lastTransform?.Call();
+        _hintsH.Remove(_lastTransform);
+        _lastTransform = null;
+        ShowHintAsync();
+    }
+
+    private async Task ShowHintAsync()
+    {
+        if (WindowGameplay.Instance)
+        {
+            var totalHint = await GetLocHintAsync();
+
+            WindowGameplay.Instance.SetHintText(totalHint);
         }
     }
 
-    private void Update()
+    private async Task<string> GetLocHintAsync()
     {
-//        _uiLabelHint.SetActive(_isVirtualObjectNear);
-        if (Input.GetKeyDown(KeyCode.R) &&
-            _isVirtualObjectNear)
+        if (_lastTransform != null)
         {
-            _virtualObjectTemp.ExecuteChange();
+            var tempHint = await _lastTransform.GetLocHint();
+
+            return $"{_lastTransform.GetKeyForInteract}.{tempHint}";
+        }
+        return string.Empty;
+    }
+
+    private void FixedUpdate()
+    {
+        if (_hintsH.Count > 1)
+        {
+            CheckHints();
         }
     }
 }

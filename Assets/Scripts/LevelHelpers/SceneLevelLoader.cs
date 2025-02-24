@@ -26,7 +26,7 @@ public class SceneLevelLoader : MonoBehaviour
 
     IEnumerator LoadLevelCoroutine(EnumLevels level)
     {
-        ControllerDemoSaveFile.Instance.mainData.SetLevel(level);
+        ControllerDemoSaveFile.Instance.SetLevel(level);
         yield return new WaitForSeconds(0.1f);
 //        Debug.LogWarning($"LoadLevelCoroutine: {level}");
         AsyncOperation operation = SceneManager.LoadSceneAsync((int)level);

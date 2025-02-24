@@ -8,7 +8,7 @@ public class PlayerState : State
 
     protected PlayerFSM playerFSM;
 
-    internal PlayerFSM PlayerFSM => playerFSM;
+//    internal PlayerFSM PlayerFSM => playerFSM;
     internal virtual bool IsBladeAttack => false;
 
     protected override void Init()
@@ -45,7 +45,7 @@ public class PlayerState : State
     {
         base.Run();
 
-        playerFSM.AnimationAdapter.PlayAnimationEvent(Animation);
+        playerFSM.AnimationAdapter.PlayAnimationEvent(GetAnimation);
     }
 
     internal override void FixedRun()

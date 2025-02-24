@@ -249,7 +249,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2283448540005919049}
   - component: {fileID: 1891207570648659785}
-  - component: {fileID: 7612318161663126229}
+  - component: {fileID: 4318029034984826319}
+  - component: {fileID: 1612693043639671354}
   m_Layer: 6
   m_Name: VirtualObjectChecker
   m_TagString: Untagged
@@ -284,9 +285,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eaf42d85728a41a9d49fb0c931607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uiLabelHint: {fileID: 0}
-  _virtualObjectTemp: {fileID: 0}
---- !u!135 &7612318161663126229
+  _checkPoint: {fileID: 6748171529523572746}
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.1
+      inSlope: 0.2502304
+      outSlope: 0.2502304
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.99954927
+    - serializedVersion: 3
+      time: 20
+      value: 5
+      inSlope: 0.24078317
+      outSlope: 0.24078317
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.9991654
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _minDistance: 4
+  _hintsH: []
+--- !u!135 &4318029034984826319
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -299,14 +325,41 @@ SphereCollider:
     m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 9
+    m_Bits: 447
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1612693043639671354
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354240046558583833}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 447
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1793843719229474047
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,7 +372,7 @@ GameObject:
   - component: {fileID: 2114355065067554579}
   - component: {fileID: 661982503501994995}
   m_Layer: 0
-  m_Name: Orbit
+  m_Name: DebugOrbit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,7 +470,7 @@ Transform:
   m_GameObject: {fileID: 2286563342973350992}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 1, z: 0}
+  m_LocalPosition: {x: 0.5, y: 1.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -564,6 +617,7 @@ Transform:
   - {fileID: 7257652000003965876}
   - {fileID: 5494170523584613942}
   - {fileID: 155297469055927177}
+  - {fileID: 6748171529523572746}
   m_Father: {fileID: 5477296640093301973}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3473278329244976234
@@ -939,6 +993,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5037287704535226930}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7151948263541493508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6748171529523572746}
+  m_Layer: 0
+  m_Name: HintChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6748171529523572746
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7151948263541493508}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 2.029}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5037287704535226930}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8357398113988518652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,6 +1139,7 @@ GameObject:
   - component: {fileID: 6360888911972008021}
   - component: {fileID: 5087740095407099654}
   - component: {fileID: 4176115940965244519}
+  - component: {fileID: 6075059370870970207}
   m_Layer: 0
   m_Name: PersonController
   m_TagString: Player
@@ -1092,8 +1178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a027cbeb3fbeb4d8ff0d1c4c003605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _virtualObjectChecker: {fileID: 1891207570648659785}
+  _additionalStates: {fileID: 6075059370870970207}
   _bitsController: {fileID: 5533812791469335405}
   _combo: 0
+  _hit: 0
   _points:
     PointAttackZone1: {fileID: 3081252479321016903}
     Xsensitivity: 20
@@ -1106,6 +1195,9 @@ MonoBehaviour:
     PointOfTargetForEnemy: {fileID: 5062540644953757038}
     _bottomPoint: {fileID: 5917164863873671165}
     _topPoint: {fileID: 7257652000003965876}
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 264
   _hpComponent: {fileID: 2996413382871570050}
   _armorVisualizator: {fileID: 7345525404414865451}
   _fallingController: {fileID: 4176115940965244519}
@@ -1216,6 +1308,18 @@ MonoBehaviour:
     m_Bits: 8
   _characterController: {fileID: 7687012706516705241}
   JumpScaleFall: 3
+--- !u!114 &6075059370870970207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630790025869648306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e002e70cbb78db4db3eed89f053c4a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8698701905218878548
 GameObject:
   m_ObjectHideFlags: 0
@@ -3269,7 +3373,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - animationName: 1
+  - animationName: 2
     response:
       m_PersistentCalls:
         m_Calls:
@@ -3393,6 +3497,22 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 26
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - animationName: 1
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6020142001038055672}
+          m_TargetAssemblyTypeName: SuriyunHelpAnimation, Assembly-CSharp
+          m_MethodName: PlayAnimate
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 6
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -3712,6 +3832,18 @@ PrefabInstance:
       propertyPath: _fallingController
       value: 
       objectReference: {fileID: 4176115940965244519}
+    - target: {fileID: 2854347910594390725, guid: 8252e9fa81da90c4f95cbebf14f9b75b, type: 3}
+      propertyPath: _avWeapon.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2854347910594390725, guid: 8252e9fa81da90c4f95cbebf14f9b75b, type: 3}
+      propertyPath: _avWeapon.Array.data[1]
+      value: 
+      objectReference: {fileID: 1523243678034186752, guid: ddc67dfa44f6e7a449acb1dce038f20e, type: 3}
+    - target: {fileID: 2854347910594390725, guid: 8252e9fa81da90c4f95cbebf14f9b75b, type: 3}
+      propertyPath: _avWeapon.Array.data[2]
+      value: 
+      objectReference: {fileID: 953380970497692331, guid: 4dcbf7c6190db9d47829acdc4aab7b73, type: 3}
     - target: {fileID: 8181849969019009957, guid: 8252e9fa81da90c4f95cbebf14f9b75b, type: 3}
       propertyPath: m_Name
       value: ArmorVisualizator

@@ -28,7 +28,7 @@ public class EntityRepository : MonoBehaviour
     internal bool HaveEnemies()
     {
         return _whoAre
-            .Any(w => w.whoIs == EnumWhoIs.Enemy);
+            .Any(w => w.whoIs == EnumWhoIs.Enemy && w.IsAlive);
     }
 
     internal WhoIs GetNearestEnemy(Vector3 position)
