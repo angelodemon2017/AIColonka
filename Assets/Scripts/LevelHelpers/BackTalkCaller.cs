@@ -7,6 +7,6 @@ public class BackTalkCaller : MonoBehaviour
 
     public void CallTalk()
     {
-        ControllerDemoSaveFile.Instance.backTalk.SetTalkAsync(_keyTalk, _showTime);
+        _ = ControllerDemoSaveFile.Instance.backTalk.SetTalkAsync(_keyTalk, _showTime);
     }
 }

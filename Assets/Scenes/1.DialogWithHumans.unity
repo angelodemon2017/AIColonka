@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 935086196}
   - component: {fileID: 935086195}
   - component: {fileID: 935086197}
+  - component: {fileID: 935086198}
   m_Layer: 0
   m_Name: RoomMapping
   m_TagString: Untagged
@@ -285,6 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _roomConfigs:
   - Name: StartScene
+    DialogRoomPreset: 0
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -325,6 +327,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - Name: BadIdeaFather
+    DialogRoomPreset: 1
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -392,6 +395,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75af4d2149a4ba74cbd89a1557c92c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &935086198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935086194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0d3af3641cfd74f9c17c9b07b23c0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialog: {fileID: 11400000, guid: 803803945c45ba843b44a1aff5fdd29b, type: 2}
+  eventBies:
+  - variant:
+      KeyVariant: D1_S1_V0
+    UE:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1001 &1061782276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -928,6 +950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveTarget: {fileID: 0}
   _speedMove: 0
+  _distanceToTarget: 0.1
 --- !u!1001 &4328734537174377054
 PrefabInstance:
   m_ObjectHideFlags: 0

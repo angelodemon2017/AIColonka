@@ -7,9 +7,9 @@ public class DialogSetter : MonoBehaviour
         ControllerDemoSaveFile.Instance.CurrentDialog = dialog;
     }
 
-    public void SetRoomConfig(int idConfig)
+    public void SetRoomConfig(EnumDialogRoomPreset idConfig)
     {
-        ControllerDemoSaveFile.Instance.mainData.progressHistory.RoomConfig = idConfig;
+        ControllerDemoSaveFile.Instance.mainData.progressHistory.RoomConfig = (int)idConfig;
     }
 
     public void SetTask(TaskSO task)
@@ -29,6 +29,6 @@ public class DialogSetter : MonoBehaviour
 
     public void CallBackGroundTalk(string keyTalk, float time)
     {
-        ControllerDemoSaveFile.Instance.backTalk.SetTalkAsync(keyTalk, time);
+        _ = ControllerDemoSaveFile.Instance.backTalk.SetTalkAsync(keyTalk, time);
     }
 }

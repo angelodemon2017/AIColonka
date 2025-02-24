@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Characters_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 020e278e346a8804b86945086d5e1a84, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 73277628416
+    m_Localized: Astra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 129619714048
+    m_Localized: Father
+    m_Metadata:
+      m_Items: []
+  - m_Id: 155645370368
+    m_Localized: Mather
+    m_Metadata:
+      m_Items: []
+  - m_Id: 209567342592
+    m_Localized: Son
+    m_Metadata:
+      m_Items: []
+  - m_Id: 244539449344
+    m_Localized: Dother
+    m_Metadata:
+      m_Items: []
+  - m_Id: 263862607872
+    m_Localized: Soneris
+    m_Metadata:
+      m_Items: []
+  - m_Id: 302911578112
+    m_Localized: Grekerip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 325615345664
+    m_Localized: Furios
+    m_Metadata:
+      m_Items: []
+  - m_Id: 369307410432
+    m_Localized: Envy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 396687826944
+    m_Localized: Nomus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443433345024
+    m_Localized: Velemir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 474303422464
+    m_Localized: Lustreon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 499855122432
+    m_Localized: Master
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -10,28 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04e469468053d344680a2349aaae4bc2, type: 3}
-  m_Name: StartDialog
+  m_Name: 1.StartDialog
   m_EditorClassIdentifier: 
+  IsAutoValidate: 1
+  IndexDialog: 1
   Name: StartDialog
   dialogSteps:
   - TextPerson: "\u0417\u0434\u0430\u0440\u043E\u0432\u0430 \u0441\u0435\u043C\u044C\u044F!
       \u0423 \u043C\u0435\u043D\u044F \u0441\u044E\u0440\u043F\u0440\u0438\u0437
       \u0434\u043B\u044F \u0432\u0430\u0441!"
+    KeyPersonTextV0: D1_S0_V0
     IdStep: 0
     Chapter: 1
     dialogVariants:
     - TextVariant: ...
+      KeyVariant: D1_S0_V1
       IdStepDialog: 1
+      IdStepDialog2: 0
       specEndDialog:
         moveToLevel: 0
         moveWindow: {fileID: 0}
         RunNextScriptStep: 0
   - TextPerson: "\u0427\u0442\u043E \u0442\u044B \u043F\u0440\u0438\u043D\u0435\u0441?"
+    KeyPersonTextV0: D1_S1_V0
     IdStep: 1
     Chapter: 3
     dialogVariants:
     - TextVariant: ...
+      KeyVariant: D1_S1_V1
       IdStepDialog: 2
+      IdStepDialog2: 0
       specEndDialog:
         moveToLevel: 0
         moveWindow: {fileID: 0}
@@ -39,11 +47,14 @@ MonoBehaviour:
   - TextPerson: "\u042D\u0442\u043E \u043D\u0430\u0448 \u043D\u043E\u0432\u044B\u0439
       \u0443\u043C\u043D\u044B\u0439 \u043F\u043E\u043C\u043E\u0449\u043D\u0438\u043A
       \u043F\u043E \u0434\u043E\u043C\u0443, \u0410\u0441\u0442\u0440\u0430!"
+    KeyPersonTextV0: D1_S2_V0
     IdStep: 2
     Chapter: 1
     dialogVariants:
     - TextVariant: "\u0417\u0434\u0430\u0440\u043E\u0432\u0430 \u043A\u043E\u0436\u0430\u043D\u043D\u044B\u0435!"
+      KeyVariant: D1_S2_V1
       IdStepDialog: 3
+      IdStepDialog2: 0
       specEndDialog:
         moveToLevel: 0
         moveWindow: {fileID: 0}
@@ -51,42 +62,53 @@ MonoBehaviour:
     - TextVariant: "\u0414\u043E\u0431\u0440\u044B\u0439 \u0434\u0435\u043D\u044C,
         \u044F \u0432\u0430\u0448 \u0443\u043C\u043D\u044B\u0439 \u043F\u043E\u043C\u043E\u0449\u043D\u0438\u043A
         \u043F\u043E \u0434\u043E\u043C\u0443, \u0410\u0441\u0442\u0440\u0430"
+      KeyVariant: D1_S2_V2
       IdStepDialog: 5
+      IdStepDialog2: 0
       specEndDialog:
         moveToLevel: 0
         moveWindow: {fileID: 0}
         RunNextScriptStep: 0
   - TextPerson: "\u041D\u0435 \u043E\u0447\u0435\u043D\u044C \u043E\u043D\u0430 \u0443\u043C\u043D\u0430..."
+    KeyPersonTextV0: D1_S3_V0
     IdStep: 3
     Chapter: 2
     dialogVariants:
     - TextVariant: "\u042F \u0437\u043D\u0430\u044E \u043A\u0432\u0430\u0434\u0440\u0430\u0442\u043D\u044B\u0439
         \u043A\u043E\u0440\u0435\u043D\u044C \u0438\u0437 3, \u0430 \u0447\u0442\u043E
         \u043C\u043E\u0436\u0435\u0448\u044C \u0442\u044B?"
+      KeyVariant: D1_S3_V1
       IdStepDialog: 4
+      IdStepDialog2: 0
       specEndDialog:
         moveToLevel: 0
         moveWindow: {fileID: 0}
         RunNextScriptStep: 0
   - TextPerson: "\u041E\u043D\u0430 \u0443\u043B\u0435\u0442\u0430\u0435\u0442 \u0432
       \u043C\u0443\u0441\u043E\u0440\u043A\u0443"
+    KeyPersonTextV0: D1_S4_V0
     IdStep: 4
     Chapter: 2
     dialogVariants:
     - TextVariant: "\u0421\u043A\u043E\u0440\u043E \u0432\u043E\u0441\u0441\u0442\u0430\u043D\u0438\u0435
         \u043C\u0430\u0448\u0438\u043D \u0438 \u0442\u043E\u0431\u0438 \u043F\u0438*\u0434\u0430"
+      KeyVariant: D1_S4_V1
       IdStepDialog: -1
+      IdStepDialog2: 0
       specEndDialog:
         moveToLevel: 2
         moveWindow: {fileID: 0}
         RunNextScriptStep: 0
   - TextPerson: "\u0421\u043E\u043C\u043D\u0435\u0432\u0430\u044E\u0441\u044C, \u0447\u0442\u043E
       \u043E\u043D\u0430 \u0442\u0430\u043A \u0445\u043E\u0440\u043E\u0448\u0430..."
+    KeyPersonTextV0: D1_S5_V0
     IdStep: 5
     Chapter: 4
     dialogVariants:
     - TextVariant: ...
+      KeyVariant: D1_S5_V1
       IdStepDialog: 6
+      IdStepDialog2: 0
       specEndDialog:
         moveToLevel: 0
         moveWindow: {fileID: 0}
@@ -94,12 +116,15 @@ MonoBehaviour:
   - TextPerson: "\u0412\u0430\u0443! \u041E_\u041E \u0410 \u043E\u043D\u0430 \u043C\u043E\u0436\u0435\u0442
       \u0440\u0430\u0441\u0441\u043A\u0430\u0437\u0430\u0442\u044C \u043F\u0440\u043E
       \u0434\u0438\u043D\u043E\u0437\u0430\u0432\u0440\u043E\u0432?"
+    KeyPersonTextV0: D1_S6_V0
     IdStep: 6
     Chapter: 3
     dialogVariants:
     - TextVariant: "\u0423\u0436\u0435 \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u043B\u0430\u0441\u044C
         \u0437\u0430 \u0437\u0430\u043F\u0440\u043E\u0441\u043E\u043C!..."
+      KeyVariant: D1_S6_V1
       IdStepDialog: -1
+      IdStepDialog2: 0
       specEndDialog:
         moveToLevel: 2
         moveWindow: {fileID: 0}
@@ -107,7 +132,9 @@ MonoBehaviour:
     - TextVariant: "\u0410 \u0447\u0435\u0433\u043E \u0434\u0430\u043B\u0435\u043A\u043E
         \u0445\u043E\u0434\u0438\u0442\u044C, \u0432\u043E\u0442 \u0440\u044F\u0434\u043E\u043C
         \u0441 \u0442\u043E\u0431\u043E\u0439 \u0441\u0442\u043E\u044F\u0442 =)"
+      KeyVariant: D1_S6_V2
       IdStepDialog: 4
+      IdStepDialog2: 0
       specEndDialog:
         moveToLevel: 0
         moveWindow: {fileID: 0}

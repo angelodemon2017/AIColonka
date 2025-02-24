@@ -37,7 +37,7 @@ public class VirtualObjectChecker : MonoBehaviour
         {
             _lastTransform = null;
         }
-        ShowHintAsync();
+        _ = ShowHintAsync();
     }
 
     internal void CallRelease()
@@ -45,7 +45,7 @@ public class VirtualObjectChecker : MonoBehaviour
         _lastTransform?.Call();
         _hintsH.Remove(_lastTransform);
         _lastTransform = null;
-        ShowHintAsync();
+        _ = ShowHintAsync();
     }
 
     private async Task ShowHintAsync()

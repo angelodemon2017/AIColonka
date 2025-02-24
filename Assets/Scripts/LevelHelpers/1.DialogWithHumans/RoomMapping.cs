@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,7 +12,9 @@ public class RoomMapping : MonoBehaviour
     {
         if (ControllerDemoSaveFile.Instance.mainData.progressHistory.RoomConfig < _roomConfigs.Count)
         {
-            RunScene(_roomConfigs[ControllerDemoSaveFile.Instance.mainData.progressHistory.RoomConfig]);
+            RunScene(_roomConfigs.FirstOrDefault(r => (int)r.DialogRoomPreset == ControllerDemoSaveFile.Instance.mainData.progressHistory.RoomConfig));
+
+//            RunScene(_roomConfigs[ControllerDemoSaveFile.Instance.mainData.progressHistory.RoomConfig]);
         }
     }
 
@@ -26,5 +29,6 @@ public class RoomMapping : MonoBehaviour
 public class RoomConfig
 {
     public string Name;
+    public EnumDialogRoomPreset DialogRoomPreset;
     public UnityEvent unityEvent;
 }

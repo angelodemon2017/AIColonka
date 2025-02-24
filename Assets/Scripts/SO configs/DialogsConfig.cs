@@ -19,6 +19,7 @@ public class Dialog
 public class DialogStep
 {
     public string TextPerson;
+    public string KeyPersonTextV0;
     public int IdStep;
     public EnumChapter Chapter;
     public List<DialogVariantSO> dialogVariants = new();
@@ -28,13 +29,10 @@ public class DialogStep
 public class DialogVariantSO : IEvent
 {
     public string TextVariant;
+    public string KeyVariant;
     public int IdStepDialog;
+    public int IdStepDialog2;
     public SpecEndDialog specEndDialog;
-}
-
-public struct DialogVariantStruct : IEvent
-{
-    
 }
 
 [System.Serializable]
@@ -43,6 +41,4 @@ public class SpecEndDialog
     public EnumLevels moveToLevel;
     public MAINWindow moveWindow;
     public bool RunNextScriptStep;
-
-//    public bool IsSpec => moveWindow != null || moveToLevel != EnumLevels.MainMenu;
 }

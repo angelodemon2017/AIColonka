@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System;
+using System.Threading.Tasks;
 
 public class PanelDialogWithPeople : MAINWindow
 {
@@ -35,21 +36,26 @@ public class PanelDialogWithPeople : MAINWindow
     private void SelectVariant(int dialogStep)
     {
         _currentStep = dialogStep;
-        ShowDialogStep();
+        _ = ShowDialogStepAsync();
     }
 
-    private void ShowDialogStep()
+    private async Task ShowDialogStepAsync()
     {
         var dialogStep = _currentDialog.dialogSteps[_currentStep];
 
-        _textNamePerson.text = dialogStep.Chapter.ToString();
-        _textPerson.text = dialogStep.TextPerson;
+        _textNamePerson.text = await Localizations.GetLocalizedText(
+            Localizations.Tables.Characters, dialogStep.Chapter.ToString());
+
+        _textPerson.text = await Localizations.GetLocalizedText(
+            Localizations.Tables.Dialogs, dialogStep.KeyPersonTextV0);
 
         _parentVariants.DestroyChildrens();
         for (int i = 0; i < dialogStep.dialogVariants.Count; i++)
         {
             var diaVarPan = Instantiate(_dialogVariantPrefab, _parentVariants);
-            diaVarPan.Init(i, dialogStep.dialogVariants[i].TextVariant, SelectedVariant);
+            var textVariant = await Localizations.GetLocalizedText(
+                Localizations.Tables.Dialogs, dialogStep.dialogVariants[i].KeyVariant);
+            diaVarPan.Init(i, textVariant, SelectedVariant);
         }
     }
 

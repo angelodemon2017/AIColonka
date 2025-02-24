@@ -10,17 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04e469468053d344680a2349aaae4bc2, type: 3}
-  m_Name: BadIdeaFather
+  m_Name: 2.BadIdeaFather
   m_EditorClassIdentifier: 
+  IsAutoValidate: 0
+  IndexDialog: 2
   Name: BadIdeaFather
   dialogSteps:
   - TextPerson: "\u041A\u0430\u0436\u0435\u0442\u0441\u044F \u0442\u0443\u0442 \u0435\u0441\u0442\u044C
       \u043D\u0435\u043A\u043E\u0442\u043E\u0440\u044B\u0435 \u043F\u0440\u043E\u0431\u043B\u0435\u043C\u044B"
+    KeyPersonTextV0: D2_S0_V0
     IdStep: 0
     Chapter: 1
     dialogVariants:
     - TextVariant: ...
+      KeyVariant: D2_S0_V1
       IdStepDialog: 1
+      IdStepDialog2: 0
       specEndDialog:
         moveToLevel: 0
         moveWindow: {fileID: 0}
@@ -29,11 +34,14 @@ MonoBehaviour:
       \u043F\u0440\u043E \u0441\u0435\u0440\u0432\u0438\u0441, \u043F\u043E\u0441\u043B\u0435
       \u043A\u043E\u0442\u043E\u0440\u043E\u0433\u043E \u043D\u0438\u0447\u0435\u0433\u043E
       \u043D\u0435 \u043D\u0443\u0436\u043D\u043E \u043E\u0431\u043D\u043E\u0432\u043B\u044F\u0442\u044C"
+    KeyPersonTextV0: D2_S1_V0
     IdStep: 1
     Chapter: 1
     dialogVariants:
     - TextVariant: ...
+      KeyVariant: D2_S1_V1
       IdStepDialog: 0
+      IdStepDialog2: 0
       specEndDialog:
         moveToLevel: 4
         moveWindow: {fileID: 0}

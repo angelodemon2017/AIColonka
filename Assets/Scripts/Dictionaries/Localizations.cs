@@ -10,7 +10,7 @@ public static class Localizations
 
         await op.Task;
 
-        return op.Result;
+        return string.IsNullOrWhiteSpace(op.Result) ? key : op.Result;
     }
 
     public static class Tables
@@ -18,6 +18,8 @@ public static class Localizations
         public static string LevelsTable = "Levels";
         public static string BackTalksTable = "BackTalks";
         public static string GamePlay = "GamePlay";
+        public static string Dialogs = "Dialogs";
+        public static string Characters = "Characters";
     }
 
     public static class Levels
