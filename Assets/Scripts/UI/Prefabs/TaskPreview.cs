@@ -1,12 +1,15 @@
 using UnityEngine;
 using TMPro;
+using System.Threading.Tasks;
 
 public class TaskPreview : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _taskText;
 
-    internal void Init(TaskSO descr)
+    internal async Task InitAsync(TaskSO descr)
     {
-        _taskText.text = descr.GetDescription;
+        _taskText.text = await Localizations.GetLocalizedText(
+            Localizations.Tables.Tasks,
+            descr.KeyLocDesc);
     }
 }

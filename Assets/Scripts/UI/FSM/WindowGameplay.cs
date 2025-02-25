@@ -211,7 +211,7 @@ public class TaskController
         _parentTasks.DestroyChildrens();
         var newPT = GameObject.Instantiate(_prefabTaskPreview, _parentTasks);
 
-        newPT.Init(ControllerDemoSaveFile.Instance.GetCurrentTask());
+        _ = newPT.InitAsync(ControllerDemoSaveFile.Instance.GetCurrentTask());
     }
 
     internal void Deatcivate()

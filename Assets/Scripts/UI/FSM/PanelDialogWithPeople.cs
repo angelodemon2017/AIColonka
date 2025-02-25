@@ -10,10 +10,12 @@ public class PanelDialogWithPeople : MAINWindow
     [SerializeField] private Transform _parentVariants;
     [SerializeField] private TextMeshProUGUI _textNamePerson;
     [SerializeField] private TextMeshProUGUI _textPerson;
+    [SerializeField] private MAINWindow _defaultNextWindow;
 
     private DialogSO _currentDialog;
     private int _currentStep = 0;
 
+    public static Action<string> ActionByKey;
     public Action NextStep;
     public Action EndDialog;
 
@@ -43,6 +45,7 @@ public class PanelDialogWithPeople : MAINWindow
     {
         var dialogStep = _currentDialog.dialogSteps[_currentStep];
 
+        ActionByKey?.Invoke(dialogStep.KeyPersonTextV0);
         _textNamePerson.text = await Localizations.GetLocalizedText(
             Localizations.Tables.Characters, dialogStep.Chapter.ToString());
 
@@ -62,30 +65,52 @@ public class PanelDialogWithPeople : MAINWindow
     private void SelectedVariant(int num)
     {
         var dialogVariant = _currentDialog.dialogSteps[_currentStep].dialogVariants[num];
-
-        if (dialogVariant.specEndDialog.RunNextScriptStep)
+        ActionByKey?.Invoke(dialogVariant.KeyVariant);
+        if (dialogVariant.IdStepDialog >= _currentDialog.dialogSteps.Count - 1)
         {
-            NextStep?.Invoke();
-        }
-
-        if (dialogVariant.specEndDialog.moveToLevel != EnumLevels.MainMenu)
-        {
-            _sceneLevelLoader.LoadLevel(dialogVariant.specEndDialog.moveToLevel);
-        }
-        else if (dialogVariant.specEndDialog.moveWindow != null)
-        {
-            UIFSM.Instance.OpenWindow(dialogVariant.specEndDialog.moveWindow);
+            NextWindow();
         }
         else
-        {
+       {
             SelectVariant(dialogVariant.IdStepDialog);
         }
+
+
+        /*        if (dialogVariant.specEndDialog.RunNextScriptStep)
+                {
+                    NextStep?.Invoke();
+                }
+
+                if (dialogVariant.specEndDialog.moveToLevel != EnumLevels.MainMenu)
+                {
+                    _sceneLevelLoader.LoadLevel(dialogVariant.specEndDialog.moveToLevel);
+                }
+                else if (dialogVariant.specEndDialog.moveWindow != null)
+                {
+                    UIFSM.Instance.OpenWindow(dialogVariant.specEndDialog.moveWindow);
+                }
+                else
+                {
+                    SelectVariant(dialogVariant.IdStepDialog);
+                }/**/
     }
 
     public override void ExitWindow()
     {
         base.ExitWindow();
         EndDialog?.Invoke();
-//        EventBus.Unsubscribe<DialogVariantSO>(SelectVariant);
+    }
+
+    private void NextWindow()
+    {
+        _currentDialog._eventByEnd?.Invoke();
+        if (_currentDialog.levelByEndDialog != EnumLevels.MainMenu)
+        {
+            _sceneLevelLoader.LoadLevel(_currentDialog.levelByEndDialog);
+        }
+        else
+        {
+            UIFSM.Instance.OpenWindow(_currentDialog._nextWindow ? _currentDialog._nextWindow : _defaultNextWindow);
+        }
     }
 }

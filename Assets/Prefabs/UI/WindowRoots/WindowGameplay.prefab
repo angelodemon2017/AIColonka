@@ -1263,7 +1263,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SubText...
+  m_text: BackTalk
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1569,7 +1569,7 @@ GameObject:
   - component: {fileID: 9103988097463311899}
   - component: {fileID: 879014799807794196}
   m_Layer: 5
-  m_Name: Hint
+  m_Name: HintText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1759,12 +1759,18 @@ MonoBehaviour:
   _pareEventWindows:
   - keyCode: 108
     Window: {fileID: 4616706029065416952, guid: d06f42a8e68e6bd478440bff54e85f06, type: 3}
+  _hintText: {fileID: 879014799807794196}
   _taskController:
     _prefabTaskPreview: {fileID: 8052563448386798084, guid: a215ea60500452b4487a47c84b69b443, type: 3}
     _parentTasks: {fileID: 5265539132354694921}
   _panelHP: {fileID: 3593983327545260169}
   _debugTestParam: {fileID: 9219045073321795253}
+  _bitLabel: {fileID: 5682502208741007535}
+  _avwPowerLabel: {fileID: 8613529785909131102}
   _target: {fileID: 8275371307534809971}
+  _comboLabel: {fileID: 8574686015715730027}
+  _hitLabel: {fileID: 1363946460925735244}
+  _backTalk: {fileID: 7524101834220892368}
 --- !u!1 &7577294882486506358
 GameObject:
   m_ObjectHideFlags: 0

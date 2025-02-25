@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControllerDemoSaveFile : MonoBehaviour
 {
@@ -17,15 +18,16 @@ public class ControllerDemoSaveFile : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        Instance = this;
-//        Debug.Log($"Awake ControllerDemoSaveFile");
+        if (!Instance)
+        {
+            DontDestroyOnLoad(gameObject);
+            Instance = this;
+        }
     }
 
     internal TaskSO GetCurrentTask()
     {
         return TaskConfig.GetTaskByKey(mainData.progressHistory.KeyMainTask);
-//            GetTaskById(mainData.progressHistory.CurrentTask);
     }
 
     internal bool IsCurrentTask(TaskSO taskSO)
@@ -35,7 +37,7 @@ public class ControllerDemoSaveFile : MonoBehaviour
 
     internal bool WasDone(TaskSO taskSO)
     {
-        return mainData.progressHistory.IsWasDone(taskSO.Key);
+        return mainData.progressHistory.IsWasDone(taskSO.KeyTitle);
     }
 
     private void FixedUpdate()

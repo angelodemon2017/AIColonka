@@ -18,7 +18,7 @@ public class Dialog
 [System.Serializable]
 public class DialogStep
 {
-    public string TextPerson;
+//    public string TextPerson;
     public string KeyPersonTextV0;
     public int IdStep;
     public EnumChapter Chapter;
@@ -28,11 +28,10 @@ public class DialogStep
 [System.Serializable]
 public class DialogVariantSO : IEvent
 {
-    public string TextVariant;
+//    public string TextVariant;
     public string KeyVariant;
     public int IdStepDialog;
-    public int IdStepDialog2;
-    public SpecEndDialog specEndDialog;
+//    public SpecEndDialog specEndDialog;
 }
 
 [System.Serializable]

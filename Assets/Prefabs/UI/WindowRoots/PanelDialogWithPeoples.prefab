@@ -200,6 +200,7 @@ MonoBehaviour:
   _parentVariants: {fileID: 6622404958392508570}
   _textNamePerson: {fileID: 7381656155387449595}
   _textPerson: {fileID: 4425776351051245489}
+  _defaultNextWindow: {fileID: 2520768843938125354, guid: b2f84fba5669934468a6849e2919cdcc, type: 3}
 --- !u!114 &9130991870192967701
 MonoBehaviour:
   m_ObjectHideFlags: 0

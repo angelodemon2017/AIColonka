@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class DialogSetter : MonoBehaviour
 {
+    [SerializeField] private EnumDialogRoomPreset dialogRoomPreset;
+
+    public void SetDialogPreset()
+    {
+        SetRoomConfig(dialogRoomPreset);
+    }
+
     public void SetCurrentDialog(DialogSO dialog)
     {
         ControllerDemoSaveFile.Instance.CurrentDialog = dialog;

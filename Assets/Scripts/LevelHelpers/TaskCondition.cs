@@ -10,6 +10,7 @@ public class TaskCondition : MonoBehaviour
 
     private void Awake()
     {
+        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate += CheckTask;
         CheckTask();
     }
 
@@ -27,5 +28,10 @@ public class TaskCondition : MonoBehaviour
         {
             _ifIsFuture?.Invoke();
         }
+    }
+
+    private void OnDestroy()
+    {
+        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate -= CheckTask;
     }
 }

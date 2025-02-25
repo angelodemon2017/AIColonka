@@ -22,7 +22,7 @@ public class DialogVariantSODrawer : PropertyDrawer
             int currentIndex = -1;
             for (int i = 0; i < dialogSO.dialogSteps.Count; i++)
             {
-                if (dialogSO.dialogSteps[i].IdStep == property.FindPropertyRelative("IdStepDialog2").intValue)
+                if (dialogSO.dialogSteps[i].IdStep == property.FindPropertyRelative("IdStepDialog").intValue)
                 {
                     currentIndex = i;
                     break;
@@ -33,8 +33,6 @@ public class DialogVariantSODrawer : PropertyDrawer
             position.height = EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(position, property.FindPropertyRelative("KeyVariant"), new GUIContent("Key Variant"));
             position.y += EditorGUIUtility.singleLineHeight + 2; // Сдвигаем позицию вниз для следующего поля
-//            EditorGUI.PropertyField(position, property.FindPropertyRelative("specEndDialog"), new GUIContent("Spec End Dialog"));
-//            position.y += EditorGUIUtility.singleLineHeight + 2; // Сдвигаем позицию вниз для следующего поля
 
             // Создаем выпадающий список
             int selectedIndex = EditorGUI.Popup(position, "Select Step", currentIndex, options);
@@ -42,7 +40,7 @@ public class DialogVariantSODrawer : PropertyDrawer
             // Если выбранный индекс не равен -1, обновляем IdStepDialog
             if (selectedIndex != -1)
             {
-                property.FindPropertyRelative("IdStepDialog2").intValue = dialogSO.dialogSteps[selectedIndex].IdStep; // Обновляем IdStepDialog
+                property.FindPropertyRelative("IdStepDialog").intValue = dialogSO.dialogSteps[selectedIndex].IdStep; // Обновляем IdStepDialog
             }
         }
         else
@@ -56,4 +54,4 @@ public class DialogVariantSODrawer : PropertyDrawer
         // Высота для двух дополнительных полей и выпадающего списка
         return EditorGUIUtility.singleLineHeight * 2 + 4; // 3 строки + отступы
     }
-}
+}/**/

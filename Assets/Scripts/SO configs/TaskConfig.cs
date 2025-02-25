@@ -8,9 +8,18 @@ public class TaskConfig : ScriptableObject
     public List<TaskSO> MainTasks;
     [SerializeField] private TaskSO _missTask;
 
+    private void OnValidate()
+    {
+        for (int i = 0; i < MainTasks.Count; i++)
+        {
+            MainTasks[i].KeyTitle = $"MT{i}";
+            MainTasks[i].KeyLocDesc = $"MD{i}";
+        }
+    }
+
     public TaskSO GetTaskByKey(string key)
     {
-        return MainTasks.FirstOrDefault(t => t.Key == key);
+        return MainTasks.FirstOrDefault(t => t.KeyTitle == key);
     }
 
     public TaskSO GetTaskById(int id)

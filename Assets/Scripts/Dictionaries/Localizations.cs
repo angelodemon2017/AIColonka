@@ -20,6 +20,7 @@ public static class Localizations
         public static string GamePlay = "GamePlay";
         public static string Dialogs = "Dialogs";
         public static string Characters = "Characters";
+        public static string Tasks = "Tasks";
     }
 
     public static class Levels

@@ -5,15 +5,23 @@ using UnityEngine.Events;
 
 public class DialogEvent : MonoBehaviour
 {
-    [SerializeField] private DialogSO dialog;
     [SerializeField] private List<KeyPresentAndEvent> eventBies;
+
+    private void Awake()
+    {
+        PanelDialogWithPeople.ActionByKey += CheckEvent;
+    }
 
     public void CheckEvent(string key)
     {
-        eventBies.FirstOrDefault(e => e.variant.KeyVariant == key).UE?.Invoke();
+        eventBies.FirstOrDefault(e => e.variant.KeyVariant == key)?.UE?.Invoke();
+    }
+
+    private void OnDestroy()
+    {
+        PanelDialogWithPeople.ActionByKey -= CheckEvent;
     }
 }
-
 
 [System.Serializable]
 public class KeyPresentAndEvent

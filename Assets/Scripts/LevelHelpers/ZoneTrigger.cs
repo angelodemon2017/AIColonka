@@ -9,13 +9,13 @@ public class ZoneTrigger : MonoBehaviour
 
     private void Awake()
     {
-        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate += CheckAvailable;
+//        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate += CheckAvailable;
         CheckAvailable();
     }
 
     public void CheckAvailable()
     {
-        if (_needTask == null)
+/*        if (_needTask == null)
         {
             ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate -= CheckAvailable;
             return;
@@ -23,7 +23,7 @@ public class ZoneTrigger : MonoBehaviour
         else
         {
             gameObject.SetActive(ControllerDemoSaveFile.Instance.IsCurrentTask(_needTask));
-        }
+        }/**/
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,6 +43,6 @@ public class ZoneTrigger : MonoBehaviour
 
     private void OnDestroy()
     {
-        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate -= CheckAvailable;
+//        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate -= CheckAvailable;
     }
 }

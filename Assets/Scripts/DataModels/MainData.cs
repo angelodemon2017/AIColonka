@@ -16,7 +16,7 @@ public class MainData
 
     public void SetTask(TaskSO task)
     {
-        progressHistory.SetTask(task.Key);
+        progressHistory.SetTask(task.KeyTitle);
         SaveController.Save(this);
     }
 

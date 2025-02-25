@@ -6,7 +6,8 @@ using UnityEngine.Events;
 public class RoomMapping : MonoBehaviour
 {
     [SerializeField] private List<RoomConfig> _roomConfigs;
-    [SerializeField] private GameObject _activateGO;
+    [SerializeField] private PanelDialogWithPeople _panelDialogWithPeople;
+    [SerializeField] private UIFSM _uiFSM;
 
     private void Awake()
     {
@@ -21,7 +22,8 @@ public class RoomMapping : MonoBehaviour
     private void RunScene(RoomConfig roomConfig)
     {
         roomConfig.unityEvent?.Invoke();
-        _activateGO.SetActive(true);
+        _panelDialogWithPeople.gameObject.SetActive(true);
+        _uiFSM.StartWindow();
     }
 }
 
