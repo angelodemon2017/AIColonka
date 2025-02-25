@@ -7,7 +7,7 @@ public class SceneLevelLoader : MonoBehaviour
 {
     [SerializeField] private EnumLevels _selectedLevel;
 
-    public Action<float> LoadProgress;
+    public static Action<float> LoadProgress;
 
     public void LoadLevel()
     {
@@ -27,8 +27,10 @@ public class SceneLevelLoader : MonoBehaviour
     IEnumerator LoadLevelCoroutine(EnumLevels level)
     {
         ControllerDemoSaveFile.Instance.SetLevel(level);
-        yield return new WaitForSeconds(0.1f);
-//        Debug.LogWarning($"LoadLevelCoroutine: {level}");
+        while (!ControllerDemoSaveFile.Instance.IsBlackEnd)
+        {
+            yield return null;
+        }
         AsyncOperation operation = SceneManager.LoadSceneAsync((int)level);
         EventBus.ResetSubs();
         LoadProgress?.Invoke(operation.progress);

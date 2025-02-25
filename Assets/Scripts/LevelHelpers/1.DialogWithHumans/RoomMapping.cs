@@ -14,8 +14,6 @@ public class RoomMapping : MonoBehaviour
         if (ControllerDemoSaveFile.Instance.mainData.progressHistory.RoomConfig < _roomConfigs.Count)
         {
             RunScene(_roomConfigs.FirstOrDefault(r => (int)r.DialogRoomPreset == ControllerDemoSaveFile.Instance.mainData.progressHistory.RoomConfig));
-
-//            RunScene(_roomConfigs[ControllerDemoSaveFile.Instance.mainData.progressHistory.RoomConfig]);
         }
     }
 

@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pareEventWindows: []
+  _charInterval: 0.02
   _sceneLevelLoader: {fileID: 9130991870192967701}
   _dialogVariantPrefab: {fileID: 1731453951378720923, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
   _parentVariants: {fileID: 6622404958392508570}
@@ -581,7 +582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1090630807527632349, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1090630807527632349, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
       propertyPath: m_AnchorMin.x
@@ -589,15 +590,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1090630807527632349, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1090630807527632349, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 441
       objectReference: {fileID: 0}
     - target: {fileID: 1090630807527632349, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 44.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1090630807527632349, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -629,11 +630,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1090630807527632349, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 225.5
       objectReference: {fileID: 0}
     - target: {fileID: 1090630807527632349, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -27.05
       objectReference: {fileID: 0}
     - target: {fileID: 1090630807527632349, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -651,9 +652,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonDialogVariant
       objectReference: {fileID: 0}
-    - target: {fileID: 8219230486581004250, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
-      propertyPath: m_fontSize
-      value: 39.4
+    - target: {fileID: 7706650986255118463, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -2,4 +2,7 @@
 {
     Acquaintance,
     BadIdeaOfFather,
+    ReturningAstra,
+    FamilyProblem1,
+    FamilyProblem2,
 }

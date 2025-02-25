@@ -980,7 +980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9060881766338289619, guid: d06f42a8e68e6bd478440bff54e85f06, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 42.36
+      value: 44.2
       objectReference: {fileID: 0}
     - target: {fileID: 9060881766338289619, guid: d06f42a8e68e6bd478440bff54e85f06, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2012,7 +2012,19 @@ MonoBehaviour:
       m_Calls: []
   _ifIsCurrent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3543099162921452456}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   _ifIsCompleted:
     m_PersistentCalls:
       m_Calls:

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class UIFSM : MonoBehaviour, IUIFSM
 {
@@ -16,6 +15,11 @@ public class UIFSM : MonoBehaviour, IUIFSM
         _parent = transform;
         Instance = this;
         OpenWindow(_startWindow);
+    }
+
+    private void Start()
+    {
+        ControllerDemoSaveFile.Instance?.SetBlack(false);
     }
 
     private void Update()

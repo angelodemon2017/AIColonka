@@ -12,7 +12,7 @@ public class MainData
 
     public Action BitUpgrade;
 
-    public bool EmptyData => progressHistory.CurrentTask == 0;
+    public bool EmptyData => string.IsNullOrWhiteSpace(progressHistory.KeyMainTask);
 
     public void SetTask(TaskSO task)
     {
@@ -20,11 +20,11 @@ public class MainData
         SaveController.Save(this);
     }
 
-    public void SetTask(int newTask)
+/*    public void SetTask(int newTask)
     {
         progressHistory.SetTask(newTask);
         SaveController.Save(this);
-    }
+    }/**/
 
     internal void SetLevel(EnumLevels enumLevel)
     {
@@ -87,11 +87,11 @@ public class ProgressHistory
         TaskUpdate?.Invoke();
     }
 
-    public void SetTask(int newTask)
+/*    public void SetTask(int newTask)
     {
         CurrentTask = newTask;
         TaskUpdate?.Invoke();
-    }
+    }/**/
 
     public bool IsWasDone(string keyTask)
     {

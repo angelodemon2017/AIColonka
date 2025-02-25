@@ -26,6 +26,26 @@ MonoBehaviour:
     m_Localized: Release
     m_Metadata:
       m_Items: []
+  - m_Id: 766691008045056
+    m_Localized: About
+    m_Metadata:
+      m_Items: []
+  - m_Id: 766665942884352
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 766587614257152
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 766470429597696
+    m_Localized: NewGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 767671401439232
+    m_Localized: Main menu
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -23,6 +23,26 @@ MonoBehaviour:
     m_Key: RELEASE
     m_Metadata:
       m_Items: []
+  - m_Id: 766470429597696
+    m_Key: NewGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 766587614257152
+    m_Key: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 766665942884352
+    m_Key: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 766691008045056
+    m_Key: About
+    m_Metadata:
+      m_Items: []
+  - m_Id: 767671401439232
+    m_Key: MainMenu
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

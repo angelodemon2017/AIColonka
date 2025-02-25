@@ -1256,50 +1256,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
---- !u!1 &500784207
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 500784209}
-  - component: {fileID: 500784208}
-  m_Layer: 0
-  m_Name: PointMoveToLevel
-  m_TagString: Untagged
-  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &500784208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500784207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d22bef57c432ef74fb1f173775e6d4e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &500784209
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500784207}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.4, y: 1.14, z: -25.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &516676635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1431,12 +1387,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7691377529009586734, guid: daafa4f78e44a1e47b283c4e6450826f, type: 3}
+      propertyPath: _events.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691377529009586734, guid: daafa4f78e44a1e47b283c4e6450826f, type: 3}
       propertyPath: _eventOnEnd.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7691377529009586734, guid: daafa4f78e44a1e47b283c4e6450826f, type: 3}
       propertyPath: _events.Array.data[0].m_PersistentCalls.m_Calls.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691377529009586734, guid: daafa4f78e44a1e47b283c4e6450826f, type: 3}
+      propertyPath: _events.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7691377529009586734, guid: daafa4f78e44a1e47b283c4e6450826f, type: 3}
       propertyPath: _events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -2796,7 +2760,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2828,11 +2792,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: e6ddde096b8920442aea9baa058409d8, type: 2}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: TaskSO, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2155168802308161829, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _keyTalk
@@ -2905,6 +2873,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4028968812090099780, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1777897013}
+    - targetCorrespondingSourceObject: {fileID: 4028968812090099780, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1777897014}
   m_SourcePrefab: {fileID: 100100000, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
 --- !u!4 &1777897011 stripped
 Transform:
@@ -2928,6 +2899,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75af4d2149a4ba74cbd89a1557c92c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogRoomPreset: 0
+--- !u!114 &1777897014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777897012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0d3af3641cfd74f9c17c9b07b23c0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventBies:
+  - variant:
+      KeyVariant: END4
+    UE:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1777897013}
+          m_TargetAssemblyTypeName: DialogSetter, Assembly-CSharp
+          m_MethodName: SetTask
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: e6ddde096b8920442aea9baa058409d8, type: 2}
+            m_ObjectArgumentAssemblyTypeName: TaskSO, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1789355169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3902,7 +3904,6 @@ SceneRoots:
   - {fileID: 14675526}
   - {fileID: 1107014053}
   - {fileID: 1913407154}
-  - {fileID: 500784209}
   - {fileID: 1947665524}
   - {fileID: 1034623898}
   - {fileID: 207581844}

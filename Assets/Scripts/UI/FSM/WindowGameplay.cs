@@ -20,6 +20,7 @@ public class WindowGameplay : MAINWindow
 
     [SerializeField] private TextMeshProUGUI _backTalk;
 
+    private GameObject _parentCombo;
     private PlayerFSM _playerFSM;
 
     private MainData _mainData => ControllerDemoSaveFile.Instance.mainData;
@@ -27,6 +28,7 @@ public class WindowGameplay : MAINWindow
     public override void StartWindow()
     {
         Instance = this;
+        _parentCombo = _comboLabel.transform.parent.gameObject;
         base.StartWindow();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -60,6 +62,7 @@ public class WindowGameplay : MAINWindow
     {
         _comboLabel.text = $"Combo:{_playerFSM.Combo}";
         _hitLabel.text = _playerFSM.Hit > 0 ? $"HIT:{_playerFSM.Hit}" : string.Empty;
+        _parentCombo.SetActive(_playerFSM.Hit > 0);
     }
 
     private void UpdateUI()

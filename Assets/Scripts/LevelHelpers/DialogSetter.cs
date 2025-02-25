@@ -24,11 +24,6 @@ public class DialogSetter : MonoBehaviour
         ControllerDemoSaveFile.Instance.mainData.SetTask(task);
     }
 
-    public void SetTask(int idTask)
-    {
-        ControllerDemoSaveFile.Instance.mainData.SetTask(idTask);
-    }
-
     public void SetWindow(MAINWindow window)
     {
         UIFSM.Instance.OpenWindow(window);
