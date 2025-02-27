@@ -2638,6 +2638,7 @@ MonoBehaviour:
         m_CallState: 2
   _keyIsRorE: 1
   _keyHint: RELEASE
+  _meshRenderer: {fileID: 0}
 --- !u!114 &1559394852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3093,6 +3094,7 @@ MonoBehaviour:
         m_CallState: 2
   _keyIsRorE: 1
   _keyHint: RELEASE
+  _meshRenderer: {fileID: 0}
 --- !u!114 &1831396140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3898,7 +3900,7 @@ PrefabInstance:
     - target: {fileID: 8245000605717319404, guid: 6bbd8e43640c9ee4e80cd25a34665ef1, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 46ddb92b5e0ec9f4f92664973428be27, type: 2}
+      objectReference: {fileID: 2100000, guid: 635812a90523cb9479defa3e5fef5e94, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

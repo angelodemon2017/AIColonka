@@ -19,4 +19,9 @@ public class InteractionZone : MonoBehaviour, IHinter
     {
         _interact?.Invoke();
     }
+
+    public void InFocus()
+    {
+
+    }
 }

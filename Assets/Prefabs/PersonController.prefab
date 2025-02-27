@@ -122,8 +122,8 @@ MonoBehaviour:
       swift: 30
     - countBit: 4
       swift: 60
-  _peaceBitMaterial: {fileID: 2100000, guid: c7d6cb5c41c8737438c64e6f1570010e, type: 2}
-  _fightBitMaterial: {fileID: 2100000, guid: 92421281778356442bc3d0d383697c0f, type: 2}
+  _peaceBitMaterial: {fileID: 2100000, guid: b272f2b3cd2f202439baecaf34be3302, type: 2}
+  _fightBitMaterial: {fileID: 2100000, guid: 731f8223bc9e51245af28a2a765109d0, type: 2}
 --- !u!1 &243481830624728407
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,32 +286,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _checkPoint: {fileID: 6748171529523572746}
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.1
-      inSlope: 0.2502304
-      outSlope: 0.2502304
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.99954927
-    - serializedVersion: 3
-      time: 20
-      value: 5
-      inSlope: 0.24078317
-      outSlope: 0.24078317
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.9991654
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _minDistance: 4
-  _hintsH: []
 --- !u!135 &4318029034984826319
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1273,6 +1247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75af4d2149a4ba74cbd89a1557c92c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogRoomPreset: 0
 --- !u!114 &5087740095407099654
 MonoBehaviour:
   m_ObjectHideFlags: 0

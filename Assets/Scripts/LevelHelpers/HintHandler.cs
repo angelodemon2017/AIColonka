@@ -9,6 +9,10 @@ public class HintHandler : MonoBehaviour, IHinter
     [SerializeField] private UnityEvent _release;
     [SerializeField] private bool _keyIsRorE;
     [SerializeField] private string _keyHint;
+    [SerializeField] private MeshRenderer _meshRenderer;
+
+    private float _timeFocused;
+    private bool _isRelease = false;
 
     public string GetHint =>
             $"{ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits}/{_needBits}";
@@ -17,6 +21,7 @@ public class HintHandler : MonoBehaviour, IHinter
 
     public void Call()
     {
+        _isRelease = true;
         _release?.Invoke();
     }
 
@@ -24,5 +29,26 @@ public class HintHandler : MonoBehaviour, IHinter
     {
         return await Localizations.GetLocalizedText(
             Localizations.Tables.GamePlay, _keyHint) + GetHint;
+    }
+
+    private void FixedUpdate()
+    {
+        if (_timeFocused > 0f)
+        {
+            _timeFocused -= Time.fixedDeltaTime;
+            if (_timeFocused <= 0)
+            {
+
+            }
+        }
+    }
+
+    public void InFocus()
+    {
+        if (!_isRelease)
+        {
+            _timeFocused = 0.1f;
+//          some focused
+        }
     }
 }
