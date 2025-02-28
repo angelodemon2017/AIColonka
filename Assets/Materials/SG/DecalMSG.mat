@@ -104,8 +104,8 @@ Material:
     - Normal_Blend: 0.5
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _AngleDirect: -9.68
-    - _ArcAngle: 80.9
+    - _AngleDirect: 0
+    - _ArcAngle: 360
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -125,7 +125,7 @@ Material:
     - _DstBlendAlpha: 0
     - _EdgeWidth: 0.34
     - _EnvironmentReflections: 1
-    - _FillRadius: 0.38
+    - _FillRadius: 0.59
     - _FloatTest: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
@@ -149,8 +149,8 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0, g: 1, b: 0.21081662, a: 1}
-    - _ColorEffect: {r: 1, g: 0.08849361, b: 0, a: 0}
-    - _ColorFilling: {r: 0, g: 0, b: 1, a: 1}
+    - _ColorEffect: {r: 1, g: 0.655164, b: 0, a: 1}
+    - _ColorFilling: {r: 1, g: 0.09019608, b: 0, a: 0}
     - _ColorTest: {r: 0, g: 1, b: 0.3277812, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

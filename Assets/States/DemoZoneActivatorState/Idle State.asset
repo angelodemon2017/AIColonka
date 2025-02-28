@@ -15,4 +15,4 @@ MonoBehaviour:
   AvailableStates:
   - {fileID: 11400000, guid: f913dd88fc8263649b663c250b8d2de6, type: 2}
   Animation: 0
-  _timeIdle: 999
+  _timeIdle: 2

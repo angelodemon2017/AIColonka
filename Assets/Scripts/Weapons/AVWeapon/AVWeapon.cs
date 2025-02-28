@@ -1,5 +1,8 @@
+using UnityEngine;
+
 public class AVWeapon : Weapon
 {
+    [SerializeField] protected AttackDecal _attackDecalPrefab;
     protected int _levelAVW;
     private bool _isAir;
 
@@ -32,6 +35,11 @@ public class AVWeapon : Weapon
         }
 
         Shoot();
+    }
+
+    protected virtual void SpawnDecal()
+    {
+
     }
 
     protected virtual void Shoot() { }
