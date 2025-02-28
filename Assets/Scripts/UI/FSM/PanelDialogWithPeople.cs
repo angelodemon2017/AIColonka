@@ -1,8 +1,9 @@
 using UnityEngine;
 using TMPro;
 using System;
-using System.Threading.Tasks;
 using System.Collections;
+using System.Linq;
+using System.Threading.Tasks;
 
 public class PanelDialogWithPeople : MAINWindow
 {
@@ -126,6 +127,7 @@ public class PanelDialogWithPeople : MAINWindow
         ActionByKey?.Invoke(dialogVariant.KeyVariant);
         if (dialogVariant.IdStepDialog >= _currentDialog.dialogSteps.Count - 1)
         {
+            ActionByKey?.Invoke(_currentDialog.dialogSteps.LastOrDefault().KeyPersonTextV0);
             NextWindow();
         }
         else

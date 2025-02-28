@@ -112,7 +112,7 @@ MonoBehaviour:
   WhoIs: {fileID: 2740253745079568826}
   _attackDecalPrefab: {fileID: 1038585292391102812, guid: 7df18e433b5901d469961913e6d003f7, type: 3}
   _startSpeed: 0.5
-  _accelSpeed: 0
+  _accelSpeed: 0.5
   _timeOut: 16
   _destroyAtCollision: 1
   layerMask:

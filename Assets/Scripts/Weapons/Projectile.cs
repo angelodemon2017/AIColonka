@@ -24,10 +24,14 @@ public class Projectile : AVWeapon
         Destroy(gameObject, _timeOut);
     }
 
+    private void Update()
+    {
+        UpdateDecal();
+    }
+
     private void FixedUpdate()
     {
         Fly();
-        UpdateDecal();
     }
 
     private void Fly()
@@ -42,8 +46,8 @@ public class Projectile : AVWeapon
         if (_attackDecal)
         {
             var currentDistance = Vector3.Distance(transform.position,
-                _target ? _target.position : _endPoint);
-            _attackDecal.UpdateProgress(currentDistance / _startDistance);
+                _attackDecal.transform.position);
+            _attackDecal.UpdateProgress(1 - currentDistance / _startDistance);
         }
     }
 
