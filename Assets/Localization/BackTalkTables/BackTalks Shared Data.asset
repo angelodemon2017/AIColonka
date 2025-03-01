@@ -39,6 +39,14 @@ MonoBehaviour:
     m_Key: 5.A_THINGS1
     m_Metadata:
       m_Items: []
+  - m_Id: 2592171542355968
+    m_Key: WAR_TALK4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2592431907971072
+    m_Key: WAR_TALK5
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

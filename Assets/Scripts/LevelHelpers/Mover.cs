@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
+    [SerializeField] private bool IsSettings;
     [SerializeField] private Transform _moveTarget;
     [SerializeField] private float _speedMove;
     [SerializeField] private float _distanceToTarget = 0.1f;
@@ -12,7 +13,10 @@ public class Mover : MonoBehaviour
 
     private Mover()
     {
-//        EditorApplication.update += JustMove;
+        if (IsSettings)
+        {
+            EditorApplication.update += JustMove;
+        }
     }
 
     private void FixedUpdate()

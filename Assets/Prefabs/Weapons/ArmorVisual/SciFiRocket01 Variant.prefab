@@ -110,11 +110,15 @@ MonoBehaviour:
     DamageType: 2
     ValueDamage: 15
   WhoIs: {fileID: 2740253745079568826}
+  hitPrefab: {fileID: 3911229923933492915, guid: 590c18679dd71a1498b1042ea72a7dac, type: 3}
   _attackDecalPrefab: {fileID: 1038585292391102812, guid: 7df18e433b5901d469961913e6d003f7, type: 3}
-  _startSpeed: 0.5
+  _sizeDecal: 3
+  _startSpeed: 1.5
   _accelSpeed: 0.5
-  _timeOut: 16
+  _timeOut: 999
   _destroyAtCollision: 1
+  _accuracy: 4
+  _dummyPrefab: {fileID: 8848839180136046075, guid: f00a0fbf3c4d58f4b9834ab0cce82eb7, type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 264
@@ -157,6 +161,18 @@ MonoBehaviour:
         - m_Target: {fileID: 751021162480697255}
           m_TargetAssemblyTypeName: Projectile, Assembly-CSharp
           m_MethodName: Explose
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 751021162480697255}
+          m_TargetAssemblyTypeName: Weapon, Assembly-CSharp
+          m_MethodName: ShowHit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

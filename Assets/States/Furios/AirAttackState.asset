@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8880b1941178a54d94863423e73b4c8, type: 3}
+  m_Name: AirAttackState
+  m_EditorClassIdentifier: 
+  AvailableStates:
+  - {fileID: 11400000, guid: 461751a945171d745b97c21b7d35af94, type: 2}
+  Animation: 9
+  _weaponPrefab: {fileID: 8823323048384959387, guid: 50bd1202b53bf4d40ab6956560108b96, type: 3}

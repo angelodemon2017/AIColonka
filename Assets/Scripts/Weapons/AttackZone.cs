@@ -9,7 +9,10 @@ public class AttackZone : Weapon
     [SerializeField] private float _timeOut = 1f;
 
     private HashSet<WhoIs> _wasAttacked = new();
-    
+
+    protected override Vector3 _hitPosition => _sphereCollider.transform.position;
+    protected override Quaternion _hitRotate => _sphereCollider.transform.rotation;
+
     internal void SetAttackZone(float size, float timeOut = 0.5f)
     {
         _size = size;
@@ -29,6 +32,7 @@ public class AttackZone : Weapon
     {
         base.TakeCollision(whoIs);
 
+        ShowHit();
         if (_wasAttacked.Add(whoIs) || _multHit)
         {
             whoIs.TakeDamage(_damage);

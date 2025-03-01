@@ -13,6 +13,7 @@ public class AttackDecal : MonoBehaviour
     [SerializeField] private Texture _textureEffect;
     [SerializeField] private Color _startColor;
     [SerializeField] private Color _doneColor;
+    [SerializeField] private Material _instMaterial;
 
     private Material _material => _decalProjector.material;
 
@@ -30,6 +31,7 @@ public class AttackDecal : MonoBehaviour
 
     private void LocalInit()
     {
+        _decalProjector.material = Instantiate(_instMaterial);
         _material.SetFloat(FillRadius, 0f);
         _material.SetTexture(MainTexture, _textureEffect);
         _material.SetColor(ColorEffect, _startColor);
@@ -43,5 +45,10 @@ public class AttackDecal : MonoBehaviour
     internal void UpdateProgress(float progress)
     {
         _material.SetFloat(FillRadius, progress);
+    }
+
+    private void OnDestroy()
+    {
+//        Debug.LogWarning($"destroyed {_material.GetFloat(FillRadius)}");
     }
 }

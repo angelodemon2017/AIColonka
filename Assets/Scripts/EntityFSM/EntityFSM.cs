@@ -6,17 +6,24 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
     [SerializeField] private PanelHP _UIpanelHP;
     [SerializeField] private HPComponent _hpComponent;
     [SerializeField] private State _startState;
+    [SerializeField] private EntityModule _entityModule;
 
-    private State _currentState;
+    public State _currentState;
 
+    internal EntityModule GetModule => _entityModule;
     internal ArmorVisualizator GetArmorVisualizator => _armorVisualizator;
 
     private void Awake()
     {
-        EntityRepository.Instance.AddWho(_armorVisualizator.GetWhoIs);
+        if (_armorVisualizator)
+        {
+            EntityRepository.Instance.AddWho(_armorVisualizator.GetWhoIs);
+        }
 
         _hpComponent.ChangeHP += _UIpanelHP.UpdateHP;
         _hpComponent.OnChangeHP();
+
+        _entityModule?.Init();
 
         SetState(_startState);
     }
@@ -24,6 +31,11 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
     private void Update()
     {
         _currentState.RunState();
+    }
+
+    private void FixedUpdate()
+    {
+        _currentState.FixedRun();
     }
 
     public void SetState(State state)

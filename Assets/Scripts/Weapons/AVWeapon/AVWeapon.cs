@@ -3,6 +3,7 @@ using UnityEngine;
 public class AVWeapon : Weapon
 {
     [SerializeField] protected AttackDecal _attackDecalPrefab;
+    [SerializeField] protected float _sizeDecal;
     protected int _levelAVW;
     private bool _isAir;
 

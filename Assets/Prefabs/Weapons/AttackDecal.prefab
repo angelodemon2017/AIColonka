@@ -49,6 +49,7 @@ MonoBehaviour:
   _textureEffect: {fileID: 2800000, guid: 77ef24ed1a0b89a48b8c8307ac97a5fe, type: 3}
   _startColor: {r: 1, g: 1, b: 1, a: 1}
   _doneColor: {r: 1, g: 0.09019608, b: 0, a: 0}
+  _instMaterial: {fileID: 2100000, guid: 47af1a0b51d37ab4e8c9c6325f76e847, type: 2}
 --- !u!114 &1394918948732795393
 MonoBehaviour:
   m_ObjectHideFlags: 0

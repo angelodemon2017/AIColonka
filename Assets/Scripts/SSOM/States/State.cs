@@ -8,6 +8,7 @@ public abstract class State : ScriptableObject
     [SerializeField] protected List<State> AvailableStates;
     [SerializeField] protected EnumAnimations Animation;
 
+    internal virtual string Key => name;
     protected virtual EnumAnimations GetAnimation => Animation;
 
     public void InitState(IStatesCharacter character)

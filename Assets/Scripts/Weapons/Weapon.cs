@@ -5,9 +5,14 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] protected Damage _damage;
     [SerializeField] protected WhoIs WhoIs;
+    [SerializeField] private GameObject hitPrefab;
     protected Transform _avTransform;
     protected Transform _target;
     protected Quaternion _rotate;
+
+    protected virtual float _hitTimeout => 0.1f;
+    protected virtual Vector3 _hitPosition => transform.position;
+    protected virtual Quaternion _hitRotate => Quaternion.identity;
 
     private void OnValidate()
     {
@@ -32,4 +37,21 @@ public class Weapon : MonoBehaviour
     internal virtual void StartAttack() { }
 
     public virtual void TakeCollision(WhoIs whoIs) { }
+
+    public void ShowHit()
+    {
+        if (hitPrefab != null)
+        {
+            var hitVFX = Instantiate(hitPrefab, _hitPosition, _hitRotate);
+            var psHit = hitVFX.GetComponent<ParticleSystem>();
+            if (psHit != null)
+            {
+                Destroy(hitVFX, psHit.main.duration);
+            }
+            else
+            {
+                Destroy(hitVFX, _hitTimeout);
+            }
+        }
+    }
 }

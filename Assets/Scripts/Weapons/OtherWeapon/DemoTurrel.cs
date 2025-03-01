@@ -15,6 +15,8 @@ public class DemoTurrel : MonoBehaviour
 
     public void StartAttack()
     {
+//        _armorVisualizator.SetTarget(PlayerFSM.Instance.PointOfTargetForEnemy);
+//        _armorVisualizator.CallAttack(ArmorVisualizator.TypeVisualAttack.Near);
         StartCoroutine(Attack());
     }
 

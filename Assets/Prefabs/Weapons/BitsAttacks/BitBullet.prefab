@@ -203,7 +203,13 @@ MonoBehaviour:
     DamageType: 1
     ValueDamage: 2
   WhoIs: {fileID: 6227311154304431460}
+  hitPrefab: {fileID: 6626104727989455569, guid: c7fa64c686a9ee6469423604b7645109, type: 3}
+  _attackDecalPrefab: {fileID: 0}
   _startSpeed: 3
   _accelSpeed: 1
   _timeOut: 10
   _destroyAtCollision: 0
+  Progress: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0

@@ -14,8 +14,16 @@ public class Rotator : MonoBehaviour
         _speed = speed;
     }
 
+    public void SetRotate(Transform rotTrans)
+    {
+        transform.rotation = rotTrans.rotation;
+    }
+
     private void FixedUpdate()
     {
-        transform.Rotate(0f, _speed, 0f);
+        if (_speed != 0)
+        {
+            transform.Rotate(0f, _speed, 0f);
+        }
     }
 }

@@ -210,6 +210,7 @@ MonoBehaviour:
     DamageType: 1
     ValueDamage: 1
   WhoIs: {fileID: 5586700805555497565}
+  hitPrefab: {fileID: 6626104727989455569, guid: c7fa64c686a9ee6469423604b7645109, type: 3}
   _sphereCollider: {fileID: 4965093994204168611}
   _size: 2
   _multHit: 1

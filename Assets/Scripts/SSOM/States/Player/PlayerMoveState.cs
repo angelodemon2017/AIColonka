@@ -29,10 +29,11 @@ public class PlayerMoveState : PlayerState
     {
         base.Init();
         IsFinished = false;
-        _cameraTransform = Camera.main.transform;
         _characterTransform = Character.GetTransform();
         _characterController = _characterTransform.GetComponent<CharacterController>();
         _avatarTransform = playerFSM.AnimationAdapter.transform;
+        _cameraTransform = CameraController.Instance.transform;
+//            Camera.main.transform;
     }
 
 /*    internal override void CheckAndUpdateState()

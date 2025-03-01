@@ -106,7 +106,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -177,7 +177,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   MaxHP: 100
-  CurrentHP: 0
+  CurrentHP: 100
   _regenHP: 0
 --- !u!114 &2169135358374710054
 MonoBehaviour:
@@ -211,6 +211,8 @@ MonoBehaviour:
   _UIpanelHP: {fileID: 4731362345238429230}
   _hpComponent: {fileID: 5351319397589345408}
   _startState: {fileID: 11400000, guid: aee3c8e394bf1be4b9fb842dc14423fa, type: 2}
+  _entityModule: {fileID: 0}
+  _currentState: {fileID: 0}
 --- !u!65 &437531204494416785
 BoxCollider:
   m_ObjectHideFlags: 0

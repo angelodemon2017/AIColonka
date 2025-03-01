@@ -42,6 +42,14 @@ MonoBehaviour:
     m_Localized: The biggest mistake is to think that others think too...
     m_Metadata:
       m_Items: []
+  - m_Id: 2592171542355968
+    m_Localized: Wait! I need to check one more configuration!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2592431907971072
+    m_Localized: Great! Let's keep the fun going!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
