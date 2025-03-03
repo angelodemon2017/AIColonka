@@ -9,6 +9,7 @@ public class Mover : MonoBehaviour
     [SerializeField] private float _speedMove;
     [SerializeField] private float _distanceToTarget = 0.1f;
 
+    private Vector3 _targetPos = Vector3.zero;
     public Action EndMove;
 
     private Mover()
@@ -29,6 +30,11 @@ public class Mover : MonoBehaviour
         _moveTarget = newTarget;
     }
 
+    public void SetVectTarget(Vector3 newTrg)
+    {
+        _targetPos = newTrg;
+    }
+
     public void SetPosition(Transform newTarget)
     {
         _moveTarget = null;
@@ -41,6 +47,14 @@ public class Mover : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, _moveTarget.position, _speedMove * Time.fixedDeltaTime);
             if (Vector3.Distance(transform.position, _moveTarget.position) < _distanceToTarget)
+            {
+                EndMove?.Invoke();
+            }
+        }
+        if (_targetPos != Vector3.zero && Vector3.Distance(transform.position, _targetPos) > _distanceToTarget)
+        {
+            transform.position = Vector3.Lerp(transform.position, _targetPos, _speedMove * Time.fixedDeltaTime);
+            if (Vector3.Distance(transform.position, _targetPos) < _distanceToTarget)
             {
                 EndMove?.Invoke();
             }

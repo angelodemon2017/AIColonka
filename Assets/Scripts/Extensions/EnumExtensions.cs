@@ -20,6 +20,11 @@ public static class EnumExtensions
 
     public static EnumCollisionResult GetColResult(this EnumWhoIs whoIs, EnumWhoIs otherWhoIs)
     {
+        if (whoIs.Equals(otherWhoIs))
+        {
+            return EnumCollisionResult.Friend;
+        }
+
         if (!(_enemies[whoIs] & otherWhoIs).Equals(EnumWhoIs.None))
         {
             return EnumCollisionResult.Enemy;

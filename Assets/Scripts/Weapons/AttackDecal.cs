@@ -9,12 +9,14 @@ public class AttackDecal : MonoBehaviour
     private const string ColorEffect = "_ColorEffect";
     private const string ColorFilling = "_ColorFilling";
 
+    [SerializeField] private Mover _mover;
     [SerializeField] private DecalProjector _decalProjector;
     [SerializeField] private Texture _textureEffect;
     [SerializeField] private Color _startColor;
     [SerializeField] private Color _doneColor;
     [SerializeField] private Material _instMaterial;
 
+    internal Mover Mover => _mover;
     private Material _material => _decalProjector.material;
 
     private void Awake()

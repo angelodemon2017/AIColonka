@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 373124547521940576}
   - component: {fileID: 1038585292391102812}
   - component: {fileID: 1394918948732795393}
+  - component: {fileID: 311094865681069267}
   m_Layer: 0
   m_Name: AttackDecal
   m_TagString: Untagged
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b89ea3161152a546aa478c1aa9d78d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mover: {fileID: 311094865681069267}
   _decalProjector: {fileID: 1394918948732795393}
   _textureEffect: {fileID: 2800000, guid: 77ef24ed1a0b89a48b8c8307ac97a5fe, type: 3}
   _startColor: {r: 1, g: 1, b: 1, a: 1}
@@ -74,3 +76,19 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0}
   m_Size: {x: 3, y: 3, z: 5}
   m_FadeFactor: 1
+--- !u!114 &311094865681069267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129636828412018544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b075cea8841d4e44ae0be6a4799d70a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsSettings: 0
+  _moveTarget: {fileID: 0}
+  _speedMove: 8
+  _distanceToTarget: 0.1

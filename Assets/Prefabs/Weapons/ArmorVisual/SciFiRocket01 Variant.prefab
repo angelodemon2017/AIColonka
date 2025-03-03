@@ -111,8 +111,11 @@ MonoBehaviour:
     ValueDamage: 15
   WhoIs: {fileID: 2740253745079568826}
   hitPrefab: {fileID: 3911229923933492915, guid: 590c18679dd71a1498b1042ea72a7dac, type: 3}
+  _hitSize: 1
   _attackDecalPrefab: {fileID: 1038585292391102812, guid: 7df18e433b5901d469961913e6d003f7, type: 3}
   _sizeDecal: 3
+  _exploseZone: {fileID: 996953359522192065, guid: e2ee2b682c09c8e48a179baac6079ad7, type: 3}
+  _sizeExplose: 1
   _startSpeed: 1.5
   _accelSpeed: 0.5
   _timeOut: 999

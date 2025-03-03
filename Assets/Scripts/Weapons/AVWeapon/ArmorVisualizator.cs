@@ -66,7 +66,8 @@ public class ArmorVisualizator : MonoBehaviour
         {
             return _target;
         }
-        if (_points.EnemyIsTarget)
+        if (_points != null &&
+            _points.EnemyIsTarget)
         {
             return _points.TargetEnemy.transform;
         }

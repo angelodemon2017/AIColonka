@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,6 +16,10 @@ public class HPComponent : MonoBehaviour
     internal Action Death;
     internal Action<float, float, float> ChangeHP;
 
+    /// <summary>
+    /// 0-1
+    /// </summary>
+    internal float GetPercentHP => (float)CurrentHP / MaxHP;
     internal bool IsAlive => CurrentHP > 0;
 
     private void Awake()

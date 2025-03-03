@@ -2,17 +2,19 @@ using UnityEngine;
 
 public class Projectile : AVWeapon
 {
-    [SerializeField] private float _startSpeed;
+    [SerializeField] private AttackZone _exploseZone;
+    [SerializeField] private Damage _damageExpl;
+    [SerializeField] protected float _startSpeed;
     [SerializeField] private float _accelSpeed;
-    [SerializeField] private float _timeOut = 10f;
+    [SerializeField] protected float _timeOut = 10f;
     [SerializeField] private bool _destroyAtCollision;
     [SerializeField] private float _accuracy;
     [SerializeField] private GameObject _dummyPrefab;
 
     private GameObject _dummy;
-    private float _startDistance;
+    protected float _startDistance;
     private float currentDistance;
-    private AttackDecal _attackDecal;
+    protected AttackDecal _attackDecal;
     private Vector3 _direction;
 
     internal override void StartAttack()
@@ -49,7 +51,7 @@ public class Projectile : AVWeapon
         Fly();
     }
 
-    private void Fly()
+    protected virtual void Fly()
     {
         _startSpeed += _accelSpeed;
 
@@ -63,7 +65,6 @@ public class Projectile : AVWeapon
         {
             currentDistance = Vector3.Distance(transform.position,
                 _attackDecal.transform.position);
-            //            Progress = 
             var temp = (1.1f - currentDistance / _startDistance);
             if (temp > Progress)
             {
@@ -94,6 +95,7 @@ public class Projectile : AVWeapon
 
         _attackDecal = Instantiate(_attackDecalPrefab);
         _attackDecal.Init(360f, _sizeDecal);
+        _attackDecal.transform.position = transform.position;
         if (Mathf.Abs(transform.position.y - _target.position.y) < 1f)
         {
             _attackDecal.transform.rotation = transform.rotation;
@@ -101,7 +103,8 @@ public class Projectile : AVWeapon
         if (_target)
         {
             _startDistance = Vector3.Distance(_target.position, transform.position);
-            _attackDecal.transform.position = _target.position;
+            _attackDecal.Mover.SetVectTarget(_target.position);
+//            _attackDecal.transform.position = _target.position;
         }
         else
         {
@@ -110,7 +113,8 @@ public class Projectile : AVWeapon
             if (hit.collider)
             {
                 _endPoint = hit.point;
-                _attackDecal.transform.position = _endPoint;
+                _attackDecal.Mover.SetVectTarget(_endPoint);
+//                _attackDecal.transform.position = _endPoint;
             }
         }
 
@@ -119,12 +123,19 @@ public class Projectile : AVWeapon
 
     public void Explose()
     {
+        if (_exploseZone)
+        {
+            var ez = Instantiate(_exploseZone);
+            ez.SetDamage(_damageExpl);
+            ez.SetAttackZone(_sizeDecal, 0.5f);
+            ez.Init(WhoIs.whoIs);
+            ez.transform.position = transform.position;
+        }
         if (_destroyAtCollision)
         {
             _startSpeed = 0f;
             _accelSpeed = 0f;
             Debug.LogWarning($"destroyed curDist:{currentDistance},stDist:{_startDistance},Progress={Progress}");
-            Destroy(gameObject, 0.1f);
             if (_attackDecal)
             {
                 Destroy(_attackDecal.gameObject, 0.2f);
@@ -133,6 +144,7 @@ public class Projectile : AVWeapon
             {
                 Destroy(_dummy);
             }
+            Destroy(this.gameObject, 0.01f);
         }
     }
 }

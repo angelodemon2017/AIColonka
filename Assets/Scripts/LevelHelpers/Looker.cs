@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 
@@ -20,6 +21,15 @@ public class Looker : MonoBehaviour
     {
         if (AtCamera)
         {
+            StartCoroutine(InitCamera());
+        }
+    }
+
+    private IEnumerator InitCamera()
+    {
+        while (CameraController.Instance)
+        {
+            yield return null;
             _target = CameraController.Instance.transform;
         }
     }

@@ -46,5 +46,10 @@ public abstract class State : ScriptableObject
 
     public abstract bool CheckRules(IStatesCharacter character);
 
+    internal void Finish()
+    {
+        IsFinished = true;
+    }
+
     public virtual void ExitState() { }
 }

@@ -9,17 +9,18 @@ public class AVWPeriodic : AVWeapon
     [SerializeField] private float _periodic;
     [SerializeField] private float _speed;
 
-//    private float _directMove = 2f;
-
     protected override void Shoot()
     {
         base.Shoot();
-
-        _periodicActivator.InitAndStart(SomeShoot, _count, _periodic, EndShooting);
-        //        StartCoroutine(Launch());
+        InitAndStartShoot();
     }
 
-    private void SomeShoot(int order)
+    private void InitAndStartShoot()
+    {
+        _periodicActivator.InitAndStart(PeriodicShoot, _count, _periodic, EndShooting);
+    }
+
+    protected virtual void PeriodicShoot(int order)
     {
         var bul = Instantiate(_bullet, _spawnPoint.position, _spawnPoint.rotation);
         bul.InitAVW(_levelAVW, _damage);
@@ -31,20 +32,8 @@ public class AVWPeriodic : AVWeapon
         Destroy(gameObject, 0.1f);
     }
 
-/*    IEnumerator Launch()
-    {
-        yield return new WaitForSeconds(_beforeShot);
-        var tempProj = Instantiate(_projectile, _spawnPoint.position, _spawnPoint.rotation);
-        tempProj.InitAVW(_levelAVW, _damage);
-        tempProj.Init(WhoIs.whoIs, transform, _target, transform.rotation);
-        _directMove = -2f;
-        yield return new WaitForSeconds(_afterShot);
-        Destroy(gameObject);
-    }/**/
-
     private void FixedUpdate()
     {
         transform.LookAt(_target);
-//        transform.position += transform.forward * _directMove * _speed * Time.fixedDeltaTime;
     }
 }

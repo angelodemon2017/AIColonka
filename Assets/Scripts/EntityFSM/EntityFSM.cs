@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EntityFSM : MonoBehaviour, IStatesCharacter
 {
+    [SerializeField] private WhoIs _whoIs;
     [SerializeField] private ArmorVisualizator _armorVisualizator;
     [SerializeField] private PanelHP _UIpanelHP;
     [SerializeField] private HPComponent _hpComponent;
@@ -15,10 +16,7 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
 
     private void Awake()
     {
-        if (_armorVisualizator)
-        {
-            EntityRepository.Instance.AddWho(_armorVisualizator.GetWhoIs);
-        }
+        EntityRepository.Instance.AddWho(_whoIs);
 
         _hpComponent.ChangeHP += _UIpanelHP.UpdateHP;
         _hpComponent.OnChangeHP();

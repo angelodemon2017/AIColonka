@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5584960200149662962}
   - component: {fileID: 7768512233242620783}
   - component: {fileID: -5596965658636242756}
-  - component: {fileID: -5650407497827404615}
+  - component: {fileID: -3696449410668766088}
   m_Layer: 0
-  m_Name: AVRifleShot
+  m_Name: AVBallicticBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
     _collisionEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: -5650407497827404615}
+        - m_Target: {fileID: 751021162480697255, guid: 4259604481b64ec44b5276a3b47d7eb7, type: 3}
           m_TargetAssemblyTypeName: Projectile, Assembly-CSharp
           m_MethodName: TakeCollision
           m_Mode: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
     _collisionEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: -5650407497827404615}
+        - m_Target: {fileID: 751021162480697255, guid: 4259604481b64ec44b5276a3b47d7eb7, type: 3}
           m_TargetAssemblyTypeName: Projectile, Assembly-CSharp
           m_MethodName: Explose
           m_Mode: 1
@@ -105,7 +105,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: -5650407497827404615}
+        - m_Target: {fileID: 751021162480697255, guid: 4259604481b64ec44b5276a3b47d7eb7, type: 3}
           m_TargetAssemblyTypeName: Weapon, Assembly-CSharp
           m_MethodName: ShowHit
           m_Mode: 1
@@ -144,7 +144,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-5650407497827404615
+--- !u!114 &-3696449410668766088
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,21 +153,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 4861375963379123083}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35abc54513946094b982741a444d460f, type: 3}
+  m_Script: {fileID: 11500000, guid: 70f7f60dd5d5d354287bd7694613f29d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damage:
     DamageType: 2
-    ValueDamage: 2
+    ValueDamage: 5
   WhoIs: {fileID: 7768512233242620783}
   hitPrefab: {fileID: 82855965759615315, guid: adba7694712da2b499b4bc4728de865f, type: 3}
-  _hitSize: 0.2
+  _hitSize: 0.3
   _attackDecalPrefab: {fileID: 1038585292391102812, guid: 7df18e433b5901d469961913e6d003f7, type: 3}
-  _sizeDecal: 1.5
+  _sizeDecal: 6
   _exploseZone: {fileID: 996953359522192065, guid: e2ee2b682c09c8e48a179baac6079ad7, type: 3}
-  _sizeExplose: 0.5
-  _startSpeed: 1.5
-  _accelSpeed: 0.5
+  _damageExpl:
+    DamageType: 2
+    ValueDamage: 5
+  _startSpeed: 12
+  _accelSpeed: 0
   _timeOut: 999
   _destroyAtCollision: 1
   _accuracy: 1
@@ -175,6 +177,31 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 264
+  _ballisticHigh:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.7507573
+      outSlope: 1.7507573
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.057994287
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -5.501801
+      outSlope: -5.501801
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.019450426
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _highMult: 5
 --- !u!1001 &4596416231706414495
 PrefabInstance:
   m_ObjectHideFlags: 0

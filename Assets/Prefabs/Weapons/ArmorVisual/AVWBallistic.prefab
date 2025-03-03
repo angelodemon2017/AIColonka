@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 4206742282380956692}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.033, z: 0.556}
+  m_LocalPosition: {x: 0, y: 0.063, z: 0.528}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 8023859242267294096}
   - component: {fileID: 5946175661999580042}
   - component: {fileID: -5585753279522337005}
-  - component: {fileID: 8823323048384959387}
+  - component: {fileID: 8812635530970894430}
   m_Layer: 0
-  m_Name: SciFiRifle
+  m_Name: AVWBallistic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5580458740816129694}
-  m_Mesh: {fileID: -8947351537825740741, guid: 9fc2146df6bc6cc478fb9bbafc7bda8e, type: 3}
+  m_Mesh: {fileID: -4481832430733947647, guid: 66939f0506fbd2a488bdde0c87e95f3e, type: 3}
 --- !u!23 &8023859242267294096
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f35d33bcf41f79f4a94b13316d8ed068, type: 2}
+  - {fileID: 2100000, guid: 4356f169edb39124390aec3367c9445b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ebb405de80a404b9e3073a50b6fb9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8823323048384959387
+--- !u!114 &8812635530970894430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,20 +155,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 5580458740816129694}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3592f74253efa27498c7c23a49ad5025, type: 3}
+  m_Script: {fileID: 11500000, guid: 35bbc2603f302ec48b587f490763bfc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damage:
     DamageType: 2
-    ValueDamage: 2
+    ValueDamage: 5
   WhoIs: {fileID: 5946175661999580042}
   hitPrefab: {fileID: 0}
   _hitSize: 1
   _attackDecalPrefab: {fileID: 0}
-  _sizeDecal: 1
+  _sizeDecal: 0
   _periodicActivator: {fileID: -5585753279522337005}
   _spawnPoint: {fileID: 7425474071680170717}
-  _bullet: {fileID: -5650407497827404615, guid: 65d985e3199320048beb16bd14f5e9d6, type: 3}
+  _bullet: {fileID: -3696449410668766088, guid: 4f6afa556018a0a4dac9c1352f6c32d1, type: 3}
   _count: 0
-  _periodic: 0.15
-  _speed: 6
+  _periodic: 0.2
+  _speed: 5

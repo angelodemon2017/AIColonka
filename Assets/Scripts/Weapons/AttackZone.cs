@@ -23,7 +23,8 @@ public class AttackZone : Weapon
     {
         base.StartAttack();
 
-        _sphereCollider.radius = _size;
+        transform.localScale = Vector3.one * _size;
+//        _sphereCollider.radius = _size;
 
         Destroy(gameObject, _timeOut);
     }

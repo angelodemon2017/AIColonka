@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected Damage _damage;
     [SerializeField] protected WhoIs WhoIs;
     [SerializeField] private GameObject hitPrefab;
+    [SerializeField] private float _hitSize = 1f;
     protected Transform _avTransform;
     protected Transform _target;
     protected Quaternion _rotate;
@@ -43,6 +44,7 @@ public class Weapon : MonoBehaviour
         if (hitPrefab != null)
         {
             var hitVFX = Instantiate(hitPrefab, _hitPosition, _hitRotate);
+            hitVFX.transform.localScale = Vector3.one * _hitSize;
             var psHit = hitVFX.GetComponent<ParticleSystem>();
             if (psHit != null)
             {
