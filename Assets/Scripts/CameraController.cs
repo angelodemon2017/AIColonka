@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Looker _looker;
 
     private Transform _pivot;
+    private Transform _pLook;
 
     public Vector3 Direct => _directPoint.position - transform.position;
     internal bool IsLookingDown => transform.forward.y < 0f;
@@ -28,19 +29,26 @@ public class CameraController : MonoBehaviour
     internal void SetPivot(Transform tPivot, Transform pLook)
     {
         _pivot = tPivot;
-//        lookTarget = pLook;
+        _pLook = pLook;
 
-        _looker.SetTarget(pLook);
-
-        transform.position = _pivot.position;
-        transform.SetParent(_pivot);
+        ReturnParent();
     }
 
-    /*    internal void UpdateMouse(float xMouse, float yMouse)
-        {
-            _currentX += xMouse * sensitivity;
-            _currentY -= yMouse * -sensitivity;
+    internal void UnParrent()
+    {
+        _looker.SetTarget(null);
+        transform.SetParent(null);
+    }
 
-            _currentY = Mathf.Clamp(_currentY, minYAngle, maxYAngle);
-        }/**/
+    internal void LerpToPivot(float lerpPos)
+    {
+        transform.position = Vector3.Lerp(transform.position, _pivot.position, lerpPos);
+    }
+
+    internal void ReturnParent()
+    {
+        transform.position = _pivot.position;
+        transform.SetParent(_pivot);
+        _looker.SetTarget(_pLook);
+    }
 }

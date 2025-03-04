@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5898894a26a3638448fcc1b94c7a489d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _whoIs: {fileID: 2169135358374710054}
   _armorVisualizator: {fileID: 3381510569608658928}
   _UIpanelHP: {fileID: 4731362345238429230}
   _hpComponent: {fileID: 5351319397589345408}

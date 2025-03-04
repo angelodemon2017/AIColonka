@@ -116,6 +116,16 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
         _currentState.CallPlayerAction(playerAction);
     }
 
+    internal void MoveMouse(float mX, float mY)
+    {
+        if (_currentState is PlayerDashState)
+        {
+            return;
+        }
+
+        _points.Move(mX, mY);
+    }
+
     internal void CallAxisHorVer(float hor, float ver)
     {
         _currentState.CallAxisHorVer(hor, ver);

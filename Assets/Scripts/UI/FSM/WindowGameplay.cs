@@ -124,6 +124,11 @@ public class WindowGameplay : MAINWindow
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _playerFSM.CallPlayerAction(EnumPlayerControlActions.Shift);
+        }
+
         if (_target.enabled)
         {
             _target.rectTransform.position = Camera.main.WorldToScreenPoint(_playerFSM.GetPoints.TargetEnemy.transform.position);
@@ -150,7 +155,7 @@ public class WindowGameplay : MAINWindow
 
         if (mX != 0 || mY != 0)
         {
-            _playerFSM?.GetPoints.Move(mX, mY);
+            _playerFSM?.MoveMouse(mX, mY);
         }
 
         var horizontal = Input.GetAxis("Horizontal");

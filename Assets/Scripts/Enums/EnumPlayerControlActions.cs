@@ -6,4 +6,5 @@
     BitAttack,
     AVAttack,
     SwitchTarget,
+    Shift,
 }
