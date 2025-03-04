@@ -8,4 +8,13 @@ public static class ListExtensions
     {
         return list.ElementAt(Random.Range(0, list.Count()));
     }
+
+    public static T GetElement<T>(this IEnumerable<T> list, int index)
+    {
+        if (index >= list.Count())
+        {
+            index %= list.Count();
+        }
+        return list.ElementAt(index);
+    }
 }

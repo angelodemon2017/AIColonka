@@ -35,7 +35,7 @@ public class PeriodicActivator : MonoBehaviour
 
         yield return new WaitForSeconds(_periodTime);
 
-        if (count > 0)
+        if (count > 1)
         {
             _cashCoroutine = StartCoroutine(CallFunc(count - 1, endAction));
         }
