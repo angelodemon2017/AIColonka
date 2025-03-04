@@ -49,6 +49,7 @@ public class Points
         minDistance);
     internal bool EnemyIsTarget => _holdTarget;
     internal WhoIs TargetEnemy => _holdTarget;
+    internal Transform TransfTarget => _holdTarget ? _holdTarget.transform : null;
 
     internal void SetHoldTarget(WhoIs newTarget)
     {

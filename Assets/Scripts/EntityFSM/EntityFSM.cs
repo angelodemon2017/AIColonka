@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EntityFSM : MonoBehaviour, IStatesCharacter
 {
+    [SerializeField] private EnumAirGroundState _airGroundState;
     [SerializeField] private WhoIs _whoIs;
     [SerializeField] private ArmorVisualizator _armorVisualizator;
     [SerializeField] private PanelHP _UIpanelHP;
@@ -13,6 +14,7 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
 
     internal EntityModule GetModule => _entityModule;
     internal ArmorVisualizator GetArmorVisualizator => _armorVisualizator;
+    internal EnumAirGroundState airGroundState => _airGroundState;
 
     private void Awake()
     {
@@ -39,6 +41,11 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
     public void SetState(State state)
     {
         SetState(state, false);
+    }
+
+    internal void SetAGS(EnumAirGroundState airGroundState)
+    {
+        _airGroundState = airGroundState;
     }
 
     public void SetState(State state, bool ignoreEqual = false)
