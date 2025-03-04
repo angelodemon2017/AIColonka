@@ -7,9 +7,9 @@ public class DeathState : State
     {
         base.Init();
         if (Character is EntityFSM entityFSM &&
-            entityFSM.GetArmorVisualizator.GetWhoIs.whoIs != EnumWhoIs.Player)
+            entityFSM.whoIs.whoIs != EnumWhoIs.Player)
         {
-            EntityRepository.Instance.RemoveWho(entityFSM.GetArmorVisualizator.GetWhoIs);
+            EntityRepository.Instance.RemoveWho(entityFSM.whoIs);
         }
     }
 

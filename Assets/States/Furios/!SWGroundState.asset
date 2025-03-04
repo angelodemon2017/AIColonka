@@ -9,8 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d15952ca3fa5257499c4260958e50a22, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f5dbe329d8042f49a4bf35560c7d510, type: 3}
   m_Name: '!SWGroundState'
   m_EditorClassIdentifier: 
-  AvailableStates: []
+  AvailableStates:
+  - {fileID: 11400000, guid: 24f975393fbdc2a4ab8a769aa6460351, type: 2}
   Animation: 9
+  _countLaunched: 010000000200000004000000
+  _intervalsLaunched: []
+  _weapons:
+  - {fileID: 8812635530970894430, guid: 694a5bddd1b474142823fa6e11b3e727, type: 3}
+  _customKey: SWGroundState

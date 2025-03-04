@@ -59,6 +59,8 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
             OnUpdatePlayer?.Invoke();
         }
     }
+
+    public EntityModule GetModule => null;
     #endregion
 
     private void Awake()

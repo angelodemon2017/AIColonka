@@ -169,6 +169,30 @@ MonoBehaviour:
   _periodicActivator: {fileID: -5585753279522337005}
   _spawnPoint: {fileID: 7425474071680170717}
   _bullet: {fileID: -5650407497827404615, guid: 65d985e3199320048beb16bd14f5e9d6, type: 3}
-  _count: 0
-  _periodic: 0.15
+  _count: 3
+  _periodic: 0.2
   _speed: 6
+  _accurance:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 5
+      outSlope: 5
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 5
+      inSlope: 5
+      outSlope: 5
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

@@ -20,12 +20,6 @@ public class MainData
         SaveController.Save(this);
     }
 
-/*    public void SetTask(int newTask)
-    {
-        progressHistory.SetTask(newTask);
-        SaveController.Save(this);
-    }/**/
-
     internal void SetLevel(EnumLevels enumLevel)
     {
         testSaveParam++;
@@ -82,16 +76,13 @@ public class ProgressHistory
 
     public void SetTask(string keyTask)
     {
-        WasDones.Add(KeyMainTask);
+        if (!WasDones.Contains(KeyMainTask))
+        {
+            WasDones.Add(KeyMainTask);
+        }
         KeyMainTask = keyTask;
         TaskUpdate?.Invoke();
     }
-
-/*    public void SetTask(int newTask)
-    {
-        CurrentTask = newTask;
-        TaskUpdate?.Invoke();
-    }/**/
 
     public bool IsWasDone(string keyTask)
     {

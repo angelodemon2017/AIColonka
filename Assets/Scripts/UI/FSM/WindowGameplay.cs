@@ -18,6 +18,8 @@ public class WindowGameplay : MAINWindow
     [SerializeField] private TextMeshProUGUI _comboLabel;
     [SerializeField] private TextMeshProUGUI _hitLabel;
 
+    [SerializeField] private Color _tempColor;
+    [SerializeField] private Image _backGroundBackTalk;
     [SerializeField] private TextMeshProUGUI _backTalk;
 
     private GameObject _parentCombo;
@@ -81,6 +83,7 @@ public class WindowGameplay : MAINWindow
     private void UpdateSubtitle()
     {
         _backTalk.text = ControllerDemoSaveFile.Instance.backTalk.GetTalk;
+        _backTalk.enabled = !string.IsNullOrEmpty(_backTalk.text);
     }
 
     public override void Run()
@@ -164,6 +167,17 @@ public class WindowGameplay : MAINWindow
         if (horizontal != 0 || vertical != 0)
         {
             _playerFSM.CallAxisHorVer(horizontal, vertical);
+        }
+
+        if (_backTalk.enabled && _tempColor.a < 1)
+        {
+            _tempColor.a += 0.01f;
+            _backGroundBackTalk.color = _tempColor;
+        }
+        if (!_backTalk.enabled && _tempColor.a > 0)
+        {
+            _tempColor.a -= 0.01f;
+            _backGroundBackTalk.color = _tempColor;
         }
     }
 

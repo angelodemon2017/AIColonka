@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,6 +24,7 @@ public class WeaponVisualizator : MonoBehaviour
     internal void CallAttack(SpawnWeaponState state)
     {
         _currentState = state;
+        CallAttack(_currentState.GetCountLaunched, _currentState.GetIntervalLaunched);
     }
 
     internal void CallAttack(int count, float periodic)
@@ -36,7 +36,7 @@ public class WeaponVisualizator : MonoBehaviour
     {
         if (_cashPointsByStates.TryGetValue(_currentState.Key, out List<Transform> points))
         {
-            _tempSpawnPoint = points.GetElement(order);
+            _tempSpawnPoint = points.GetElementByOrder(order);
         }
         else
         {

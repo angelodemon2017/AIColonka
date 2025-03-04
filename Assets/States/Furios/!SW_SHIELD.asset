@@ -9,15 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f5dbe329d8042f49a4bf35560c7d510, type: 3}
-  m_Name: '!SWAirState'
+  m_Script: {fileID: 11500000, guid: f5d7dc55f6e8e0341a4e778e32903dc4, type: 3}
+  m_Name: '!SW_SHIELD'
   m_EditorClassIdentifier: 
   AvailableStates:
-  - {fileID: 11400000, guid: 461751a945171d745b97c21b7d35af94, type: 2}
+  - {fileID: 11400000, guid: 249471c88bd67cc48bf87462c994638e, type: 2}
   Animation: 9
-  _countLaunched: 020000000400000008000000
+  _countLaunched: 
   _intervalsLaunched:
-  - 0.3
+  - 1
   _weapons:
-  - {fileID: 8823323048384959387, guid: 50bd1202b53bf4d40ab6956560108b96, type: 3}
-  _customKey: SWAirState
+  - {fileID: 353439383680120238, guid: 6728886db852e3c4bbcefa72926d7dc4, type: 3}
+  _customKey: SW_SHIELD
+  _immuTime: 3

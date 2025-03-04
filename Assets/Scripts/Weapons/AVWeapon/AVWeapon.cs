@@ -7,16 +7,10 @@ public class AVWeapon : Weapon
     protected int _levelAVW;
     private bool _isAir;
 
-    internal void InitAVW(int level, Damage damage = null, bool isAir = false)
+    internal void InitAVW(int level, bool isAir = false)
     {
         _isAir = isAir;
         _levelAVW = level;
-        if (damage != null)
-        {
-            _damage = new Damage(
-                damage.DamageType,
-                damage.ValueDamage);
-        }
     }
 
     internal override void StartAttack()

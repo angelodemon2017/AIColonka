@@ -20,7 +20,7 @@ public class AVWeaponSpawner : AVWeapon
     {
         var rp = _points.GetRandom();
         var avw = Instantiate(_weaponVariants.GetRandom(), rp.position, transform.rotation);
-        avw.InitAVW(_levelAVW, _damage, true);
+        avw.InitAVW(_levelAVW, true);
         avw.Init(WhoIs.whoIs, rp, _target);
     }
 

@@ -27,11 +27,11 @@ public class Looker : MonoBehaviour
 
     private IEnumerator InitCamera()
     {
-        while (CameraController.Instance)
+        while (!CameraController.Instance)
         {
             yield return null;
-            _target = CameraController.Instance.transform;
         }
+        _target = CameraController.Instance.transform;
     }
 
     private void FixedUpdate()

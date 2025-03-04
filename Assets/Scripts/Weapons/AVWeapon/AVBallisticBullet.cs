@@ -38,6 +38,17 @@ public class AVBallisticBullet : Projectile
         }
     }
 
+/*    protected override void UpdateDecal()
+    {
+        if (_attackDecal)
+        {
+            currentDistance = Vector3.Distance(transform.position,
+                _attackDecal.transform.position);
+            Progress = (1.1f - currentDistance / _startDistance);
+            _attackDecal.UpdateProgress(Progress > 1 ? 1f : Progress);
+        }
+    }/**/
+
     protected override void Fly()
     {
         _timeFly += Time.fixedDeltaTime;

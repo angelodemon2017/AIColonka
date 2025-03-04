@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 820631d5b1e666c4e9e53b3287960e3d, type: 3}
-  m_Name: IdleToAirState
+  m_Name: IdleWithoutBattle
   m_EditorClassIdentifier: 
-  AvailableStates:
-  - {fileID: 11400000, guid: 24f975393fbdc2a4ab8a769aa6460351, type: 2}
+  AvailableStates: []
   Animation: 0
-  _timeIdle: 1
+  _timeIdle: 5

@@ -1,40 +1,35 @@
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class FuryModule : EntityModule
+public class FuryModule : EntityModule, IEntityModuleWithWeaponSpawner, IPhaselable
 {
-    [SerializeField] private Transform _pointUp;
-    [SerializeField] private Transform _pointDown;
-    [SerializeField] private HPComponent _hPComponent;
-    [SerializeField] private List<PhaseByHp> phases;
+    [SerializeField] private WeaponVisualizator _weaponVisualizator;
+    [SerializeField] private AnimationCurve _phaseByHP;
+    [SerializeField] private UnityEvent _eventByChangeHP;
 
-    internal Transform PointUp => _pointUp;
-    internal Transform PointDown => _pointDown;
+    private int _lastPhase;
 
+    public WeaponVisualizator GetWeaponVisualizator => _weaponVisualizator;
 
     internal override void Init()
     {
         base.Init();
 
+        _lastPhase = GetPhase();
+        _hPComponent.ChangeHP += UpdateHP;
     }
 
-    internal int GetPhase()
+    private void UpdateHP(float a, float b, float c)
     {
-        var perc = _hPComponent.GetPercentHP;
-        var phas = phases.FirstOrDefault(p => p.percentHPMax > perc && p.percentHPMin < perc);
-        if (phas != null)
+        if (_lastPhase != GetPhase())
         {
-            return phas.Phase;
+            _eventByChangeHP?.Invoke();
+            _lastPhase = GetPhase();
         }
-        return 0;
     }
 
-    [System.Serializable]
-    public class PhaseByHp
+    public int GetPhase()
     {
-        [Range(0f, 1f)] public float percentHPMin;
-        [Range(0f, 1f)] public float percentHPMax;
-        public int Phase;
+        return (int)_phaseByHP.Evaluate(_hPComponent.GetPercentHP);
     }
 }

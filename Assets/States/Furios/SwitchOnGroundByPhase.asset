@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0dfc412ac9b194084dddb6736a912e, type: 3}
+  m_Name: SwitchOnGroundByPhase
+  m_EditorClassIdentifier: 
+  AvailableStates:
+  - {fileID: 11400000, guid: e60cde94208656546b6f13bea3229732, type: 2}
+  Animation: 0
+  _stateByPhase:
+  - {fileID: 11400000, guid: e60cde94208656546b6f13bea3229732, type: 2}
+  - {fileID: 11400000, guid: cd495381ac9e6974cb023210dd74e9d3, type: 2}
+  - {fileID: 11400000, guid: e60cde94208656546b6f13bea3229732, type: 2}

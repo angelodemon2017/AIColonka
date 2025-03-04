@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MoveToAirPointState
   m_EditorClassIdentifier: 
   AvailableStates:
-  - {fileID: 11400000, guid: aaa483c3c18ca944e82e601dd6e16422, type: 2}
+  - {fileID: 11400000, guid: 07e353d19ca55bb419a1ab76e971093c, type: 2}
   Animation: 3
   _distance: 0.1
   _speedMove: 4

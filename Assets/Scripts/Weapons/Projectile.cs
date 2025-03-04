@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Projectile : AVWeapon
+public class Projectile : AVWeapon, IAccurancy
 {
     [SerializeField] private AttackZone _exploseZone;
-    [SerializeField] private Damage _damageExpl;
+//    [SerializeField] private Damage _damageExpl;
     [SerializeField] protected float _startSpeed;
     [SerializeField] private float _accelSpeed;
     [SerializeField] protected float _timeOut = 10f;
@@ -13,7 +13,7 @@ public class Projectile : AVWeapon
 
     private GameObject _dummy;
     protected float _startDistance;
-    private float currentDistance;
+    protected float currentDistance;
     protected AttackDecal _attackDecal;
     private Vector3 _direction;
 
@@ -28,10 +28,10 @@ public class Projectile : AVWeapon
 
         if (_target && WhoIs.whoIs != EnumWhoIs.Player)
         {
-            Debug.LogWarning($"!Dummy spawned");
+//            Debug.LogWarning($"!Dummy spawned");
             _dummy = Instantiate(_dummyPrefab);
             _dummy.transform.position = _target.position + 
-                new Vector3(Random.Range(-_accuracy, _accuracy), 0f,
+                new Vector3(Random.Range(-_accuracy, _accuracy), -1f,
                 Random.Range(-_accuracy, _accuracy));
 
             _target = _dummy.transform;
@@ -58,19 +58,20 @@ public class Projectile : AVWeapon
         transform.position += _direction * _startSpeed * Time.fixedDeltaTime;
     }
 
-    private float Progress;
-    private void UpdateDecal()
+    protected float Progress;
+    protected virtual void UpdateDecal()
     {
         if (_attackDecal)
         {
             currentDistance = Vector3.Distance(transform.position,
                 _attackDecal.transform.position);
-            var temp = (1.1f - currentDistance / _startDistance);
-            if (temp > Progress)
+            Progress = (1.1f - currentDistance / _startDistance);
+            _attackDecal.UpdateProgress(Progress > 1 ? 1f : Progress);
+/*            if (temp > Progress)
             {
                 Progress = temp;
                 _attackDecal.UpdateProgress(Progress > 1 ? 1f : Progress);
-            }
+            }/**/
         }
     }
 
@@ -104,7 +105,6 @@ public class Projectile : AVWeapon
         {
             _startDistance = Vector3.Distance(_target.position, transform.position);
             _attackDecal.Mover.SetVectTarget(_target.position);
-//            _attackDecal.transform.position = _target.position;
         }
         else
         {
@@ -114,7 +114,6 @@ public class Projectile : AVWeapon
             {
                 _endPoint = hit.point;
                 _attackDecal.Mover.SetVectTarget(_endPoint);
-//                _attackDecal.transform.position = _endPoint;
             }
         }
 
@@ -126,7 +125,7 @@ public class Projectile : AVWeapon
         if (_exploseZone)
         {
             var ez = Instantiate(_exploseZone);
-            ez.SetDamage(_damageExpl);
+//            ez.SetDamage(_damageExpl);
             ez.SetAttackZone(_sizeDecal, 0.5f);
             ez.Init(WhoIs.whoIs);
             ez.transform.position = transform.position;
@@ -135,7 +134,7 @@ public class Projectile : AVWeapon
         {
             _startSpeed = 0f;
             _accelSpeed = 0f;
-            Debug.LogWarning($"destroyed curDist:{currentDistance},stDist:{_startDistance},Progress={Progress}");
+//            Debug.LogWarning($"destroyed curDist:{currentDistance},stDist:{_startDistance},Progress={Progress}");
             if (_attackDecal)
             {
                 Destroy(_attackDecal.gameObject, 0.2f);
@@ -146,5 +145,10 @@ public class Projectile : AVWeapon
             }
             Destroy(this.gameObject, 0.01f);
         }
+    }
+
+    public void SetAccurance(float acc)
+    {
+        _accuracy = acc;
     }
 }

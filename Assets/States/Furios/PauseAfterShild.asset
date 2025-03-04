@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 820631d5b1e666c4e9e53b3287960e3d, type: 3}
-  m_Name: IdleToGroundState
+  m_Name: PauseAfterShild
   m_EditorClassIdentifier: 
   AvailableStates:
-  - {fileID: 11400000, guid: 325433379b7a430438d9c1e64d2ad481, type: 2}
+  - {fileID: 11400000, guid: e60cde94208656546b6f13bea3229732, type: 2}
   Animation: 0
-  _timeIdle: 1
+  _timeIdle: 2

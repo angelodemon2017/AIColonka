@@ -2,6 +2,7 @@ using UnityEngine;
 
 public interface IStatesCharacter
 {
+    EntityModule GetModule { get; }
     bool IsFinishedCurrentState();
 
     Transform GetTransform();

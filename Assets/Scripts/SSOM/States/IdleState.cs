@@ -7,9 +7,11 @@ public class IdleState : State
 
     private float _timerIdle;
 
+    protected virtual float getTime => _timeIdle;
+
     protected override void Init()
     {
-        _timerIdle = _timeIdle;
+        _timerIdle = getTime;
     }
 
     protected override void Run()

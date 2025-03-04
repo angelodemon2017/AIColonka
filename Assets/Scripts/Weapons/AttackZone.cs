@@ -24,7 +24,6 @@ public class AttackZone : Weapon
         base.StartAttack();
 
         transform.localScale = Vector3.one * _size;
-//        _sphereCollider.radius = _size;
 
         Destroy(gameObject, _timeOut);
     }
@@ -38,5 +37,10 @@ public class AttackZone : Weapon
         {
             whoIs.TakeDamage(_damage);
         }
+    }
+
+    public void DestroyBullet(WhoIs whoIs)
+    {
+        Destroy(whoIs.gameObject);
     }
 }

@@ -4,7 +4,6 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
 {
     [SerializeField] private EnumAirGroundState _airGroundState;
     [SerializeField] private WhoIs _whoIs;
-    [SerializeField] private ArmorVisualizator _armorVisualizator;
     [SerializeField] private PanelHP _UIpanelHP;
     [SerializeField] private HPComponent _hpComponent;
     [SerializeField] private State _startState;
@@ -12,20 +11,23 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
 
     public State _currentState;
 
-    internal EntityModule GetModule => _entityModule;
-    internal ArmorVisualizator GetArmorVisualizator => _armorVisualizator;
+    internal WhoIs whoIs => _whoIs;
+    public EntityModule GetModule => _entityModule;
     internal EnumAirGroundState airGroundState => _airGroundState;
 
     private void Awake()
     {
-        EntityRepository.Instance.AddWho(_whoIs);
-
         _hpComponent.ChangeHP += _UIpanelHP.UpdateHP;
         _hpComponent.OnChangeHP();
 
         _entityModule?.Init();
 
         SetState(_startState);
+    }
+
+    private void Start()
+    {
+        EntityRepository.Instance.AddWho(_whoIs);
     }
 
     private void Update()

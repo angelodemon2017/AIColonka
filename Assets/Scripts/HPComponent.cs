@@ -10,6 +10,7 @@ public class HPComponent : MonoBehaviour
     [SerializeField] private int CurrentHP;
     [SerializeField] private int _regenHP;
 
+    private float _immuneTime;
     private float _lastHP;
     private float _timeOut;
 
@@ -38,8 +39,18 @@ public class HPComponent : MonoBehaviour
         OnChangeHP();
     }
 
+    internal void SetImmune(float immuTime)
+    {
+        _immuneTime = immuTime;
+    }
+
     internal void GetDamage(int damageCount)
     {
+        if (_immuneTime > 0)
+        {
+            return;
+        }
+
         _lastHP = CurrentHP;
 //        Debug.Log($"Getting damage {damageCount}");
         CurrentHP -= damageCount;
@@ -87,6 +98,10 @@ public class HPComponent : MonoBehaviour
                 Heal(_regenHP);
                 _timeOut = 0.5f;
             }
+        }
+        if (_immuneTime > 0)
+        {
+            _immuneTime -= Time.deltaTime;
         }
     }
 }

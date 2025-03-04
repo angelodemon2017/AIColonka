@@ -50,6 +50,10 @@ MonoBehaviour:
     m_Localized: Great! Let's keep the fun going!
     m_Metadata:
       m_Items: []
+  - m_Id: 3758748379111424
+    m_Localized: Let's see what I haven't tested yet!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

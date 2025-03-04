@@ -8,6 +8,7 @@ public class AVWPeriodic : AVWeapon
     [SerializeField] private int _count;
     [SerializeField] private float _periodic;
     [SerializeField] private float _speed;
+    [SerializeField] private AnimationCurve _accurance;
 
     protected override void Shoot()
     {
@@ -23,7 +24,11 @@ public class AVWPeriodic : AVWeapon
     protected virtual void PeriodicShoot(int order)
     {
         var bul = Instantiate(_bullet, _spawnPoint.position, _spawnPoint.rotation);
-        bul.InitAVW(_levelAVW, _damage);
+        if (bul is IAccurancy iacc)
+        {
+            iacc.SetAccurance(_accurance.Evaluate((float)order/ _count));
+        }
+        bul.InitAVW(_levelAVW);//, _damage);
         bul.Init(WhoIs.whoIs, transform, _target, transform.rotation);
     }
 

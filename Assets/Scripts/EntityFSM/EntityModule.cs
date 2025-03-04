@@ -4,8 +4,10 @@ using UnityEngine;
 public abstract class EntityModule : MonoBehaviour
 {
     [SerializeField] private List<PointForState> _pointForStates;
+    [SerializeField] protected HPComponent _hPComponent;
 
     private Dictionary<string, List<Transform>> _cashPointForStates = new();
+    internal HPComponent hPComponent => _hPComponent;
 
     internal virtual void Init()
     {

@@ -158,19 +158,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage:
     DamageType: 2
-    ValueDamage: 2
+    ValueDamage: 3
   WhoIs: {fileID: 7768512233242620783}
   hitPrefab: {fileID: 82855965759615315, guid: adba7694712da2b499b4bc4728de865f, type: 3}
   _hitSize: 0.2
   _attackDecalPrefab: {fileID: 1038585292391102812, guid: 7df18e433b5901d469961913e6d003f7, type: 3}
   _sizeDecal: 1.5
   _exploseZone: {fileID: 996953359522192065, guid: e2ee2b682c09c8e48a179baac6079ad7, type: 3}
-  _sizeExplose: 0.5
+  _damageExpl:
+    DamageType: 0
+    ValueDamage: 0
   _startSpeed: 1.5
   _accelSpeed: 0.5
   _timeOut: 999
   _destroyAtCollision: 1
-  _accuracy: 1
+  _accuracy: 3
   _dummyPrefab: {fileID: 8848839180136046075, guid: f00a0fbf3c4d58f4b9834ab0cce82eb7, type: 3}
   layerMask:
     serializedVersion: 2

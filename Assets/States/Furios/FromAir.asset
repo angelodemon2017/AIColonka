@@ -15,6 +15,6 @@ MonoBehaviour:
   AvailableStates: []
   Animation: 0
   _randomStates:
-  - {fileID: 11400000, guid: c83c1d90a549b194e88fb2df21e64a78, type: 2}
-  - {fileID: 11400000, guid: 296bf60b94ce9e44a8fbbb5f6e9140d4, type: 2}
-  - {fileID: 11400000, guid: 296bf60b94ce9e44a8fbbb5f6e9140d4, type: 2}
+  - {fileID: 11400000, guid: b40a32ee7dfc11e4eaf3f185fe12e9bd, type: 2}
+  - {fileID: 11400000, guid: aa0cb57129cd06c4c9071381d39f1bbf, type: 2}
+  - {fileID: 11400000, guid: aa0cb57129cd06c4c9071381d39f1bbf, type: 2}

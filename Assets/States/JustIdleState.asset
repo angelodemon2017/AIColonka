@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 820631d5b1e666c4e9e53b3287960e3d, type: 3}
-  m_Name: WaitAfterOnGround
+  m_Name: JustIdleState
   m_EditorClassIdentifier: 
-  AvailableStates:
-  - {fileID: 11400000, guid: 9ebde70f80b71ee468bbb27256db640d, type: 2}
+  AvailableStates: []
   Animation: 0
   _timeIdle: 1
