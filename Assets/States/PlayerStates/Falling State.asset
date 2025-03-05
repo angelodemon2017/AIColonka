@@ -22,3 +22,5 @@ MonoBehaviour:
     playerState: {fileID: 11400000, guid: 88af69f647b43a94b90299e18232190a, type: 2}
   - playerAction: 6
     playerState: {fileID: 11400000, guid: 80231b9a68e8de748bb7da8fc0c97752, type: 2}
+  _horizontalSpeed: 6
+  _rotationSpeed: 10

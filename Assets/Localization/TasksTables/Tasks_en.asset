@@ -83,11 +83,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1172882235392
-    m_Localized: FamilyHelping
+    m_Localized: Primary Duties
     m_Metadata:
       m_Items: []
   - m_Id: 1193266552832
-    m_Localized: FamilyHelping
+    m_Localized: I need to talk to my family.
     m_Metadata:
       m_Items: []
   references:

@@ -24,3 +24,5 @@ MonoBehaviour:
   - playerAction: 6
     playerState: {fileID: 11400000, guid: 80231b9a68e8de748bb7da8fc0c97752, type: 2}
   jumpHeight: 1
+  _horizontalSpeed: 6
+  _rotationSpeed: 10

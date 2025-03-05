@@ -39,12 +39,12 @@ public class ControllerDemoSaveFile : MonoBehaviour
 
     internal TaskSO GetCurrentTask()
     {
-        return TaskConfig.GetTaskByKey(mainData.progressHistory.KeyMainTask);
+        return TaskConfig.GetTaskByKey(mainData.progressHistory.KeyTitleMainTask);
     }
 
     internal bool IsCurrentTask(TaskSO taskSO)
     {
-        return TaskConfig.GetTaskByKey(mainData.progressHistory.KeyMainTask) == taskSO;
+        return mainData.progressHistory.KeyTitleMainTask == taskSO.KeyTitle;
     }
 
     internal bool WasDone(TaskSO taskSO)

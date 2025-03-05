@@ -3,9 +3,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "FSM/PlayerState/PlayerFallingState", order = 1)]
 public class PlayerFallingState : PlayerState
 {
-    internal override void CallAxisHorVer(float hor, float ver) 
+    [SerializeField] private float _horizontalSpeed;
+    [SerializeField] private float _rotationSpeed;
+
+    internal override void CallAxisHorVer(float hor, float ver)
     {
-        //correct move in fall
+        MovePlayer(hor, ver, _horizontalSpeed, _rotationSpeed);
     }
 
     protected override void Run()

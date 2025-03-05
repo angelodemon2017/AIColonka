@@ -4,14 +4,6 @@ public class CameraController : MonoBehaviour
 {
     public static CameraController Instance;
     [SerializeField] private Transform _directPoint;
-//    public Transform lookTarget;
-//    [SerializeField] private Vector3 _centerOffset;
-//    public Vector3 offset = new Vector3(0, 5, -10);
-//    public float sensitivity = 10f;
-//    public float minYAngle = -20f;
-//    public float maxYAngle = 60f;
-//    private float _currentX = 0f;
-//    private float _currentY = 0f;
 
     [SerializeField] private Looker _looker;
 
@@ -34,19 +26,43 @@ public class CameraController : MonoBehaviour
         ReturnParent();
     }
 
-    internal void UnParrent()
+    internal void UnParrent(float time)
     {
         _looker.SetTarget(null);
         transform.SetParent(null);
+        _lerpTime = 0f;
+        _timeOfMove = time;
     }
 
-    internal void LerpToPivot(float lerpPos)
+    private float _lerpTime = 0f;
+    private float _timeOfMove;
+
+    private void FixedUpdate()
+    {
+        FlexMoveCamera(Time.fixedDeltaTime);
+    }
+
+    private void FlexMoveCamera(float deltaTime)
+    {
+        if (_timeOfMove > 0)
+        {
+            _lerpTime += deltaTime;
+            LerpToPivot(_lerpTime / _timeOfMove);
+            if (_lerpTime > _timeOfMove)
+            {
+                ReturnParent();
+            }
+        }
+    }
+
+    private void LerpToPivot(float lerpPos)
     {
         transform.position = Vector3.Lerp(transform.position, _pivot.position, lerpPos);
     }
 
-    internal void ReturnParent()
+    private void ReturnParent()
     {
+        _timeOfMove = 0f;
         transform.position = _pivot.position;
         transform.SetParent(_pivot);
         _looker.SetTarget(_pLook);

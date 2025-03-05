@@ -4,6 +4,8 @@ using UnityEngine;
 public class PlayerJumpState : PlayerState
 {
     [SerializeField] private float jumpHeight;
+    [SerializeField] private float _horizontalSpeed;
+    [SerializeField] private float _rotationSpeed;
     private float gravity = -9.81f;
 
     protected override void Init()
@@ -21,7 +23,7 @@ public class PlayerJumpState : PlayerState
 
     internal override void CallAxisHorVer(float hor, float ver)
     {
-        //correct jump
+        MovePlayer(hor, ver, _horizontalSpeed, _rotationSpeed);
     }
 
     public override bool CheckRules(IStatesCharacter character)

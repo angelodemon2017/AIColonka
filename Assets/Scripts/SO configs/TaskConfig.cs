@@ -12,18 +12,14 @@ public class TaskConfig : ScriptableObject
     {
         for (int i = 0; i < MainTasks.Count; i++)
         {
-            MainTasks[i].KeyTitle = $"MT{i}";
-            MainTasks[i].KeyLocDesc = $"MD{i}";
+            MainTasks[i].TaskKey = $"T{i}";
+//            MainTasks[i].KeyTitle = $"MT{i}";
+//            MainTasks[i].KeyLocDesc = $"MD{i}";
         }
     }
 
     public TaskSO GetTaskByKey(string key)
     {
         return MainTasks.FirstOrDefault(t => t.KeyTitle == key);
-    }
-
-    public TaskSO GetTaskById(int id)
-    {
-        return id < MainTasks.Count ? MainTasks[id] : _missTask;
     }
 }

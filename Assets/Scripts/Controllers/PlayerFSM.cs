@@ -5,6 +5,7 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 {
     public static PlayerFSM Instance;
 
+    [SerializeField] private CharacterController _characterController;
     [SerializeField] private VirtualObjectChecker _virtualObjectChecker;
     [SerializeField] private AdditionalStates _additionalStates;
     [SerializeField] private BitsController _bitsController;
@@ -26,6 +27,7 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     internal Action OnUpdatePlayer;
 
     #region properties
+    internal CharacterController CharacterController => _characterController;
     internal AdditionalStates AdditionalStates => _additionalStates;
     internal ArmorVisualizator GetArmorVisualizator => _armorVisualizator;
     internal AnimationAdapter AnimationAdapter => _animationAdapter;
@@ -78,7 +80,6 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     internal void SetSlowState(bool isSlow)
     {
         _additionalStates.SetSlow(isSlow);
-//        _currentState.CheckAndUpdateState();
     }
 
     internal void CallTryRelease()

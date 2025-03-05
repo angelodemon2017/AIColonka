@@ -12,7 +12,7 @@ public class MainData
 
     public Action BitUpgrade;
 
-    public bool EmptyData => string.IsNullOrWhiteSpace(progressHistory.KeyMainTask);
+    public bool EmptyData => string.IsNullOrWhiteSpace(progressHistory.KeyTitleMainTask);
 
     public void SetTask(TaskSO task)
     {
@@ -71,16 +71,16 @@ public class ProgressHistory
     public int CurrentScene;
     public int RoomConfig = 0;
     public int CurrentTask = 0;
-    public string KeyMainTask;
+    public string KeyTitleMainTask;
     public List<string> WasDones = new();
 
     public void SetTask(string keyTask)
     {
-        if (!WasDones.Contains(KeyMainTask))
+        if (!WasDones.Contains(KeyTitleMainTask))
         {
-            WasDones.Add(KeyMainTask);
+            WasDones.Add(KeyTitleMainTask);
         }
-        KeyMainTask = keyTask;
+        KeyTitleMainTask = keyTask;
         TaskUpdate?.Invoke();
     }
 

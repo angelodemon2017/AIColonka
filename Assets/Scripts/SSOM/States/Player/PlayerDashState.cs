@@ -7,6 +7,7 @@ public class PlayerDashState : PlayerState
     [SerializeField] private float _distance;
     [SerializeField] private int _instOfStep;
     [SerializeField] private float _cameraTime;
+    [SerializeField] private float _pauseTime;
 
     private Vector3 _startPosition;
     private Transform _transform;
@@ -17,7 +18,7 @@ public class PlayerDashState : PlayerState
     {
         base.Init();
 
-        CameraController.Instance.UnParrent();
+        CameraController.Instance.UnParrent(_cameraTime);
         _transform = Character.GetTransform();
         _startPosition = _transform.position;
     }
@@ -40,7 +41,7 @@ public class PlayerDashState : PlayerState
         right.Normalize();
 
         var desiredMoveDirection = (forward * ver + right * hor).normalized;
-        _transform.GetComponent<CharacterController>().Move(desiredMoveDirection * _distance);
+        _characterController.Move(desiredMoveDirection * _distance);
         SpawnSteps();
         _doneDash = true;
     }
@@ -48,16 +49,10 @@ public class PlayerDashState : PlayerState
     internal override void FixedRun()
     {
         _stateTime += Time.fixedDeltaTime;
-        CameraController.Instance.LerpToPivot(_stateTime / _cameraTime);
-        if (_stateTime >= _cameraTime)
+        if (_stateTime >= _pauseTime)
         {
             IsFinished = true;
         }
-    }
-
-    public override void ExitState()
-    {
-        CameraController.Instance.ReturnParent();
     }
 
     private void SpawnSteps()

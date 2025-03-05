@@ -9,6 +9,7 @@ public class HPComponent : MonoBehaviour
     [SerializeField] private int MaxHP;
     [SerializeField] private int CurrentHP;
     [SerializeField] private int _regenHP;
+    [SerializeField] private float _immuAfterDamage;
 
     private float _immuneTime;
     private float _lastHP;
@@ -27,8 +28,6 @@ public class HPComponent : MonoBehaviour
     {
         CurrentHP = MaxHP;
     }
-
-//    IEnumerator CrunchUpdate
 
     internal void OverrideStats(int maxHp, int regenHP)
     {
@@ -52,7 +51,7 @@ public class HPComponent : MonoBehaviour
         }
 
         _lastHP = CurrentHP;
-//        Debug.Log($"Getting damage {damageCount}");
+        _immuneTime = _immuAfterDamage;
         CurrentHP -= damageCount;
         _timeOut = TimeoutRegen;
         if (CurrentHP <= 0)

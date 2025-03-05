@@ -1152,6 +1152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a027cbeb3fbeb4d8ff0d1c4c003605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterController: {fileID: 7687012706516705241}
   _virtualObjectChecker: {fileID: 1891207570648659785}
   _additionalStates: {fileID: 6075059370870970207}
   _bitsController: {fileID: 5533812791469335405}
@@ -1235,6 +1236,7 @@ MonoBehaviour:
   MaxHP: 0
   CurrentHP: 0
   _regenHP: 0
+  _immuAfterDamage: 0.1
 --- !u!114 &6360888911972008021
 MonoBehaviour:
   m_ObjectHideFlags: 0

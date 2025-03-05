@@ -20,3 +20,4 @@ MonoBehaviour:
   _distance: 5
   _instOfStep: 14
   _cameraTime: 0.6
+  _pauseTime: 0.2
