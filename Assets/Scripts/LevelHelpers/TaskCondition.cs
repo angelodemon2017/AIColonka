@@ -30,6 +30,11 @@ public class TaskCondition : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        DrawGizmosHelper.DrawLabel(transform, 2f, $"TaskCondition:{(_task == null ? "NO SELECT" : _task.name)}");
+    }
+
     private void OnDestroy()
     {
         ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate -= CheckTask;

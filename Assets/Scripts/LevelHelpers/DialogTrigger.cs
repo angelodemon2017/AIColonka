@@ -29,6 +29,11 @@ public class DialogTrigger : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        DrawGizmosHelper.DrawLabel(transform, 3.5f, $"DialogTrigger{(dialog == null ? "" : $": {dialog.name}")}");
+    }
+
     private void EndDialog()
     {
         tempWindow.EndDialog -= EndDialog;

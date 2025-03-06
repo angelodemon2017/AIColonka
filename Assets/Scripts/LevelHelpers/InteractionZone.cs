@@ -20,6 +20,11 @@ public class InteractionZone : MonoBehaviour, IHinter
         _interact?.Invoke();
     }
 
+    private void OnDrawGizmos()
+    {
+        DrawGizmosHelper.DrawLabel(transform, 1f, $"InteractionZone:(E.)");
+    }
+
     public void InFocus()
     {
 

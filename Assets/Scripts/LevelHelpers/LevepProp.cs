@@ -20,6 +20,11 @@ public class LevepProp : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        DrawGizmosHelper.DrawLabel(transform, 1.5f, $"LevepProp:{_levelProp}");
+    }
+
     public void PickUpProp()
     {
         ControllerDemoSaveFile.Instance.mainData.PickProp(_levelProp);

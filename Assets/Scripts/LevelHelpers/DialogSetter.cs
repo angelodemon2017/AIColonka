@@ -33,4 +33,9 @@ public class DialogSetter : MonoBehaviour
     {
         _ = ControllerDemoSaveFile.Instance.backTalk.SetTalkAsync(keyTalk, time);
     }
+
+    private void OnDrawGizmos()
+    {
+        DrawGizmosHelper.DrawLabel(transform, 2.5f, "DialogSetter");
+    }
 }

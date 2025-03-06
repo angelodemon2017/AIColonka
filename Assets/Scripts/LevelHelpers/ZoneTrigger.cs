@@ -15,6 +15,11 @@ public class ZoneTrigger : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        DrawGizmosHelper.DrawLabel(transform, 1f, "ZoneTrigger");
+    }
+
     private void RunScript()
     {
         _unityEvent?.Invoke();

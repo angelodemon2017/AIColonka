@@ -59,6 +59,11 @@ public class BattleZone : MonoBehaviour
         PlayerFSM.Instance.BitsController.UpdateMode();
     }
 
+    private void OnDrawGizmos()
+    {
+        DrawGizmosHelper.DrawLabel(transform, 2f, $"BattleZone.VP:{_variantPrefabs.Count}");
+    }
+
     private void OnOffGOs()
     {
         _onOffObjects.ForEach(o => o?.gameObject?.SetActive(!o.gameObject.activeSelf));

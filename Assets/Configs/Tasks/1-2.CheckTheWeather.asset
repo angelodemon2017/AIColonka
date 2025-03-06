@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a809a06096ea9084d82a13077ebd7161, type: 3}
-  m_Name: 3.GetNewUpdate
+  m_Name: 1-2.CheckTheWeather
   m_EditorClassIdentifier: 
-  KeyTitle: MT2
-  KeyLocDesc: MD2
-  AvailableLevels: 0400000002000000
+  TaskKey: T0
+  AddedKey: 
+  KeyTitle: MT0
+  KeyLocDesc: MD0
+  AvailableLevels: 
   _locaString:
     m_TableReference:
       m_TableCollectionName: GUID:c34a4d84021dcce489a342534f1dec1d
@@ -23,7 +25,12 @@ MonoBehaviour:
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
-    m_LocalVariables: []
+    m_LocalVariables:
+    - name: Test
+      variable:
+        rid: -2
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

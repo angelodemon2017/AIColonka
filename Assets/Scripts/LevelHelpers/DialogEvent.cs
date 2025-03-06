@@ -17,6 +17,11 @@ public class DialogEvent : MonoBehaviour
         eventBies.FirstOrDefault(e => e.variant.KeyVariant == key)?.UE?.Invoke();
     }
 
+    private void OnDrawGizmos()
+    {
+        DrawGizmosHelper.DrawLabel(transform, 3f, "DialogEvent");
+    }
+
     private void OnDestroy()
     {
         PanelDialogWithPeople.ActionByKey -= CheckEvent;

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +23,11 @@ public class SceneLevelLoader : MonoBehaviour
     public void RestartLevel()
     {
         LoadLevel(ControllerDemoSaveFile.Instance.CurrentLevel);
+    }
+
+    private void OnDrawGizmos()
+    {
+        DrawGizmosHelper.DrawLabel(transform, 3f, $"Level loader:{_selectedLevel}");
     }
 
     IEnumerator LoadLevelCoroutine(EnumLevels level)

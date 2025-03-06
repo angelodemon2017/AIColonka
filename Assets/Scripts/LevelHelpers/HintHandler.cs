@@ -43,6 +43,11 @@ public class HintHandler : MonoBehaviour, IHinter
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        DrawGizmosHelper.DrawLabel(transform, 3f, $"HintHandler.B:{_needBits}");
+    }
+
     public void InFocus()
     {
         if (!_isRelease)
