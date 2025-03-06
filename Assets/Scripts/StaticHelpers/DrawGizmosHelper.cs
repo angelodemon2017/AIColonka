@@ -9,5 +9,9 @@ public static class DrawGizmosHelper
         style.normal.textColor = Color.black;
         Handles.Label(transform.position + Vector3.up * high, name, style);
         Gizmos.DrawLine(transform.position, transform.position + Vector3.up * (high - 1) + Vector3.up * 0.5f);
+        if (transform.position != transform.localPosition)
+        {            
+            Gizmos.DrawLine(transform.parent.position, transform.parent.position + (transform.localPosition * transform.parent.localScale.x));
+        }
     }
 }

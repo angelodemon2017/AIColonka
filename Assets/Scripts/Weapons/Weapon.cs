@@ -14,6 +14,8 @@ public class Weapon : MonoBehaviour
     protected virtual float _hitTimeout => 0.1f;
     protected virtual Vector3 _hitPosition => transform.position;
     protected virtual Quaternion _hitRotate => Quaternion.identity;
+    protected Vector3 GetTargetPosition => _target ? _target.position : CameraController.Instance.PointOfLookGround;
+        
 
     private void OnValidate()
     {

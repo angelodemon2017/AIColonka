@@ -2312,6 +2312,7 @@ MonoBehaviour:
   MaxHP: 50
   CurrentHP: 50
   _regenHP: 0
+  _immuAfterDamage: 0
 --- !u!114 &385056460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2533,6 +2534,72 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2907827390478641215, guid: 74057d2c530d5eb46a45b252975b8e84, type: 3}
   m_PrefabInstance: {fileID: 505037217}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &545358739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 545358740}
+  - component: {fileID: 545358742}
+  - component: {fileID: 545358741}
+  m_Layer: 0
+  m_Name: WeaponVisualizator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &545358740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545358739}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2119891580}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &545358741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545358739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e075613696782e43a0d7217acf6ddea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _whoIs: {fileID: 2119891584}
+  _periodicActivator: {fileID: 545358742}
+  _pointsByStates:
+  - WeaponState: {fileID: 11400000, guid: 7df28280241fe6e4a8d4b769ce054154, type: 2}
+    Points:
+    - {fileID: 1726667348}
+    - {fileID: 856741280}
+    - {fileID: 40413888}
+    - {fileID: 1636726490}
+--- !u!114 &545358742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545358739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ebb405de80a404b9e3073a50b6fb9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &608190548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2724,6 +2791,7 @@ MonoBehaviour:
   MaxHP: 50
   CurrentHP: 50
   _regenHP: 0
+  _immuAfterDamage: 0
 --- !u!114 &643313880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7049,6 +7117,7 @@ MonoBehaviour:
   MaxHP: 50
   CurrentHP: 50
   _regenHP: 0
+  _immuAfterDamage: 0
 --- !u!114 &1649762643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9128,6 +9197,7 @@ Transform:
   - {fileID: 382848149}
   - {fileID: 1355521834}
   - {fileID: 1958760682}
+  - {fileID: 545358740}
   m_Father: {fileID: 1036894426}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2119891582
@@ -9143,6 +9213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _armorVisualizator: {fileID: 1355521835}
+  _weaponVisualizator: {fileID: 545358741}
+  _mainAttack: {fileID: 11400000, guid: 7df28280241fe6e4a8d4b769ce054154, type: 2}
   _minInterval: 0.2
   _maxInterval: 0.4
 --- !u!114 &2119891583
@@ -9164,6 +9236,7 @@ MonoBehaviour:
   MaxHP: 1000
   CurrentHP: 1000
   _regenHP: 0
+  _immuAfterDamage: 0
 --- !u!114 &2119891584
 MonoBehaviour:
   m_ObjectHideFlags: 0

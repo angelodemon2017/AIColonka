@@ -11,7 +11,7 @@ public class AVWeaponSpawner : AVWeapon
 
     internal override void StartAttack()
     {
-        transform.position = _target.position;
+        transform.position = GetTargetPosition;
 
         _periodicActivator.InitAndStart(SpawnAndShoot, _countSpawn, _intervalSpawn, EndSpawning);
     }

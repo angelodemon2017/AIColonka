@@ -1,15 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PeriodicActivator))]
 public class WeaponVisualizator : MonoBehaviour
 {
     [SerializeField] private WhoIs _whoIs;
     [SerializeField] private PeriodicActivator _periodicActivator;
     [SerializeField] private List<PointsByState> _pointsByStates;
 
-    private SpawnWeaponState _currentState;
+    private IWVState _currentIState;
     private Dictionary<string, List<Transform>> _cashPointsByStates = new();
     private Transform _tempSpawnPoint;
+
+    private State _curState => _currentIState as State;
 
     private void Awake()
     {
@@ -21,10 +24,10 @@ public class WeaponVisualizator : MonoBehaviour
         _pointsByStates.ForEach(p => _cashPointsByStates.Add(p.WeaponState.Key, p.Points));
     }
 
-    internal void CallAttack(SpawnWeaponState state)
+    internal void CallAttack(IWVState state)
     {
-        _currentState = state;
-        CallAttack(_currentState.GetCountLaunched, _currentState.GetIntervalLaunched);
+        _currentIState = state;
+        CallAttack(_currentIState.GetCountLaunched, _currentIState.GetIntervalLaunched);
     }
 
     internal void CallAttack(int count, float periodic)
@@ -34,7 +37,7 @@ public class WeaponVisualizator : MonoBehaviour
 
     private void SomeAction(int order)
     {
-        if (_cashPointsByStates.TryGetValue(_currentState.Key, out List<Transform> points))
+        if (_cashPointsByStates.TryGetValue(_curState.Key, out List<Transform> points))
         {
             _tempSpawnPoint = points.GetElementByOrder(order);
         }
@@ -43,7 +46,7 @@ public class WeaponVisualizator : MonoBehaviour
             _tempSpawnPoint = transform;
         }
 
-        var weapon = Instantiate(_currentState.GetWeapon, _tempSpawnPoint.position, _tempSpawnPoint.rotation);
+        var weapon = Instantiate(_currentIState.GetWeapon, _tempSpawnPoint.position, _tempSpawnPoint.rotation);
         weapon.Init(_whoIs.whoIs, _tempSpawnPoint, GetTarget(), _tempSpawnPoint.rotation);
     }
 
@@ -61,14 +64,14 @@ public class WeaponVisualizator : MonoBehaviour
 
     private void EndActions()
     {
-        _currentState.Finish();
-        _currentState = null;
+        _curState.Finish();
+//        _currentState = null;
     }
 
     [System.Serializable]
     public class PointsByState
     {
-        public SpawnWeaponState WeaponState;
+        public State WeaponState;
         public List<Transform> Points;
     }
 }

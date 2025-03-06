@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EntityModule : MonoBehaviour
+public class EntityModule : MonoBehaviour
 {
     [SerializeField] private List<PointForState> _pointForStates;
     [SerializeField] protected HPComponent _hPComponent;
