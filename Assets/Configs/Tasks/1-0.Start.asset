@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a809a06096ea9084d82a13077ebd7161, type: 3}
   m_Name: 1-0.Start
   m_EditorClassIdentifier: 
-  TaskKey: T0
-  AddedKey: 
   KeyTitle: MT0
   KeyLocDesc: MD0
-  AvailableLevels: 
+  AvailableLevels: 0200000003000000
   _locaString:
     m_TableReference:
       m_TableCollectionName: GUID:c34a4d84021dcce489a342534f1dec1d

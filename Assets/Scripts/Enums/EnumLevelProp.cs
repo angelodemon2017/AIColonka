@@ -19,5 +19,5 @@ public enum EnumLevelProp : int
     AVUpgrade4 = 1 << 11,
     IsAVs = AVUpgrade1 | AVUpgrade2 | AVUpgrade3 | AVUpgrade4,
 
-    LastBit = 1 << 32,
+//    LastBit = 1 << 32,
 }

@@ -43,6 +43,10 @@ MonoBehaviour:
     m_Key: MainMenu
     m_Metadata:
       m_Items: []
+  - m_Id: 4131439825821696
+    m_Key: GOTO
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
