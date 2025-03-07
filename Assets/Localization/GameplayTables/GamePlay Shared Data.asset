@@ -47,6 +47,10 @@ MonoBehaviour:
     m_Key: GOTO
     m_Metadata:
       m_Items: []
+  - m_Id: 4419780084752384
+    m_Key: SETCONFIG
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

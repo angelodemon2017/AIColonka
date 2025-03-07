@@ -10,7 +10,6 @@ public class DialogSO : ScriptableObject
     public string Name;
     public List<DialogStep> dialogSteps = new();
     public EnumLevels levelByEndDialog;
-    public MAINWindow _nextWindow;
     public UnityEvent _eventByEnd;
 
     private void OnValidate()
@@ -26,6 +25,8 @@ public class DialogSO : ScriptableObject
                     dialogSteps[i].dialogVariants[i2].KeyVariant = $"D{IndexDialog}_S{dialogSteps[i].IdStep}_V{i2 + 1}";
                 }
             }
+            IndexDialog = int.Parse(name.Substring(0, name.IndexOf('.')));
+            Name = name.Substring(name.IndexOf('.') + 1);
         }
     }
 }

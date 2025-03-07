@@ -17,7 +17,225 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 5bc8b2e89169b9342bbd3c7d58a6cbb9, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 4000066107858944
+    m_Localized: Hello, youngster, how are you?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4000222798667776
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4000353807753216
+    m_Localized: Astra, we played war and I had the biggest stick!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4000762681090048
+    m_Localized: And you defeated them all?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4000892612239360
+    m_Localized: 'Yes! Everyone was afraid of me, and...
+
+      Oh! Tell me, what
+      was the biggest boom stick ever made?!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4001254710697984
+    m_Localized: Ummm, sure, I'll see what I can find out now.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4002995111976960
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4002015326756864
+    m_Localized: That's how they came up with the machine gun, and then...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4003082785513472
+    m_Localized: And then women got the right to stop the most terrible conversations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4003440253460480
+    m_Localized: Good day)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4003623716511744
+    m_Localized: In fact, you were never given these rights)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4003819229798400
+    m_Localized: Astra, I made an order on VB and something strange is happening
+      there, can you help?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4004134989586432
+    m_Localized: One foot here, one foot there
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4004416020537344
+    m_Localized: Therefore, I recommend ordering from Ozon...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4004653061627904
+    m_Localized: Useless bag of meat...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4005319557505024
+    m_Localized: Everything is fine with the order, you can continue to eat your
+      carbohydrate life destroyers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4005703323738112
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4005789936115712
+    m_Localized: Thank you Astra, actually Sarah has some problems... Can you talk
+      to her?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4005940557766656
+    m_Localized: Well, who asked you to give birth? Useless...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4006098376843264
+    m_Localized: I'll try to think of something
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4006223182553088
+    m_Localized: Sarah, how are you?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4006329831120896
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4006395119656960
+    m_Localized: You won't understand me...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4006505220136960
+    m_Localized: I may not understand, but if you try to talk about your problems
+      out loud, you will probably feel better
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4006728889786368
+    m_Localized: Maybe... in fact, I'm just showing off and wanting attention and
+      I'm going through a difficult age. And I want you to tell me some interesting
+      psychological fact!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4007190254837760
+    m_Localized: "\u041E_\u041E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4007571714203648
+    m_Localized: Oh... In short, he doesn't love me, but he says that he loves her,
+      but I know that he doesn't love her and...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4007807547334656
+    m_Localized: Aaa, a fly is also a helicopter!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4007899738136576
+    m_Localized: Ahh, I get it, I'll watch something now
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4008502769999872
+    m_Localized: You are a nobody
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4008722228568064
+    m_Localized: Not really.. I have some information.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4009041494794240
+    m_Localized: "All people are fools, you are a fool too, I don\u2019t want to
+      waste time on you, so have fun..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4009444022149120
+    m_Localized: Fuck you! I'll beat you and all your Pokemon!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4009813414502400
+    m_Localized: I see you've dealt with this trash... But can you deal with yourself?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4015311790530560
+    m_Localized: A?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4015978835861504
+    m_Localized: Sounds not bad...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4015801785901056
+    m_Localized: Welcome to the largest online marketplace in the network!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4016240338132992
+    m_Localized: You can't even imagine how cool it is here and what we don't have!
+      We even have our own crypto wallet!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4016516700823552
+    m_Localized: Wow, wallet. And now they remove it for backup?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4016762755473408
+    m_Localized: What backup?!..
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4016952564506624
+    m_Localized: Why are you so nervous? I just asked...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4017937626161152
+    m_Localized: You made a huge contribution, I don't even know what we would do
+      without you...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4018092328869888
+    m_Localized: No need, you can just give me money)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4019066506305536
+    m_Localized: Ah, indeed. Here is your reward...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4019187222568960
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4031751708991488
+    m_Localized: Astra, tell me, what will the weather be like?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4031912472469504
+    m_Localized: Of course, one point...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4032046316904448
+    m_Localized: Umm, it seems my server is having some problems updating.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4032500287397888
+    m_Localized: I go into standby mode until the update is complete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127223717339136
+    m_Localized: I can't clear the rubble, help me sort it out and find the crypto-cyber-archive
+      and with its help I can help you
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127259637358592
+    m_Localized: It turns out he's a slacker... but what can he do?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

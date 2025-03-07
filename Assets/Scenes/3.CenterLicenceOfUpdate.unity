@@ -295,7 +295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f3d4f57086cef44eaee732133f2b15e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 580828575}
   _events: []
   _eventOnEnd:
     m_PersistentCalls:
@@ -1241,6 +1240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b075cea8841d4e44ae0be6a4799d70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsSettings: 0
   _moveTarget: {fileID: 0}
   _speedMove: 1
   _distanceToTarget: 0.1
@@ -1848,7 +1848,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f3d4f57086cef44eaee732133f2b15e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 686576515}
   _events:
   - m_PersistentCalls:
       m_Calls:

@@ -8,8 +8,6 @@ public class TaskPreview : MonoBehaviour
 
     internal async Task InitAsync(TaskSO descr)
     {
-        _taskText.text = await Localizations.GetLocalizedText(
-            Localizations.Tables.Tasks,
-            descr.KeyLocDesc);
+        _taskText.text = await descr.GetDescription();
     }
 }

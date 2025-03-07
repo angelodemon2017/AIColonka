@@ -15,15 +15,20 @@ public class LevelButtonPresent : MonoBehaviour
 
     private Action<int> ClickAction;
 
-    internal async Task InitAsync(EnumLevels numLevel, Action<int> callBack)
+    internal async Task InitAsync(EnumLevels numLevel, bool isTargetLevel, Action<int> callBack)
     {
         _selfButton.onClick.AddListener(OnClickButton);
         _sceneId = (int)numLevel;
         ClickAction += callBack;
 
-        _labelPresent.text = await Localizations.GetLocalizedText(
+        string labelText = await Localizations.GetLocalizedText(
             Localizations.Tables.LevelsTable,
             Localizations.Levels.MapLevelKeys[numLevel]);
+        if (isTargetLevel)
+        {
+            labelText = $"(!){labelText}";
+        }
+        _labelPresent.text = $"{labelText}";
     }
 
     private void OnClickButton()

@@ -51,6 +51,18 @@ MonoBehaviour:
     m_Key: WAR_TALK6
     m_Metadata:
       m_Items: []
+  - m_Id: 4848761569271808
+    m_Key: 5.MOUNTAIN_TRASH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4853743567757312
+    m_Key: 7.ENTER_ART
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4856129338204160
+    m_Key: 7.ENTER_ART2
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

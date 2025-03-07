@@ -67,7 +67,6 @@ MonoBehaviour:
     Chapter: 0
     dialogVariants: []
   levelByEndDialog: 2
-  _nextWindow: {fileID: 0}
   _eventByEnd:
     m_PersistentCalls:
       m_Calls:

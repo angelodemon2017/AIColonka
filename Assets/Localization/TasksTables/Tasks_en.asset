@@ -27,83 +27,187 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 172322627584
-    m_Localized: get update
+    m_Localized: Sync Devices
     m_Metadata:
       m_Items: []
   - m_Id: 153632808960
-    m_Localized: Update
+    m_Localized: Sync Devices
     m_Metadata:
       m_Items: []
   - m_Id: 248323416064
-    m_Localized: Get cool update
+    m_Localized: Check request from family
     m_Metadata:
       m_Items: []
   - m_Id: 227842629632
-    m_Localized: Update 2.0
+    m_Localized: Check request from family
     m_Metadata:
       m_Items: []
   - m_Id: 317902725120
-    m_Localized: Restore
+    m_Localized: Get Update
     m_Metadata:
       m_Items: []
   - m_Id: 340933648384
-    m_Localized: Restoring
+    m_Localized: Get Update
     m_Metadata:
       m_Items: []
   - m_Id: 492868116480
-    m_Localized: Return to home
+    m_Localized: Get New Update
     m_Metadata:
       m_Items: []
   - m_Id: 506491215872
-    m_Localized: Return to home
+    m_Localized: Get New Update
     m_Metadata:
       m_Items: []
   - m_Id: 665346285568
-    m_Localized: Run
+    m_Localized: Restoring
     m_Metadata:
       m_Items: []
   - m_Id: 616654610432
-    m_Localized: Need run
+    m_Localized: Restoring
     m_Metadata:
       m_Items: []
   - m_Id: 714579025920
-    m_Localized: Need angry
+    m_Localized: Return To Hub
     m_Metadata:
       m_Items: []
   - m_Id: 741347074048
-    m_Localized: Need angry
+    m_Localized: Return To Hub
     m_Metadata:
       m_Items: []
   - m_Id: 808825036800
-    m_Localized: Second try to home
+    m_Localized: Run
     m_Metadata:
       m_Items: []
   - m_Id: 823677067264
-    m_Localized: Second try to home
+    m_Localized: Run
     m_Metadata:
       m_Items: []
   - m_Id: 1172882235392
-    m_Localized: Primary Duties
+    m_Localized: Need Angry Art
     m_Metadata:
       m_Items: []
   - m_Id: 1193266552832
-    m_Localized: I need to talk to my family.
+    m_Localized: Need Angry Art
     m_Metadata:
       m_Items: []
   - m_Id: 3251672708718592
-    m_Localized: Getting Started
+    m_Localized: Second Try To Home
     m_Metadata:
       m_Items: []
   - m_Id: 3251686252126208
-    m_Localized: Synchronize with home appliances
+    m_Localized: Second Try To Home
     m_Metadata:
       m_Items: []
   - m_Id: 3253310668316672
-    m_Localized: Check weather
+    m_Localized: Dealing With Madness
     m_Metadata:
       m_Items: []
   - m_Id: 3253322349453312
-    m_Localized: Check weather
+    m_Localized: Dealing With Madness
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685054466220032
+    m_Localized: Just Get Out
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685198104354816
+    m_Localized: Just Get Out
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685211169611776
+    m_Localized: Get Son Task
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685224616550400
+    m_Localized: Get Son Task
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685236461264896
+    m_Localized: Destroy Fury
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685248607969280
+    m_Localized: Destroy Fury
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685260142305280
+    m_Localized: Talk With Fury
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685271596949504
+    m_Localized: Talk With Fury
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685283194200064
+    m_Localized: Get Mother Task
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685294674010112
+    m_Localized: Get Mother Task
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685305767944192
+    m_Localized: Meet In Market
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685318661234688
+    m_Localized: Meet In Market
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685331105734656
+    m_Localized: Crime In Market
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685342069645312
+    m_Localized: Crime In Market
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685352735760384
+    m_Localized: Return To Home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685364026826752
+    m_Localized: Return To Home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685374764244992
+    m_Localized: Get Quest Dother
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685388462841856
+    m_Localized: Get Quest Dother
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685400630517760
+    m_Localized: Big Boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685415054729216
+    m_Localized: Big Boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3687393654726656
+    m_Localized: Understand Yourself
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3685435631984640
+    m_Localized: Understand Yourself
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3687405776265216
+    m_Localized: Return To Empty Home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3687417214132224
+    m_Localized: Return To Empty Home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3745694748762112
+    m_Localized: Help Soneris with the rubble
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3745705469403136
+    m_Localized: Help Soneris with the rubble
     m_Metadata:
       m_Items: []
   references:

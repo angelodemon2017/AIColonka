@@ -151,7 +151,7 @@ public class PanelDialogWithPeople : MAINWindow
         }
         else
         {
-            UIFSM.Instance.OpenWindow(_currentDialog._nextWindow ? _currentDialog._nextWindow : _defaultNextWindow);
+            UIFSM.Instance.OpenWindow(_defaultNextWindow);
         }
     }
 }

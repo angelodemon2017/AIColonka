@@ -24,8 +24,11 @@ public class PanelSelectingLevel : MAINWindow
         _parentButtons.DestroyChildrens();
         foreach (var lev in AvailableLevels)
         {
+            if (lev == ControllerDemoSaveFile.Instance.CurrentLevel)
+                continue;
+
             var newLev = Instantiate(_prefabLevelButtonPresent, _parentButtons);
-            await newLev.InitAsync(lev, SelectVariant);
+            await newLev.InitAsync(lev, lev == ControllerDemoSaveFile.Instance.GetCurrentTask().GetTargetLvl, SelectVariant);
         }
     }
 

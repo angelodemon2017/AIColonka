@@ -50,6 +50,10 @@ MonoBehaviour:
     m_Localized: Go to...
     m_Metadata:
       m_Items: []
+  - m_Id: 4419780084752384
+    m_Localized: Set up devices
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
