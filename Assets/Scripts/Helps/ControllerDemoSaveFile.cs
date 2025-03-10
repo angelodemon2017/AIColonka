@@ -11,7 +11,6 @@ public class ControllerDemoSaveFile : MonoBehaviour
     [SerializeField] private float _speedTransl;
     [SerializeField] private Image _blackImage;
     [SerializeField] private TextMeshProUGUI _testLoading;
-    public bool IsDebug;
     public TaskConfig TaskConfig;
     public EnumLevels CurrentLevel;
     public DialogSO CurrentDialog;
@@ -21,7 +20,10 @@ public class ControllerDemoSaveFile : MonoBehaviour
     internal BackTalk backTalk = new BackTalk();
 
     public MainData mainData = new MainData();
+    [SerializeField] private Settings _settings = new Settings();
 
+    internal Settings Settings => _settings;
+    public bool IsDebug => _settings.IsDebug;
     private float _totalSpeed => //IsDebug ? 1 : 
         _speedTransl;
     public bool IsBlackEnd => _blackImage.color.a >= 1f;
@@ -33,6 +35,7 @@ public class ControllerDemoSaveFile : MonoBehaviour
             _transColor = _blackImage.color;
             DontDestroyOnLoad(gameObject);
             Instance = this;
+            _settings = SaveController.Load<Settings>(Settings.Prefix);
             SceneLevelLoader.LoadProgress += UpdateLoading;
         }
     }
@@ -68,7 +71,10 @@ public class ControllerDemoSaveFile : MonoBehaviour
     {
         SetBlack(true);
         CurrentLevel = level;
-        mainData.SetLevel(level);
+        if (level != EnumLevels.MainMenu)
+        {
+            mainData.SetLevel(level);
+        }
         backTalk.EndTalk();
     }
 

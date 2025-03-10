@@ -4,14 +4,12 @@ using UnityEngine;
 public class MAINWindow : MonoBehaviour, IWindowFSM
 {
     [SerializeField] private List<PareEventWindow> _pareEventWindows = new();
-//    private Dictionary<EnumUIEvent, MAINWindow> _tempMapWindows = new();
 
     private Dictionary<KeyCode, MAINWindow> _tempKeyCodeMapWindows = new();
 
     private void InitWindows()
     {
         _pareEventWindows.ForEach(p => _tempKeyCodeMapWindows.Add(p.keyCode, p.Window));
-            //_tempMapWindows.Add(p.uIEvent, p.Window));
     }
 
     public virtual void Run()

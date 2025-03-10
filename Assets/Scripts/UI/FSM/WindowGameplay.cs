@@ -141,19 +141,6 @@ public class WindowGameplay : MAINWindow
         {
             _hintText.rectTransform.position = Camera.main.WorldToScreenPoint(_playerFSM.virtualObjectChecker.LastHH.GetTransform.position);
         }
-
-        #region test
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            _mainData.AddBits(-1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            _mainData.AddBits(1);
-        }
-
-        #endregion
     }
 
     internal void SetHintText(string hint)

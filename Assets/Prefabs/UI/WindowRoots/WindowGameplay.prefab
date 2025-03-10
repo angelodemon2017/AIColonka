@@ -1835,6 +1835,8 @@ MonoBehaviour:
   _pareEventWindows:
   - keyCode: 108
     Window: {fileID: 4616706029065416952, guid: d06f42a8e68e6bd478440bff54e85f06, type: 3}
+  - keyCode: 27
+    Window: {fileID: 6806802245300269412, guid: 0dee3f775af62314ba1a20aa952e09e5, type: 3}
   _hintText: {fileID: 879014799807794196}
   _taskController:
     _prefabTaskPreview: {fileID: 8052563448386798084, guid: a215ea60500452b4487a47c84b69b443, type: 3}

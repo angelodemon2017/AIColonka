@@ -54,6 +54,14 @@ MonoBehaviour:
     m_Localized: Set up devices
     m_Metadata:
       m_Items: []
+  - m_Id: 5421433323773952
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5443979762982912
+    m_Localized: Return
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -12,6 +12,8 @@ public class MainMenuPanel : MAINWindow
     [SerializeField] private Button _aboutBTN;
     [SerializeField] private TextMeshProUGUI _textLoadBTN;
 
+    [SerializeField] private MAINWindow _settingWindow;
+
     private MainData _tempData;
 
     private bool IsEmptyData => _tempData == null || _tempData.EmptyData;
@@ -45,11 +47,21 @@ public class MainMenuPanel : MAINWindow
 
     private void Settings()
     {
-
+        UIFSM.Instance.OpenWindow(_settingWindow);
     }
 
     private void About()
     {
 
+    }
+
+    public override void ExitWindow()
+    {
+        base.ExitWindow();
+
+        _newGameBTN.onClick.RemoveAllListeners();
+        _loadGameBTN.onClick.RemoveAllListeners();
+        _settingsBTN.onClick.RemoveAllListeners();
+        _aboutBTN.onClick.RemoveAllListeners();
     }
 }

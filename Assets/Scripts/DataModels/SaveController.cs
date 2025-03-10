@@ -4,23 +4,25 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-
 public class SaveController
 {
-    const string nameFileSave = "/data.sav";
+    const string nameFileSave = "data.sav";
 
-    public static void Save<T>(T _data)
+    public static void Save<T>(T _data, string prefix = "")
     {
-        Debug.Log(Application.persistentDataPath + nameFileSave);
+        var totalPath = Application.persistentDataPath + "/" + prefix + nameFileSave;
+
+        Debug.Log(totalPath);
         var hex = DataToString(_data);
-        File.WriteAllText(Application.persistentDataPath + nameFileSave, hex.Replace("-", ""));
+        File.WriteAllText(totalPath, hex.Replace("-", ""));
     }
 
-    public static T Load<T>()
+    public static T Load<T>(string prefix = "")
     {
-        if (File.Exists(Application.persistentDataPath + nameFileSave))
+        var totalPath = Application.persistentDataPath + "/" + prefix + nameFileSave;
+        if (File.Exists(totalPath))
         {
-            var filer = File.ReadAllText(Application.persistentDataPath + nameFileSave);
+            var filer = File.ReadAllText(totalPath);
             int charsCount = filer.Length;
             byte[] bytes = new byte[charsCount / 2];
             // UnCrypt
