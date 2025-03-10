@@ -8,6 +8,7 @@ public class PlayerDashState : PlayerState
     [SerializeField] private float _cameraTime;
     [SerializeField] private float _pauseTime;
 
+    private FallingController _fallingController;
     private Vector3 _startPosition;
     private Transform _transform;
     private float _stateTime;
@@ -18,6 +19,8 @@ public class PlayerDashState : PlayerState
     {
         base.Init();
 
+        _fallingController = playerFSM.GetFallingController;
+        _fallingController.SwitchGravity();
         CameraController.Instance.UnParrent(_cameraTime);
         _transform = Character.GetTransform();
         _startPosition = _transform.position;
@@ -72,6 +75,13 @@ public class PlayerDashState : PlayerState
         {
             IsFinished = true;
         }
+    }
+
+    public override void ExitState()
+    {
+        base.ExitState();
+
+        _fallingController.ResetFalling();
     }
 
     public override bool CheckRules(IStatesCharacter character)
