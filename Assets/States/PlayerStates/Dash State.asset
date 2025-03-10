@@ -16,6 +16,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b1080cc1a0096aa49a786b2ababb6b53, type: 2}
   Animation: 0
   AvailableControlStates: []
+  _effectPrefab: {fileID: 3722760622666571718, guid: 76f1cac883009ea4db1ba08d87d9b77d, type: 3}
   _prefabEffectDash: {fileID: 7039092906759208341, guid: 20595230c7777fe40a78fa1cdbe957b8, type: 3}
   _distance: 5
   _instOfStep: 14

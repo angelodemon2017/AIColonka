@@ -142,7 +142,14 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
         _currentState?.ExitState();
 
-        _currentState = Instantiate(state as PlayerState);
+//        _currentState = Instantiate(state as PlayerState);
+//        _currentState.InitState(this);
+        SetPreparedState(Instantiate(state as PlayerState));
+    }
+
+    internal void SetPreparedState(PlayerState state)
+    {
+        _currentState = state;
         _currentState.InitState(this);
     }
 

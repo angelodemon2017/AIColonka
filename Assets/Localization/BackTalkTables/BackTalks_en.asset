@@ -91,6 +91,10 @@ MonoBehaviour:
     m_Localized: This is power!
     m_Metadata:
       m_Items: []
+  - m_Id: 5888237531815936
+    m_Localized: I need to recover more.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -38,4 +38,9 @@ public class DialogSetter : MonoBehaviour
     {
         DrawGizmosHelper.DrawLabel(transform, 2.5f, "DialogSetter");
     }
+
+    public void DashPlayerTo(Mover mp)
+    {
+
+    }
 }

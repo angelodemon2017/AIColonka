@@ -7,9 +7,8 @@ public class HintHandler : MonoBehaviour, IHinter
     [Range(1, 8)]
     [SerializeField] private int _needBits;
     [SerializeField] private UnityEvent _release;
-    [SerializeField] private bool _keyIsRorE;
     [SerializeField] private string _keyHint;
-    [SerializeField] private MeshRenderer _meshRenderer;
+    [SerializeField] private BackTalkCaller _backTalkByFall;
 
     private float _timeFocused;
     private bool _isRelease = false;
@@ -18,11 +17,19 @@ public class HintHandler : MonoBehaviour, IHinter
             $"{ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits}/{_needBits}";
 
     public Transform GetTransform => transform;
+    private bool AvailableCall => ControllerDemoSaveFile.Instance.IsDebug || ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits >= _needBits;
 
     public void Call()
     {
-        _isRelease = true;
-        _release?.Invoke();
+        if (AvailableCall)
+        {
+            _isRelease = true;
+            _release?.Invoke();
+        }
+        else
+        {
+            _backTalkByFall?.CallTalk();
+        }
     }
 
     public async Task<string> GetLocHint()
@@ -38,7 +45,7 @@ public class HintHandler : MonoBehaviour, IHinter
             _timeFocused -= Time.fixedDeltaTime;
             if (_timeFocused <= 0)
             {
-
+                //unfocus
             }
         }
     }

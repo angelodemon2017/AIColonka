@@ -3,9 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "FSM/PlayerState/PlayerDashState", order = 1)]
 public class PlayerDashState : PlayerState
 {
-    [SerializeField] private ParticleSystem _prefabEffectDash;
+    [SerializeField] private EffectHelper _effectPrefab;
     [SerializeField] private float _distance;
-    [SerializeField] private int _instOfStep;
     [SerializeField] private float _cameraTime;
     [SerializeField] private float _pauseTime;
 
@@ -13,6 +12,7 @@ public class PlayerDashState : PlayerState
     private Transform _transform;
     private float _stateTime;
     private bool _doneDash;
+    private Vector3 _customFinish = Vector3.zero;
 
     protected override void Init()
     {
@@ -21,6 +21,17 @@ public class PlayerDashState : PlayerState
         CameraController.Instance.UnParrent(_cameraTime);
         _transform = Character.GetTransform();
         _startPosition = _transform.position;
+
+        if (_customFinish != Vector3.zero)
+        {
+            _characterController.Move(_customFinish - _transform.position);
+            ApplyDashAndEffect();
+        }
+    }
+
+    internal void SetCustomTargetPoint(Vector3 targetP)
+    {
+        _customFinish = targetP;
     }
 
     internal override void CallAxisHorVer(float hor, float ver)
@@ -42,7 +53,15 @@ public class PlayerDashState : PlayerState
 
         var desiredMoveDirection = (forward * ver + right * hor).normalized;
         _characterController.Move(desiredMoveDirection * _distance);
-        SpawnSteps();
+
+        ApplyDashAndEffect();
+    }
+
+    private void ApplyDashAndEffect()
+    {
+        var ep = Instantiate(_effectPrefab);
+        ep.Init(_startPosition, _transform.position);
+
         _doneDash = true;
     }
 
@@ -52,16 +71,6 @@ public class PlayerDashState : PlayerState
         if (_stateTime >= _pauseTime)
         {
             IsFinished = true;
-        }
-    }
-
-    private void SpawnSteps()
-    {
-        for (float i = 0; i < _instOfStep; i++)
-        {
-            var otn = i / _instOfStep;
-            var part = Instantiate(_prefabEffectDash, Vector3.Lerp(_startPosition, _transform.position, otn), Quaternion.identity);
-            Destroy(part.gameObject, part.main.duration * otn);
         }
     }
 
