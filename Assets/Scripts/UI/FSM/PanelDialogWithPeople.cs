@@ -15,6 +15,7 @@ public class PanelDialogWithPeople : MAINWindow
     [SerializeField] private TextMeshProUGUI _textPerson;
     [SerializeField] private MAINWindow _defaultNextWindow;
 
+    bool _skipping = false;
     private DialogSO _currentDialog;
     private int _currentStep = 0;
 
@@ -64,6 +65,16 @@ public class PanelDialogWithPeople : MAINWindow
         {
             SelectVariantByKey(3);
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SkipDialog();
+        }
+    }
+
+    private void SkipDialog()
+    {
+        _skipping = true;
+        SelectVariantByKey(0);
     }
 
     private void SelectVariant(int dialogStep)
@@ -95,6 +106,10 @@ public class PanelDialogWithPeople : MAINWindow
                 Localizations.Tables.Dialogs, dialogStep.dialogVariants[i].KeyVariant);
 
             diaVarPan.Init(onlyOne ? -1 : i, textVariant, _charInterval, SelectedVariant);
+        }
+        if (_skipping)
+        {
+            SelectVariantByKey(0);
         }
     }
 
