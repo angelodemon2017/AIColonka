@@ -42,6 +42,7 @@ public class DialogVariant : MonoBehaviour
 
     private void OnClick()
     {
+        _buttonSelf.enabled = false;
         ClickAction?.Invoke(_numVariant);
     }
 

@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 8099961404232746558}
   - component: {fileID: 7726683821023651733}
   - component: {fileID: 7907956023399416997}
+  - component: {fileID: 8871321251429123843}
   m_Layer: 0
   m_Name: EnemyRootFurios_Battle
   m_TagString: Untagged
@@ -291,6 +292,7 @@ MonoBehaviour:
   MaxHP: 100
   CurrentHP: 100
   _regenHP: 0
+  _immuAfterDamage: 0
 --- !u!114 &8099961404232746558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,7 +389,19 @@ MonoBehaviour:
     m_RotationOrder: 4
   _eventByChangeHP:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8871321251429123843}
+        m_TargetAssemblyTypeName: BackTalkCaller, Assembly-CSharp
+        m_MethodName: CallTalk
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!135 &7907956023399416997
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -409,6 +423,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8871321251429123843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5047308384370808793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbbc09e3f0ea85844936643c3a9a2b1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _keyTalk: WAR_TALK6
+  _showTime: 4
 --- !u!1 &5211888341023326616
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +675,7 @@ MonoBehaviour:
   - WeaponState: {fileID: 11400000, guid: 07e353d19ca55bb419a1ab76e971093c, type: 2}
     Points:
     - {fileID: 7688480854482438310}
-  - WeaponState: {fileID: 11400000, guid: 04ce78b9a12babe43b1c483e35483409, type: 2}
+  - WeaponState: {fileID: 11400000, guid: cd495381ac9e6974cb023210dd74e9d3, type: 2}
     Points:
     - {fileID: 6484358569544306015}
 --- !u!114 &7314377870191656698

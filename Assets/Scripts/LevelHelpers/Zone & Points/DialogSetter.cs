@@ -21,7 +21,7 @@ public class DialogSetter : MonoBehaviour
 
     public void SetTask(TaskSO task)
     {
-        ControllerDemoSaveFile.Instance.mainData.SetTask(task);
+        ControllerDemoSaveFile.Instance.SetTask(task);
     }
 
     public void SetWindow(MAINWindow window)
@@ -31,7 +31,7 @@ public class DialogSetter : MonoBehaviour
 
     public void CallBackGroundTalk(string keyTalk, float time)
     {
-        _ = ControllerDemoSaveFile.Instance.backTalk.SetTalkAsync(keyTalk, time);
+        _ = ControllerDemoSaveFile.Instance.backTalk.SetTalkAsync(keyTalk, time, Localizations.Tables.BackTalksTable);
     }
 
     private void OnDrawGizmos()

@@ -186,13 +186,46 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3816748726190102712, guid: 43491fb1b2826d641a58ce1bdebed61f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 129221926}
   m_SourcePrefab: {fileID: 100100000, guid: 43491fb1b2826d641a58ce1bdebed61f, type: 3}
 --- !u!4 &129221924 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3526658461265432386, guid: 43491fb1b2826d641a58ce1bdebed61f, type: 3}
   m_PrefabInstance: {fileID: 129221923}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &129221925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3816748726190102712, guid: 43491fb1b2826d641a58ce1bdebed61f, type: 3}
+  m_PrefabInstance: {fileID: 129221923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &129221926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129221925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8476eb6f7453bc74b8d9a3249acf9a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _task: {fileID: 11400000, guid: f56e1c59116b32e428bbaf2f1d9a1724, type: 2}
+  _ifIsFuture:
+    m_PersistentCalls:
+      m_Calls: []
+  _ifIsCurrent:
+    m_PersistentCalls:
+      m_Calls: []
+  _ifIsCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  __ifIsFuture: 1
+  __ifIsCurrent: 0
+  __ifIsCompleted: 0
 --- !u!4 &214305599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6558164850215344776, guid: cab7059ebd619e84a8be9b902a1f6315, type: 3}
@@ -414,6 +447,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  __ifIsFuture: 0
+  __ifIsCurrent: 1
+  __ifIsCompleted: 0
 --- !u!114 &300921585 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2155168802308161829, guid: 06a6429f3120df1448760493e1f67df5, type: 3}

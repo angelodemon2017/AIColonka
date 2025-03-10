@@ -18,11 +18,10 @@ public class DialogSO : ScriptableObject
         {
             for (var i = 0; i < dialogSteps.Count; i++)
             {
-                dialogSteps[i].IdStep = i;
-                dialogSteps[i].KeyPersonTextV0 = i == dialogSteps.Count - 1 ? $"END{IndexDialog}" : $"D{IndexDialog}_S{dialogSteps[i].IdStep}_V0";
+                dialogSteps[i].KeyPersonTextV0 = i == dialogSteps.Count - 1 ? $"END{IndexDialog}" : $"D{IndexDialog}_S{i}_V0";
                 for (var i2 = 0; i2 < dialogSteps[i].dialogVariants.Count; i2++)
                 {
-                    dialogSteps[i].dialogVariants[i2].KeyVariant = $"D{IndexDialog}_S{dialogSteps[i].IdStep}_V{i2 + 1}";
+                    dialogSteps[i].dialogVariants[i2].KeyVariant = $"D{IndexDialog}_S{i}_V{i2 + 1}";
                 }
             }
             IndexDialog = int.Parse(name.Substring(0, name.IndexOf('.')));

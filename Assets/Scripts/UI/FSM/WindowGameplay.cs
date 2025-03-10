@@ -137,10 +137,23 @@ public class WindowGameplay : MAINWindow
             _target.rectTransform.position = Camera.main.WorldToScreenPoint(_playerFSM.GetPoints.TargetEnemy.transform.position);
         }
 
-        if (_hintText.enabled)
+        if (_hintText.enabled && _playerFSM)
         {
             _hintText.rectTransform.position = Camera.main.WorldToScreenPoint(_playerFSM.virtualObjectChecker.LastHH.GetTransform.position);
         }
+
+        #region test
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            _mainData.AddBits(-1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            _mainData.AddBits(1);
+        }
+
+        #endregion
     }
 
     internal void SetHintText(string hint)
@@ -209,8 +222,14 @@ public class WindowGameplay : MAINWindow
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
 
-        _playerFSM.HPComponent.ChangeHP -= _panelHP.UpdateHP;
-        _playerFSM.OnUpdatePlayer -= UpdatePlayerUI;
+        if (_panelHP && _playerFSM)
+        {
+            _playerFSM.HPComponent.ChangeHP -= _panelHP.UpdateHP;
+        }
+        if (_playerFSM)
+        {
+            _playerFSM.OnUpdatePlayer -= UpdatePlayerUI;
+        }
         _mainData.BitUpgrade -= UpdateUI;
         ControllerDemoSaveFile.Instance.backTalk.OnUpdateTalk -= UpdateSubtitle;
     }

@@ -67,6 +67,30 @@ MonoBehaviour:
     m_Localized: And whose server is this, so busy?
     m_Metadata:
       m_Items: []
+  - m_Id: 5173395972595712
+    m_Localized: Phew, we did it, now we can sort out the order
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5447640174731264
+    m_Localized: '*THUSH* Your tricks don''t work on me'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5450518763315200
+    m_Localized: '*THUNDER*-*THUNDER* My subconscious is not a hindrance to me'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5452044814688256
+    m_Localized: Why has it become so empty here...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5454444124348416
+    m_Localized: First, you need to synchronize with home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5458476276555776
+    m_Localized: This is power!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

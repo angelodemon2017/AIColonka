@@ -3480,6 +3480,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  __ifIsFuture: 0
+  __ifIsCurrent: 1
+  __ifIsCompleted: 0
 --- !u!114 &382159866069759333 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4007604026691769760, guid: 473527e42ff32d54d84ad96d05b56acf, type: 3}

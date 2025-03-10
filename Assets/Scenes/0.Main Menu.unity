@@ -585,7 +585,7 @@ MonoBehaviour:
   _speedTransl: 0.02
   _blackImage: {fileID: 946116735}
   _testLoading: {fileID: 167432912}
-  IsDebug: 0
+  IsDebug: 1
   TaskConfig: {fileID: 11400000, guid: 9a0256040687cb5408bf70905814f3ab, type: 2}
   CurrentLevel: 0
   CurrentDialog: {fileID: 11400000, guid: 3c8e85e469ac683429c3ce83f68ac61a, type: 2}

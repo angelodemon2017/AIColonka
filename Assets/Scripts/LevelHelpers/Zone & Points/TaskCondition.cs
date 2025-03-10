@@ -4,9 +4,13 @@ using UnityEngine.Events;
 public class TaskCondition : MonoBehaviour
 {
     [SerializeField] private TaskSO _task;
-    [SerializeField] private UnityEvent _ifIsFuture;
-    [SerializeField] private UnityEvent _ifIsCurrent;
-    [SerializeField] private UnityEvent _ifIsCompleted;
+    [SerializeField] private bool __ifIsFuture;
+    [SerializeField] private bool __ifIsCurrent;
+    [SerializeField] private bool __ifIsCompleted;
+
+    private string IfDone => __ifIsCompleted ? "D" : string.Empty;
+    private string IfCurrent => __ifIsCurrent ? "C" : string.Empty;
+    private string IfFuture => __ifIsFuture ? "F" : string.Empty;
 
     private void Awake()
     {
@@ -18,21 +22,21 @@ public class TaskCondition : MonoBehaviour
     {
         if (ControllerDemoSaveFile.Instance.WasDone(_task))
         {
-            _ifIsCompleted?.Invoke();
+            gameObject.SetActive(__ifIsCompleted);
         }
         else if (ControllerDemoSaveFile.Instance.IsCurrentTask(_task))
         {
-            _ifIsCurrent?.Invoke();
+            gameObject.SetActive(__ifIsCurrent);
         }
         else
-        {
-            _ifIsFuture?.Invoke();
+        {            
+            gameObject.SetActive(__ifIsFuture);
         }
     }
 
     private void OnDrawGizmos()
     {
-        DrawGizmosHelper.DrawLabel(transform, 2f, $"TaskCondition:{(_task == null ? "NO SELECT" : _task.name)}");
+        DrawGizmosHelper.DrawLabel(transform, 2f, $"TaskCondition:{(_task == null ? "NO SELECT" : _task.name)}({IfDone}{IfCurrent}{IfFuture})");
     }
 
     private void OnDestroy()

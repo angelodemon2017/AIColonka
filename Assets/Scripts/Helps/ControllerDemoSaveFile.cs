@@ -42,6 +42,12 @@ public class ControllerDemoSaveFile : MonoBehaviour
         return TaskConfig.GetTaskByKey(mainData.progressHistory.KeyTitleMainTask);
     }
 
+    internal void SetTask(TaskSO taskSO)
+    {
+        mainData.SetTask(taskSO);
+        _ = backTalk.SetTalkAsync(taskSO.KeyTitle, 2f, Localizations.Tables.Tasks);
+    }
+
     internal bool IsCurrentTask(TaskSO taskSO)
     {
         return mainData.progressHistory.KeyTitleMainTask == taskSO.KeyTitle;
@@ -113,17 +119,15 @@ public class BackTalk
         string.IsNullOrWhiteSpace(KeyTalk) ? string.Empty :
         LocalText;
 
-    internal async Task SetTalkAsync(string key, float time)
+    internal async Task SetTalkAsync(string key, float time, string fromLocalTable)
     {
         KeyTalk = key;
         _time = time;
-//        OnStartTalk?.Invoke();
 
         LocalText = await Localizations.GetLocalizedText(
-            Localizations.Tables.BackTalksTable,
-            KeyTalk);
-        OnUpdateTalk?.Invoke();
+            fromLocalTable, KeyTalk);
 
+        OnUpdateTalk?.Invoke();
     }
 
     internal void UpdateTime(float deltaTime)

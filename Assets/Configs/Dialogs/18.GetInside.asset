@@ -10,29 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04e469468053d344680a2349aaae4bc2, type: 3}
-  m_Name: 12.Psyco
+  m_Name: 18.GetInside
   m_EditorClassIdentifier: 
   IsAutoValidate: 1
-  IndexDialog: 12
-  Name: Psyco
+  IndexDialog: 18
+  Name: GetInside
   dialogSteps:
-  - KeyPersonTextV0: D12_S0_V0
+  - KeyPersonTextV0: D18_S0_V0
     IdStep: 0
-    Chapter: 10
+    Chapter: 11
     dialogVariants:
-    - KeyVariant: D12_S0_V1
+    - KeyVariant: D18_S0_V1
       IdStepDialog: 1
-  - KeyPersonTextV0: D12_S1_V0
+    - KeyVariant: D18_S0_V2
+      IdStepDialog: 1
+  - KeyPersonTextV0: END18
     IdStep: 1
-    Chapter: 10
-    dialogVariants:
-    - KeyVariant: D12_S1_V1
-      IdStepDialog: 2
-  - KeyPersonTextV0: END12
-    IdStep: 2
-    Chapter: 0
+    Chapter: 11
     dialogVariants: []
-  levelByEndDialog: 0
+  levelByEndDialog: 10
   _eventByEnd:
     m_PersistentCalls:
       m_Calls: []

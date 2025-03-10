@@ -63,6 +63,34 @@ MonoBehaviour:
     m_Key: 7.ENTER_ART2
     m_Metadata:
       m_Items: []
+  - m_Id: 5173395972595712
+    m_Key: 9.AFTER_CRIME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5447640174731264
+    m_Key: 10.AFTER_SUBCONS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5450518763315200
+    m_Key: 11.SOMEDOIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5452044814688256
+    m_Key: 2.FINAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5454444124348416
+    m_Key: 2.START
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5458476276555776
+    m_Key: 6.TALK_AFTER_UPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5801603109658624
+    m_Key: 2.HUB_JT1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

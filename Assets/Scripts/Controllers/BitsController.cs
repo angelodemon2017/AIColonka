@@ -31,19 +31,19 @@ public class BitsController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+/*        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             _mainData.AddBits(-1);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             _mainData.AddBits(1);
-        }
+        }/**/
 
-        if (Input.GetKeyDown(KeyCode.Q))
+/*        if (Input.GetKeyDown(KeyCode.Q))
         {
             SetBits(true);
-        }
+        }/**/
     }
 
     internal void UpdateMode()

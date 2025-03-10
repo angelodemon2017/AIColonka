@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KeyTitle: MT11
   KeyLocDesc: MD11
-  AvailableLevels: 0800000002000000
+  AvailableLevels: 0200000008000000
   _whereTarget: 2
   _locaString:
     m_TableReference:

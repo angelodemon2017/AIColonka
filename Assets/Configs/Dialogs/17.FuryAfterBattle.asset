@@ -10,23 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04e469468053d344680a2349aaae4bc2, type: 3}
-  m_Name: 13.PsycoAfterMobs
+  m_Name: 17.FuryAfterBattle
   m_EditorClassIdentifier: 
   IsAutoValidate: 1
-  IndexDialog: 13
-  Name: PsycoAfterMobs
+  IndexDialog: 17
+  Name: AfterBattle
   dialogSteps:
-  - KeyPersonTextV0: D13_S0_V0
+  - KeyPersonTextV0: D17_S0_V0
     IdStep: 0
-    Chapter: 10
+    Chapter: 7
     dialogVariants:
-    - KeyVariant: D13_S0_V1
+    - KeyVariant: D17_S0_V1
       IdStepDialog: 1
-  - KeyPersonTextV0: END13
+  - KeyPersonTextV0: D17_S1_V0
     IdStep: 1
-    Chapter: 10
+    Chapter: 7
+    dialogVariants:
+    - KeyVariant: D17_S1_V1
+      IdStepDialog: 2
+    - KeyVariant: D17_S1_V2
+      IdStepDialog: 2
+  - KeyPersonTextV0: D17_S2_V0
+    IdStep: 2
+    Chapter: 7
+    dialogVariants:
+    - KeyVariant: D17_S2_V1
+      IdStepDialog: 3
+  - KeyPersonTextV0: END17
+    IdStep: 3
+    Chapter: 7
     dialogVariants: []
-  levelByEndDialog: 11
+  levelByEndDialog: 0
   _eventByEnd:
     m_PersistentCalls:
       m_Calls:
@@ -35,7 +49,7 @@ MonoBehaviour:
         m_MethodName: SetTask
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: cc544d1df9faab04f9a5c110a39561e4, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 5c4a8da14f83bba46b4abd0559856039, type: 2}
           m_ObjectArgumentAssemblyTypeName: TaskSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0

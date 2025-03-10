@@ -958,13 +958,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2155168802308161829, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4028968812090099780, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 862558369}
+    - targetCorrespondingSourceObject: {fileID: 4028968812090099780, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 862558370}
   m_SourcePrefab: {fileID: 100100000, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
 --- !u!1 &862558368 stripped
 GameObject:
@@ -984,6 +988,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogRoomPreset: 0
+--- !u!114 &862558370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862558368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8476eb6f7453bc74b8d9a3249acf9a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _task: {fileID: 11400000, guid: 8e9b9c0672d1c374cb314e6918e6ea4e, type: 2}
+  _ifIsFuture:
+    m_PersistentCalls:
+      m_Calls: []
+  _ifIsCurrent:
+    m_PersistentCalls:
+      m_Calls: []
+  _ifIsCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  __ifIsFuture: 1
+  __ifIsCurrent: 0
+  __ifIsCompleted: 0
 --- !u!1 &1067105437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,6 +1431,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  __ifIsFuture: 0
+  __ifIsCurrent: 1
+  __ifIsCompleted: 1
 --- !u!1 &1411473990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,6 +1715,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  __ifIsFuture: 0
+  __ifIsCurrent: 1
+  __ifIsCompleted: 0
 --- !u!1001 &1727034051
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -19,6 +19,7 @@ public class Dialog
 public class DialogStep
 {
     public string KeyPersonTextV0;
+    [HideInInspector]
     public int IdStep;
     public EnumChapter Chapter;
     public List<DialogVariantSO> dialogVariants = new();

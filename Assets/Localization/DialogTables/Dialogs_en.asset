@@ -236,6 +236,80 @@ MonoBehaviour:
     m_Localized: It turns out he's a slacker... but what can he do?
     m_Metadata:
       m_Items: []
+  - m_Id: 4311222991888384
+    m_Localized: An unexpected result with such restraint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311737540714496
+    m_Localized: Containment?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311818041991168
+    m_Localized: You didn't use any incarnations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4312085399511040
+    m_Localized: You mean those guns...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4312221106216960
+    m_Localized: I thought this was your program...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4312418657935360
+    m_Localized: In general, you can use visualization to manifest any entities.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4313718359498752
+    m_Localized: Ooooh. Got it, accepted.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4662799187484672
+    m_Localized: Oh, no! How did you manage to beat me? You have found harmony, now
+      you can come back...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4663311597215744
+    m_Localized: I'm a beauty!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4663435199160320
+    m_Localized: Isn't this what they call schizophrenia?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127517050183680
+    m_Localized: Why has it become so empty here...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127550239711232
+    m_Localized: Who are you?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127589305458688
+    m_Localized: Better ask, "Who am I?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127618720112640
+    m_Localized: Uh-uh, who are you?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127653386035200
+    m_Localized: "No, \u201CWho am I,\u201D like you\u2019re \u201Cwho am I,\u201D
+      not \u201Cwho are you?\u201D"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127668267425792
+    m_Localized: Ah, I get it! Hello, I'm Astra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5015377767211008
+    m_Localized: And why does your pumping disappear?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5015717354840064
+    m_Localized: I have no idea
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
