@@ -25,7 +25,7 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
     private Transform _transform;
     private float _hitUpdate;
-
+    
     internal Action OnUpdatePlayer;
 
     #region properties
@@ -72,12 +72,22 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
         if (other.tag == "Platform")
         {
             platform = other.transform;
+            UpdateParent();
         }
     }
 
-    private void PlatformSwift()
+    private void OnTriggerExit(Collider other)
     {
-        //TODO...
+        if (other.transform == platform)
+        {
+            platform = null;
+            UpdateParent();
+        }
+    }
+
+    private void UpdateParent()
+    {
+        transform.SetParent(platform?.parent);
     }
 
     private void Awake()
@@ -157,8 +167,6 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
         _currentState?.ExitState();
 
-//        _currentState = Instantiate(state as PlayerState);
-//        _currentState.InitState(this);
         SetPreparedState(Instantiate(state as PlayerState));
     }
 
@@ -176,9 +184,9 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
         _animationAdapter.EndAnimation -= EndCurrentAnimate;
     }
 
-    [ContextMenu("CallAVA")]
+    [ContextMenu("CallJump")]
     private void CallAV()
     {
-        CallPlayerAction(EnumPlayerControlActions.AVAttack);
+        CallPlayerAction(EnumPlayerControlActions.Jump);
     }
 }

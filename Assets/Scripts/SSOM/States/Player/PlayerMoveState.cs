@@ -8,6 +8,7 @@ public class PlayerMoveState : PlayerState
 
     [SerializeField] private EnumAnimations slowMoveAnimate;
 
+    private FallingController _fallingController;
     private float _timeOut = 0.1f;
 
     private float totalSpeed => IsSlowMove ?
@@ -23,6 +24,7 @@ public class PlayerMoveState : PlayerState
     {
         base.Init();
         IsFinished = false;
+        _fallingController = playerFSM.GetFallingController;
     }
 
     internal override void CallAxisHorVer(float hor, float ver)
@@ -31,9 +33,11 @@ public class PlayerMoveState : PlayerState
 
         MovePlayer(hor, ver, totalSpeed, rotationSpeed);
 
-        if (playerFSM.GetFallingController.IsGrounded && playerFSM.GetFallingController.IsFalling)
+        _timeOut = 0.1f;
+
+        if (_fallingController.IsGrounded && _fallingController.IsFalling)
         {
-            playerFSM.GetFallingController.SetYVelocity(-2f);
+            _fallingController.SetYVelocity(-2f);
         }
     }
 
@@ -46,12 +50,17 @@ public class PlayerMoveState : PlayerState
     {
         base.FixedRun();
 
-        if (_timeOut <= 0f && _characterController.velocity == Vector3.zero)
+        if (_timeOut <= 0f)// && playerFSM.FinalMagnitude < totalSpeed)
         {
             IsFinished = true;
         }
 
         _timeOut -= Time.fixedDeltaTime;
+    }
+
+    public override void ExitState()
+    {
+        base.ExitState();
     }
 
     public override bool CheckRules(IStatesCharacter character)

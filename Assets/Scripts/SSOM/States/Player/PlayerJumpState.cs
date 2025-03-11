@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "FSM/PlayerState/PlayerJumpState", order = 1)]
 public class PlayerJumpState : PlayerState
 {
+//    [SerializeField] private PlayerState _fixPlatformState;
     [SerializeField] private float jumpHeight;
     [SerializeField] private float _horizontalSpeed;
     [SerializeField] private float _rotationSpeed;
@@ -19,6 +20,14 @@ public class PlayerJumpState : PlayerState
         {
             IsFinished = true;
         }
+    }
+
+    internal override void FixedRun()
+    {
+        if (playerFSM.GetFallingController.IsGrounded)
+        {
+//            IsFinished = true;
+        }/**/
     }
 
     internal override void CallAxisHorVer(float hor, float ver)

@@ -739,6 +739,7 @@ Transform:
   m_Children:
   - {fileID: 5037287704535226930}
   - {fileID: 5062540644953757038}
+  - {fileID: 1072580252112438759}
   m_Father: {fileID: 8899388386803264703}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3972177567460372651
@@ -1273,11 +1274,11 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 264
   _hpComponent: {fileID: 2996413382871570050}
-  _armorVisualizator: {fileID: 0}
   _fallingController: {fileID: 4176115940965244519}
   _animationAdapter: {fileID: 871612990593034783}
   _startState: {fileID: 11400000, guid: b1080cc1a0096aa49a786b2ababb6b53, type: 2}
   _currentState: {fileID: 0}
+  platform: {fileID: 0}
 --- !u!143 &7687012706516705241
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1378,12 +1379,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 8899388386803264703}
-  groundDistance: 0.4
+  groundDistance: 0.15
   _groundMask:
     serializedVersion: 2
     m_Bits: 8
   _characterController: {fileID: 7687012706516705241}
   JumpScaleFall: 3
+  _isGrounded_: 0
+  _gravity: 1
 --- !u!114 &6075059370870970207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1496,6 +1499,37 @@ MonoBehaviour:
   - {fileID: 461995464841714105}
   - {fileID: 3675126696187207049}
   - {fileID: 2776350007117308363}
+--- !u!1 &9171596970232528102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1072580252112438759}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1072580252112438759
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9171596970232528102}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5477296640093301973}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1154545835865832367
 PrefabInstance:
   m_ObjectHideFlags: 0
