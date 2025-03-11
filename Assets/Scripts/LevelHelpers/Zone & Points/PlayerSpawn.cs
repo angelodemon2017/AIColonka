@@ -13,7 +13,7 @@ public class PlayerSpawn : MonoBehaviour
 
     private void InitPlayer(Transform pointPlayer)
     {
-        Instantiate(_player, pointPlayer.position, pointPlayer.rotation);
+        Instantiate(_player, pointPlayer.position, pointPlayer.rotation, pointPlayer);
     }
 
     private Transform GetPoint()

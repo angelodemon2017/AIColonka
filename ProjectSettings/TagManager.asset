@@ -8,6 +8,7 @@ TagManager:
   - Keeping
   - DangerZone
   - VirtualObject
+  - Platform
   layers:
   - Default
   - TransparentFX

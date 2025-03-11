@@ -21,6 +21,8 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
     [SerializeField] private PlayerState _currentState;
 
+    [SerializeField] private Transform platform;
+
     private Transform _transform;
     private float _hitUpdate;
 
@@ -64,6 +66,19 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
     public EntityModule GetModule => null;
     #endregion
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Platform")
+        {
+            platform = other.transform;
+        }
+    }
+
+    private void PlatformSwift()
+    {
+        //TODO...
+    }
 
     private void Awake()
     {
