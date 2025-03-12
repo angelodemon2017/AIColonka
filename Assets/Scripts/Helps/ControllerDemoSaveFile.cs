@@ -3,12 +3,12 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class ControllerDemoSaveFile : MonoBehaviour
 {
     public static ControllerDemoSaveFile Instance;
 
-    [SerializeField] private float _speedTransl;
     [SerializeField] private Image _blackImage;
     [SerializeField] private TextMeshProUGUI _testLoading;
     public TaskConfig TaskConfig;
@@ -16,7 +16,6 @@ public class ControllerDemoSaveFile : MonoBehaviour
     public DialogSO CurrentDialog;
 
     private Color _transColor;
-    private bool IsTranslate = false;
     internal BackTalk backTalk = new BackTalk();
 
     public MainData mainData = new MainData();
@@ -24,8 +23,7 @@ public class ControllerDemoSaveFile : MonoBehaviour
 
     internal Settings Settings => _settings;
     public bool IsDebug => _settings.IsDebug;
-    private float _totalSpeed => //IsDebug ? 1 : 
-        _speedTransl;
+
     public bool IsBlackEnd => _blackImage.color.a >= 1f;
 
     private void Awake()
@@ -61,12 +59,6 @@ public class ControllerDemoSaveFile : MonoBehaviour
         return mainData.progressHistory.IsWasDone(taskSO.KeyTitle);
     }
 
-    private void FixedUpdate()
-    {
-        backTalk.UpdateTime(Time.fixedDeltaTime);
-        CheckTransl();
-    }
-
     internal void SetLevel(EnumLevels level)
     {
         SetBlack(true);
@@ -91,23 +83,15 @@ public class ControllerDemoSaveFile : MonoBehaviour
         _testLoading.text = progres == 0 ? string.Empty : $"Load:{progres}";
     }
 
-    private void CheckTransl()
+    internal void SetBlack(bool fadeIn)
     {
-        if (IsTranslate && _blackImage.color.a < 1)
-        {
-            _transColor.a += _totalSpeed;
-            _blackImage.color = _transColor;
-        }
-        else if (!IsTranslate && _blackImage.color.a > 0)
-        {
-            _transColor.a -= _totalSpeed;
-            _blackImage.color = _transColor;
-        }
-    }
+        float targetAlpha = fadeIn ? 1f : 0f;
 
-    internal void SetBlack(bool isOn)
-    {
-        IsTranslate = isOn;
+        DOTween.To(() => _transColor, x => _transColor = x, new Color(_transColor.r, _transColor.g, _transColor.b, targetAlpha), 1f)
+            .OnUpdate(() =>
+            {
+                _blackImage.color = _transColor;
+            });
     }
 }
 
@@ -115,7 +99,6 @@ public class BackTalk
 {
     public string KeyTalk;
     private string LocalText;
-    private float _time;
 
     public Action OnUpdateTalk;
     public Action OnStartTalk;
@@ -128,30 +111,17 @@ public class BackTalk
     internal async Task SetTalkAsync(string key, float time, string fromLocalTable)
     {
         KeyTalk = key;
-        _time = time;
 
+        DOVirtual.DelayedCall(time, EndTalk);
         LocalText = await Localizations.GetLocalizedText(
             fromLocalTable, KeyTalk);
 
         OnUpdateTalk?.Invoke();
     }
 
-    internal void UpdateTime(float deltaTime)
-    {
-        if (_time > 0)
-        {
-            _time -= deltaTime;
-            if (_time <= 0f)
-            {
-                EndTalk();
-            }
-        }
-    }
-
     internal void EndTalk()
     {
         KeyTalk = string.Empty;
-        _time = 0f;
         LocalText = string.Empty;
         OnUpdateTalk?.Invoke();
         OnEndTalk?.Invoke();

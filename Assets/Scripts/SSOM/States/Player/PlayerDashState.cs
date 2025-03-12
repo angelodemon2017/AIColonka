@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 [CreateAssetMenu(menuName = "FSM/PlayerState/PlayerDashState", order = 1)]
 public class PlayerDashState : PlayerState
@@ -11,7 +12,6 @@ public class PlayerDashState : PlayerState
     private FallingController _fallingController;
     private Vector3 _startPosition;
     private Transform _transform;
-    private float _stateTime;
     private bool _doneDash;
     private Vector3 _customFinish = Vector3.zero;
 
@@ -66,15 +66,7 @@ public class PlayerDashState : PlayerState
         ep.Init(_startPosition, _transform.position);
 
         _doneDash = true;
-    }
-
-    internal override void FixedRun()
-    {
-        _stateTime += Time.fixedDeltaTime;
-        if (_stateTime >= _pauseTime)
-        {
-            IsFinished = true;
-        }
+        DOVirtual.DelayedCall(_pauseTime, SetFinished);
     }
 
     public override void ExitState()

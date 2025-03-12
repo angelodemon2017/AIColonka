@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class WindowGameplay : MAINWindow
 {
@@ -83,7 +84,15 @@ public class WindowGameplay : MAINWindow
     private void UpdateSubtitle()
     {
         _backTalk.text = ControllerDemoSaveFile.Instance.backTalk.GetTalk;
+
         _backTalk.enabled = !string.IsNullOrEmpty(_backTalk.text);
+
+        float targetAlpha = _backTalk.enabled ? 1f : 0f;
+        DOTween.To(() => _tempColor, x => _tempColor = x, new Color(_tempColor.r, _tempColor.g, _tempColor.b, targetAlpha), 1f)
+            .OnUpdate(() =>
+            {
+                _backGroundBackTalk.color = _tempColor;
+            });
     }
 
     public override void Run()
@@ -167,17 +176,6 @@ public class WindowGameplay : MAINWindow
         if (horizontal != 0 || vertical != 0)
         {
             _playerFSM.CallAxisHorVer(horizontal, vertical);
-        }
-
-        if (_backTalk.enabled && _tempColor.a < 1)
-        {
-            _tempColor.a += 0.01f;
-            _backGroundBackTalk.color = _tempColor;
-        }
-        if (!_backTalk.enabled && _tempColor.a > 0)
-        {
-            _tempColor.a -= 0.01f;
-            _backGroundBackTalk.color = _tempColor;
         }
     }
 

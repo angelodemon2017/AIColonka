@@ -1127,6 +1127,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1237881169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &454056152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 454056154}
+  - component: {fileID: 454056153}
+  - component: {fileID: 454056155}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &454056153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454056152}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 1
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 0f6bae5a6ab94f74dbf18854f0fb0200, type: 2}
+--- !u!4 &454056154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454056152}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8201592, y: 1.2809907, z: -3.7363937}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &454056155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454056152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b900b6d691ae49f8a12753b63b449e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sun: {fileID: 0}
+  depthOfFieldTarget: {fileID: 0}
 --- !u!21 &459055148
 Material:
   serializedVersion: 8
@@ -1270,6 +1334,86 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1556258204648916895, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_AfterStackBundles.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_BeforeStackBundles.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_AfterStackBundles.Array.data[0].assemblyQualifiedName
+      value: Tonemap, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_AfterStackBundles.Array.data[1].assemblyQualifiedName
+      value: OilPaint, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_AfterStackBundles.Array.data[2].assemblyQualifiedName
+      value: Grayscale, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_AfterStackBundles.Array.data[3].assemblyQualifiedName
+      value: Cartoon, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_AfterStackBundles.Array.data[4].assemblyQualifiedName
+      value: Pencil, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_AfterStackBundles.Array.data[5].assemblyQualifiedName
+      value: FakeHDR, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_BeforeStackBundles.Array.data[0].assemblyQualifiedName
+      value: Isoline, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_BeforeStackBundles.Array.data[1].assemblyQualifiedName
+      value: Technicolor, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_BeforeStackBundles.Array.data[2].assemblyQualifiedName
+      value: DigitalGlitch, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_BeforeStackBundles.Array.data[3].assemblyQualifiedName
+      value: AnalogGlitch, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_BeforeStackBundles.Array.data[4].assemblyQualifiedName
+      value: AdaptiveFog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_BeforeStackBundles.Array.data[5].assemblyQualifiedName
+      value: Streak, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_BeforeStackBundles.Array.data[6].assemblyQualifiedName
+      value: Ramp, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_BeforeStackBundles.Array.data[7].assemblyQualifiedName
+      value: Contour, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403817116098443267, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_RendererIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403817116098443267, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4199725408611337660, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1313,6 +1457,10 @@ PrefabInstance:
     - target: {fileID: 8223896353947082216, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 8223896353947082216, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2784,9 +2932,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _keyIsRorE: 1
   _keyHint: RELEASE
-  _meshRenderer: {fileID: 0}
+  _backTalkByFall: {fileID: 0}
 --- !u!114 &1559394852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3240,9 +3387,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _keyIsRorE: 1
   _keyHint: RELEASE
-  _meshRenderer: {fileID: 0}
+  _backTalkByFall: {fileID: 0}
 --- !u!114 &1831396140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4066,3 +4212,4 @@ SceneRoots:
   - {fileID: 1034623898}
   - {fileID: 207581844}
   - {fileID: 1456701473}
+  - {fileID: 454056154}

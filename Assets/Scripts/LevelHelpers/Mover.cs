@@ -1,6 +1,7 @@
 using System;
 using UnityEditor;
 using UnityEngine;
+using DG.Tweening;
 
 public class Mover : MonoBehaviour
 {
@@ -28,6 +29,13 @@ public class Mover : MonoBehaviour
     public void SetTarget(Transform newTarget)
     {
         _moveTarget = newTarget;
+        /*//TODO Need replace moving to dotween
+        transform.DOMove(_moveTarget.position, Vector3.Distance(_moveTarget.position, transform.position) / _speedMove)
+                 .SetEase(Ease.Linear)
+                 .OnComplete(() =>
+                 {
+                     EndMove?.Invoke();
+                 });/**/
     }
 
     public void SetVectTarget(Vector3 newTrg)
@@ -58,6 +66,6 @@ public class Mover : MonoBehaviour
             {
                 EndMove?.Invoke();
             }
-        }
+        }/**/
     }
 }
