@@ -85,9 +85,10 @@ public class ControllerDemoSaveFile : MonoBehaviour
 
     internal void SetBlack(bool fadeIn)
     {
-        float targetAlpha = fadeIn ? 1f : 0f;
+        Color targetColor = _transColor;
+        targetColor.a = fadeIn ? 1f : 0f;
 
-        DOTween.To(() => _transColor, x => _transColor = x, new Color(_transColor.r, _transColor.g, _transColor.b, targetAlpha), 1f)
+        DOTween.To(() => _transColor, x => _transColor = x, targetColor, 1f)
             .OnUpdate(() =>
             {
                 _blackImage.color = _transColor;

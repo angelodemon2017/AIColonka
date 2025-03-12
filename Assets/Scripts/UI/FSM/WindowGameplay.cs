@@ -86,9 +86,10 @@ public class WindowGameplay : MAINWindow
         _backTalk.text = ControllerDemoSaveFile.Instance.backTalk.GetTalk;
 
         _backTalk.enabled = !string.IsNullOrEmpty(_backTalk.text);
+        Color targetColor = _tempColor;
+        targetColor.a = _backTalk.enabled ? 1f : 0f;
 
-        float targetAlpha = _backTalk.enabled ? 1f : 0f;
-        DOTween.To(() => _tempColor, x => _tempColor = x, new Color(_tempColor.r, _tempColor.g, _tempColor.b, targetAlpha), 1f)
+        DOTween.To(() => _tempColor, x => _tempColor = x, targetColor, 1f)
             .OnUpdate(() =>
             {
                 _backGroundBackTalk.color = _tempColor;

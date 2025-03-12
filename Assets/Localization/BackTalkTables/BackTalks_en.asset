@@ -95,6 +95,10 @@ MonoBehaviour:
     m_Localized: I need to recover more.
     m_Metadata:
       m_Items: []
+  - m_Id: 6587208881397760
+    m_Localized: It feels like I left here yesterday
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
