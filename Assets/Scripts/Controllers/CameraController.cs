@@ -4,10 +4,10 @@ public class CameraController : MonoBehaviour
 {
     public static CameraController Instance;
     [SerializeField] private Transform _directPoint;
-
     [SerializeField] private Looker _looker;
     [SerializeField] private LayerMask _layerMaskGroundAndWalls;
 
+    private PostProcessHandler _postProcessHandler;
     private Transform _pivot;
     private Transform _pLook;
     private RaycastHit hit;
@@ -20,6 +20,7 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        _postProcessHandler = GetComponent<PostProcessHandler>();
     }
 
     private Vector3 GetPointOfLook()
