@@ -89,11 +89,7 @@ public class WindowGameplay : MAINWindow
         Color targetColor = _tempColor;
         targetColor.a = _backTalk.enabled ? 1f : 0f;
 
-        DOTween.To(() => _tempColor, x => _tempColor = x, targetColor, 1f)
-            .OnUpdate(() =>
-            {
-                _backGroundBackTalk.color = _tempColor;
-            });
+        DOTween.To(() => _tempColor, x => _backGroundBackTalk.color = x, targetColor, 1f);
     }
 
     public override void Run()

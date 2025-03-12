@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour
     internal Vector3 PointOfLookGround => GetPointOfLook();
     public Vector3 Direct => _directPoint.position - transform.position;
     internal bool IsLookingDown => transform.forward.y < 0f;
+    internal PostProcessHandler PostProcessHandler => _postProcessHandler;
 
     private void Awake()
     {
