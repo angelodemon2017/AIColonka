@@ -1,47 +1,59 @@
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 using DG.Tweening;
 
 public class PostProcessHandler : MonoBehaviour
 {
     [SerializeField] private Volume volume;
-    [Range(-1f, 1f)]
-    [SerializeField] private float _testFloat;
 
-    private Vignette vignette;
-    
+    private UnityEngine.Rendering.Universal.Vignette _vignette;
+    private Beautify.Universal.Beautify _beautify;
+
     private void Awake()
     {
-        if (volume.profile.TryGet<Vignette>(out vignette))
+        if (volume.profile.TryGet(out _vignette))
         {
-            vignette.intensity.Override(0);
+            _vignette.intensity.Override(0);
         }
+        if (volume.profile.TryGet(out _beautify))
+        {
+            SetDownsampling(1);
+        }
+    }
+
+    [ContextMenu("BeforeLoadOtherScene")]
+    private void BeforeLoadOtherScene()
+    {
+        DOTween.To(() => 1f, x => SetDownsampling(x), 64, 2f);
+    }
+
+    [ContextMenu("AfterLoadNewScenes")]
+    private void AfterLoadNewScene()
+    {
+        DOTween.To(() => 64, x => SetDownsampling(x), 1, 2f);
     }
 
     [ContextMenu("PlayEffect")]
     private void CustomEffect()
     {
         Sequence sequence = DOTween.Sequence();
-        _testFloat = -1f;
-        sequence.Append(DOTween.To(() => _testFloat, x => _testFloat = x, 1f, 1f))
-            .OnUpdate(() =>
-            {
-                SetVignetteIntensity(_testFloat);
-            });
 
-        sequence.Append(DOTween.To(() => _testFloat, x => _testFloat = x, 0f, 1f))
-            .OnUpdate(() =>
-            {
-                SetVignetteIntensity(_testFloat);
-            });
+        sequence.Append(DOTween.To(() => 0f, x => SetVignetteIntensity(x), 1f, 1f));
+
+        sequence.Append(DOTween.To(() => 1f, x => SetVignetteIntensity(x), 0f, 1f));
     }
 
-    public void SetVignetteIntensity(float intensity)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="multiplier">1 - 64</param>
+    private void SetDownsampling(float multiplier)
     {
-        if (vignette != null)
-        {
-            vignette.intensity.Override(intensity);
-        }
+        _beautify?.downsamplingMultiplier.Override(multiplier);
+    }
+
+    private void SetVignetteIntensity(float intensity)
+    {
+        _vignette?.intensity.Override(intensity);
     }
 }

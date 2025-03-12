@@ -88,11 +88,7 @@ public class ControllerDemoSaveFile : MonoBehaviour
         Color targetColor = _transColor;
         targetColor.a = fadeIn ? 1f : 0f;
 
-        DOTween.To(() => _transColor, x => _transColor = x, targetColor, 1f)
-            .OnUpdate(() =>
-            {
-                _blackImage.color = _transColor;
-            });
+        DOTween.To(() => _transColor, x => _blackImage.color = x, targetColor, 1f);
     }
 }
 

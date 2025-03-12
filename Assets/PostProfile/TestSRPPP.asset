@@ -21,7 +21,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.165
   smoothness:
     m_OverrideState: 1
     m_Value: 1
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c133717c76e564a5fa90d7f12908d17e, type: 3}
   m_Name: Beautify
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   disabled:
     m_OverrideState: 1
     m_Value: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
     m_Value: 0.25
   compareLineAngle:
     m_OverrideState: 1
-    m_Value: 1.23
+    m_Value: 0.92
   compareLineWidth:
     m_OverrideState: 0
     m_Value: 0.0031
@@ -79,16 +79,16 @@ MonoBehaviour:
     m_Value: 0
   downsampling:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   downsamplingMode:
     m_OverrideState: 1
     m_Value: 0
   downsamplingMultiplier:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 1
   downsamplingBilinear:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   optimizeBuildBeautifyAuto:
     m_OverrideState: 1
     m_Value: 1
@@ -697,13 +697,13 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 0.203
   vignettingOuterRing:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: -0.4
   vignettingInnerRing:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   vignettingFade:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.546
   vignettingCircularShape:
     m_OverrideState: 1
@@ -715,7 +715,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   vignettingBlink:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   vignettingBlinkStyle:
     m_OverrideState: 1

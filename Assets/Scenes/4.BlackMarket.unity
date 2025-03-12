@@ -1270,86 +1270,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1556258204648916895, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_AfterStackBundles.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_BeforeStackBundles.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_AfterStackBundles.Array.data[0].assemblyQualifiedName
-      value: Tonemap, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_AfterStackBundles.Array.data[1].assemblyQualifiedName
-      value: OilPaint, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_AfterStackBundles.Array.data[2].assemblyQualifiedName
-      value: Grayscale, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_AfterStackBundles.Array.data[3].assemblyQualifiedName
-      value: Cartoon, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_AfterStackBundles.Array.data[4].assemblyQualifiedName
-      value: Pencil, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_AfterStackBundles.Array.data[5].assemblyQualifiedName
-      value: FakeHDR, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_BeforeStackBundles.Array.data[0].assemblyQualifiedName
-      value: Isoline, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_BeforeStackBundles.Array.data[1].assemblyQualifiedName
-      value: Technicolor, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_BeforeStackBundles.Array.data[2].assemblyQualifiedName
-      value: DigitalGlitch, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_BeforeStackBundles.Array.data[3].assemblyQualifiedName
-      value: AnalogGlitch, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_BeforeStackBundles.Array.data[4].assemblyQualifiedName
-      value: AdaptiveFog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_BeforeStackBundles.Array.data[5].assemblyQualifiedName
-      value: Streak, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_BeforeStackBundles.Array.data[6].assemblyQualifiedName
-      value: Ramp, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965014916622025623, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_BeforeStackBundles.Array.data[7].assemblyQualifiedName
-      value: Contour, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 2403817116098443267, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_RendererIndex
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2403817116098443267, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4199725408611337660, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1390,71 +1310,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7551964283626452932, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: volume
-      value: 
-      objectReference: {fileID: 492575931}
     - target: {fileID: 8223896353947082216, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 8223896353947082216, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8223896353947082216, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 492575930}
-    - targetCorrespondingSourceObject: {fileID: 8223896353947082216, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 492575932}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
---- !u!1 &492575929 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8223896353947082216, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-  m_PrefabInstance: {fileID: 492575928}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &492575930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 492575929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5233d1c09361df4b8764563bae8b5aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &492575931 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4563702657874310807, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
-  m_PrefabInstance: {fileID: 492575928}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 492575929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &492575932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 492575929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b900b6d691ae49f8a12753b63b449e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sun: {fileID: 0}
-  depthOfFieldTarget: {fileID: 0}
 --- !u!1001 &516676635
 PrefabInstance:
   m_ObjectHideFlags: 0
