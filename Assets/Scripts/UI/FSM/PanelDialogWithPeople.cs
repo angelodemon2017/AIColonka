@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.Threading.Tasks;
+using Zenject;
 
 public class PanelDialogWithPeople : MAINWindow
 {
@@ -22,6 +23,13 @@ public class PanelDialogWithPeople : MAINWindow
     public static Action<string> ActionByKey;
     public Action NextStep;
     public Action EndDialog;
+
+    private TaskConfig _taskConfig;
+    [Inject]
+    public void Construct(TaskConfig taskConfig)
+    {
+        _taskConfig = taskConfig;
+    }
 
     public override void StartWindow()
     {

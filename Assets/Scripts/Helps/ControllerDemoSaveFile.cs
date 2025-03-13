@@ -12,8 +12,9 @@ public class ControllerDemoSaveFile : MonoBehaviour
 
     [SerializeField] private Image _blackImage;
     [SerializeField] private TextMeshProUGUI _testLoading;
-    [SerializeField] private TaskConfig _taskConfig;
-    //    public TaskConfig TaskConfig;
+    [Inject]
+    //[SerializeField] 
+    private TaskConfig _taskConfig;
     public EnumLevels CurrentLevel;
     public DialogSO CurrentDialog;
 
@@ -27,7 +28,6 @@ public class ControllerDemoSaveFile : MonoBehaviour
     public bool IsDebug => _settings.IsDebug;
 
     public bool IsBlackEnd => _blackImage.color.a >= 1f;
-
 
     [Inject]
     public void Construct(TaskConfig taskConfig)
@@ -99,6 +99,11 @@ public class ControllerDemoSaveFile : MonoBehaviour
         targetColor.a = fadeIn ? 1f : 0f;
 
         DOTween.To(() => _transColor, x => _blackImage.color = x, targetColor, 1f);
+    }
+
+    public void Initialize()
+    {
+
     }
 }
 

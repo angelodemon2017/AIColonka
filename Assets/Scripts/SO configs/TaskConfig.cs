@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using Zenject;
 
 [CreateAssetMenu(menuName = "SO/TaskConfig", order = 1)]
-public class TaskConfig : ScriptableObject
+public class TaskConfig : ScriptableObjectInstaller<TaskConfig>
 {
     [SerializeField] private TaskSO _missTask;
     public CacheList<string, TaskSO> _mainTasks;
@@ -18,5 +19,10 @@ public class TaskConfig : ScriptableObject
     public TaskSO GetTaskByKey(string key)
     {
         return _mainTasks.GetByKey(key);
+    }
+
+    public override void InstallBindings()
+    {
+        Container.BindInstance(this);
     }
 }
