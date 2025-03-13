@@ -36,7 +36,7 @@ public class SceneLevelLoader : MonoBehaviour
         {
             yield return null;
         }
-        AsyncOperation operation = SceneManager.LoadSceneAsync((int)level);
+        AsyncOperation operation = SceneManager.LoadSceneAsync((int)level + 1);
         EventBus.ResetSubs();
         LoadProgress?.Invoke(operation.progress);
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using Zenject;
 
 public class ControllerDemoSaveFile : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class ControllerDemoSaveFile : MonoBehaviour
 
     [SerializeField] private Image _blackImage;
     [SerializeField] private TextMeshProUGUI _testLoading;
-    public TaskConfig TaskConfig;
+    [SerializeField] private TaskConfig _taskConfig;
+    //    public TaskConfig TaskConfig;
     public EnumLevels CurrentLevel;
     public DialogSO CurrentDialog;
 
@@ -25,6 +27,13 @@ public class ControllerDemoSaveFile : MonoBehaviour
     public bool IsDebug => _settings.IsDebug;
 
     public bool IsBlackEnd => _blackImage.color.a >= 1f;
+
+
+    [Inject]
+    public void Construct(TaskConfig taskConfig)
+    {
+        _taskConfig = taskConfig;
+    }
 
     private void Awake()
     {
@@ -40,7 +49,8 @@ public class ControllerDemoSaveFile : MonoBehaviour
 
     internal TaskSO GetCurrentTask()
     {
-        return TaskConfig.GetTaskByKey(mainData.progressHistory.KeyTitleMainTask);
+        Debug.Log("!!!GetCurrentTask");
+        return _taskConfig.GetTaskByKey(mainData.progressHistory.KeyTitleMainTask);
     }
 
     internal void SetTask(TaskSO taskSO)
