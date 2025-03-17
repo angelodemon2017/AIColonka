@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class TaskCondition : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class TaskCondition : MonoBehaviour
     [SerializeField] private bool __ifIsFuture;
     [SerializeField] private bool __ifIsCurrent;
     [SerializeField] private bool __ifIsCompleted;
+
+    [Inject] private DataHandler _dataHandler;
 
     private string IfDone => __ifIsCompleted ? "D" : string.Empty;
     private string IfCurrent => __ifIsCurrent ? "C" : string.Empty;
@@ -20,11 +23,11 @@ public class TaskCondition : MonoBehaviour
 
     private void CheckTask()
     {
-        if (ControllerDemoSaveFile.Instance.WasDone(_task))
+        if (_dataHandler.WasDone(_task))
         {
             gameObject.SetActive(__ifIsCompleted);
         }
-        else if (ControllerDemoSaveFile.Instance.IsCurrentTask(_task))
+        else if (_dataHandler.IsCurrentTask(_task))
         {
             gameObject.SetActive(__ifIsCurrent);
         }

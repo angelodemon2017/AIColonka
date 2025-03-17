@@ -11,6 +11,8 @@ public class UIFSM : MonoBehaviour, IUIFSM
 
     private IWindowFSM _currentWindow;
 
+    [Inject] private DiContainer _container;
+
     private void Awake()
     {
         _parent = transform;
@@ -42,7 +44,7 @@ public class UIFSM : MonoBehaviour, IUIFSM
         //place for pool
         _parent.DestroyChildrens();
 
-        _currentWindow = Instantiate(windowFSM, _parent);
+        _currentWindow = _container.InstantiatePrefabForComponent<MAINWindow>(windowFSM, _parent);
         StartWindow();
 
         return _currentWindow as MAINWindow;

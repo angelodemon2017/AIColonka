@@ -9,16 +9,27 @@ public class GlobalInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
+        InstallSingletons();
+        InstallConfigs();
+        InstallSignals();
+    }
+
+    private void InstallSingletons()
+    {
+        Container.Bind<DataHandler>().AsSingle();
+    }
+
+    private void InstallConfigs()
+    {
         Container.Bind<DialogsConfig>().FromScriptableObject(_dialogsConfig).AsSingle();
         Container.Bind<TaskConfig>().FromScriptableObject(_taskConfig).AsSingle();
         Container.Bind<LearnSOInject>().FromScriptableObject(_learnSOInject).AsSingle();
+    }
 
-        Container.Bind<ITaskController>().To<TaskController>().AsTransient();
-
-/*        Container.Bind<TaskController>().AsTransient().OnInstantiated((ctx, controller) =>
-        {
-            var taskConfig = ctx.Container.Resolve<TaskConfig>();
-            ((TaskController)controller).InitConfigs(taskConfig);
-        });/**/
+    private void InstallSignals()
+    {
+        SignalBusInstaller.Install(Container);
+        Container.DeclareSignal<DemoSignal>();
+        Container.DeclareSignal<ShowSignal>();
     }
 }

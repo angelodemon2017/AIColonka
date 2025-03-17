@@ -344,7 +344,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: {fileID: 4563702657874310807}
-  _testFloat: 0
 --- !u!114 &855977862710421949
 MonoBehaviour:
   m_ObjectHideFlags: 0

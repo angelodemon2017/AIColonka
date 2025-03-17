@@ -10,7 +10,7 @@ public class WindowGameplay : MAINWindow
     public static WindowGameplay Instance;
 
     [SerializeField] private TextMeshProUGUI _hintText;
-    [SerializeField] private TaskController _taskController = new();
+    [SerializeField] private TaskModule _taskModule;
     [SerializeField] private PanelHP _panelHP;
     [SerializeField] private TextMeshProUGUI _debugTestParam;
     [SerializeField] private TextMeshProUGUI _bitLabel;
@@ -24,6 +24,9 @@ public class WindowGameplay : MAINWindow
     [SerializeField] private Image _backGroundBackTalk;
     [SerializeField] private TextMeshProUGUI _backTalk;
 
+    [Inject] private SignalBus _signalBus;
+    [Inject] private DataHandler _dataHandler;
+
     private GameObject _parentCombo;
     private PlayerFSM _playerFSM;
 
@@ -36,11 +39,9 @@ public class WindowGameplay : MAINWindow
         base.StartWindow();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        //        _taskController.Init();
-        _taskController = new();
         StartCoroutine(Subs());
         _debugTestParam.text = $"{_mainData.testSaveParam}";
-
+        _taskModule.Init();
         ControllerDemoSaveFile.Instance.backTalk.OnUpdateTalk += UpdateSubtitle;
         _mainData.BitUpgrade += UpdateUI;
 
@@ -149,6 +150,22 @@ public class WindowGameplay : MAINWindow
         {
             _hintText.rectTransform.position = Camera.main.WorldToScreenPoint(_playerFSM.virtualObjectChecker.LastHH.GetTransform.position);
         }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+//            _dataHandler.ChangeParam(true);
+            _signalBus.Fire(new DemoSignal(true));
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+//            _dataHandler.ChangeParam(false);
+            _signalBus.Fire(new DemoSignal(false));
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            _signalBus.Fire(new ShowSignal());
+//            _dataHandler.ShowTest();
+        }
     }
 
     internal void SetHintText(string hint)
@@ -201,7 +218,7 @@ public class WindowGameplay : MAINWindow
     public override void ExitWindow()
     {
         Instance = null;
-        _taskController.Deatcivate();
+//        _taskController.Deatcivate();
         base.ExitWindow();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
@@ -216,38 +233,5 @@ public class WindowGameplay : MAINWindow
         }
         _mainData.BitUpgrade -= UpdateUI;
         ControllerDemoSaveFile.Instance.backTalk.OnUpdateTalk -= UpdateSubtitle;
-    }
-}
-
-[System.Serializable]
-public class TaskController : ITaskController
-{
-    [SerializeField] private TaskPreview _prefabTaskPreview;
-    [SerializeField] private Transform _parentTasks;
-    private TaskConfig _taskConfig;
-
-    public void InitConfigs(TaskConfig taskConfig)
-    {
-        _taskConfig = taskConfig;
-        Init();
-    }
-
-    internal void Init()
-    {
-        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate += UpdateTasks;
-        UpdateTasks();
-    }
-
-    private void UpdateTasks()
-    {
-        _parentTasks.DestroyChildrens();
-        var newPT = GameObject.Instantiate(_prefabTaskPreview, _parentTasks);
-
-        _ = newPT.InitAsync(_taskConfig.GetTaskByKey(ControllerDemoSaveFile.Instance.mainData.progressHistory.KeyTitleMainTask));
-    }
-
-    internal void Deatcivate()
-    {
-        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate -= UpdateTasks;
     }
 }

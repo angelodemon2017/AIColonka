@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class PlayerSpawn : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
     [SerializeField] private List<ConditionPoint> _points;
+
+    [Inject] private DataHandler _dataHandler;
 
     private void Start()
     {
@@ -20,7 +23,7 @@ public class PlayerSpawn : MonoBehaviour
     {
         foreach (var cp in _points)
         {
-            if (!ControllerDemoSaveFile.Instance.WasDone(cp.Task))
+            if (!_dataHandler.WasDone(cp.Task))
             {
                 return cp.Point;
             }

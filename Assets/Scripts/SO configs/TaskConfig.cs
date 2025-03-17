@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Zenject;
 
 [CreateAssetMenu(menuName = "SO/TaskConfig", order = 1)]
 public class TaskConfig : ScriptableObject

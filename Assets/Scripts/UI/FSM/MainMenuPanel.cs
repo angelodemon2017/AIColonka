@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Zenject;
 
 public class MainMenuPanel : MAINWindow
 {
     [SerializeField] private SceneLevelLoader _sceneLevelLoader;
 
+    [Inject] private DataHandler _dataHandler;
     [SerializeField] private Button _newGameBTN;
     [SerializeField] private Button _loadGameBTN;
     [SerializeField] private Button _settingsBTN;
@@ -35,13 +37,15 @@ public class MainMenuPanel : MAINWindow
 
     private void NewGame()
     {
-        ControllerDemoSaveFile.Instance.mainData = new MainData();
+        _dataHandler.SetData(new MainData());
+//        ControllerDemoSaveFile.Instance.mainData = new MainData();
         _sceneLevelLoader.LoadLevel(EnumLevels.DialogsHub);
     }
 
     private void LoadGame()
     {
-        ControllerDemoSaveFile.Instance.mainData = _tempData;
+        _dataHandler.SetData(_tempData);
+//        ControllerDemoSaveFile.Instance.mainData = _tempData;
         _sceneLevelLoader.LoadLevel((EnumLevels)_tempData.progressHistory.CurrentScene);
     }
 

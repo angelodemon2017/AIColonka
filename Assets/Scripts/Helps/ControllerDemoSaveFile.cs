@@ -10,29 +10,22 @@ public class ControllerDemoSaveFile : MonoBehaviour
 {
     public static ControllerDemoSaveFile Instance;
 
+    [Inject] private DataHandler _dataHandler;
     [SerializeField] private Image _blackImage;
     [SerializeField] private TextMeshProUGUI _testLoading;
-    [Inject]
-    private TaskConfig _taskConfig;
     public EnumLevels CurrentLevel;
     public DialogSO CurrentDialog;
 
     private Color _transColor;
     internal BackTalk backTalk = new BackTalk();
 
-    public MainData mainData = new MainData();
+    public MainData mainData => _dataHandler.CurrentData;
     [SerializeField] private Settings _settings = new Settings();
 
     internal Settings Settings => _settings;
     public bool IsDebug => _settings.IsDebug;
 
     public bool IsBlackEnd => _blackImage.color.a >= 1f;
-
-    [Inject]
-    public void Construct(TaskConfig taskConfig)
-    {
-        _taskConfig = taskConfig;
-    }
 
     private void Awake()
     {
@@ -44,12 +37,6 @@ public class ControllerDemoSaveFile : MonoBehaviour
             _settings = SaveController.Load<Settings>(Settings.Prefix);
             SceneLevelLoader.LoadProgress += UpdateLoading;
         }
-    }
-
-    internal TaskSO GetCurrentTask()
-    {
-        Debug.Log("!!!GetCurrentTask");
-        return _taskConfig.GetTaskByKey(mainData.progressHistory.KeyTitleMainTask);
     }
 
     internal void SetTask(TaskSO taskSO)

@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using DG.Tweening;
+using Zenject;
 
 public class PostProcessHandler : MonoBehaviour
 {
+    [Inject] private SignalBus _signalBus;
     [SerializeField] private Volume volume;
 
     private UnityEngine.Rendering.Universal.Vignette _vignette;
@@ -19,6 +21,16 @@ public class PostProcessHandler : MonoBehaviour
         {
             SetDownsampling(1);
         }
+    }
+
+    private void OnEnable()
+    {
+        _signalBus.Subscribe<DemoSignal>(CustomEffect);
+    }
+
+    private void OnDisable()
+    {
+        _signalBus.Unsubscribe<DemoSignal>(CustomEffect);
     }
 
     [ContextMenu("BeforeLoadOtherScene")]

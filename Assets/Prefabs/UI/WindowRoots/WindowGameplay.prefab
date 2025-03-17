@@ -1777,6 +1777,7 @@ GameObject:
   - component: {fileID: 4022622379271131301}
   - component: {fileID: 7762008806859165453}
   - component: {fileID: 2520768843938125354}
+  - component: {fileID: 8026703429418173001}
   m_Layer: 5
   m_Name: WindowGameplay
   m_TagString: Untagged
@@ -1838,6 +1839,7 @@ MonoBehaviour:
   - keyCode: 27
     Window: {fileID: 6806802245300269412, guid: 0dee3f775af62314ba1a20aa952e09e5, type: 3}
   _hintText: {fileID: 879014799807794196}
+  _taskModule: {fileID: 8026703429418173001}
   _taskController:
     _prefabTaskPreview: {fileID: 8052563448386798084, guid: a215ea60500452b4487a47c84b69b443, type: 3}
     _parentTasks: {fileID: 5265539132354694921}
@@ -1851,6 +1853,20 @@ MonoBehaviour:
   _tempColor: {r: 0, g: 0, b: 0, a: 0}
   _backGroundBackTalk: {fileID: 7659950089594490318}
   _backTalk: {fileID: 7524101834220892368}
+--- !u!114 &8026703429418173001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6964490123214819183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e16a51b205378446a9b9b9b641ab087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabTaskPreview: {fileID: 8052563448386798084, guid: a215ea60500452b4487a47c84b69b443, type: 3}
+  _parentTasks: {fileID: 5265539132354694921}
 --- !u!1 &7577294882486506358
 GameObject:
   m_ObjectHideFlags: 0
