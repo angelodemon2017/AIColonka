@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class UIFSM : MonoBehaviour, IUIFSM
 {

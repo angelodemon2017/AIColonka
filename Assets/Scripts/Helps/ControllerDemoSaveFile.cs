@@ -13,7 +13,6 @@ public class ControllerDemoSaveFile : MonoBehaviour
     [SerializeField] private Image _blackImage;
     [SerializeField] private TextMeshProUGUI _testLoading;
     [Inject]
-    //[SerializeField] 
     private TaskConfig _taskConfig;
     public EnumLevels CurrentLevel;
     public DialogSO CurrentDialog;

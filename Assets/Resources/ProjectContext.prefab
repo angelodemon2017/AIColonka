@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7446231800580082405
+--- !u!1 &7273293516646136933
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3808710594642027232}
-  - component: {fileID: 7513963125325842025}
+  - component: {fileID: 5428191330092829876}
+  - component: {fileID: 6346409165671288305}
+  - component: {fileID: 5818269505094159206}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -17,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3808710594642027232
+--- !u!4 &5428191330092829876
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7446231800580082405}
+  m_GameObject: {fileID: 7273293516646136933}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,13 +33,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7513963125325842025
+--- !u!114 &6346409165671288305
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7446231800580082405}
+  m_GameObject: {fileID: 7273293516646136933}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4e6589720da476459dc6dd71624b071, type: 3}
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 0}
+  - {fileID: 5818269505094159206}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0
@@ -61,3 +62,19 @@ MonoBehaviour:
       _missingHandlerDefaultResponse: 2
       _requireStrictUnsubscribe: 0
       _defaultAsyncTickPriority: 1
+--- !u!114 &5818269505094159206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7273293516646136933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 283c29f3fae3ce742888a56d5b90776d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialogsConfig: {fileID: 11400000, guid: dd45c28b5eff3d34b9e446f309018e90, type: 2}
+  _learnSOInject: {fileID: 11400000, guid: 747e52f14437e6a4aa3eebb267529f24, type: 2}
+  _taskConfig: {fileID: 11400000, guid: 9a0256040687cb5408bf70905814f3ab, type: 2}
+  _testPrefabInject: {fileID: 1694648495985486963, guid: 247e28c305d9fdd4c965d622f6805ec0, type: 3}

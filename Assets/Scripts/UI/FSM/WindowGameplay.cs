@@ -36,7 +36,8 @@ public class WindowGameplay : MAINWindow
         base.StartWindow();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        _taskController.Init();
+        //        _taskController.Init();
+        _taskController = new();
         StartCoroutine(Subs());
         _debugTestParam.text = $"{_mainData.testSaveParam}";
 
@@ -219,10 +220,17 @@ public class WindowGameplay : MAINWindow
 }
 
 [System.Serializable]
-public class TaskController
+public class TaskController : ITaskController
 {
     [SerializeField] private TaskPreview _prefabTaskPreview;
     [SerializeField] private Transform _parentTasks;
+    private TaskConfig _taskConfig;
+
+    public void InitConfigs(TaskConfig taskConfig)
+    {
+        _taskConfig = taskConfig;
+        Init();
+    }
 
     internal void Init()
     {
@@ -230,22 +238,12 @@ public class TaskController
         UpdateTasks();
     }
 
-    private TaskConfig _taskConfig;
-
-    [Inject]
-    public void Construct(TaskConfig taskConfig)
-    {
-        _taskConfig = taskConfig;
-    }
-
     private void UpdateTasks()
     {
         _parentTasks.DestroyChildrens();
         var newPT = GameObject.Instantiate(_prefabTaskPreview, _parentTasks);
 
-//        var task = _taskConfig.GetTaskByKey(ControllerDemoSaveFile.Instance.mainData.progressHistory.KeyTitleMainTask);
-//        _ = newPT.InitAsync(task);
-        _ = newPT.InitAsync(ControllerDemoSaveFile.Instance.GetCurrentTask());
+        _ = newPT.InitAsync(_taskConfig.GetTaskByKey(ControllerDemoSaveFile.Instance.mainData.progressHistory.KeyTitleMainTask));
     }
 
     internal void Deatcivate()

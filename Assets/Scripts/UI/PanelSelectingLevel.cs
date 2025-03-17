@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class PanelSelectingLevel : MAINWindow
 {
@@ -9,10 +10,14 @@ public class PanelSelectingLevel : MAINWindow
 
     [SerializeField] private List<EnumLevels> _availableLevels;
 
+    [Inject] private TaskConfig _taskConfig;
+
+    private TaskSO currentTask => _taskConfig.GetTaskByKey(ControllerDemoSaveFile.Instance.mainData.progressHistory.KeyTitleMainTask);
+
     private IEnumerable<EnumLevels> AvailableLevels =>
         ControllerDemoSaveFile.Instance.IsDebug ?
         _availableLevels :
-        ControllerDemoSaveFile.Instance.GetCurrentTask().AvailableLevels;
+        currentTask.AvailableLevels;
 
     private void Awake()
     {
@@ -28,7 +33,7 @@ public class PanelSelectingLevel : MAINWindow
                 continue;
 
             var newLev = Instantiate(_prefabLevelButtonPresent, _parentButtons);
-            await newLev.InitAsync(lev, lev == ControllerDemoSaveFile.Instance.GetCurrentTask().GetTargetLvl, SelectVariant);
+            await newLev.InitAsync(lev, lev == currentTask.GetTargetLvl, SelectVariant);
         }
     }
 
