@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 public class PlayerFSM : MonoBehaviour, IStatesCharacter
 {
@@ -66,6 +67,15 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
     public EntityModule GetModule => null;
     #endregion
+
+    private SignalBus _signalBus;
+
+    [Inject]
+    private void Construct(
+        SignalBus signalBus)
+    {
+        _signalBus = signalBus;
+    }
 
     private void OnTriggerEnter(Collider other)
     {

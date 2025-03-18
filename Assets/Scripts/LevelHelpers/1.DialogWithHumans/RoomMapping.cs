@@ -2,33 +2,53 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class RoomMapping : MonoBehaviour
 {
-    [SerializeField] private List<RoomConfig> _roomConfigs;
+    [SerializeField] private List<DialogRoomMap> _dialogRoomMaps;
+    [SerializeField] private DialogRoomMap _defaultRoomConfig;
     [SerializeField] private PanelDialogWithPeople _panelDialogWithPeople;
     [SerializeField] private UIFSM _uiFSM;
 
-    private void Awake()
+    [Inject] private DataHandler _dataHandler;
+    [Inject] private SignalBus _signalBus;
+
+    [Inject]
+    private void Construct(
+        DataHandler dataHandler,
+        SignalBus signalBus)
     {
-        if (ControllerDemoSaveFile.Instance.mainData.progressHistory.RoomConfig < _roomConfigs.Count)
-        {
-            RunScene(_roomConfigs.FirstOrDefault(r => (int)r.DialogRoomPreset == ControllerDemoSaveFile.Instance.mainData.progressHistory.RoomConfig));
-        }
+        _dataHandler = dataHandler;
+        _signalBus = signalBus;
+
+        Init();
     }
 
-    private void RunScene(RoomConfig roomConfig)
+    private void Init()
     {
-        roomConfig.unityEvent?.Invoke();
+        var currentDRM = _dialogRoomMaps.FirstOrDefault(r => r.KeyDialog == _dataHandler.CurrentDialog);
+        if (currentDRM == null)
+        {
+            currentDRM = _defaultRoomConfig;
+        }
+        RunRoom(currentDRM);
+    }
+
+    private void RunRoom(DialogRoomMap dialogRoomMap)
+    {
+        dialogRoomMap.unityEvent?.Invoke();
+        dialogRoomMap._signalAgregator.FireAll(_signalBus);
         _panelDialogWithPeople.gameObject.SetActive(true);
         _uiFSM.StartWindow();
     }
 }
 
 [System.Serializable]
-public class RoomConfig
-{//TODO remove EnumDialogRoomPreset, think about target to dialog
+public class DialogRoomMap
+{
     public string Name;
-    public EnumDialogRoomPreset DialogRoomPreset;
+    public DialogSO KeyDialog;
     public UnityEvent unityEvent;
+    public SignalAgregator _signalAgregator;
 }

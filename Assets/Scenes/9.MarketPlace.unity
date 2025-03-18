@@ -671,8 +671,16 @@ PrefabInstance:
       value: LevelSwapper
       objectReference: {fileID: 0}
     - target: {fileID: 3667917046294751165, guid: 473527e42ff32d54d84ad96d05b56acf, type: 3}
-      propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.size
+      propertyPath: _signalAgregator._caseSignals.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667917046294751165, guid: 473527e42ff32d54d84ad96d05b56acf, type: 3}
+      propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667917046294751165, guid: 473527e42ff32d54d84ad96d05b56acf, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0].typeSignal
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3667917046294751165, guid: 473527e42ff32d54d84ad96d05b56acf, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -681,10 +689,14 @@ PrefabInstance:
     - target: {fileID: 3667917046294751165, guid: 473527e42ff32d54d84ad96d05b56acf, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 318751030}
+      objectReference: {fileID: 0}
     - target: {fileID: 3667917046294751165, guid: 473527e42ff32d54d84ad96d05b56acf, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667917046294751165, guid: 473527e42ff32d54d84ad96d05b56acf, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._setLevelSignal.Level
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3667917046294751165, guid: 473527e42ff32d54d84ad96d05b56acf, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -734,7 +746,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5849654480039619057, guid: 473527e42ff32d54d84ad96d05b56acf, type: 3}
+    - {fileID: 4007604026691769760, guid: 473527e42ff32d54d84ad96d05b56acf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -752,17 +766,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 312264620497006745, guid: 473527e42ff32d54d84ad96d05b56acf, type: 3}
   m_PrefabInstance: {fileID: 318751027}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &318751030 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4007604026691769760, guid: 473527e42ff32d54d84ad96d05b56acf, type: 3}
-  m_PrefabInstance: {fileID: 318751027}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318751029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1666b1737c96d64296bb9136e5d7f0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &318751031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1085,16 +1088,32 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 2013335133}
     m_Modifications:
     - target: {fileID: 1641196251999912531, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
       propertyPath: m_Name
       value: TriggerZone
       objectReference: {fileID: 0}
     - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
+      propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0].typeSignal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._setTaskSignal.Task
+      value: 
+      objectReference: {fileID: 11400000, guid: b4e0dadd6be73cf47bbb2d0f0a317cc8, type: 2}
     - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetTask
@@ -1133,15 +1152,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6485567818644411012, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6485567818644411012, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6485567818644411012, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6485567818644411012, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1155,7 +1174,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -3520404163403349902, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1184,6 +1204,11 @@ MonoBehaviour:
   __ifIsFuture: 0
   __ifIsCurrent: 1
   __ifIsCompleted: 0
+--- !u!4 &837371581 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6485567818644411012, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
+  m_PrefabInstance: {fileID: 837371578}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &840456384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2232,8 +2257,16 @@ PrefabInstance:
       value: TriggerZone
       objectReference: {fileID: 0}
     - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
-      propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.size
+      propertyPath: _signalAgregator._caseSignals.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
+      propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0].typeSignal
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -2242,14 +2275,26 @@ PrefabInstance:
     - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1577249902}
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.Key
+      value: 9.AFTER_CRIME
+      objectReference: {fileID: 0}
     - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.Time
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CallTalk
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.FromLocalTable
+      value: BackTalks
       objectReference: {fileID: 0}
     - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -2307,13 +2352,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -3520404163403349902, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1641196251999912531, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1577249902}
     - targetCorrespondingSourceObject: {fileID: 1641196251999912531, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1577249901}
@@ -2344,20 +2387,6 @@ MonoBehaviour:
   __ifIsFuture: 0
   __ifIsCurrent: 1
   __ifIsCompleted: 0
---- !u!114 &1577249902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1577249900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbbc09e3f0ea85844936643c3a9a2b1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _keyTalk: 9.AFTER_CRIME
-  _showTime: 5
 --- !u!1 &1616067549
 GameObject:
   m_ObjectHideFlags: 0
@@ -3691,6 +3720,7 @@ Transform:
   - {fileID: 1577249899}
   - {fileID: 1220919445}
   - {fileID: 1920789039}
+  - {fileID: 837371581}
   - {fileID: 318751028}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3871,5 +3901,4 @@ SceneRoots:
   - {fileID: 1910202315}
   - {fileID: 1997366128}
   - {fileID: 125647565}
-  - {fileID: 837371578}
   - {fileID: 1616067554}

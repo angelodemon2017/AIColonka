@@ -7,15 +7,17 @@ public class MainMenuPanel : MAINWindow
 {
     [SerializeField] private SceneLevelLoader _sceneLevelLoader;
 
-    [Inject] private DataHandler _dataHandler;
     [SerializeField] private Button _newGameBTN;
     [SerializeField] private Button _loadGameBTN;
     [SerializeField] private Button _settingsBTN;
     [SerializeField] private Button _aboutBTN;
     [SerializeField] private TextMeshProUGUI _textLoadBTN;
 
+    [SerializeField] private DialogSO _startDialog;
     [SerializeField] private MAINWindow _settingWindow;
 
+    [Inject] private DataHandler _dataHandler;
+    [Inject] private SignalBus _signalBus;
     private MainData _tempData;
 
     private bool IsEmptyData => _tempData == null || _tempData.EmptyData;
@@ -38,6 +40,7 @@ public class MainMenuPanel : MAINWindow
     private void NewGame()
     {
         _dataHandler.SetData(new MainData());
+        _signalBus.Fire(new SetNextDialogSignal(_startDialog));
 //        ControllerDemoSaveFile.Instance.mainData = new MainData();
         _sceneLevelLoader.LoadLevel(EnumLevels.DialogsHub);
     }

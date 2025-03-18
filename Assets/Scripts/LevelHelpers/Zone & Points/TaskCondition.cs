@@ -34,19 +34,18 @@ public class TaskCondition : MonoBehaviour
 
     private void Awake()
     {
-//        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate += CheckTask;
         CheckTask();
     }
 
     private void CheckTask()
     {
-        if (_dataHandler.WasDone(_task))
-        {
-            gameObject.SetActive(__ifIsCompleted);
-        }
-        else if (_dataHandler.IsCurrentTask(_task))
+        if (_dataHandler.IsCurrentTask(_task))
         {
             gameObject.SetActive(__ifIsCurrent);
+        }        
+        else if (_dataHandler.WasDone(_task))
+        {
+            gameObject.SetActive(__ifIsCompleted);
         }
         else
         {            

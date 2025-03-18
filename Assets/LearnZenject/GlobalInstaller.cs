@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
+
 
 public class GlobalInstaller : MonoInstaller
 {
@@ -12,6 +14,8 @@ public class GlobalInstaller : MonoInstaller
         InstallSingletons();
         InstallConfigs();
         InstallSignals();
+
+        SceneManager.LoadSceneAsync(1);
     }
 
     private void InstallSingletons()
@@ -34,8 +38,9 @@ public class GlobalInstaller : MonoInstaller
         SignalBusInstaller.Install(Container);
         Container.DeclareSignal<BackTalkSignal>();
         Container.DeclareSignal<EndBackTalkSignal>();
+        Container.DeclareSignal<SetLevelSignal>();
         Container.DeclareSignal<SetNextDialogSignal>();
-        Container.DeclareSignal<SetRoomPresetSignal>();
+        Container.DeclareSignal<SetPlayerStateSignal>();
         Container.DeclareSignal<SetTaskSignal>();
         Container.DeclareSignal<SetWindowSignal>();
         Container.DeclareSignal<TaskUpdatedSignal>();        

@@ -2612,6 +2612,30 @@ PrefabInstance:
       propertyPath: _keyTalk
       value: BM_T1
       objectReference: {fileID: 0}
+    - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
+      propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0].typeSignal
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.Key
+      value: BM_T1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.Time
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.FromLocalTable
+      value: BackTalks
+      objectReference: {fileID: 0}
     - target: {fileID: 5805580070988612800, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
       propertyPath: m_Name
       value: TriggerZoneCallTalk

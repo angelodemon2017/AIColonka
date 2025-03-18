@@ -25,7 +25,6 @@ public class DataHandler
     {
         _signalBus.Subscribe<SetTaskSignal>(SetTask);
         _signalBus.Subscribe<SetNextDialogSignal>(SetNextDialog);
-        _signalBus.Subscribe<SetRoomPresetSignal>(SetRoomPreset);
         //demo:
         _signalBus.Subscribe<DemoSignal>((x) => ChangeParam(x.testFlag));
         _signalBus.Subscribe<ShowSignal>(ShowTest);
@@ -34,11 +33,6 @@ public class DataHandler
     internal void SetData(MainData mainData)
     {
         _mainData = mainData;
-    }
-
-    private void SetRoomPreset(SetRoomPresetSignal setRoomPresetSignal)
-    {
-        _mainData.progressHistory.RoomConfig = (int)setRoomPresetSignal.IdConfig;
     }
 
     private void SetNextDialog(SetNextDialogSignal setNextDialogSignal)

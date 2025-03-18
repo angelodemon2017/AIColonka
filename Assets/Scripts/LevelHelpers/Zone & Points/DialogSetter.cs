@@ -6,7 +6,6 @@ public class DialogSetter : MonoBehaviour
 //    [Inject] 
     private SignalBus _signalBus;
     private DataHandler _dataHandler;
-    [SerializeField] private EnumDialogRoomPreset dialogRoomPreset;
 
     [Inject]
     private void Construct(
@@ -17,20 +16,10 @@ public class DialogSetter : MonoBehaviour
         _dataHandler = dataHandler;
     }
 
-    public void SetDialogPreset()
-    {
-        SetRoomConfig(dialogRoomPreset);
-    }
-
     public void SetCurrentDialog(DialogSO dialog)
     {
         _signalBus.Fire(new SetNextDialogSignal(dialog));
 //        ControllerDemoSaveFile.Instance.CurrentDialog = dialog;
-    }
-
-    public void SetRoomConfig(EnumDialogRoomPreset idConfig)
-    {
-        ControllerDemoSaveFile.Instance.mainData.progressHistory.RoomConfig = (int)idConfig;
     }
 
     public void SetTask(TaskSO task)

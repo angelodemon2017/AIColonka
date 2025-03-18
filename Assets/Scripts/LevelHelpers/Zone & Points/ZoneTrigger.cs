@@ -27,6 +27,6 @@ public class ZoneTrigger : MonoBehaviour
     private void RunScript()
     {
         _signalAgregator.FireAll(_signalBus);
-//        _unityEvent?.Invoke();
+        _unityEvent?.Invoke();
     }
 }

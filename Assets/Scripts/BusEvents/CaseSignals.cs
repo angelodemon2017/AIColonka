@@ -13,7 +13,11 @@ public class CaseSignals
     public SetWindowSignal _setWindowSignal;
     [SignalType(TypeSignal.SetNextDialog)]
     public SetNextDialogSignal _setNextDialogSignal;
-    
+    [SignalType(TypeSignal.SetLevel)]
+    public SetLevelSignal _setLevelSignal;
+    [SignalType(TypeSignal.SetPlayerState)]
+    public SetPlayerStateSignal _setPlayerStateSignal;
+        
     public void Fire(SignalBus signalBus)
     {
         switch (typeSignal)
@@ -30,6 +34,12 @@ public class CaseSignals
             case TypeSignal.SetNextDialog:
                 signalBus.Fire(_setNextDialogSignal);
                 break;
+            case TypeSignal.SetLevel:
+                signalBus.Fire(_setLevelSignal);
+                break;
+            case TypeSignal.SetPlayerState:
+                signalBus.Fire(_setPlayerStateSignal);
+                break;
             default:
                 break;
         }
@@ -42,5 +52,7 @@ public class CaseSignals
         BackTalk,
         SetWindow,
         SetNextDialog,
+        SetLevel,
+        SetPlayerState,
     }
 }

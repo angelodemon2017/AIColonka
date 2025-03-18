@@ -1460,6 +1460,7 @@ MonoBehaviour:
   _settingsBTN: {fileID: 1795016808811156123}
   _aboutBTN: {fileID: 4621647250187725316}
   _textLoadBTN: {fileID: 6537777518376040122}
+  _startDialog: {fileID: 11400000, guid: 3c8e85e469ac683429c3ce83f68ac61a, type: 2}
   _settingWindow: {fileID: 3863097214931837538, guid: c7629abe5a4a46046940355a88886110, type: 3}
 --- !u!114 &7234377779179210714
 MonoBehaviour:

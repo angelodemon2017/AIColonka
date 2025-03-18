@@ -2,16 +2,37 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 public class SceneLevelLoader : MonoBehaviour
 {
+    private SignalBus _signalBus;
     [SerializeField] private EnumLevels _selectedLevel;
 
     public static Action<float> LoadProgress;
 
+    [Inject]
+    private void Construct(
+        SignalBus signalBus)
+    {
+        _signalBus = signalBus;
+
+        Init();
+    }
+
+    private void Init()
+    {
+        _signalBus.Subscribe<SetLevelSignal>(LoadLevelBySignal);
+    }
+
     public void LoadLevel()
     {
         LoadLevel(_selectedLevel);
+    }
+
+    private void LoadLevelBySignal(SetLevelSignal setLevelSignal)
+    {
+        LoadLevel(setLevelSignal.Level);
     }
 
     public void LoadLevel(EnumLevels level)
@@ -39,5 +60,10 @@ public class SceneLevelLoader : MonoBehaviour
         AsyncOperation operation = SceneManager.LoadSceneAsync((int)level + 1);
         EventBus.ResetSubs();
         LoadProgress?.Invoke(operation.progress);
+    }
+
+    private void OnDestroy()
+    {
+        _signalBus.Unsubscribe<SetLevelSignal>(LoadLevelBySignal);
     }
 }
