@@ -1,8 +1,17 @@
 using UnityEngine;
+using Zenject;
 
 public class DialogSetter : MonoBehaviour
 {
+//    [Inject] 
+    private SignalBus _signalBus;
     [SerializeField] private EnumDialogRoomPreset dialogRoomPreset;
+
+    [Inject]
+    private void Construct(SignalBus signalBus)
+    {
+        _signalBus = signalBus;
+    }
 
     public void SetDialogPreset()
     {
@@ -20,8 +29,9 @@ public class DialogSetter : MonoBehaviour
     }
 
     public void SetTask(TaskSO task)
-    {
-        ControllerDemoSaveFile.Instance.SetTask(task);
+    {//TODO call from files without injected
+        _signalBus.Fire(new SetTaskSignal(task));
+//        ControllerDemoSaveFile.Instance.SetTask(task);
     }
 
     public void SetWindow(MAINWindow window)

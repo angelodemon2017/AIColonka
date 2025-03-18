@@ -153,18 +153,15 @@ public class WindowGameplay : MAINWindow
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-//            _dataHandler.ChangeParam(true);
             _signalBus.Fire(new DemoSignal(true));
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-//            _dataHandler.ChangeParam(false);
             _signalBus.Fire(new DemoSignal(false));
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
             _signalBus.Fire(new ShowSignal());
-//            _dataHandler.ShowTest();
         }
     }
 
@@ -218,7 +215,6 @@ public class WindowGameplay : MAINWindow
     public override void ExitWindow()
     {
         Instance = null;
-//        _taskController.Deatcivate();
         base.ExitWindow();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;

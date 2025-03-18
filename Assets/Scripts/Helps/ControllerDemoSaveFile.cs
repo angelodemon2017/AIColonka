@@ -10,6 +10,7 @@ public class ControllerDemoSaveFile : MonoBehaviour
 {
     public static ControllerDemoSaveFile Instance;
 
+    [Inject] private SignalBus _signalBus;
     [Inject] private DataHandler _dataHandler;
     [SerializeField] private Image _blackImage;
     [SerializeField] private TextMeshProUGUI _testLoading;
@@ -36,23 +37,14 @@ public class ControllerDemoSaveFile : MonoBehaviour
             Instance = this;
             _settings = SaveController.Load<Settings>(Settings.Prefix);
             SceneLevelLoader.LoadProgress += UpdateLoading;
+
+            _signalBus.Subscribe<SetTaskSignal>(SetTask);
         }
     }
 
-    internal void SetTask(TaskSO taskSO)
+    internal void SetTask(SetTaskSignal setTaskSignal)
     {
-        mainData.SetTask(taskSO);
-        _ = backTalk.SetTalkAsync(taskSO.KeyTitle, 2f, Localizations.Tables.Tasks);
-    }
-
-    internal bool IsCurrentTask(TaskSO taskSO)
-    {
-        return mainData.progressHistory.KeyTitleMainTask == taskSO.KeyTitle;
-    }
-
-    internal bool WasDone(TaskSO taskSO)
-    {
-        return mainData.progressHistory.IsWasDone(taskSO.KeyTitle);
+        _ = backTalk.SetTalkAsync(setTaskSignal.Task.KeyTitle, 2f, Localizations.Tables.Tasks);
     }
 
     internal void SetLevel(EnumLevels level)
@@ -85,11 +77,6 @@ public class ControllerDemoSaveFile : MonoBehaviour
         targetColor.a = fadeIn ? 1f : 0f;
 
         DOTween.To(() => _transColor, x => _blackImage.color = x, targetColor, 1f);
-    }
-
-    public void Initialize()
-    {
-
     }
 }
 

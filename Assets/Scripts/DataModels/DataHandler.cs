@@ -21,6 +21,8 @@ public class DataHandler
 
     public void Init()
     {
+        _signalBus.Subscribe<SetTaskSignal>(SetTask);
+        //demo:
         _signalBus.Subscribe<DemoSignal>((x) => ChangeParam(x.testFlag));
         _signalBus.Subscribe<ShowSignal>(ShowTest);
     }
@@ -30,9 +32,14 @@ public class DataHandler
         _mainData = mainData;
     }
 
+    private void SetTask(SetTaskSignal setTaskSignal)
+    {
+        _mainData.SetTask(setTaskSignal.Task);
+    }
+
     internal bool IsCurrentTask(TaskSO taskSO)
     {
-        return _mainData.progressHistory.IsWasDone(taskSO.KeyTitle);
+        return _mainData.progressHistory.KeyTitleMainTask == taskSO.KeyTitle;
     }
 
     internal bool WasDone(TaskSO taskSO)

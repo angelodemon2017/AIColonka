@@ -23,12 +23,17 @@ public class GlobalInstaller : MonoInstaller
     {
         Container.Bind<DialogsConfig>().FromScriptableObject(_dialogsConfig).AsSingle();
         Container.Bind<TaskConfig>().FromScriptableObject(_taskConfig).AsSingle();
+
+        //demo:
         Container.Bind<LearnSOInject>().FromScriptableObject(_learnSOInject).AsSingle();
     }
 
     private void InstallSignals()
     {
         SignalBusInstaller.Install(Container);
+        Container.DeclareSignal<SetTaskSignal>();
+
+        //demo:
         Container.DeclareSignal<DemoSignal>();
         Container.DeclareSignal<ShowSignal>();
     }
