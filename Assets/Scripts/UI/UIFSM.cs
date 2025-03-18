@@ -11,6 +11,7 @@ public class UIFSM : MonoBehaviour, IUIFSM
 
     private IWindowFSM _currentWindow;
 
+    [Inject] private SignalBus _signalBus;
     [Inject] private DiContainer _container;
 
     private void Awake()
@@ -23,6 +24,8 @@ public class UIFSM : MonoBehaviour, IUIFSM
     private void Start()
     {
         ControllerDemoSaveFile.Instance?.SetBlack(false);
+
+        _signalBus.Subscribe<SetWindowSignal>(SetWindowSignal);
     }
 
     private void Update()
@@ -33,6 +36,11 @@ public class UIFSM : MonoBehaviour, IUIFSM
     private void FixedUpdate()
     {
         _currentWindow.FixedRun();
+    }
+
+    private void SetWindowSignal(SetWindowSignal setWindowSignal)
+    {
+        OpenWindow(setWindowSignal.SelectWindow);
     }
 
     public MAINWindow OpenWindow(MAINWindow windowFSM)
@@ -60,6 +68,7 @@ public class UIFSM : MonoBehaviour, IUIFSM
 
     private void OnDestroy()
     {
+        _signalBus.Unsubscribe<SetWindowSignal>(SetWindowSignal);
         if (_currentWindow != null)
         {
             _currentWindow.ExitWindow();

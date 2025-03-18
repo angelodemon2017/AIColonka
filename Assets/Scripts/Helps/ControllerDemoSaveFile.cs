@@ -15,10 +15,8 @@ public class ControllerDemoSaveFile : MonoBehaviour
     [SerializeField] private Image _blackImage;
     [SerializeField] private TextMeshProUGUI _testLoading;
     public EnumLevels CurrentLevel;
-    public DialogSO CurrentDialog;
 
     private Color _transColor;
-//    internal BackTalk backTalk = new BackTalk();
 
     public MainData mainData => _dataHandler.CurrentData;
     [SerializeField] private Settings _settings = new Settings();
@@ -61,15 +59,6 @@ public class ControllerDemoSaveFile : MonoBehaviour
         {
             mainData.SetLevel(level);
         }
-//        backTalk.EndTalk();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-
-        }
     }
 
     private void UpdateLoading(float progres)
@@ -83,38 +72,5 @@ public class ControllerDemoSaveFile : MonoBehaviour
         targetColor.a = fadeIn ? 1f : 0f;
 
         DOTween.To(() => _transColor, x => _blackImage.color = x, targetColor, 1f);
-    }
-}
-
-public class BackTalk
-{
-    public string KeyTalk;
-    private string LocalText;
-
-    public Action OnUpdateTalk;
-    public Action OnStartTalk;
-    public Action OnEndTalk;
-
-    public string GetTalk =>
-        string.IsNullOrWhiteSpace(KeyTalk) ? string.Empty :
-        LocalText;
-
-    internal async Task SetTalkAsync(string key, float time, string fromLocalTable)
-    {
-        KeyTalk = key;
-
-        DOVirtual.DelayedCall(time, EndTalk);
-        LocalText = await Localizations.GetLocalizedText(
-            fromLocalTable, KeyTalk);
-
-        OnUpdateTalk?.Invoke();
-    }
-
-    internal void EndTalk()
-    {
-        KeyTalk = string.Empty;
-        LocalText = string.Empty;
-        OnUpdateTalk?.Invoke();
-        OnEndTalk?.Invoke();
     }
 }

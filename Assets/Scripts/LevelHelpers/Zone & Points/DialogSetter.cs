@@ -5,12 +5,16 @@ public class DialogSetter : MonoBehaviour
 {
 //    [Inject] 
     private SignalBus _signalBus;
+    private DataHandler _dataHandler;
     [SerializeField] private EnumDialogRoomPreset dialogRoomPreset;
 
     [Inject]
-    private void Construct(SignalBus signalBus)
+    private void Construct(
+        SignalBus signalBus,
+        DataHandler dataHandler)
     {
         _signalBus = signalBus;
+        _dataHandler = dataHandler;
     }
 
     public void SetDialogPreset()
@@ -20,7 +24,8 @@ public class DialogSetter : MonoBehaviour
 
     public void SetCurrentDialog(DialogSO dialog)
     {
-        ControllerDemoSaveFile.Instance.CurrentDialog = dialog;
+        _signalBus.Fire(new SetNextDialogSignal(dialog));
+//        ControllerDemoSaveFile.Instance.CurrentDialog = dialog;
     }
 
     public void SetRoomConfig(EnumDialogRoomPreset idConfig)
@@ -47,7 +52,7 @@ public class DialogSetter : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        DrawGizmosHelper.DrawLabel(transform, 2.5f, "DialogSetter");
+        DrawGizmosHelper.DrawLabel(transform, 2.5f, nameof(DialogSetter));
     }
 
     public void DashPlayerTo(Mover mp)

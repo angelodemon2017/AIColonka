@@ -1,10 +1,14 @@
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class ZoneTrigger : MonoBehaviour
 {
     [SerializeField] private UnityEvent _unityEvent;
     [SerializeField] private UnityEvent<GameObject> _enterObject;
+    [SerializeField] private SignalAgregator _signalAgregator;
+
+    [Inject] private SignalBus _signalBus;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,6 +26,7 @@ public class ZoneTrigger : MonoBehaviour
 
     private void RunScript()
     {
-        _unityEvent?.Invoke();
+        _signalAgregator.FireAll(_signalBus);
+//        _unityEvent?.Invoke();
     }
 }

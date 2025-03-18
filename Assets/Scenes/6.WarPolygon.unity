@@ -6784,8 +6784,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 1876271140}
     m_Modifications:
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
-      propertyPath: _interact.m_PersistentCalls.m_Calls.Array.size
+      propertyPath: _signalAgregator._caseSignals.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _interact.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0].typeSignal
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[1].typeSignal
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -6798,11 +6810,11 @@ PrefabInstance:
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1541442991}
+      objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1541442991}
+      objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -6816,6 +6828,10 @@ PrefabInstance:
       value: SetWindow
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[1]._setWindowSignal.SelectWindow
+      value: 
+      objectReference: {fileID: 1401049151470440845, guid: b8ebacfabf6edb242ae61750707b6f08, type: 3}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: DialogSetter, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -6823,6 +6839,14 @@ PrefabInstance:
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: DialogSetter, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._setNextDialogSignal.NextDialog
+      value: 
+      objectReference: {fileID: 11400000, guid: 698e949ac0f020e47a9b91447b2d7ac2, type: 2}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[1]._setNextDialogSignal.NextDialog
+      value: 
+      objectReference: {fileID: 11400000, guid: 698e949ac0f020e47a9b91447b2d7ac2, type: 2}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
@@ -6890,9 +6914,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4028968812090099780, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1541442991}
-    - targetCorrespondingSourceObject: {fileID: 4028968812090099780, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1541442993}
     - targetCorrespondingSourceObject: {fileID: 4028968812090099780, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       insertIndex: -1
@@ -6903,19 +6924,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4028968812090099780, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
   m_PrefabInstance: {fileID: 1541442989}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1541442991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541442990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75af4d2149a4ba74cbd89a1557c92c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogRoomPreset: 0
 --- !u!4 &1541442992 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6870883392335161632, guid: 06a6429f3120df1448760493e1f67df5, type: 3}

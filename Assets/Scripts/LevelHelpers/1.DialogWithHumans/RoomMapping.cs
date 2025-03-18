@@ -27,7 +27,7 @@ public class RoomMapping : MonoBehaviour
 
 [System.Serializable]
 public class RoomConfig
-{
+{//TODO remove EnumDialogRoomPreset, think about target to dialog
     public string Name;
     public EnumDialogRoomPreset DialogRoomPreset;
     public UnityEvent unityEvent;

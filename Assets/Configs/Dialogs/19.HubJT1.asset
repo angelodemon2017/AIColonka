@@ -27,6 +27,5 @@ MonoBehaviour:
     Chapter: 2
     dialogVariants: []
   levelByEndDialog: 0
-  _eventByEnd:
-    m_PersistentCalls:
-      m_Calls: []
+  _signalAgregator:
+    _caseSignals: []

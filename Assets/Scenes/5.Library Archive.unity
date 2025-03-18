@@ -214,15 +214,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _task: {fileID: 11400000, guid: f56e1c59116b32e428bbaf2f1d9a1724, type: 2}
-  _ifIsFuture:
-    m_PersistentCalls:
-      m_Calls: []
-  _ifIsCurrent:
-    m_PersistentCalls:
-      m_Calls: []
-  _ifIsCompleted:
-    m_PersistentCalls:
-      m_Calls: []
   __ifIsFuture: 1
   __ifIsCurrent: 0
   __ifIsCompleted: 0
@@ -244,12 +235,24 @@ PrefabInstance:
       value: RELEASE
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0].typeSignal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[1].typeSignal
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -262,7 +265,7 @@ PrefabInstance:
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 633185471098730013, guid: e701443cc3cb80448802155e879a2e62, type: 3}
+      objectReference: {fileID: 416164248}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -270,7 +273,7 @@ PrefabInstance:
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 300921585}
+      objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -281,7 +284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTask
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -292,8 +295,24 @@ PrefabInstance:
       value: CallTalk
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._setTaskSignal.Task
+      value: 
+      objectReference: {fileID: 11400000, guid: 85061a0ab096d2442a49e434b9d7d86f, type: 2}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[1]._backTalkSignal.Key
+      value: 5.MOUNTAIN_TRASH
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[1]._setTaskSignal.Task
+      value: 
+      objectReference: {fileID: 11400000, guid: 85061a0ab096d2442a49e434b9d7d86f, type: 2}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[1]._backTalkSignal.Time
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DialogSetter, Assembly-CSharp
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -304,16 +323,20 @@ PrefabInstance:
       value: BackTalkCaller, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[1]._backTalkSignal.FromLocalTable
+      value: BackTalks
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 85061a0ab096d2442a49e434b9d7d86f, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: TaskSO, Assembly-CSharp
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -371,7 +394,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2155168802308161829, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -402,65 +426,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _task: {fileID: 11400000, guid: f56e1c59116b32e428bbaf2f1d9a1724, type: 2}
-  _ifIsFuture:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 300921583}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _ifIsCurrent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 300921583}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  _ifIsCompleted:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 300921583}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   __ifIsFuture: 0
   __ifIsCurrent: 1
   __ifIsCompleted: 0
---- !u!114 &300921585 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2155168802308161829, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
-  m_PrefabInstance: {fileID: 300921581}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300921583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbbc09e3f0ea85844936643c3a9a2b1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &351943184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1381,6 +1349,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1470051559}
     m_Modifications:
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _interact.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0].typeSignal
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.Key
+      value: 5.A_THINGS1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.Time
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.FromLocalTable
+      value: BackTalks
+      objectReference: {fileID: 0}
     - target: {fileID: 2155168802308161829, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _keyTalk
       value: 5.A_THINGS1

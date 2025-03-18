@@ -1,5 +1,4 @@
 ﻿[System.Serializable]
-[SignalClass("BackTalkSignal")]
 public class BackTalkSignal
 {
     public string Key;

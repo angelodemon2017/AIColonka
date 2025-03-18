@@ -24,6 +24,7 @@ public class PanelDialogWithPeople : MAINWindow
     public Action NextStep;
     public Action EndDialog;
 
+    [Inject] private DataHandler _dataHandler;
     [Inject] private SignalBus _signalBus;
 
     public override void StartWindow()
@@ -36,7 +37,8 @@ public class PanelDialogWithPeople : MAINWindow
 
     private void Init()
     {
-        _currentDialog = ControllerDemoSaveFile.Instance.CurrentDialog;
+        _currentDialog = _dataHandler.CurrentDialog;
+//            ControllerDemoSaveFile.Instance.CurrentDialog;
         SelectVariant(0);
     }
 
@@ -162,11 +164,7 @@ public class PanelDialogWithPeople : MAINWindow
 
     private void NextWindow()
     {
-        foreach (var s in _currentDialog._setTaskSignals)
-        {
-            _signalBus.Fire(s);
-        }
-//        _currentDialog._eventByEnd?.Invoke();
+        _currentDialog._signalAgregator.FireAll(_signalBus);
         if (_currentDialog.levelByEndDialog != EnumLevels.MainMenu)
         {
             _sceneLevelLoader.LoadLevel(_currentDialog.levelByEndDialog);

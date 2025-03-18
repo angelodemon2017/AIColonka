@@ -5,11 +5,13 @@ public class DataHandler
 {
     private SignalBus _signalBus;
 
+    private DialogSO _currentDialog;
     private MainData _mainData;
 
     private int testParam = 0;
 
     internal MainData CurrentData => _mainData;
+    internal DialogSO CurrentDialog => _currentDialog;
 
     [Inject]
     private void Construct(SignalBus signalBus)
@@ -22,6 +24,8 @@ public class DataHandler
     public void Init()
     {
         _signalBus.Subscribe<SetTaskSignal>(SetTask);
+        _signalBus.Subscribe<SetNextDialogSignal>(SetNextDialog);
+        _signalBus.Subscribe<SetRoomPresetSignal>(SetRoomPreset);
         //demo:
         _signalBus.Subscribe<DemoSignal>((x) => ChangeParam(x.testFlag));
         _signalBus.Subscribe<ShowSignal>(ShowTest);
@@ -32,9 +36,20 @@ public class DataHandler
         _mainData = mainData;
     }
 
+    private void SetRoomPreset(SetRoomPresetSignal setRoomPresetSignal)
+    {
+        _mainData.progressHistory.RoomConfig = (int)setRoomPresetSignal.IdConfig;
+    }
+
+    private void SetNextDialog(SetNextDialogSignal setNextDialogSignal)
+    {
+        _currentDialog = setNextDialogSignal.NextDialog;
+    }
+
     private void SetTask(SetTaskSignal setTaskSignal)
     {
         _mainData.SetTask(setTaskSignal.Task);
+        _signalBus.Fire(new TaskUpdatedSignal());
     }
 
     internal bool IsCurrentTask(TaskSO taskSO)

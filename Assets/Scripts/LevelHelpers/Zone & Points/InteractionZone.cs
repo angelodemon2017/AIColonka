@@ -21,7 +21,7 @@ public class InteractionZone : MonoBehaviour, IHinter
 
     public void Call()
     {
-//        _signalAgregator.FireAll(_signalBus);
+        _signalAgregator.FireAll(_signalBus);
         _interact?.Invoke();
     }
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class DialogTrigger : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class DialogTrigger : MonoBehaviour
     [SerializeField] private ScriptScene scriptScene;
     [SerializeField] private DialogSO dialog;
 
+    [Inject] private SignalBus _signalBus;
     private PanelDialogWithPeople tempWindow;
 
     private void OnTriggerEnter(Collider other)
@@ -18,7 +20,8 @@ public class DialogTrigger : MonoBehaviour
 
     public void RunScript()
     {
-        ControllerDemoSaveFile.Instance.CurrentDialog = dialog;
+        _signalBus.Fire(new SetNextDialogSignal(dialog));
+//        ControllerDemoSaveFile.Instance.CurrentDialog = dialog;
 //            mainData.progressHistory.Dialog = IdDialog;
         tempWindow = (PanelDialogWithPeople)UIFSM.Instance.OpenWindow(_dialogWindow);
         tempWindow.EndDialog += EndDialog;

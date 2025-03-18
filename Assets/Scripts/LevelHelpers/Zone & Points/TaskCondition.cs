@@ -9,15 +9,32 @@ public class TaskCondition : MonoBehaviour
     [SerializeField] private bool __ifIsCurrent;
     [SerializeField] private bool __ifIsCompleted;
 
-    [Inject] private DataHandler _dataHandler;
+    private SignalBus _signalBus;
+    private DataHandler _dataHandler;
 
     private string IfDone => __ifIsCompleted ? "D" : string.Empty;
     private string IfCurrent => __ifIsCurrent ? "C" : string.Empty;
     private string IfFuture => __ifIsFuture ? "F" : string.Empty;
 
+    [Inject]
+    private void Construct(
+        SignalBus signalBus,
+        DataHandler dataHandler)
+    {
+        _signalBus = signalBus;
+        _dataHandler = dataHandler;
+
+        Init();
+    }
+
+    private void Init()
+    {
+        _signalBus.Subscribe<TaskUpdatedSignal>(CheckTask);
+    }
+
     private void Awake()
     {
-        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate += CheckTask;
+//        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate += CheckTask;
         CheckTask();
     }
 
@@ -44,6 +61,7 @@ public class TaskCondition : MonoBehaviour
 
     private void OnDestroy()
     {
-        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate -= CheckTask;
+        _signalBus.Unsubscribe<TaskUpdatedSignal>(CheckTask);
+//        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate -= CheckTask;
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "SO/Dialog", order = 1)]
 public class DialogSO : ScriptableObject
@@ -10,8 +9,7 @@ public class DialogSO : ScriptableObject
     public string Name;
     public List<DialogStep> dialogSteps = new();
     public EnumLevels levelByEndDialog;
-    public UnityEvent _eventByEnd;
-    public List<SetTaskSignal> _setTaskSignals;
+    public SignalAgregator _signalAgregator;
 
     private void OnValidate()
     {

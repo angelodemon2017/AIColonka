@@ -30,11 +30,15 @@ public class GlobalInstaller : MonoInstaller
     }
 
     private void InstallSignals()
-    {
+    {        
         SignalBusInstaller.Install(Container);
-        Container.DeclareSignal<SetTaskSignal>();
         Container.DeclareSignal<BackTalkSignal>();
         Container.DeclareSignal<EndBackTalkSignal>();
+        Container.DeclareSignal<SetNextDialogSignal>();
+        Container.DeclareSignal<SetRoomPresetSignal>();
+        Container.DeclareSignal<SetTaskSignal>();
+        Container.DeclareSignal<SetWindowSignal>();
+        Container.DeclareSignal<TaskUpdatedSignal>();        
 
         //demo:
         Container.DeclareSignal<DemoSignal>();
