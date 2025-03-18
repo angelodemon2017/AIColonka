@@ -136,6 +136,14 @@ PrefabInstance:
       value: SETCONFIG
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._setTasks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._setTasks.Array.data[0].Task
+      value: 
+      objectReference: {fileID: 11400000, guid: 798c05e0c3dfe604ba62297059269aaf, type: 2}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2024,6 +2032,14 @@ PrefabInstance:
       value: RELEASE
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._setTasks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._setTasks.Array.data[0].Task
+      value: 
+      objectReference: {fileID: 11400000, guid: b2983b90622332644a14e5228dd702de, type: 2}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2683,39 +2699,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1632654841}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1632654841}
+      objectReference: {fileID: 1632654843}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CallTalk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
-      propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CallTalk
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: BackTalkCaller, Assembly-CSharp
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: BackTalkCaller, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
@@ -2823,6 +2839,17 @@ MonoBehaviour:
   __ifIsFuture: 0
   __ifIsCurrent: 1
   __ifIsCompleted: 0
+--- !u!114 &1632654843 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2155168802308161829, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+  m_PrefabInstance: {fileID: 1632654839}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632654841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbbc09e3f0ea85844936643c3a9a2b1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1709654340
 GameObject:
   m_ObjectHideFlags: 0
@@ -2967,6 +2994,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1163100452}
     m_Modifications:
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._setTasks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.size
       value: 2

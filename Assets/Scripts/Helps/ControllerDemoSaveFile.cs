@@ -18,7 +18,7 @@ public class ControllerDemoSaveFile : MonoBehaviour
     public DialogSO CurrentDialog;
 
     private Color _transColor;
-    internal BackTalk backTalk = new BackTalk();
+//    internal BackTalk backTalk = new BackTalk();
 
     public MainData mainData => _dataHandler.CurrentData;
     [SerializeField] private Settings _settings = new Settings();
@@ -42,9 +42,15 @@ public class ControllerDemoSaveFile : MonoBehaviour
         }
     }
 
+    internal void SetTask(TaskSO task)
+    {
+        SetTask(new SetTaskSignal(task));
+    }
+
     internal void SetTask(SetTaskSignal setTaskSignal)
     {
-        _ = backTalk.SetTalkAsync(setTaskSignal.Task.KeyTitle, 2f, Localizations.Tables.Tasks);
+        _signalBus.Fire(setTaskSignal);
+        _signalBus.Fire(new BackTalkSignal(setTaskSignal.Task.KeyTitle, 2f, Localizations.Tables.Tasks));
     }
 
     internal void SetLevel(EnumLevels level)
@@ -55,7 +61,7 @@ public class ControllerDemoSaveFile : MonoBehaviour
         {
             mainData.SetLevel(level);
         }
-        backTalk.EndTalk();
+//        backTalk.EndTalk();
     }
 
     private void Update()

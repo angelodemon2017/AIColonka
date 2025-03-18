@@ -15,8 +15,9 @@ public class GlobalInstaller : MonoInstaller
     }
 
     private void InstallSingletons()
-    {
+    {        
         Container.Bind<DataHandler>().AsSingle();
+        Container.Bind<BackTalkHandler>().AsSingle();
     }
 
     private void InstallConfigs()
@@ -32,6 +33,8 @@ public class GlobalInstaller : MonoInstaller
     {
         SignalBusInstaller.Install(Container);
         Container.DeclareSignal<SetTaskSignal>();
+        Container.DeclareSignal<BackTalkSignal>();
+        Container.DeclareSignal<EndBackTalkSignal>();
 
         //demo:
         Container.DeclareSignal<DemoSignal>();

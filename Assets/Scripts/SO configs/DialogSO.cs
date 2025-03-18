@@ -11,6 +11,7 @@ public class DialogSO : ScriptableObject
     public List<DialogStep> dialogSteps = new();
     public EnumLevels levelByEndDialog;
     public UnityEvent _eventByEnd;
+    public List<SetTaskSignal> _setTaskSignals;
 
     private void OnValidate()
     {

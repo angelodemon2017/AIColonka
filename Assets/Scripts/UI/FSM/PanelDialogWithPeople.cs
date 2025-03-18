@@ -24,12 +24,7 @@ public class PanelDialogWithPeople : MAINWindow
     public Action NextStep;
     public Action EndDialog;
 
-    private TaskConfig _taskConfig;
-    [Inject]
-    public void Construct(TaskConfig taskConfig)
-    {
-        _taskConfig = taskConfig;
-    }
+    [Inject] private SignalBus _signalBus;
 
     public override void StartWindow()
     {
@@ -167,7 +162,11 @@ public class PanelDialogWithPeople : MAINWindow
 
     private void NextWindow()
     {
-        _currentDialog._eventByEnd?.Invoke();
+        foreach (var s in _currentDialog._setTaskSignals)
+        {
+            _signalBus.Fire(s);
+        }
+//        _currentDialog._eventByEnd?.Invoke();
         if (_currentDialog.levelByEndDialog != EnumLevels.MainMenu)
         {
             _sceneLevelLoader.LoadLevel(_currentDialog.levelByEndDialog);

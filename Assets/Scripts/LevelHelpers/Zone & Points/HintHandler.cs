@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class HintHandler : MonoBehaviour, IHinter
 {
@@ -8,8 +9,9 @@ public class HintHandler : MonoBehaviour, IHinter
     [SerializeField] private int _needBits;
     [SerializeField] private UnityEvent _release;
     [SerializeField] private string _keyHint;
-    [SerializeField] private BackTalkCaller _backTalkByFall;
+    private const string LOWBITS = "0.LOWBITS";
 
+    [Inject] private SignalBus _signalBus;
     private float _timeFocused;
     private bool _isRelease = false;
 
@@ -28,7 +30,8 @@ public class HintHandler : MonoBehaviour, IHinter
         }
         else
         {
-            _backTalkByFall?.CallTalk();
+            _signalBus.Fire(new BackTalkSignal(LOWBITS, 3f, Localizations.Tables.BackTalksTable));
+//            _backTalkByFall?.CallTalk();
         }
     }
 

@@ -107,7 +107,6 @@ GameObject:
   - component: {fileID: 8391374700215691669}
   - component: {fileID: 1721051683692867437}
   - component: {fileID: 1373074434912957145}
-  - component: {fileID: 8319725350915334564}
   - component: {fileID: 348273026979877849}
   - component: {fileID: 487327689775671372}
   m_Layer: 6
@@ -248,21 +247,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _keyHint: RELEASE
-  _backTalkByFall: {fileID: 8319725350915334564}
---- !u!114 &8319725350915334564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4980666177355887221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbbc09e3f0ea85844936643c3a9a2b1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _keyTalk: 0.LOWBITS
-  _showTime: 3
 --- !u!114 &348273026979877849
 MonoBehaviour:
   m_ObjectHideFlags: 0

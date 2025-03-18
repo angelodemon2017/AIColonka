@@ -60,3 +60,5 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _setTaskSignals:
+  - Task: {fileID: 11400000, guid: 18939b3a9e015bf4b959362286596a31, type: 2}

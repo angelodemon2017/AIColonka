@@ -24,13 +24,30 @@ public class WindowGameplay : MAINWindow
     [SerializeField] private Image _backGroundBackTalk;
     [SerializeField] private TextMeshProUGUI _backTalk;
 
-    [Inject] private SignalBus _signalBus;
+    private SignalBus _signalBus;
     [Inject] private DataHandler _dataHandler;
+    [Inject] private BackTalkHandler _backTalkHandler;
 
     private GameObject _parentCombo;
     private PlayerFSM _playerFSM;
 
     private MainData _mainData => ControllerDemoSaveFile.Instance.mainData;
+
+    [Inject]
+    private void Construct(SignalBus signalBus)
+    {
+        _signalBus = signalBus;
+
+        Init();
+    }
+
+    private void Init()
+    {
+        _signalBus.Subscribe<BackTalkSignal>(UpdateSubtitle);
+        _signalBus.Subscribe<EndBackTalkSignal>(UpdateSubtitle);
+
+        UpdateSubtitle();
+    }
 
     public override void StartWindow()
     {
@@ -42,11 +59,10 @@ public class WindowGameplay : MAINWindow
         StartCoroutine(Subs());
         _debugTestParam.text = $"{_mainData.testSaveParam}";
         _taskModule.Init();
-        ControllerDemoSaveFile.Instance.backTalk.OnUpdateTalk += UpdateSubtitle;
+//        ControllerDemoSaveFile.Instance.backTalk.OnUpdateTalk += UpdateSubtitle;
         _mainData.BitUpgrade += UpdateUI;
 
         UpdateUI();
-        UpdateSubtitle();
     }
 
     IEnumerator Subs()
@@ -86,7 +102,8 @@ public class WindowGameplay : MAINWindow
 
     private void UpdateSubtitle()
     {
-        _backTalk.text = ControllerDemoSaveFile.Instance.backTalk.GetTalk;
+        _backTalk.text = _backTalkHandler.GetTalk;
+//            ControllerDemoSaveFile.Instance.backTalk.GetTalk;
 
         _backTalk.enabled = !string.IsNullOrEmpty(_backTalk.text);
         Color targetColor = _tempColor;
@@ -228,6 +245,8 @@ public class WindowGameplay : MAINWindow
             _playerFSM.OnUpdatePlayer -= UpdatePlayerUI;
         }
         _mainData.BitUpgrade -= UpdateUI;
-        ControllerDemoSaveFile.Instance.backTalk.OnUpdateTalk -= UpdateSubtitle;
+
+        _signalBus.Unsubscribe<BackTalkSignal>(UpdateSubtitle);
+        _signalBus.Unsubscribe<EndBackTalkSignal>(UpdateSubtitle);
     }
 }

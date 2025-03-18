@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsAutoValidate: 1
   IndexDialog: 17
-  Name: AfterBattle
+  Name: FuryAfterBattle
   dialogSteps:
   - KeyPersonTextV0: D17_S0_V0
     IdStep: 0
@@ -56,3 +56,5 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _setTaskSignals:
+  - Task: {fileID: 11400000, guid: 5c4a8da14f83bba46b4abd0559856039, type: 2}

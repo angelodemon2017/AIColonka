@@ -30,8 +30,8 @@ public class DialogSetter : MonoBehaviour
 
     public void SetTask(TaskSO task)
     {//TODO call from files without injected
-        _signalBus.Fire(new SetTaskSignal(task));
-//        ControllerDemoSaveFile.Instance.SetTask(task);
+        _signalBus?.Fire(new SetTaskSignal(task));
+        ControllerDemoSaveFile.Instance.SetTask(task);
     }
 
     public void SetWindow(MAINWindow window)
@@ -41,7 +41,8 @@ public class DialogSetter : MonoBehaviour
 
     public void CallBackGroundTalk(string keyTalk, float time)
     {
-        _ = ControllerDemoSaveFile.Instance.backTalk.SetTalkAsync(keyTalk, time, Localizations.Tables.BackTalksTable);
+        _signalBus?.Fire(new BackTalkSignal(keyTalk, time, Localizations.Tables.BackTalksTable));
+//        _ = ControllerDemoSaveFile.Instance.backTalk.SetTalkAsync(keyTalk, time, Localizations.Tables.BackTalksTable);
     }
 
     private void OnDrawGizmos()
