@@ -62,7 +62,6 @@ public class WindowGameplay : MAINWindow
         Cursor.lockState = CursorLockMode.Locked;
         StartCoroutine(Subs());
         _debugTestParam.text = $"{_dataHandler.CurrentData.testSaveParam}";
-        //        ControllerDemoSaveFile.Instance.backTalk.OnUpdateTalk += UpdateSubtitle;
 
         UpdateUI();
     }
@@ -105,7 +104,6 @@ public class WindowGameplay : MAINWindow
     private void UpdateSubtitle()
     {
         _backTalk.text = _backTalkHandler.GetTalk;
-//            ControllerDemoSaveFile.Instance.backTalk.GetTalk;
 
         _backTalk.enabled = !string.IsNullOrEmpty(_backTalk.text);
         Color targetColor = _tempColor;

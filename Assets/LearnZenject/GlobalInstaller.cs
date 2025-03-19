@@ -7,6 +7,7 @@ public class GlobalInstaller : MonoInstaller
     [SerializeField] private DialogsConfig _dialogsConfig;
     [SerializeField] private LearnSOInject _learnSOInject;
     [SerializeField] private TaskConfig _taskConfig;
+    [SerializeField] private SceneController _sceneController;
 
     public override void InstallBindings()
     {
@@ -15,7 +16,8 @@ public class GlobalInstaller : MonoInstaller
         InstallConfigs();
         InstallSignals();
 
-        SceneManager.LoadSceneAsync(1);
+        Container.Bind<SceneController>().FromInstance(_sceneController).AsSingle();
+        //        SceneManager.LoadSceneAsync(1);
     }
 
     private void InstallSingletons()
@@ -47,7 +49,6 @@ public class GlobalInstaller : MonoInstaller
         Container.DeclareSignal<BitUpgradedSignal>();
         Container.DeclareSignal<EndBackTalkSignal>();
         Container.DeclareSignal<PlayerDeathSignal>();
-        Container.DeclareSignal<RestartLevelSignal>();
         Container.DeclareSignal<SetLevelSignal>();
         Container.DeclareSignal<SetNextDialogSignal>();
         Container.DeclareSignal<SetPlayerStateSignal>();

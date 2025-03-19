@@ -20,7 +20,7 @@ public class HintHandler : MonoBehaviour, IHinter
             $"{_dataHandler.CurrentData.gamePlayProgress.BattleBits}/{_needBits}";
 
     public Transform GetTransform => transform;
-    private bool AvailableCall => ControllerDemoSaveFile.Instance.IsDebug || _dataHandler.CurrentData.gamePlayProgress.BattleBits >= _needBits;
+    private bool AvailableCall => _dataHandler.Settings.IsDebug || _dataHandler.CurrentData.gamePlayProgress.BattleBits >= _needBits;
 
     [Inject]
     private void Construct(

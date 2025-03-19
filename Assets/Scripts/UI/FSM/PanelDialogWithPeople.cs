@@ -9,7 +9,6 @@ using Zenject;
 public class PanelDialogWithPeople : MAINWindow
 {
     [SerializeField] private float _charInterval;
-    [SerializeField] private SceneLevelLoader _sceneLevelLoader;
     [SerializeField] private DialogVariant _dialogVariantPrefab;
     [SerializeField] private Transform _parentVariants;
     [SerializeField] private TextMeshProUGUI _textNamePerson;
@@ -24,8 +23,20 @@ public class PanelDialogWithPeople : MAINWindow
     public Action NextStep;
     public Action EndDialog;
 
-    [Inject] private DataHandler _dataHandler;
-    [Inject] private SignalBus _signalBus;
+    private DataHandler _dataHandler;
+    private SignalBus _signalBus;
+    private SceneController _sceneController;
+
+    [Inject]
+    private void Counstruct(
+        SignalBus signalBus,
+        DataHandler dataHandler,
+        SceneController sceneController)
+    {
+        _signalBus = signalBus;
+        _dataHandler = dataHandler;
+        _sceneController = sceneController;
+    }
 
     public override void StartWindow()
     {
@@ -167,7 +178,7 @@ public class PanelDialogWithPeople : MAINWindow
         _currentDialog._signalAgregator.FireAll(_signalBus);
         if (_currentDialog.levelByEndDialog != EnumLevels.MainMenu)
         {
-            _sceneLevelLoader.LoadLevel(_currentDialog.levelByEndDialog);
+            _sceneController.LoadLevelByEnum(_currentDialog.levelByEndDialog);
         }
         else
         {

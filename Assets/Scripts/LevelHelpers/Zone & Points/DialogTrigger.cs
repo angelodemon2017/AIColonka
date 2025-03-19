@@ -21,8 +21,6 @@ public class DialogTrigger : MonoBehaviour
     public void RunScript()
     {
         _signalBus.Fire(new SetNextDialogSignal(dialog));
-//        ControllerDemoSaveFile.Instance.CurrentDialog = dialog;
-//            mainData.progressHistory.Dialog = IdDialog;
         tempWindow = (PanelDialogWithPeople)UIFSM.Instance.OpenWindow(_dialogWindow);
         tempWindow.EndDialog += EndDialog;
         if (scriptScene != null)

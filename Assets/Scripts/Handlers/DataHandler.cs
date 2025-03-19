@@ -3,12 +3,14 @@
 public class DataHandler
 {
     private SignalBus _signalBus;
-
     private DialogSO _currentDialog;
+
     private MainData _mainData;
+    private Settings _settings = new Settings();
 
     internal MainData CurrentData => _mainData;
     internal DialogSO CurrentDialog => _currentDialog;
+    internal Settings Settings => _settings;
 
     [Inject]
     private void Construct(SignalBus signalBus)
@@ -22,6 +24,8 @@ public class DataHandler
     {
         _signalBus.Subscribe<SetTaskSignal>(SetTask);
         _signalBus.Subscribe<SetNextDialogSignal>(SetNextDialog);
+
+        _settings = SaveController.Load<Settings>(Settings.Prefix);
     }
 
     internal void SetData(MainData mainData)

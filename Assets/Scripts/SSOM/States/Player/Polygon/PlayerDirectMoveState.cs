@@ -8,13 +8,11 @@ public class PlayerDirectMoveState : PlayerState
     [SerializeField] private float _speed;
 
     private Vector3 _sideSpeed = Vector3.zero;
-    private CharacterController _characterController;
 
     protected override void Init()
     {
         base.Init();
-        _characterController = Character.GetTransform().GetComponent<CharacterController>();
-    playerFSM.AnimationAdapter.transform.rotation = Quaternion.LookRotation(_directSpeed);
+        playerFSM.AnimationAdapter.transform.rotation = Quaternion.LookRotation(_directSpeed);
     }
 
     internal override void FixedRun()

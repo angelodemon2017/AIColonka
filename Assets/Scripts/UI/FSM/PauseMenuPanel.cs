@@ -1,17 +1,18 @@
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 public class PauseMenuPanel : MAINWindow
 {
-    [SerializeField] private SceneLevelLoader _sceneLevelLoader;
-
     [SerializeField] private Button _continueBTN;
     [SerializeField] private Button _settingsBTN;
     [SerializeField] private Button _toMainMenuBTN;
 
     [SerializeField] private MAINWindow _windowByContinue;
     [SerializeField] private MAINWindow _settingWindow;
+
+    [Inject] private SceneController _sceneController;
 
     public override void StartWindow()
     {
@@ -34,7 +35,7 @@ public class PauseMenuPanel : MAINWindow
 
     private void ToMainMenu()
     {
-        _sceneLevelLoader.LoadLevel(EnumLevels.MainMenu);
+        _sceneController.LoadLevelByEnum(EnumLevels.MainMenu);
     }
 
     public override void ExitWindow()

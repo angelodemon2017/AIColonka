@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7147115668662551850}
   - component: {fileID: 6636506054033675337}
   - component: {fileID: 3667917046294751165}
-  - component: {fileID: 4007604026691769760}
   m_Layer: 0
   m_Name: LevelSwapper
   m_TagString: Untagged
@@ -121,34 +120,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unityEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4007604026691769760}
-        m_TargetAssemblyTypeName: SceneLevelLoader, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _enterObject:
     m_PersistentCalls:
       m_Calls: []
   _signalAgregator:
     _caseSignals: []
---- !u!114 &4007604026691769760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 312264620497006745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1666b1737c96d64296bb9136e5d7f0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _selectedLevel: 1

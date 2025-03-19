@@ -61,6 +61,5 @@ public class TaskCondition : MonoBehaviour
     private void OnDestroy()
     {
         _signalBus.Unsubscribe<TaskUpdatedSignal>(CheckTask);
-//        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate -= CheckTask;
     }
 }

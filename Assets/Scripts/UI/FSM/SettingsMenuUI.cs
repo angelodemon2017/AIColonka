@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class SettingsMenuUI : MAINWindow
 {
@@ -8,7 +9,18 @@ public class SettingsMenuUI : MAINWindow
     [SerializeField] private MAINWindow _windowByReturn;
     [SerializeField] private CheatsPanel _cheatsPanel;
 
-    private Settings _settings => ControllerDemoSaveFile.Instance.Settings;
+    private DataHandler _dataHandler;
+
+    private Settings _settings => _dataHandler.Settings;
+
+    [Inject]
+    private void Construct(
+        DataHandler dataHandler)
+    {
+        _dataHandler = dataHandler;
+
+        SetUI(_settings);
+    }
 
     public override void StartWindow()
     {
@@ -16,8 +28,6 @@ public class SettingsMenuUI : MAINWindow
 
         _debugToggle.onValueChanged.AddListener(ChangeDebug);
         _returnBTN.onClick.AddListener(Return);
-
-        SetUI(_settings);
     }
 
     private void Return()

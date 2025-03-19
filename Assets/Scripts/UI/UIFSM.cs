@@ -11,8 +11,27 @@ public class UIFSM : MonoBehaviour, IUIFSM
 
     private IWindowFSM _currentWindow;
 
-    [Inject] private SignalBus _signalBus;
-    [Inject] private DiContainer _container;
+    private SignalBus _signalBus;
+    private DiContainer _container;
+    private SceneController _sceneController;
+
+    [Inject]
+    private void Construct(
+        DiContainer container,
+        SignalBus signalBus,
+        SceneController sceneController)
+    {
+        _container = container;
+        _signalBus = signalBus;
+        _sceneController = sceneController;
+
+        Init();
+    }
+
+    private void Init()
+    {
+        _signalBus.Subscribe<SetLevelSignal>(LoadLevel);
+    }
 
     private void Awake()
     {
@@ -23,8 +42,6 @@ public class UIFSM : MonoBehaviour, IUIFSM
 
     private void Start()
     {
-        ControllerDemoSaveFile.Instance?.SetBlack(false);
-
         _signalBus.Subscribe<SetWindowSignal>(SetWindowSignal);
     }
 
@@ -36,6 +53,11 @@ public class UIFSM : MonoBehaviour, IUIFSM
     private void FixedUpdate()
     {
         _currentWindow.FixedRun();
+    }
+
+    private void LoadLevel(SetLevelSignal setLevelSignal)
+    {
+        _sceneController.LoadLevelByEnum(setLevelSignal.Level);
     }
 
     private void SetWindowSignal(SetWindowSignal setWindowSignal)
@@ -69,6 +91,7 @@ public class UIFSM : MonoBehaviour, IUIFSM
     private void OnDestroy()
     {
         _signalBus.Unsubscribe<SetWindowSignal>(SetWindowSignal);
+        _signalBus.Unsubscribe<SetLevelSignal>(LoadLevel);
         if (_currentWindow != null)
         {
             _currentWindow.ExitWindow();

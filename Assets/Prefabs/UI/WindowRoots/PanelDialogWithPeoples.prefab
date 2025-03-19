@@ -115,8 +115,6 @@ GameObject:
   - component: {fileID: 99361143841572795}
   - component: {fileID: 2696529265861234579}
   - component: {fileID: 1401049151470440845}
-  - component: {fileID: 9130991870192967701}
-  - component: {fileID: 4283168145939287920}
   m_Layer: 5
   m_Name: PanelDialogWithPeoples
   m_TagString: Untagged
@@ -197,43 +195,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pareEventWindows: []
   _charInterval: 0.02
-  _sceneLevelLoader: {fileID: 9130991870192967701}
   _dialogVariantPrefab: {fileID: 1731453951378720923, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
   _parentVariants: {fileID: 6622404958392508570}
   _textNamePerson: {fileID: 7381656155387449595}
   _textPerson: {fileID: 4425776351051245489}
   _defaultNextWindow: {fileID: 2520768843938125354, guid: b2f84fba5669934468a6849e2919cdcc, type: 3}
---- !u!114 &9130991870192967701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706180168989494251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1666b1737c96d64296bb9136e5d7f0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _selectedLevel: 0
---- !u!114 &4283168145939287920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706180168989494251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _components:
-  - {fileID: 1401049151470440845}
-  _identifier: 
-  _useSceneContext: 0
-  _context: {fileID: 0}
-  _bindType: 1
 --- !u!1 &4660040953070068511
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,7 +583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1090630807527632349, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 46.4
+      value: 35.14
       objectReference: {fileID: 0}
     - target: {fileID: 1090630807527632349, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -669,7 +635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6076953299849169078, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
       propertyPath: m_fontSize
-      value: 32.55
+      value: 22.5
       objectReference: {fileID: 0}
     - target: {fileID: 6993520628664196753, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
       propertyPath: m_Name
@@ -681,7 +647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8219230486581004250, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
       propertyPath: m_fontSize
-      value: 41.5
+      value: 31.45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
