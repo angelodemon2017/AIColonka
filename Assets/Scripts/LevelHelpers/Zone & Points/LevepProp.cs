@@ -1,19 +1,31 @@
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class LevepProp : MonoBehaviour
 {
     [SerializeField] private EnumLevelProp _levelProp;
     [SerializeField] private UnityEvent _eventWasPick;
 
-    private void Awake()
+    private DataHandler _dataHandler;
+
+    [Inject]
+    private void Construct(
+        DataHandler dataHandler)
+    {
+        _dataHandler = dataHandler;
+
+        Init();
+    }
+
+    private void Init()
     {
         CheckPick();
     }
 
     private void CheckPick()
     {
-        if (ControllerDemoSaveFile.Instance.mainData.WasPick(_levelProp))
+        if (_dataHandler.CurrentData.WasPick(_levelProp))
         {
             Destroy(gameObject);
             _eventWasPick?.Invoke();
@@ -27,7 +39,7 @@ public class LevepProp : MonoBehaviour
 
     public void PickUpProp()
     {
-        ControllerDemoSaveFile.Instance.mainData.PickProp(_levelProp);
+        _dataHandler.PickProp(_levelProp);
         Destroy(gameObject);
     }
 }

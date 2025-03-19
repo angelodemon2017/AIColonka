@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7283390070883196727}
   - component: {fileID: 4616706029065416952}
   - component: {fileID: 1718809150388983311}
-  - component: {fileID: 661325954835274227}
   m_Layer: 5
   m_Name: PanelLevelSelector
   m_TagString: Untagged
@@ -113,20 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1666b1737c96d64296bb9136e5d7f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectedLevel: 0
---- !u!114 &661325954835274227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4569557364660094695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75af4d2149a4ba74cbd89a1557c92c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogRoomPreset: 0
 --- !u!1 &5307213648843553383
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,19 +319,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 289876320402021511}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 661325954835274227}
-        m_TargetAssemblyTypeName: DialogSetter, Assembly-CSharp
-        m_MethodName: SetWindow
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2520768843938125354, guid: b2f84fba5669934468a6849e2919cdcc, type: 3}
-          m_ObjectArgumentAssemblyTypeName: MAINWindow, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &7844865158708822453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4807901508933388476, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4807901508933388476, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_AnchorMin.x
@@ -397,15 +370,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4807901508933388476, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4807901508933388476, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 149.5
       objectReference: {fileID: 0}
     - target: {fileID: 4807901508933388476, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 29.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4807901508933388476, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_LocalPosition.x
@@ -437,11 +410,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4807901508933388476, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 79.75
       objectReference: {fileID: 0}
     - target: {fileID: 4807901508933388476, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -17.458332
       objectReference: {fileID: 0}
     - target: {fileID: 4807901508933388476, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -457,7 +430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5791151012267476112, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_fontSize
-      value: 26.4
+      value: 22.3
       objectReference: {fileID: 0}
     - target: {fileID: 6861105804001658916, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_Name

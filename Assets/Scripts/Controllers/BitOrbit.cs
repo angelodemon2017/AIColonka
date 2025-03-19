@@ -11,7 +11,7 @@ public class BitOrbit : MonoBehaviour
 
     internal Rotator Rotator => _rotator;
 
-    private void Awake()
+    internal void Init()
     {
         _bits.ForEach(b => _mrs.Add(b.GetComponentInChildren<MeshRenderer>()));
         SetBits(0);

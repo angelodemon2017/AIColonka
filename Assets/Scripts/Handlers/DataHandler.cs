@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using Zenject;
+﻿using Zenject;
 
 public class DataHandler
 {
@@ -7,8 +6,6 @@ public class DataHandler
 
     private DialogSO _currentDialog;
     private MainData _mainData;
-
-    private int testParam = 0;
 
     internal MainData CurrentData => _mainData;
     internal DialogSO CurrentDialog => _currentDialog;
@@ -25,9 +22,6 @@ public class DataHandler
     {
         _signalBus.Subscribe<SetTaskSignal>(SetTask);
         _signalBus.Subscribe<SetNextDialogSignal>(SetNextDialog);
-        //demo:
-        _signalBus.Subscribe<DemoSignal>((x) => ChangeParam(x.testFlag));
-        _signalBus.Subscribe<ShowSignal>(ShowTest);
     }
 
     internal void SetData(MainData mainData)
@@ -44,6 +38,25 @@ public class DataHandler
     {
         _mainData.SetTask(setTaskSignal.Task);
         _signalBus.Fire(new TaskUpdatedSignal());
+        _signalBus.Fire(new BackTalkSignal(setTaskSignal.Task.KeyTitle, 2f, Localizations.Tables.Tasks));
+    }
+
+    internal void PickProp(EnumLevelProp levelProp)
+    {
+        _mainData.PickProp(levelProp);
+        _signalBus.Fire(new BitUpgradedSignal());
+    }
+
+    internal void AddBits(int count)
+    {
+        _mainData.AddBits(count);
+        _signalBus.Fire(new BitUpgradedSignal());
+    }
+
+    internal void AddWVs(int count)
+    {
+        _mainData.AddAVP(count);
+        _signalBus.Fire(new BitUpgradedSignal());
     }
 
     internal bool IsCurrentTask(TaskSO taskSO)
@@ -55,16 +68,4 @@ public class DataHandler
     {
         return _mainData.progressHistory.IsWasDone(taskSO.KeyTitle);
     }
-
-    #region tests
-    internal void ChangeParam(bool ds)
-    {
-        testParam += ds ? 1 : -1;
-    }
-
-    internal void ShowTest()
-    {
-        Debug.Log($"testParam={testParam}");
-    }
-    #endregion
 }

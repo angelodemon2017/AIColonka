@@ -24,7 +24,7 @@ public class AVWeapon : Weapon
         else
         {
             transform.rotation =
-                CameraController.Instance.IsLookingDown && !_isAir ?
+                _cameraController.IsLookingDown && !_isAir ?
                 _avTransform.rotation :
                 _rotate;
         }

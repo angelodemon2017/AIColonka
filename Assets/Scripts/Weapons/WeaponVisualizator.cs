@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(PeriodicActivator))]
 public class WeaponVisualizator : MonoBehaviour
@@ -7,6 +8,9 @@ public class WeaponVisualizator : MonoBehaviour
     [SerializeField] private WhoIs _whoIs;
     [SerializeField] private PeriodicActivator _periodicActivator;
     [SerializeField] private List<PointsByState> _pointsByStates;
+
+    [Inject]
+    private DiContainer _diContainer;
 
     private IWVState _currentIState;
     private Dictionary<string, List<Transform>> _cashPointsByStates = new();
@@ -46,7 +50,9 @@ public class WeaponVisualizator : MonoBehaviour
             _tempSpawnPoint = transform;
         }
 
-        var weapon = Instantiate(_currentIState.GetWeapon, _tempSpawnPoint.position, _tempSpawnPoint.rotation);
+        var weapon = _diContainer.InstantiatePrefabForComponent<Weapon>(_currentIState.GetWeapon, _tempSpawnPoint.position, _tempSpawnPoint.rotation, null);
+            //Instantiate(_currentIState.GetWeapon, _tempSpawnPoint.position, _tempSpawnPoint.rotation);
+
         weapon.Init(_whoIs.whoIs, _tempSpawnPoint, GetTarget(), _tempSpawnPoint.rotation);
     }
 

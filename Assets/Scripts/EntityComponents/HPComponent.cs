@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class HPComponent : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class HPComponent : MonoBehaviour
     [SerializeField] private int CurrentHP;
     [SerializeField] private int _regenHP;
     [SerializeField] private float _immuAfterDamage;
+    [SerializeField] private SignalAgregator _deathSignal;
 
+    private SignalBus _signalBus;
     private float _immuneTime;
     private float _lastHP;
     private float _timeOut;
@@ -23,6 +26,13 @@ public class HPComponent : MonoBehaviour
     /// </summary>
     internal float GetPercentHP => (float)CurrentHP / MaxHP;
     internal bool IsAlive => CurrentHP > 0;
+
+    [Inject]
+    private void Construct(
+        SignalBus signalBus)
+    {
+        _signalBus = signalBus;
+    }
 
     private void Awake()
     {
@@ -80,6 +90,7 @@ public class HPComponent : MonoBehaviour
     public void Kill()
     {
         CurrentHP = 0;
+        _deathSignal.FireAll(_signalBus);
         Death?.Invoke();
         _eventByDeath?.Invoke();
     }

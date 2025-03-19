@@ -8,10 +8,21 @@ public class PlayerSpawn : MonoBehaviour
     [SerializeField] private PlayerFSM _playerFSM;
     [SerializeField] private List<ConditionPoint> _points;
 
-    [Inject] private DataHandler _dataHandler;
-    [Inject] private DiContainer _container;
+    private DiContainer _container;
+    private DataHandler _dataHandler;
 
-    private void Start()
+    [Inject]
+    private void Construct(
+        DiContainer container,
+        DataHandler dataHandler)
+    {
+        _container = container;
+        _dataHandler = dataHandler;
+
+        Init();
+    }
+
+    private void Init()
     {
         InitPlayer(GetPoint());
     }
@@ -19,7 +30,6 @@ public class PlayerSpawn : MonoBehaviour
     private void InitPlayer(Transform pointPlayer)
     {
         _container.InstantiatePrefabForComponent<PlayerFSM>(_playerFSM, pointPlayer.position, pointPlayer.rotation, pointPlayer);
-//        Instantiate(_player, pointPlayer.position, pointPlayer.rotation, pointPlayer);
     }
 
     private Transform GetPoint()

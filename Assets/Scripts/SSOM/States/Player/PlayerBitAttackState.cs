@@ -41,7 +41,8 @@ public class PlayerBitAttackState : PlayerState
 
     private void InitBitWeapon()
     {
-        var w = Instantiate(_bitWeapons[Mathf.Clamp(playerFSM.Combo, 0, _bitWeapons.Count - 1)]);
+        var w = _diContainer.InstantiatePrefabForComponent<BitWeapon>(_bitWeapons.GetBorderElement(playerFSM.Combo));
+
 
         w.SetPBAS(this, playerFSM.GetPoints);
         w.Init(EnumWhoIs.Player,

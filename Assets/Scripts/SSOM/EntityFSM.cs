@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class EntityFSM : MonoBehaviour, IStatesCharacter
 {
@@ -9,11 +10,15 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
     [SerializeField] private State _startState;
     [SerializeField] private EntityModule _entityModule;
 
+    [Inject]
+    private DiContainer _diContainer;
     public State _currentState;
 
     internal WhoIs whoIs => _whoIs;
     public EntityModule GetModule => _entityModule;
     internal EnumAirGroundState airGroundState => _airGroundState;
+
+    public DiContainer Container => _diContainer;
 
     private void Awake()
     {

@@ -10,16 +10,28 @@ public class PanelSelectingLevel : MAINWindow
 
     [SerializeField] private List<EnumLevels> _availableLevels;
 
-    [Inject] private TaskConfig _taskConfig;
+    private DataHandler _dataHandler;
+    private TaskConfig _taskConfig;
 
-    private TaskSO currentTask => _taskConfig.GetTaskByKey(ControllerDemoSaveFile.Instance.mainData.progressHistory.KeyTitleMainTask);
+    private TaskSO currentTask => _taskConfig.GetTaskByKey(_dataHandler.CurrentData.progressHistory.KeyTitleMainTask);
 
     private IEnumerable<EnumLevels> AvailableLevels =>
         ControllerDemoSaveFile.Instance.IsDebug ?
         _availableLevels :
         currentTask.AvailableLevels;
 
-    private void Awake()
+    [Inject]
+    private void Construct(
+        TaskConfig taskConfig,
+        DataHandler dataHandler)
+    {
+        _taskConfig = taskConfig;
+        _dataHandler = dataHandler;
+
+        Init();
+    }
+
+    private void Init()
     {
         InitButtons();
     }
@@ -40,10 +52,5 @@ public class PanelSelectingLevel : MAINWindow
     private void SelectVariant(int selectedVariant)
     {
         _sceneLevelLoader.LoadLevel((EnumLevels)selectedVariant);
-    }
-
-    private void OnDestroy()
-    {
-//        EventBus.Unsubscribe<EventKey>(CheckKey);
     }
 }

@@ -1,4 +1,4 @@
-﻿public class TaskUpdatedSignal
+﻿public struct TaskUpdatedSignal
 {
 
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class PointMover : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class PointMover : MonoBehaviour
     [SerializeField] private PlayerDashState _playerDashState;
     [SerializeField] private float _period;
     [SerializeField] private List<Transform> _points;
+
+    [Inject]
+    protected DiContainer _diContainer;
 
     public void MovePlayer()
     {

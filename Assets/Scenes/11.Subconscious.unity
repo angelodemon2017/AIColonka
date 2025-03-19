@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1248775990137221747, guid: 74b0e3266573eba4b9f7fdf83e0a7e72, type: 3}
+      propertyPath: _cameraController
+      value: 
+      objectReference: {fileID: 1090762602}
     - target: {fileID: 3427381689573862736, guid: 74b0e3266573eba4b9f7fdf83e0a7e72, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -593,6 +597,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+--- !u!114 &1090762602 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7527140456041670667, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
+  m_PrefabInstance: {fileID: 1090762601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eadfbd2b038d89849b6b609b15d579f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1397773289
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,6 +848,10 @@ PrefabInstance:
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_CallState

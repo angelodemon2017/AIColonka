@@ -11,15 +11,25 @@ public class HintHandler : MonoBehaviour, IHinter
     [SerializeField] private string _keyHint;
     private const string LOWBITS = "0.LOWBITS";
 
-    [Inject] private SignalBus _signalBus;
+    private SignalBus _signalBus;
+    private DataHandler _dataHandler;
     private float _timeFocused;
     private bool _isRelease = false;
 
     public string GetHint =>
-            $"{ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits}/{_needBits}";
+            $"{_dataHandler.CurrentData.gamePlayProgress.BattleBits}/{_needBits}";
 
     public Transform GetTransform => transform;
-    private bool AvailableCall => ControllerDemoSaveFile.Instance.IsDebug || ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits >= _needBits;
+    private bool AvailableCall => ControllerDemoSaveFile.Instance.IsDebug || _dataHandler.CurrentData.gamePlayProgress.BattleBits >= _needBits;
+
+    [Inject]
+    private void Construct(
+        SignalBus signalBus,
+        DataHandler dataHandler)
+    {
+        _signalBus = signalBus;
+        _dataHandler = dataHandler;
+    }
 
     public void Call()
     {
@@ -31,7 +41,6 @@ public class HintHandler : MonoBehaviour, IHinter
         else
         {
             _signalBus.Fire(new BackTalkSignal(LOWBITS, 3f, Localizations.Tables.BackTalksTable));
-//            _backTalkByFall?.CallTalk();
         }
     }
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(WhoIs))]
 public class Weapon : MonoBehaviour
@@ -11,10 +12,15 @@ public class Weapon : MonoBehaviour
     protected Transform _target;
     protected Quaternion _rotate;
 
+    [Inject]
+    protected CameraController _cameraController;
+    [Inject]
+    protected DiContainer _container;
+
     protected virtual float _hitTimeout => 0.1f;
     protected virtual Vector3 _hitPosition => transform.position;
     protected virtual Quaternion _hitRotate => Quaternion.identity;
-    protected Vector3 GetTargetPosition => _target ? _target.position : CameraController.Instance.PointOfLookGround;
+    protected Vector3 GetTargetPosition => _target ? _target.position : _cameraController.PointOfLookGround;
         
 
     private void OnValidate()

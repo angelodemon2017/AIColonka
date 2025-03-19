@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public interface IStatesCharacter
 {
@@ -6,6 +7,8 @@ public interface IStatesCharacter
     bool IsFinishedCurrentState();
 
     Transform GetTransform();
+
+    DiContainer Container { get; }
 
     void PlayAnimation(EnumAnimations animation);
 

@@ -25,12 +25,12 @@ public class PostProcessHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        _signalBus.Subscribe<DemoSignal>(CustomEffect);
+        _signalBus.Subscribe<ShowSignal>(CustomEffect);
     }
 
     private void OnDisable()
     {
-        _signalBus.Unsubscribe<DemoSignal>(CustomEffect);
+        _signalBus.Unsubscribe<ShowSignal>(CustomEffect);
     }
 
     [ContextMenu("BeforeLoadOtherScene")]

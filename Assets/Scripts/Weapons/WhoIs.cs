@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class WhoIs : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class WhoIs : MonoBehaviour
     [SerializeField] internal EnumWhoIs whoIs;
     [SerializeField] private List<DamageKoef> _damageProtected;
     [SerializeField] private List<CollisionEvent> _collisionEvents;
-//    [SerializeField] private Collider _collider;
 
     private Dictionary<EnumCollisionResult, UnityEvent<WhoIs>> _cashEvents = new();
     private Dictionary<EnumDamageType, int> _cashDamages = new();
@@ -17,17 +17,12 @@ public class WhoIs : MonoBehaviour
     internal bool IsAlive => _hpComponent.IsAlive;
     public Action OnDeath;
 
-    private void Awake()
+    private void Start()
     {
         _damageProtected.ForEach(d => _cashDamages.Add(d.DamageType, d.PercentDamage));
         _collisionEvents.ForEach(e => _cashEvents.Add(e._collisionResult, e._collisionEvent));
 
-        if (whoIs == EnumWhoIs.Player)
-        {
-            var chap = ControllerDemoSaveFile.Instance.mainData.chapter;
-            _hpComponent.OverrideStats(chap.MaxHP, chap.HPRegenBySecond);
-        }
-        else if(_hpComponent)
+        if (_hpComponent)
         {
             _hpComponent.Death += Death;
         }

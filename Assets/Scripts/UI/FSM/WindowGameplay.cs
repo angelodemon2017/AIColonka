@@ -25,18 +25,21 @@ public class WindowGameplay : MAINWindow
     [SerializeField] private TextMeshProUGUI _backTalk;
 
     private SignalBus _signalBus;
-    [Inject] private DataHandler _dataHandler;
-    [Inject] private BackTalkHandler _backTalkHandler;
+    private DataHandler _dataHandler;
+    private BackTalkHandler _backTalkHandler;
 
     private GameObject _parentCombo;
     private PlayerFSM _playerFSM;
 
-    private MainData _mainData => ControllerDemoSaveFile.Instance.mainData;
-
     [Inject]
-    private void Construct(SignalBus signalBus)
+    private void Construct(
+        SignalBus signalBus,
+        DataHandler dataHandler,
+        BackTalkHandler backTalkHandler)
     {
         _signalBus = signalBus;
+        _dataHandler = dataHandler;
+        _backTalkHandler = backTalkHandler;
 
         Init();
     }
@@ -45,6 +48,7 @@ public class WindowGameplay : MAINWindow
     {
         _signalBus.Subscribe<StartBackTalkSignal>(UpdateSubtitle);
         _signalBus.Subscribe<EndBackTalkSignal>(UpdateSubtitle);
+        _signalBus.Subscribe<BitUpgradedSignal>(UpdateUI);
 
         UpdateSubtitle();
     }
@@ -57,10 +61,8 @@ public class WindowGameplay : MAINWindow
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         StartCoroutine(Subs());
-        _debugTestParam.text = $"{_mainData.testSaveParam}";
-        _taskModule.Init();
-//        ControllerDemoSaveFile.Instance.backTalk.OnUpdateTalk += UpdateSubtitle;
-        _mainData.BitUpgrade += UpdateUI;
+        _debugTestParam.text = $"{_dataHandler.CurrentData.testSaveParam}";
+        //        ControllerDemoSaveFile.Instance.backTalk.OnUpdateTalk += UpdateSubtitle;
 
         UpdateUI();
     }
@@ -90,13 +92,13 @@ public class WindowGameplay : MAINWindow
     private void UpdateUI()
     {
         _bitLabel.text =
-            _mainData.gamePlayProgress.BattleBits > 0 ?
-            $"B:{_mainData.gamePlayProgress.BattleBits}" :
+            _dataHandler.CurrentData.gamePlayProgress.BattleBits > 0 ?
+            $"B:{_dataHandler.CurrentData.gamePlayProgress.BattleBits}" :
             string.Empty;
 
         _avwPowerLabel.text =
-            _mainData.gamePlayProgress.AVPower > 0 ?
-            $"AVP:{_mainData.gamePlayProgress.AVPower}" :
+            _dataHandler.CurrentData.gamePlayProgress.AVPower > 0 ?
+            $"AVP:{_dataHandler.CurrentData.gamePlayProgress.AVPower}" :
             string.Empty;
     }
 
@@ -126,12 +128,12 @@ public class WindowGameplay : MAINWindow
             _playerFSM.CallPlayerAction(EnumPlayerControlActions.BladeAttack);
         }
 
-        if (Input.GetButtonDown("Fire2") && ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits > 0)
+        if (Input.GetButtonDown("Fire2") && _dataHandler.CurrentData.gamePlayProgress.BattleBits > 0)
         {
             _playerFSM.CallPlayerAction(EnumPlayerControlActions.BitAttack);
         }
 
-        if (Input.GetButtonDown("Fire3") && ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.AVPower >= 0)
+        if (Input.GetButtonDown("Fire3") && _dataHandler.CurrentData.gamePlayProgress.AVPower >= 0)
         {
             _playerFSM.CallPlayerAction(EnumPlayerControlActions.AVAttack);
         }
@@ -170,11 +172,11 @@ public class WindowGameplay : MAINWindow
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            _signalBus.Fire(new DemoSignal(true));
+
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            _signalBus.Fire(new DemoSignal(false));
+
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -244,9 +246,10 @@ public class WindowGameplay : MAINWindow
         {
             _playerFSM.OnUpdatePlayer -= UpdatePlayerUI;
         }
-        _mainData.BitUpgrade -= UpdateUI;
+//        _dataHandler.CurrentData.BitUpgrade -= UpdateUI;
 
         _signalBus.Unsubscribe<StartBackTalkSignal>(UpdateSubtitle);
         _signalBus.Unsubscribe<EndBackTalkSignal>(UpdateSubtitle);
+        _signalBus.Unsubscribe<BitUpgradedSignal>(UpdateUI);
     }
 }

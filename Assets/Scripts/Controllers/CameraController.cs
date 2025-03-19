@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public static CameraController Instance;
     [SerializeField] private Transform _directPoint;
     [SerializeField] private Looker _looker;
     [SerializeField] private LayerMask _layerMaskGroundAndWalls;
@@ -20,7 +19,6 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
         _postProcessHandler = GetComponent<PostProcessHandler>();
     }
 

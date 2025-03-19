@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.Events;
+using Zenject;
 
 public class BattleZone : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class BattleZone : MonoBehaviour
     [SerializeField] private List<Transform> _pointVariants;
     [SerializeField] private List<GameObject> _onOffObjects;
     [SerializeField] private UnityEvent _eventByEndBattle;
+
+    [Inject]
+    private DiContainer _diContainer;
 
     private List<BattleZoneActivator> _battleZoneActivators = new();
 
@@ -26,7 +30,8 @@ public class BattleZone : MonoBehaviour
         {
             for (int i = 0; i < vp.Count; i++)
             {
-                var newGO = Instantiate(vp._variantPrefab, _pointVariants[idPoint].position, Quaternion.identity);
+                var newGO = _diContainer.InstantiatePrefabForComponent<BattleZoneActivator>(vp._variantPrefab, _pointVariants[idPoint].position, Quaternion.identity, null);
+//                    Instantiate(vp._variantPrefab, _pointVariants[idPoint].position, Quaternion.identity);
                 newGO.Init(this);
                 _battleZoneActivators.Add(newGO.GetComponent<BattleZoneActivator>());
 

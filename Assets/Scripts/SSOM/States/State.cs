@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public abstract class State : ScriptableObject
 {
@@ -8,6 +9,9 @@ public abstract class State : ScriptableObject
     [SerializeField] protected List<State> AvailableStates;
     [SerializeField] protected EnumAnimations Animation;
 
+    [Inject]
+    protected DiContainer _diContainer;
+
     internal virtual string Key => name;
     protected virtual EnumAnimations GetAnimation => Animation;
 
@@ -15,6 +19,7 @@ public abstract class State : ScriptableObject
     {
         IsFinished = false;
         Character = character;
+        Character.Container.Inject(this);
         Init();
         Character.PlayAnimation(GetAnimation);
     }

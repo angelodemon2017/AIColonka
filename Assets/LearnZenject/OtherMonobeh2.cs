@@ -17,25 +17,14 @@ public class OtherMonobeh2 : MonoBehaviour
         Debug.Log($"2.TestValue:{_learnSOInject.TestValue}");
         Debug.Log($"2.DialogsCn:{_dialogsConfig.dialogs.Count}");
 
-        _signalBus.Subscribe<DemoSignal>(TestSignal);
         //        SceneManager.LoadScene("LearnZenject2scene");
         SpawnTestPrefab();
-    }
-
-    private void TestSignal()
-    {
-
     }
 
     private void SpawnTestPrefab()
     {
         var prefabInstance = _container.InstantiatePrefabForComponent<TestPrefabInject>(_prefab);
         prefabInstance.Init();
-    }
-
-    private void OnDestroy()
-    {
-        _signalBus.Unsubscribe<DemoSignal>(TestSignal);
     }
 }
 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9093358758985414885}
   - component: {fileID: 5976098384555895447}
   - component: {fileID: 3771634909997337215}
+  - component: {fileID: 1248775990137221747}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -129,7 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
-  _monoInstallers: []
+  _monoInstallers:
+  - {fileID: 1248775990137221747}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -147,3 +149,16 @@ MonoBehaviour:
   _parentNewObjectsUnderSceneContext: 0
   _contractNames: []
   _parentContractNames: []
+--- !u!114 &1248775990137221747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8294095809758195780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff79a00f9ca7ed4e9049dd0b35f35c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraController: {fileID: 0}

@@ -10,45 +10,40 @@ public class BitsController : MonoBehaviour
     [SerializeField] private Material _peaceBitMaterial;
     [SerializeField] private Material _fightBitMaterial;
 
-    [Inject]
+    private SignalBus _signalBus;
     private DataHandler _dataHandler;
 
     private BitOrbitConfig currentConfig => _bitOrbitConfigs[currentBit];
     private bool isFighing => EntityRepository.Instance.HaveEnemies();
-    private MainData _mainData => _dataHandler.CurrentData;
-        //ControllerDemoSaveFile.Instance.mainData;
-    private int currentBit => _mainData.gamePlayProgress.BattleBits;
+    private int currentBit => _dataHandler.CurrentData.gamePlayProgress.BattleBits;
 
-    private void Awake()
+    [Inject]
+    private void Construct(
+        SignalBus signalBus,
+        DataHandler dataHandler)
     {
-        _mainData.BitUpgrade += ShowAll;
+        _signalBus = signalBus;
+        _dataHandler = dataHandler;
     }
 
     private void Start()
     {
+        Init();
+    }
+
+    private void Init()
+    {
+//        _dataHandler.CurrentData.BitUpgrade += ShowAll;
+        _signalBus.Subscribe<BitUpgradedSignal>(ShowAll);
+
+        _orbits.ForEach(o => o.Init());
+
         ShowAll();
     }
 
     private void ShowAll()
     {
         SetBits(true);
-    }
-
-    private void Update()
-    {
-/*        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            _mainData.AddBits(-1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            _mainData.AddBits(1);
-        }/**/
-
-/*        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            SetBits(true);
-        }/**/
     }
 
     internal void UpdateMode()
@@ -63,15 +58,14 @@ public class BitsController : MonoBehaviour
 
     internal void SetBits(bool isOn)
     {
-//        Debug.Log($"show bits:{currentBit}");
         var config = currentConfig;
         for (int i = 0; i < 3; i++)
         {
             _orbits[i].SetBits(config.orbitConfigs[i].countBit, CountBefore(i), isOn);
             _orbits[i].transform.localRotation =
-                Quaternion.Euler(0f, config.orbitConfigs[i].swift, 0);// _orbits[i].transform.parent.localRotation.eulerAngles.z);
+                Quaternion.Euler(0f, config.orbitConfigs[i].swift, 0);
         }
-    }/**/
+    }
 
     private int CountBefore(int orbit)
     {
@@ -85,7 +79,8 @@ public class BitsController : MonoBehaviour
 
     private void OnDestroy()
     {
-        ControllerDemoSaveFile.Instance.mainData.BitUpgrade -= ShowAll;
+        _signalBus.Unsubscribe<BitUpgradedSignal>(ShowAll);
+//        _dataHandler.CurrentData.BitUpgrade -= ShowAll;
     }
 
     [System.Serializable]

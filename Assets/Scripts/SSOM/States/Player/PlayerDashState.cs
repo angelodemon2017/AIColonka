@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using Zenject;
 
 [CreateAssetMenu(menuName = "FSM/PlayerState/PlayerDashState", order = 1)]
 public class PlayerDashState : PlayerState
@@ -8,6 +9,9 @@ public class PlayerDashState : PlayerState
     [SerializeField] private float _distance;
     [SerializeField] private float _cameraTime;
     [SerializeField] private float _pauseTime;
+
+    [Inject]
+    private CameraController _cameraController;
 
     private FallingController _fallingController;
     private Vector3 _startPosition;
@@ -21,7 +25,7 @@ public class PlayerDashState : PlayerState
 
         _fallingController = playerFSM.GetFallingController;
         _fallingController.SwitchGravity();
-        CameraController.Instance.UnParrent(_cameraTime);
+        _cameraController.UnParrent(_cameraTime);
         _transform = Character.GetTransform();
         _startPosition = _transform.position;
 
@@ -44,7 +48,7 @@ public class PlayerDashState : PlayerState
             return;
         }
 
-        var cameraTransform = CameraController.Instance.transform;
+        var cameraTransform = _cameraController.transform;
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
 

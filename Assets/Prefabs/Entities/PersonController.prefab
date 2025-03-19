@@ -1209,7 +1209,6 @@ GameObject:
   - component: {fileID: 2805122167038762632}
   - component: {fileID: 7687012706516705241}
   - component: {fileID: 2996413382871570050}
-  - component: {fileID: 6360888911972008021}
   - component: {fileID: 5087740095407099654}
   - component: {fileID: 4176115940965244519}
   - component: {fileID: 6075059370870970207}
@@ -1320,36 +1319,43 @@ MonoBehaviour:
   TimeoutRegen: 5
   _eventByDeath:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6360888911972008021}
-        m_TargetAssemblyTypeName: DialogSetter, Assembly-CSharp
-        m_MethodName: SetWindow
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 4233653328280678729, guid: 23102e04c1c70f34cadf55226eec21ae, type: 3}
-          m_ObjectArgumentAssemblyTypeName: MAINWindow, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   MaxHP: 0
   CurrentHP: 0
   _regenHP: 0
   _immuAfterDamage: 0.1
---- !u!114 &6360888911972008021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8630790025869648306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75af4d2149a4ba74cbd89a1557c92c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogRoomPreset: 0
+  _deathSignal:
+    _caseSignals:
+    - typeSignal: 3
+      _setTaskSignal:
+        Task: {fileID: 0}
+      _backTalkSignal:
+        Key: 
+        Time: 0
+        FromLocalTable: 
+      _setWindowSignal:
+        SelectWindow: {fileID: 4233653328280678729, guid: 23102e04c1c70f34cadf55226eec21ae, type: 3}
+      _setNextDialogSignal:
+        NextDialog: {fileID: 0}
+      _setLevelSignal:
+        Level: 0
+      _setPlayerStateSignal:
+        _playerState: {fileID: 0}
+    - typeSignal: 6
+      _setTaskSignal:
+        Task: {fileID: 0}
+      _backTalkSignal:
+        Key: 
+        Time: 0
+        FromLocalTable: 
+      _setWindowSignal:
+        SelectWindow: {fileID: 4233653328280678729, guid: 23102e04c1c70f34cadf55226eec21ae, type: 3}
+      _setNextDialogSignal:
+        NextDialog: {fileID: 0}
+      _setLevelSignal:
+        Level: 0
+      _setPlayerStateSignal:
+        _playerState: {fileID: 11400000, guid: 058596f7da28fde47926bf00fc705f4f, type: 2}
 --- !u!114 &5087740095407099654
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -490,6 +490,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3771634909997337215, guid: 74b0e3266573eba4b9f7fdf83e0a7e72, type: 3}
+      propertyPath: _monoInstallers.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5976098384555895447, guid: 74b0e3266573eba4b9f7fdf83e0a7e72, type: 3}
       propertyPath: _startWindow
       value: 

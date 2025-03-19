@@ -19,7 +19,7 @@ public class AVWeaponSpawner : AVWeapon
     private void SpawnAndShoot(int count)
     {
         var rp = _points.GetRandom();
-        var avw = Instantiate(_weaponVariants.GetRandom(), rp.position, transform.rotation);
+        var avw = _container.InstantiatePrefabForComponent<AVWeapon>(_weaponVariants.GetRandom(), rp.position, transform.rotation, null);
         avw.InitAVW(_levelAVW, true);
         avw.Init(WhoIs.whoIs, rp, _target);
     }

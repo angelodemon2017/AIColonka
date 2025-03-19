@@ -10,7 +10,7 @@ public class MainData
     public GamePlayProgress gamePlayProgress = new GamePlayProgress();
     public LevelsState levelsState = new LevelsState();
 
-    public Action BitUpgrade;
+//    public Action BitUpgrade;
 
     public bool EmptyData => string.IsNullOrWhiteSpace(progressHistory.KeyTitleMainTask);
 
@@ -52,22 +52,20 @@ public class MainData
     {
         gamePlayProgress.BitAdd(bits);
 
-        BitUpgrade?.Invoke();
+//        BitUpgrade?.Invoke();
     }
 
     internal void AddAVP(int power)
     {
         gamePlayProgress.AVPUpgrade();
 
-        BitUpgrade?.Invoke();
+//        BitUpgrade?.Invoke();
     }
 }
 
 [Serializable]
 public class ProgressHistory
 {
-    public Action TaskUpdate;
-
     public int CurrentScene;
     public int RoomConfig = 0;
     public int CurrentTask = 0;
@@ -81,7 +79,6 @@ public class ProgressHistory
             WasDones.Add(KeyTitleMainTask);
         }
         KeyTitleMainTask = keyTask;
-        TaskUpdate?.Invoke();
     }
 
     public bool IsWasDone(string keyTask)

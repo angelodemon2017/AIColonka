@@ -30,6 +30,7 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     internal Action OnUpdatePlayer;
 
     #region properties
+    public DiContainer Container => _diContainer;
     internal CharacterController CharacterController => _characterController;
     internal AdditionalStates AdditionalStates => _additionalStates;
     internal WeaponVisualizator WeaponVisualizator => _weaponVisualizator;
@@ -68,13 +69,30 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     public EntityModule GetModule => null;
     #endregion
 
+    private DiContainer _diContainer;
+    private DataHandler _dataHandler;
+    private CameraController _cameraController;
     private SignalBus _signalBus;
 
     [Inject]
     private void Construct(
-        SignalBus signalBus)
+        DiContainer diContainer,
+        SignalBus signalBus,
+        CameraController cameraController,
+        DataHandler dataHandler)
     {
+        _diContainer = diContainer;
+        _dataHandler = dataHandler;
         _signalBus = signalBus;
+
+        _cameraController = cameraController;
+
+        Init();
+    }
+
+    private void Init()
+    {
+        _signalBus.Subscribe<SetPlayerStateSignal>(SetPlayerStateSignal);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -105,10 +123,15 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
         Instance = this;
         _transform = transform;
         _animationAdapter.EndAnimation += EndCurrentAnimate;
-        SetState(_startState);
-        CameraController.Instance.SetPivot(
+
+        _cameraController.SetPivot(
             _points.PointOfMoveCamera,
             _points.PointOfLookCamera);
+
+        var chap = _dataHandler.CurrentData.chapter;
+        _hpComponent.OverrideStats(chap.MaxHP, chap.HPRegenBySecond);
+
+        SetState(_startState);
     }
 
     internal void SetSlowState(bool isSlow)
@@ -177,7 +200,16 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
         _currentState?.ExitState();
 
-        SetPreparedState(Instantiate(state as PlayerState));
+        var nextState = Instantiate(state) as PlayerState;
+
+        SetPreparedState(nextState);
+    }
+
+    private void SetPlayerStateSignal(SetPlayerStateSignal signal)
+    {
+        var nextState = Instantiate(signal._playerState);
+
+        SetPreparedState(nextState);
     }
 
     internal void SetPreparedState(PlayerState state)

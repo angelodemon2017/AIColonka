@@ -2,12 +2,16 @@ using System;
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using Zenject;
 
 public class Looker : MonoBehaviour
 {
     [SerializeField] private bool IsSettings;
     [SerializeField] private Transform _target;
     [SerializeField] private bool AtCamera;
+
+    [Inject]
+    private CameraController _cameraController;
 
     private Looker()
     {
@@ -27,11 +31,11 @@ public class Looker : MonoBehaviour
 
     private IEnumerator InitCamera()
     {
-        while (!CameraController.Instance)
+        while (!_cameraController)
         {
             yield return null;
         }
-        _target = CameraController.Instance.transform;
+        _target = _cameraController.transform;
     }
 
     private void FixedUpdate()

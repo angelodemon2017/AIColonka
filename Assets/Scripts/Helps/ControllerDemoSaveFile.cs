@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -13,19 +11,16 @@ public class ControllerDemoSaveFile : MonoBehaviour
     [SerializeField] private Image _blackImage;
     [SerializeField] private TextMeshProUGUI _testLoading;
 
-    [Inject] private SignalBus _signalBus;
     [Inject] private DataHandler _dataHandler;
 
     public EnumLevels CurrentLevel;
 
     private Color _transColor;
 
-    public MainData mainData => _dataHandler.CurrentData;
     [SerializeField] private Settings _settings = new Settings();
 
     internal Settings Settings => _settings;
     public bool IsDebug => _settings.IsDebug;
-
     public bool IsBlackEnd => _blackImage.color.a >= 1f;
 
     private void Awake()
@@ -37,15 +32,7 @@ public class ControllerDemoSaveFile : MonoBehaviour
             Instance = this;
             _settings = SaveController.Load<Settings>(Settings.Prefix);
             SceneLevelLoader.LoadProgress += UpdateLoading;
-
-            _signalBus.Subscribe<SetTaskSignal>(SetTask);
         }
-    }
-
-    internal void SetTask(SetTaskSignal setTaskSignal)
-    {
-        _signalBus.Fire(setTaskSignal);
-        _signalBus.Fire(new BackTalkSignal(setTaskSignal.Task.KeyTitle, 2f, Localizations.Tables.Tasks));
     }
 
     internal void SetLevel(EnumLevels level)
@@ -54,7 +41,7 @@ public class ControllerDemoSaveFile : MonoBehaviour
         CurrentLevel = level;
         if (level != EnumLevels.MainMenu)
         {
-            mainData.SetLevel(level);
+            _dataHandler.CurrentData.SetLevel(level);
         }
     }
 
@@ -71,3 +58,16 @@ public class ControllerDemoSaveFile : MonoBehaviour
         DOTween.To(() => _transColor, x => _blackImage.color = x, targetColor, 1f);
     }
 }
+/*
+LevelLoader:
+1.  change UIState
+2.  fadeIn display
+3.  selected level
+4.  sceneManager.LoadSceneAsync
+5.  control save
+6.  initScene:
+7.  spawn player
+8.  init Gameplay 
+9.  fadeOut display
+10. launch process
+/**/

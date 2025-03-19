@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class PlayerState : State
 {
@@ -11,6 +12,9 @@ public class PlayerState : State
     protected Transform _cameraTransform;
     protected CharacterController _characterController;
 
+    [Inject]
+    private CameraController _cameraController;
+
     internal virtual bool IsBladeAttack => false;
 
     protected override void Init()
@@ -20,7 +24,8 @@ public class PlayerState : State
         playerFSM = Character as PlayerFSM;
         _characterController = playerFSM.CharacterController;
         _avatarTransform = playerFSM.AnimationAdapter.transform;
-        _cameraTransform = CameraController.Instance.transform;
+        _cameraTransform = _cameraController.transform;
+//            CameraController.Instance.transform;
     }
 
     internal virtual void CallPlayerAction(EnumPlayerControlActions playerAction)

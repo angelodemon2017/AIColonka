@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-
 public class GlobalInstaller : MonoInstaller
 {
     [SerializeField] private DialogsConfig _dialogsConfig;
@@ -12,6 +11,7 @@ public class GlobalInstaller : MonoInstaller
     public override void InstallBindings()
     {
         InstallSingletons();
+        InstallSinglePrefabs();
         InstallConfigs();
         InstallSignals();
 
@@ -24,6 +24,13 @@ public class GlobalInstaller : MonoInstaller
         Container.Bind<BackTalkHandler>().AsSingle();
     }
 
+    private void InstallSinglePrefabs()
+    {/*example for future
+        Container.Bind<WindowGameplay>()
+                 .FromComponentInNewPrefab(_windowGameplay)
+                 .AsSingle();/**/
+    }
+
     private void InstallConfigs()
     {
         Container.Bind<DialogsConfig>().FromScriptableObject(_dialogsConfig).AsSingle();
@@ -34,10 +41,13 @@ public class GlobalInstaller : MonoInstaller
     }
 
     private void InstallSignals()
-    {        
+    {
         SignalBusInstaller.Install(Container);
         Container.DeclareSignal<BackTalkSignal>();
+        Container.DeclareSignal<BitUpgradedSignal>();
         Container.DeclareSignal<EndBackTalkSignal>();
+        Container.DeclareSignal<PlayerDeathSignal>();
+        Container.DeclareSignal<RestartLevelSignal>();
         Container.DeclareSignal<SetLevelSignal>();
         Container.DeclareSignal<SetNextDialogSignal>();
         Container.DeclareSignal<SetPlayerStateSignal>();
@@ -47,7 +57,6 @@ public class GlobalInstaller : MonoInstaller
         Container.DeclareSignal<TaskUpdatedSignal>();        
 
         //demo:
-        Container.DeclareSignal<DemoSignal>();
         Container.DeclareSignal<ShowSignal>();
     }
 }

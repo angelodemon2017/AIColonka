@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Zenject;
 
 public class CheatsPanel : MonoBehaviour
 {
@@ -11,7 +12,21 @@ public class CheatsPanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _bits;
     [SerializeField] private TextMeshProUGUI _wvs;
 
-    private MainData _mainData => ControllerDemoSaveFile.Instance.mainData;
+    private DataHandler _dataHandler;
+
+    [Inject]
+    private void Construct(
+        DataHandler dataHandler)
+    {
+        _dataHandler = dataHandler;
+
+        Init();
+    }
+
+    private void Init()
+    {
+        UpdateUI();
+    }
 
     private void Awake()
     {
@@ -19,38 +34,36 @@ public class CheatsPanel : MonoBehaviour
         _remBitBTN.onClick.AddListener(BitsRem);
         _addWVBTN.onClick.AddListener(WVAdd);
         _remWVBTN.onClick.AddListener(WVRem);
-
-        UpdateUI();
     }
 
     private void BitsAdd()
     {
-        _mainData.AddBits(1);
+        _dataHandler.AddBits(1);
         UpdateUI();
     }
 
     private void BitsRem()
     {
-        _mainData.AddBits(-1);
+        _dataHandler.AddBits(-1);
         UpdateUI();
     }
 
     private void WVAdd()
     {
-        _mainData.AddAVP(1);
+        _dataHandler.AddWVs(1);
         UpdateUI();
     }
 
     private void WVRem()
     {
-        _mainData.AddAVP(-1);
+        _dataHandler.AddWVs(-1);
         UpdateUI();
     }
 
     private void UpdateUI()
     {
-        _bits.text = $"Bits:({_mainData.gamePlayProgress.BattleBits})";
-        _wvs.text = $"WV:({_mainData.gamePlayProgress.AVPower})";
+        _bits.text = $"Bits:({_dataHandler.CurrentData.gamePlayProgress.BattleBits})";
+        _wvs.text = $"WV:({_dataHandler.CurrentData.gamePlayProgress.AVPower})";
     }
 
     private void OnDestroy()

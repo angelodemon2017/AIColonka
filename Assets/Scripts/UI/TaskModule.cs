@@ -5,11 +5,27 @@ public class TaskModule : MonoBehaviour
 {
     [SerializeField] private TaskPreview _prefabTaskPreview;
     [SerializeField] private Transform _parentTasks;
-    [Inject] private TaskConfig _taskConfig;
 
-    internal void Init()
+    private SignalBus _signalBus;
+    private TaskConfig _taskConfig;
+    private DataHandler _dataHandler;
+
+    [Inject]
+    private void Construct(
+        SignalBus signalBus,
+        TaskConfig taskConfig,
+        DataHandler dataHandler)
     {
-        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate += UpdateTasks;
+        _signalBus = signalBus;
+        _taskConfig = taskConfig;
+        _dataHandler = dataHandler;
+
+        Init();
+    }
+
+    private void Init()
+    {
+        _signalBus.Subscribe<TaskUpdatedSignal>(UpdateTasks);
         UpdateTasks();
     }
 
@@ -18,11 +34,11 @@ public class TaskModule : MonoBehaviour
         _parentTasks.DestroyChildrens();
         var newPT = GameObject.Instantiate(_prefabTaskPreview, _parentTasks);
 
-        _ = newPT.InitAsync(_taskConfig.GetTaskByKey(ControllerDemoSaveFile.Instance.mainData.progressHistory.KeyTitleMainTask));
+        _ = newPT.InitAsync(_taskConfig.GetTaskByKey(_dataHandler.CurrentData.progressHistory.KeyTitleMainTask));
     }
 
     private void OnDestroy()
     {
-        ControllerDemoSaveFile.Instance.mainData.progressHistory.TaskUpdate -= UpdateTasks;
+        _signalBus.Unsubscribe<TaskUpdatedSignal>(UpdateTasks);
     }
 }

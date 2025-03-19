@@ -3,7 +3,6 @@ using UnityEngine;
 public class Projectile : AVWeapon, IAccurancy
 {
     [SerializeField] private AttackZone _exploseZone;
-//    [SerializeField] private Damage _damageExpl;
     [SerializeField] protected float _startSpeed;
     [SerializeField] private float _accelSpeed;
     [SerializeField] protected float _timeOut = 10f;
@@ -67,11 +66,6 @@ public class Projectile : AVWeapon, IAccurancy
                 _attackDecal.transform.position);
             Progress = (1.1f - currentDistance / _startDistance);
             _attackDecal.UpdateProgress(Progress > 1 ? 1f : Progress);
-/*            if (temp > Progress)
-            {
-                Progress = temp;
-                _attackDecal.UpdateProgress(Progress > 1 ? 1f : Progress);
-            }/**/
         }
     }
 
@@ -143,7 +137,7 @@ public class Projectile : AVWeapon, IAccurancy
             {
                 Destroy(_dummy);
             }
-            Destroy(this.gameObject, 0.01f);
+            Destroy(gameObject, 0.01f);
         }
     }
 
