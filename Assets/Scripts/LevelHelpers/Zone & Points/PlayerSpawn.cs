@@ -5,9 +5,11 @@ using Zenject;
 public class PlayerSpawn : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
+    [SerializeField] private PlayerFSM _playerFSM;
     [SerializeField] private List<ConditionPoint> _points;
 
     [Inject] private DataHandler _dataHandler;
+    [Inject] private DiContainer _container;
 
     private void Start()
     {
@@ -16,7 +18,8 @@ public class PlayerSpawn : MonoBehaviour
 
     private void InitPlayer(Transform pointPlayer)
     {
-        Instantiate(_player, pointPlayer.position, pointPlayer.rotation, pointPlayer);
+        _container.InstantiatePrefabForComponent<PlayerFSM>(_playerFSM, pointPlayer.position, pointPlayer.rotation, pointPlayer);
+//        Instantiate(_player, pointPlayer.position, pointPlayer.rotation, pointPlayer);
     }
 
     private Transform GetPoint()

@@ -300,8 +300,16 @@ PrefabInstance:
       value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0].typeSignal
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -314,11 +322,15 @@ PrefabInstance:
     - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 39857034}
+      objectReference: {fileID: 0}
     - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 39857036}
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._setTaskSignal.Task
+      value: 
+      objectReference: {fileID: 11400000, guid: f8f06cf7e7d0f4b429a72fad51e42e44, type: 2}
     - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -369,13 +381,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7433030897604642575, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 39857034}
-    - targetCorrespondingSourceObject: {fileID: 7433030897604642575, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 39857035}
-    - targetCorrespondingSourceObject: {fileID: 7433030897604642575, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 39857036}
   m_SourcePrefab: {fileID: 100100000, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
 --- !u!4 &39857032 stripped
 Transform:
@@ -387,19 +393,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7433030897604642575, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
   m_PrefabInstance: {fileID: 39857031}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &39857034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39857033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75af4d2149a4ba74cbd89a1557c92c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogRoomPreset: 0
 --- !u!114 &39857035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,20 +409,6 @@ MonoBehaviour:
   __ifIsFuture: 0
   __ifIsCurrent: 1
   __ifIsCompleted: 1
---- !u!114 &39857036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39857033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbbc09e3f0ea85844936643c3a9a2b1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _keyTalk: 6.TALK_AFTER_UPGRADE
-  _showTime: 3
 --- !u!1 &40413887
 GameObject:
   m_ObjectHideFlags: 0
@@ -8386,7 +8365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1666b1737c96d64296bb9136e5d7f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectedLevel: 0
 --- !u!1001 &1958208541
 PrefabInstance:
   m_ObjectHideFlags: 0

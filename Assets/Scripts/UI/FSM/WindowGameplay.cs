@@ -43,7 +43,7 @@ public class WindowGameplay : MAINWindow
 
     private void Init()
     {
-        _signalBus.Subscribe<BackTalkSignal>(UpdateSubtitle);
+        _signalBus.Subscribe<StartBackTalkSignal>(UpdateSubtitle);
         _signalBus.Subscribe<EndBackTalkSignal>(UpdateSubtitle);
 
         UpdateSubtitle();
@@ -246,7 +246,7 @@ public class WindowGameplay : MAINWindow
         }
         _mainData.BitUpgrade -= UpdateUI;
 
-        _signalBus.Unsubscribe<BackTalkSignal>(UpdateSubtitle);
+        _signalBus.Unsubscribe<StartBackTalkSignal>(UpdateSubtitle);
         _signalBus.Unsubscribe<EndBackTalkSignal>(UpdateSubtitle);
     }
 }

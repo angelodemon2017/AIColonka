@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class BitsController : MonoBehaviour
 {
@@ -9,9 +10,13 @@ public class BitsController : MonoBehaviour
     [SerializeField] private Material _peaceBitMaterial;
     [SerializeField] private Material _fightBitMaterial;
 
+    [Inject]
+    private DataHandler _dataHandler;
+
     private BitOrbitConfig currentConfig => _bitOrbitConfigs[currentBit];
     private bool isFighing => EntityRepository.Instance.HaveEnemies();
-    private MainData _mainData => ControllerDemoSaveFile.Instance.mainData;
+    private MainData _mainData => _dataHandler.CurrentData;
+        //ControllerDemoSaveFile.Instance.mainData;
     private int currentBit => _mainData.gamePlayProgress.BattleBits;
 
     private void Awake()

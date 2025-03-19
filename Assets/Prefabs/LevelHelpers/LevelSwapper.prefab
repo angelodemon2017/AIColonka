@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7147115668662551850}
   - component: {fileID: 6636506054033675337}
   - component: {fileID: 3667917046294751165}
-  - component: {fileID: 5849654480039619057}
   - component: {fileID: 4007604026691769760}
   m_Layer: 0
   m_Name: LevelSwapper
@@ -120,22 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1867185c2c2847f43bc68de667e2649f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _needTask: {fileID: 0}
   _unityEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5849654480039619057}
-        m_TargetAssemblyTypeName: DialogSetter, Assembly-CSharp
-        m_MethodName: SetRoomConfig
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 4007604026691769760}
         m_TargetAssemblyTypeName: SceneLevelLoader, Assembly-CSharp
         m_MethodName: LoadLevel
@@ -151,18 +137,8 @@ MonoBehaviour:
   _enterObject:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5849654480039619057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 312264620497006745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75af4d2149a4ba74cbd89a1557c92c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _signalAgregator:
+    _caseSignals: []
 --- !u!114 &4007604026691769760
 MonoBehaviour:
   m_ObjectHideFlags: 0

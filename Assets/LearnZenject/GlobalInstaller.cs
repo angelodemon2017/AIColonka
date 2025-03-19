@@ -43,6 +43,7 @@ public class GlobalInstaller : MonoInstaller
         Container.DeclareSignal<SetPlayerStateSignal>();
         Container.DeclareSignal<SetTaskSignal>();
         Container.DeclareSignal<SetWindowSignal>();
+        Container.DeclareSignal<StartBackTalkSignal>();
         Container.DeclareSignal<TaskUpdatedSignal>();        
 
         //demo:

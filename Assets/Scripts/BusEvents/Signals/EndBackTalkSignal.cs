@@ -1,4 +1,4 @@
-﻿public class EndBackTalkSignal
+﻿public struct EndBackTalkSignal
 {
 
 }

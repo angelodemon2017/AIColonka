@@ -7,7 +7,6 @@ using Zenject;
 public class SceneLevelLoader : MonoBehaviour
 {
     private SignalBus _signalBus;
-    [SerializeField] private EnumLevels _selectedLevel;
 
     public static Action<float> LoadProgress;
 
@@ -23,11 +22,6 @@ public class SceneLevelLoader : MonoBehaviour
     private void Init()
     {
         _signalBus.Subscribe<SetLevelSignal>(LoadLevelBySignal);
-    }
-
-    public void LoadLevel()
-    {
-        LoadLevel(_selectedLevel);
     }
 
     private void LoadLevelBySignal(SetLevelSignal setLevelSignal)
@@ -47,7 +41,7 @@ public class SceneLevelLoader : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        DrawGizmosHelper.DrawLabel(transform, 3f, $"Level loader:{_selectedLevel}");
+        DrawGizmosHelper.DrawLabel(transform, 3f, $"Level loader");
     }
 
     IEnumerator LoadLevelCoroutine(EnumLevels level)

@@ -38,6 +38,7 @@ public class BackTalkHandler
         DOVirtual.DelayedCall(backTalkSignal.Time, EndTalk);
         LocalText = await Localizations.GetLocalizedText(
             backTalkSignal.FromLocalTable, KeyTalk);
+        _signalBus.Fire(new StartBackTalkSignal());
     }
 
     private void EndTalk()

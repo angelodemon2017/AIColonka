@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 8630790025869648306, guid: b6ee468e1a9b1bf4cb071a0f780e64b9, type: 3}
+  _playerFSM: {fileID: 2805122167038762632, guid: b6ee468e1a9b1bf4cb071a0f780e64b9, type: 3}
   _points: []
 --- !u!114 &2958754950827358287
 MonoBehaviour:

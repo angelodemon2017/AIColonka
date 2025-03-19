@@ -10,10 +10,12 @@ public class ControllerDemoSaveFile : MonoBehaviour
 {
     public static ControllerDemoSaveFile Instance;
 
-    [Inject] private SignalBus _signalBus;
-    [Inject] private DataHandler _dataHandler;
     [SerializeField] private Image _blackImage;
     [SerializeField] private TextMeshProUGUI _testLoading;
+
+    [Inject] private SignalBus _signalBus;
+    [Inject] private DataHandler _dataHandler;
+
     public EnumLevels CurrentLevel;
 
     private Color _transColor;
@@ -38,11 +40,6 @@ public class ControllerDemoSaveFile : MonoBehaviour
 
             _signalBus.Subscribe<SetTaskSignal>(SetTask);
         }
-    }
-
-    internal void SetTask(TaskSO task)
-    {
-        SetTask(new SetTaskSignal(task));
     }
 
     internal void SetTask(SetTaskSignal setTaskSignal)
