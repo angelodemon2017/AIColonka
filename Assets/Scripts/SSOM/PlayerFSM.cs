@@ -11,8 +11,6 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     [SerializeField] private WeaponVisualizator _weaponVisualizator;
     [SerializeField] private AdditionalStates _additionalStates;
     [SerializeField] private BitsController _bitsController;
-    [SerializeField] private int _combo;
-    [SerializeField] private int _hit;
     [SerializeField] private Points _points;
     [SerializeField] private HPComponent _hpComponent;
     [SerializeField] private FallingController _fallingController;
@@ -25,10 +23,7 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     [SerializeField] private Transform platform;
 
     private Transform _transform;
-    private float _hitUpdate;
     
-    internal Action OnUpdatePlayer;
-
     #region properties
     public DiContainer Container => _diContainer;
     internal CharacterController CharacterController => _characterController;
@@ -43,28 +38,6 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     internal Points GetPoints => _points;
     internal BitsController BitsController => _bitsController;
     internal VirtualObjectChecker virtualObjectChecker => _virtualObjectChecker;
-    internal int Combo 
-    {
-        get => _combo;
-        set 
-        {
-            _combo = value;
-            OnUpdatePlayer?.Invoke();
-        }
-    }
-    internal int Hit 
-    {
-        get => _hit;
-        set 
-        {
-            _hit = value;
-            if (_hit > 0)
-            {
-                _hitUpdate = 3f;
-            }
-            OnUpdatePlayer?.Invoke();
-        }
-    }
 
     public EntityModule GetModule => null;
     #endregion
@@ -155,14 +128,6 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     {
         _currentState.FixedRun();
         _points.FixUpd();
-        if (_hitUpdate > 0f)
-        {
-            _hitUpdate -= Time.fixedDeltaTime;
-            if (_hitUpdate <= 0f)
-            {
-                Hit = 0;
-            }
-        }
     }
 
     private void EndCurrentAnimate()

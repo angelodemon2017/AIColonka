@@ -15,7 +15,6 @@ public class BitsController : MonoBehaviour
     private GameplayHandler _gameplayHandler;
 
     private BitOrbitConfig currentConfig => _bitOrbitConfigs[currentBit];
-    private bool isFighing => _gameplayHandler.HaveEnemies();
     private int currentBit => _dataHandler.CurrentData.gamePlayProgress.BattleBits;
 
     [Inject]
@@ -37,6 +36,7 @@ public class BitsController : MonoBehaviour
     private void Init()
     {
         _signalBus.Subscribe<BitUpgradedSignal>(ShowAll);
+        _signalBus.Subscribe<GameModeSignal>(UpdateMode);
 
         _orbits.ForEach(o => o.Init());
 
@@ -50,7 +50,7 @@ public class BitsController : MonoBehaviour
 
     internal void UpdateMode()
     {
-        var isf = isFighing;
+        var isf = _gameplayHandler.FightMode;
         foreach (var o in _orbits)
         {
             o.Rotator.SetSpeed(isf ? 5f : 2f);

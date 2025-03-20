@@ -51,7 +51,6 @@ public class WeaponVisualizator : MonoBehaviour
         }
 
         var weapon = _diContainer.InstantiatePrefabForComponent<Weapon>(_currentIState.GetWeapon, _tempSpawnPoint.position, _tempSpawnPoint.rotation, null);
-            //Instantiate(_currentIState.GetWeapon, _tempSpawnPoint.position, _tempSpawnPoint.rotation);
 
         weapon.Init(_whoIs.whoIs, _tempSpawnPoint, GetTarget(), _tempSpawnPoint.rotation);
     }

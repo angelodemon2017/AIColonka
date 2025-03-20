@@ -15,7 +15,7 @@ public class PlayerBladeAttackState : PlayerState
     {
         base.Init();
 
-        var az = Instantiate(_attackZone);
+        var az = _diContainer.InstantiatePrefabForComponent<AttackZone>(_attackZone);
         az.SetDamage(_damage);
         az.SetAttackZone(_size);
         az.Init(EnumWhoIs.Player);
@@ -57,11 +57,11 @@ public class PlayerBladeAttackState : PlayerState
     {
         if (_lastAction == EnumPlayerControlActions.None)
         {
-            playerFSM.Combo = 0;
+            _gameplayHandler.Combo = 0;
         }
         else
         {
-            playerFSM.Combo++;
+            _gameplayHandler.Combo++;
         }
     }
 

@@ -29,7 +29,7 @@ public class FastAttackOrbit : BitWeapon
     IEnumerator AddBit(int countOrder)
     {
         _swiftPos.y = Yswift;
-        var newW = Instantiate(_weaponPrefab, transform.position + _swiftPos, transform.rotation, transform);
+        var newW = _container.InstantiatePrefabForComponent<Weapon>(_weaponPrefab, transform.position + _swiftPos, transform.rotation, transform);
         newW.SetDamage(_damage);
         _bitOrbit.AddBitTransform(newW.transform);
         newW.Init(WhoIs.whoIs);

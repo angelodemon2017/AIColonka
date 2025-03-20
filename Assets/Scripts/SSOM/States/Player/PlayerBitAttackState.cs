@@ -21,8 +21,7 @@ public class PlayerBitAttackState : PlayerState
 
         _fallingController = playerFSM.GetFallingController;
 
-        if (IsAir && !_fallingController.AvailableActionInAir)// || 
-//            ControllerDemoSaveFile.Instance.mainData.gamePlayProgress.BattleBits <= 0)
+        if (IsAir && !_fallingController.AvailableActionInAir)
         {
             IsFinished = true;
             return;
@@ -41,7 +40,7 @@ public class PlayerBitAttackState : PlayerState
 
     private void InitBitWeapon()
     {
-        var w = _diContainer.InstantiatePrefabForComponent<BitWeapon>(_bitWeapons.GetBorderElement(playerFSM.Combo));
+        var w = _diContainer.InstantiatePrefabForComponent<BitWeapon>(_bitWeapons.GetBorderElement(_gameplayHandler.Combo));
 
 
         w.SetPBAS(this, playerFSM.GetPoints);
@@ -104,17 +103,17 @@ public class PlayerBitAttackState : PlayerState
 
     private void ComboChecker()
     {
-        if (playerFSM.Combo >= _bitWeapons.Count - 1 && _nextAttackIsBit)
+        if (_gameplayHandler.Combo >= _bitWeapons.Count - 1 && _nextAttackIsBit)
         {
-            playerFSM.Combo = 0;
+            _gameplayHandler.Combo = 0;
         }
         else if (_lastAction == EnumPlayerControlActions.None || !_fallingController.IsGrounded)
         {
-            playerFSM.Combo = 0;
+            _gameplayHandler.Combo = 0;
         }
         else
         {
-            playerFSM.Combo++;
+            _gameplayHandler.Combo++;
         }
     }
 

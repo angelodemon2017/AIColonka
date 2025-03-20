@@ -53,6 +53,7 @@ public class WindowGameplay : MAINWindow
         _signalBus.Subscribe<BitUpgradedSignal>(UpdateUI);
         _signalBus.Subscribe<EndBackTalkSignal>(UpdateSubtitle);
         _signalBus.Subscribe<FocusHintSignal>(UpdateHintText);
+        _signalBus.Subscribe<MetaFightSignal>(UpdateFightMetaUI);
         _signalBus.Subscribe<StartBackTalkSignal>(UpdateSubtitle);
         _signalBus.Subscribe<WhoInTargetSignal>(UpdateTargetUI);
 
@@ -65,32 +66,27 @@ public class WindowGameplay : MAINWindow
         base.StartWindow();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        StartCoroutine(Subs());
         _debugTestParam.text = $"{_dataHandler.CurrentData.testSaveParam}";
 
         UpdateTargetUI();
         UpdateUI();
+        InitPlayer();
     }
 
-    IEnumerator Subs()
+    private void InitPlayer()
     {
-        while (PlayerFSM.Instance == null)
-        {
-            yield return new WaitForSeconds(0.1f);
-        }
         _playerFSM = PlayerFSM.Instance;
         _playerFSM.HPComponent.ChangeHP += _panelHP.UpdateHP;
-        _playerFSM.OnUpdatePlayer += UpdatePlayerUI;
         _playerFSM.HPComponent.OnChangeHP();
-        UpdatePlayerUI();
+        UpdateFightMetaUI();
         _playerFSM.virtualObjectChecker.CheckHints();
     }
 
-    private void UpdatePlayerUI()
+    private void UpdateFightMetaUI()
     {
-        _comboLabel.text = $"Combo:{_playerFSM.Combo}";
-        _hitLabel.text = _playerFSM.Hit > 0 ? $"HIT:{_playerFSM.Hit}" : string.Empty;
-        _parentCombo.SetActive(_playerFSM.Hit > 0);
+        _comboLabel.text = $"Combo:{_gameplayHandler.Combo}";
+        _hitLabel.text = _gameplayHandler.Hit > 0 ? $"HIT:{_gameplayHandler.Hit}" : string.Empty;
+        _parentCombo.SetActive(_gameplayHandler.Hit > 0);
     }
 
     private void UpdateUI()
@@ -222,14 +218,11 @@ public class WindowGameplay : MAINWindow
         {
             _playerFSM.HPComponent.ChangeHP -= _panelHP.UpdateHP;
         }
-        if (_playerFSM)
-        {
-            _playerFSM.OnUpdatePlayer -= UpdatePlayerUI;
-        }
 
         _signalBus.Unsubscribe<BitUpgradedSignal>(UpdateUI);
         _signalBus.Unsubscribe<EndBackTalkSignal>(UpdateSubtitle);
         _signalBus.Unsubscribe<FocusHintSignal>(UpdateHintText);
+        _signalBus.Unsubscribe<MetaFightSignal>(UpdateFightMetaUI);
         _signalBus.Unsubscribe<StartBackTalkSignal>(UpdateSubtitle);
         _signalBus.Unsubscribe<WhoInTargetSignal>(UpdateTargetUI);
     }

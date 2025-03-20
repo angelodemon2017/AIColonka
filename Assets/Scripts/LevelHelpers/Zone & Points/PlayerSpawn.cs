@@ -4,20 +4,23 @@ using Zenject;
 
 public class PlayerSpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject _player;
     [SerializeField] private PlayerFSM _playerFSM;
     [SerializeField] private List<ConditionPoint> _points;
+    [SerializeField] private WindowGameplay _windowGameplay;
 
     private DiContainer _container;
     private DataHandler _dataHandler;
+    private UIFSM _uiFSM;
 
     [Inject]
     private void Construct(
         DiContainer container,
-        DataHandler dataHandler)
+        DataHandler dataHandler,
+        UIFSM uiFSM)
     {
         _container = container;
         _dataHandler = dataHandler;
+        _uiFSM = uiFSM;
 
         Init();
     }
@@ -30,6 +33,11 @@ public class PlayerSpawn : MonoBehaviour
     private void InitPlayer(Transform pointPlayer)
     {
         _container.InstantiatePrefabForComponent<PlayerFSM>(_playerFSM, pointPlayer.position, pointPlayer.rotation, pointPlayer);
+    }
+
+    private void Start()
+    {
+        _uiFSM.OpenWindow(_windowGameplay);
     }
 
     private Transform GetPoint()

@@ -11,10 +11,19 @@ public class BattleZone : MonoBehaviour
     [SerializeField] private List<GameObject> _onOffObjects;
     [SerializeField] private UnityEvent _eventByEndBattle;
 
-    [Inject]
+    private SignalBus _signalBus;
     private DiContainer _diContainer;
 
     private List<BattleZoneActivator> _battleZoneActivators = new();
+
+    [Inject]
+    private void Construct(
+        SignalBus signalBus,
+        DiContainer diContainer)
+    {
+        _signalBus = signalBus;
+        _diContainer = diContainer;
+    }
 
     public void Activate()
     {
@@ -31,7 +40,6 @@ public class BattleZone : MonoBehaviour
             for (int i = 0; i < vp.Count; i++)
             {
                 var newGO = _diContainer.InstantiatePrefabForComponent<BattleZoneActivator>(vp._variantPrefab, _pointVariants[idPoint].position, Quaternion.identity, null);
-//                    Instantiate(vp._variantPrefab, _pointVariants[idPoint].position, Quaternion.identity);
                 newGO.Init(this);
                 _battleZoneActivators.Add(newGO.GetComponent<BattleZoneActivator>());
 
@@ -42,8 +50,7 @@ public class BattleZone : MonoBehaviour
                 }
             }
         }
-        //TODO refactor to messageBroker
-        PlayerFSM.Instance.BitsController.UpdateMode();
+        _signalBus.Fire(new GameModeSignal());
     }
 
     internal void CheckZone()
@@ -60,8 +67,7 @@ public class BattleZone : MonoBehaviour
         _battleZoneActivators?.ForEach(a => Destroy(a?.gameObject));
         _battleZoneActivators.Clear();
         _eventByEndBattle?.Invoke();
-        //TODO refactor to messageBroker
-        PlayerFSM.Instance.BitsController.UpdateMode();
+        _signalBus.Fire(new GameModeSignal());
     }
 
     private void OnDrawGizmos()

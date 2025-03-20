@@ -11,14 +11,22 @@ public class WhoIs : MonoBehaviour
     [SerializeField] private List<DamageKoef> _damageProtected;
     [SerializeField] private List<CollisionEvent> _collisionEvents;
 
-    [Inject]
+    private GameplayHandler _gameplayHandler;
     private SignalBus _signalBus;
 
     private Dictionary<EnumCollisionResult, UnityEvent<WhoIs>> _cashEvents = new();
     private Dictionary<EnumDamageType, int> _cashDamages = new();
 
     internal bool IsAlive => _hpComponent.IsAlive;
-    public Action OnDeath;
+
+    [Inject]
+    private void Construct(
+        GameplayHandler gameplayHandler,
+        SignalBus signalBus)
+    {
+        _gameplayHandler = gameplayHandler;
+        _signalBus = signalBus;
+    }
 
     private void Start()
     {
@@ -53,7 +61,7 @@ public class WhoIs : MonoBehaviour
             {
                 if (colRes == EnumCollisionResult.Enemy && whoIs == EnumWhoIs.Player)
                 {
-                    PlayerFSM.Instance.Hit++;
+                    _gameplayHandler.Hit++;
                 }
 //                _collider.enabled = false;
                 _event?.Invoke(isWho);

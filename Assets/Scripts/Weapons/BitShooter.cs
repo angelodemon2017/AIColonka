@@ -61,7 +61,8 @@ public class BitShooter : BitWeapon
             Random.Range(-0.3f, 0.3f),
             Random.Range(-0.3f, 0.3f));
 
-        var bit = Instantiate(_projectile, transform.position + fromVect, transform.rotation);
+        var bit = _container.InstantiatePrefabForComponent<Projectile>(_projectile, transform.position + fromVect, transform.rotation, null);
+        
         bit.Init(
             WhoIs.whoIs,
             //            transform,

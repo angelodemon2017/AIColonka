@@ -5,6 +5,8 @@ public class UIFSM : MonoBehaviour, IUIFSM
 {
     [SerializeField] private MAINWindow _startWindow;
 
+    public GameplayHandler DebugDATA;
+
     private Transform _parent;
 
     private IWindowFSM _currentWindow;
@@ -15,10 +17,12 @@ public class UIFSM : MonoBehaviour, IUIFSM
 
     [Inject]
     private void Construct(
+        GameplayHandler gameplayHandler,
         DiContainer container,
         SignalBus signalBus,
         SceneController sceneController)
     {
+        DebugDATA = gameplayHandler;
         _container = container;
         _signalBus = signalBus;
         _sceneController = sceneController;

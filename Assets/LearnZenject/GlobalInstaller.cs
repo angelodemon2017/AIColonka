@@ -48,6 +48,8 @@ public class GlobalInstaller : MonoInstaller
         Container.DeclareSignal<BitUpgradedSignal>();
         Container.DeclareSignal<EndBackTalkSignal>();
         Container.DeclareSignal<FocusHintSignal>();
+        Container.DeclareSignal<GameModeSignal>();
+        Container.DeclareSignal<MetaFightSignal>();
         Container.DeclareSignal<PlayerDeathSignal>();
         Container.DeclareSignal<SetLevelSignal>();
         Container.DeclareSignal<SetNextDialogSignal>();
