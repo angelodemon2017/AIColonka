@@ -23,7 +23,7 @@ public class AVWPeriodic : AVWeapon
 
     protected virtual void PeriodicShoot(int order)
     {
-        var bul = Instantiate(_bullet, _spawnPoint.position, _spawnPoint.rotation);
+        var bul = _container.InstantiatePrefabForComponent<AVWeapon>(_bullet, _spawnPoint.position, _spawnPoint.rotation, null);
         if (bul is IAccurancy iacc)
         {
             iacc.SetAccurance(_accurance.Evaluate((float)order/ _count));

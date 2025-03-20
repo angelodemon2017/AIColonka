@@ -4,8 +4,6 @@ using Zenject;
 
 public class PlayerFSM : MonoBehaviour, IStatesCharacter
 {
-    public static PlayerFSM Instance;
-
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private VirtualObjectChecker _virtualObjectChecker;
     [SerializeField] private WeaponVisualizator _weaponVisualizator;
@@ -95,7 +93,6 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
     private void Awake()
     {
-        Instance = this;
         _transform = transform;
         _animationAdapter.EndAnimation += EndCurrentAnimate;
 
@@ -189,7 +186,6 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
     private void OnDestroy()
     {
-        Instance = null;
         _animationAdapter.EndAnimation -= EndCurrentAnimate;
     }
 

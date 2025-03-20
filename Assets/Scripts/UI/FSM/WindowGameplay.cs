@@ -75,7 +75,7 @@ public class WindowGameplay : MAINWindow
 
     private void InitPlayer()
     {
-        _playerFSM = PlayerFSM.Instance;
+        _playerFSM = _gameplayHandler.PlayerInstance;
         _playerFSM.HPComponent.ChangeHP += _panelHP.UpdateHP;
         _playerFSM.HPComponent.OnChangeHP();
         UpdateFightMetaUI();

@@ -11,13 +11,16 @@ public class PlayerSpawn : MonoBehaviour
     private DiContainer _container;
     private DataHandler _dataHandler;
     private UIFSM _uiFSM;
+    private GameplayHandler _gameplayHandler;
 
     [Inject]
     private void Construct(
+        GameplayHandler gameplayHandler,
         DiContainer container,
         DataHandler dataHandler,
         UIFSM uiFSM)
     {
+        _gameplayHandler = gameplayHandler;
         _container = container;
         _dataHandler = dataHandler;
         _uiFSM = uiFSM;
@@ -32,7 +35,8 @@ public class PlayerSpawn : MonoBehaviour
 
     private void InitPlayer(Transform pointPlayer)
     {
-        _container.InstantiatePrefabForComponent<PlayerFSM>(_playerFSM, pointPlayer.position, pointPlayer.rotation, pointPlayer);
+        var newInst = _container.InstantiatePrefabForComponent<PlayerFSM>(_playerFSM, pointPlayer.position, pointPlayer.rotation, pointPlayer);
+        _gameplayHandler.UpdatePlayerInstance(newInst);
     }
 
     private void Start()

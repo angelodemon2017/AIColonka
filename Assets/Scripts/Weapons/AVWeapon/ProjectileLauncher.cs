@@ -21,7 +21,7 @@ public class ProjectileLauncher : AVWeapon
     IEnumerator Launch()
     {
         yield return new WaitForSeconds(_beforeShot);
-        var tempProj = Instantiate(_projectile, _spawnPoint.position, _spawnPoint.rotation);
+        var tempProj = _container.InstantiatePrefabForComponent<AVWeapon>(_projectile, _spawnPoint.position, _spawnPoint.rotation, null);
         tempProj.InitAVW(_levelAVW);//, _damage);
         tempProj.Init(WhoIs.whoIs, transform, _target, transform.rotation);
         _directMove = -2f;

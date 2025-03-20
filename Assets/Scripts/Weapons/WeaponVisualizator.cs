@@ -9,14 +9,23 @@ public class WeaponVisualizator : MonoBehaviour
     [SerializeField] private PeriodicActivator _periodicActivator;
     [SerializeField] private List<PointsByState> _pointsByStates;
 
-    [Inject]
     private DiContainer _diContainer;
+    private GameplayHandler _gameplayHandler;
 
     private IWVState _currentIState;
     private Dictionary<string, List<Transform>> _cashPointsByStates = new();
     private Transform _tempSpawnPoint;
 
     private State _curState => _currentIState as State;
+
+    [Inject]
+    private void Construct(
+        GameplayHandler gameplayHandler,
+        DiContainer diContainer)
+    {
+        _gameplayHandler = gameplayHandler;
+        _diContainer = diContainer;
+    }
 
     private void Awake()
     {
@@ -59,11 +68,11 @@ public class WeaponVisualizator : MonoBehaviour
     {
         if (_whoIs.whoIs != EnumWhoIs.Player)
         {
-            return PlayerFSM.Instance.PointOfTargetForEnemy;
+            return _gameplayHandler.PlayerInstance.PointOfTargetForEnemy;
         }
         else
         {
-            return PlayerFSM.Instance.GetPoints.TransfTarget;
+            return _gameplayHandler.PlayerInstance.GetPoints.TransfTarget;
         }
     }
 

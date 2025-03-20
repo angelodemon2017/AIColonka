@@ -61,6 +61,7 @@ public class WhoIs : MonoBehaviour
             {
                 if (colRes == EnumCollisionResult.Enemy && whoIs == EnumWhoIs.Player)
                 {
+                    var asd = gameObject.name;
                     _gameplayHandler.Hit++;
                 }
 //                _collider.enabled = false;

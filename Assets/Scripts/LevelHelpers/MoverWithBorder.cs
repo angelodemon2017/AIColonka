@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class MoverWithBorder : MonoBehaviour
 {
@@ -10,9 +11,12 @@ public class MoverWithBorder : MonoBehaviour
 
     private Vector3 _tempPos;
 
+    [Inject]
+    private GameplayHandler _gameplayHandler;
+
     public void SetPlayerTarget()
     {
-        _target = PlayerFSM.Instance.transform;
+        _target = _gameplayHandler.PlayerInstance.transform;
     }
 
     private void FixedUpdate()

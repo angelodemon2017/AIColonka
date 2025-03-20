@@ -106,7 +106,7 @@ public class GameplayHandler : IFixedTickable
         {
             if (HaveEnemies())
             {
-                GetNearestEnemy(PlayerFSM.Instance.transform.position);
+                GetNearestEnemy(_instance.transform.position);
             }
         }
         _signalBus.Fire(new WhoInTargetSignal(_inTarget));

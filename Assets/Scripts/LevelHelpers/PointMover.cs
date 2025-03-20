@@ -9,8 +9,17 @@ public class PointMover : MonoBehaviour
     [SerializeField] private float _period;
     [SerializeField] private List<Transform> _points;
 
+    private DiContainer _diContainer;
+    private GameplayHandler _gameplayHandler;
+
     [Inject]
-    protected DiContainer _diContainer;
+    private void Construct(
+        GameplayHandler gameplayHandler,
+        DiContainer diContainer)
+    {
+        _diContainer = diContainer;
+        _gameplayHandler = gameplayHandler;
+    }
 
     public void MovePlayer()
     {
@@ -21,6 +30,6 @@ public class PointMover : MonoBehaviour
     {
         var ps = Instantiate(_playerDashState);
         ps.SetCustomTargetPoint(_points[_points.Count - order].position);
-        PlayerFSM.Instance.SetPreparedState(ps);
+        _gameplayHandler.PlayerInstance.SetPreparedState(ps);
     }
 }
