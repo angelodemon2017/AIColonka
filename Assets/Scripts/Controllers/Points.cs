@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Zenject;
 
 [System.Serializable]
 public class Points
@@ -26,7 +27,7 @@ public class Points
     private Vector3 _middlePoint2;
 
     [SerializeField] private LayerMask layerMask;
-    private WhoIs _holdTarget;
+    private WhoIs _holdTarget => _gameplayHandler.InTarget;
     private Vector3 _tempPosit;
     private float _cashMinDistance = 0f;
 
@@ -51,19 +52,30 @@ public class Points
     internal WhoIs TargetEnemy => _holdTarget;
     internal Transform TransfTarget => _holdTarget ? _holdTarget.transform : null;
 
-    internal void SetHoldTarget(WhoIs newTarget)
+    private GameplayHandler _gameplayHandler;
+    private SignalBus _signalBus;
+
+    [Inject]
+    private void Counstruct(
+        SignalBus signalBus,
+        GameplayHandler gameplayHandler)
     {
-        _holdTarget = newTarget;
-        _holdTarget.OnDeath += WindowGameplay.Instance.TrySetTarget;
+        _signalBus = signalBus;
+        _gameplayHandler = gameplayHandler;
+
+        _signalBus.Subscribe<WhoInTargetSignal>(CheckTarget);
+    }
+
+    private void CheckTarget(WhoInTargetSignal whoInTargetSignal)
+    {
+        if (!whoInTargetSignal.whoIs)
+        {
+            CancelTarget();
+        }
     }
 
     internal void CancelTarget()
     {
-        if (_holdTarget)
-        {
-            _holdTarget.OnDeath -= WindowGameplay.Instance.TrySetTarget;
-            _holdTarget = null;
-        }
         _currentX = PointOfCenterOrbit.rotation.eulerAngles.y;
         _verticalPosit = 0.2f;
     }

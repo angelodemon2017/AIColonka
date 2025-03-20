@@ -13,40 +13,28 @@ public class SceneController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _testLoading;
 
     private Color _transColor;
-    private SignalBus _signalBus;
     private DataHandler _dataHandler;
+    private GameplayHandler _gameplayHandler;
 
     [Inject]
     private void Construct(
-        SignalBus signalBus,
-        DataHandler dataHandler)
+        DataHandler dataHandler,
+        GameplayHandler gameplayHandler)
     {
-        _signalBus = signalBus;
         _dataHandler = dataHandler;
+        _gameplayHandler = gameplayHandler;
 
         Init();
     }
 
     private void Init()
     {
-//        _signalBus.Subscribe<SetLevelSignal>(LoadLevelBySignal);
-//        _signalBus.Subscribe<RestartLevelSignal>(Restart);
-
         DontDestroyOnLoad(gameObject);
 
         _transColor = _blackImage.color;
-        //LoadAsync(1);
+
         SceneManager.LoadSceneAsync(1);
         SetBlack(false, null);
-    }
-
-    private void LoadLevelBySignal(SetLevelSignal setLevelSignal)
-    {
-        if (setLevelSignal.Level != EnumLevels.MainMenu && setLevelSignal.Level != EnumLevels.DialogsHub)
-        {
-            _dataHandler.CurrentData.SetLevel(setLevelSignal.Level);
-        }
-        LoadScene((int)setLevelSignal.Level);
     }
 
     internal void LoadLevelByEnum(EnumLevels level)
@@ -86,6 +74,7 @@ public class SceneController : MonoBehaviour
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
 
         operation.allowSceneActivation = false;
+        _gameplayHandler.LevelUpdate();
 
         while (!operation.isDone)
         {

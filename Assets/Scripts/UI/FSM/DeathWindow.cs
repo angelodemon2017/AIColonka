@@ -1,12 +1,14 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
+using Zenject;
 
 public class DeathWindow : MAINWindow
 {
     [SerializeField] private Button _restartButton;
-    [SerializeField] private UnityEvent _unityEvent;
-    
+
+    [Inject]
+    private SceneController _sceneController;
+
     public override void StartWindow()
     {
         base.StartWindow();
@@ -15,6 +17,6 @@ public class DeathWindow : MAINWindow
 
     private void RestartClick()
     {
-        _unityEvent?.Invoke();
+        _sceneController.Restart();
     }
 }

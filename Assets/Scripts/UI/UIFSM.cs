@@ -32,7 +32,11 @@ public class UIFSM : MonoBehaviour, IUIFSM
         _signalBus.Subscribe<SetWindowSignal>(SetWindowSignal);
 
         _parent = transform;
-        OpenWindow(_startWindow);
+
+        if (_startWindow)
+        {
+            OpenWindow(_startWindow);
+        }
     }
 
     private void Update()

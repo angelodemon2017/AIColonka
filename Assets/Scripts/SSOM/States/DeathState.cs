@@ -9,7 +9,7 @@ public class DeathState : State
         if (Character is EntityFSM entityFSM &&
             entityFSM.whoIs.whoIs != EnumWhoIs.Player)
         {
-            EntityRepository.Instance.RemoveWho(entityFSM.whoIs);
+            _gameplayHandler.RemoveWho(entityFSM.whoIs);
         }
     }
 

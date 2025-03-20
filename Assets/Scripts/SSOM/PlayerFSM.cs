@@ -87,6 +87,8 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
         _cameraController = cameraController;
 
+        _diContainer.Inject(_points);
+
         Init();
     }
 

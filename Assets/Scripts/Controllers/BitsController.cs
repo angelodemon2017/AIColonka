@@ -12,18 +12,21 @@ public class BitsController : MonoBehaviour
 
     private SignalBus _signalBus;
     private DataHandler _dataHandler;
+    private GameplayHandler _gameplayHandler;
 
     private BitOrbitConfig currentConfig => _bitOrbitConfigs[currentBit];
-    private bool isFighing => EntityRepository.Instance.HaveEnemies();
+    private bool isFighing => _gameplayHandler.HaveEnemies();
     private int currentBit => _dataHandler.CurrentData.gamePlayProgress.BattleBits;
 
     [Inject]
     private void Construct(
         SignalBus signalBus,
-        DataHandler dataHandler)
+        DataHandler dataHandler,
+        GameplayHandler gameplayHandler)
     {
         _signalBus = signalBus;
         _dataHandler = dataHandler;
+        _gameplayHandler = gameplayHandler;
     }
 
     private void Start()
@@ -33,7 +36,6 @@ public class BitsController : MonoBehaviour
 
     private void Init()
     {
-//        _dataHandler.CurrentData.BitUpgrade += ShowAll;
         _signalBus.Subscribe<BitUpgradedSignal>(ShowAll);
 
         _orbits.ForEach(o => o.Init());
@@ -80,7 +82,6 @@ public class BitsController : MonoBehaviour
     private void OnDestroy()
     {
         _signalBus.Unsubscribe<BitUpgradedSignal>(ShowAll);
-//        _dataHandler.CurrentData.BitUpgrade -= ShowAll;
     }
 
     [System.Serializable]

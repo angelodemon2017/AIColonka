@@ -7,8 +7,6 @@ using Zenject;
 
 public class WindowGameplay : MAINWindow
 {
-    public static WindowGameplay Instance;
-
     [SerializeField] private TextMeshProUGUI _hintText;
     [SerializeField] private TaskModule _taskModule;
     [SerializeField] private PanelHP _panelHP;
@@ -24,38 +22,45 @@ public class WindowGameplay : MAINWindow
     [SerializeField] private Image _backGroundBackTalk;
     [SerializeField] private TextMeshProUGUI _backTalk;
 
+//    private DiContainer _container;
     private SignalBus _signalBus;
     private DataHandler _dataHandler;
     private BackTalkHandler _backTalkHandler;
+    private GameplayHandler _gameplayHandler;
 
     private GameObject _parentCombo;
     private PlayerFSM _playerFSM;
 
     [Inject]
     private void Construct(
+//        DiContainer container,
         SignalBus signalBus,
         DataHandler dataHandler,
-        BackTalkHandler backTalkHandler)
+        BackTalkHandler backTalkHandler,
+        GameplayHandler gameplayHandler)
     {
+//        _container = container;
         _signalBus = signalBus;
         _dataHandler = dataHandler;
         _backTalkHandler = backTalkHandler;
+        _gameplayHandler = gameplayHandler;
 
         Init();
     }
 
     private void Init()
-    {
-        _signalBus.Subscribe<StartBackTalkSignal>(UpdateSubtitle);
-        _signalBus.Subscribe<EndBackTalkSignal>(UpdateSubtitle);
+    {        
         _signalBus.Subscribe<BitUpgradedSignal>(UpdateUI);
+        _signalBus.Subscribe<EndBackTalkSignal>(UpdateSubtitle);
+        _signalBus.Subscribe<FocusHintSignal>(UpdateHintText);
+        _signalBus.Subscribe<StartBackTalkSignal>(UpdateSubtitle);
+        _signalBus.Subscribe<WhoInTargetSignal>(UpdateTargetUI);
 
         UpdateSubtitle();
     }
 
     public override void StartWindow()
     {
-        Instance = this;
         _parentCombo = _comboLabel.transform.parent.gameObject;
         base.StartWindow();
         Cursor.visible = false;
@@ -63,6 +68,7 @@ public class WindowGameplay : MAINWindow
         StartCoroutine(Subs());
         _debugTestParam.text = $"{_dataHandler.CurrentData.testSaveParam}";
 
+        UpdateTargetUI();
         UpdateUI();
     }
 
@@ -76,7 +82,6 @@ public class WindowGameplay : MAINWindow
         _playerFSM.HPComponent.ChangeHP += _panelHP.UpdateHP;
         _playerFSM.OnUpdatePlayer += UpdatePlayerUI;
         _playerFSM.HPComponent.OnChangeHP();
-        CancelTarget();
         UpdatePlayerUI();
         _playerFSM.virtualObjectChecker.CheckHints();
     }
@@ -143,14 +148,7 @@ public class WindowGameplay : MAINWindow
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (_playerFSM.GetPoints.EnemyIsTarget)
-            {
-                CancelTarget();
-            }
-            else
-            {
-                TrySetTarget();
-            }
+            _gameplayHandler.UpdateTarget();
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -160,7 +158,7 @@ public class WindowGameplay : MAINWindow
 
         if (_target.enabled)
         {
-            _target.rectTransform.position = Camera.main.WorldToScreenPoint(_playerFSM.GetPoints.TargetEnemy.transform.position);
+            _target.rectTransform.position = Camera.main.WorldToScreenPoint(_gameplayHandler.InTarget.transform.position);
         }
 
         if (_hintText.enabled && _playerFSM)
@@ -182,10 +180,10 @@ public class WindowGameplay : MAINWindow
         }
     }
 
-    internal void SetHintText(string hint)
+    internal void UpdateHintText()
     {
-        _hintText.text = hint;
-        _hintText.enabled = !string.IsNullOrEmpty(hint);
+        _hintText.text = _gameplayHandler.FocusHint;
+        _hintText.enabled = !string.IsNullOrEmpty(_gameplayHandler.FocusHint);
     }
 
     public override void FixedRun()
@@ -209,29 +207,13 @@ public class WindowGameplay : MAINWindow
         }
     }
 
-    internal void TrySetTarget()
+    private void UpdateTargetUI()
     {
-        if (EntityRepository.Instance.HaveEnemies())
-        {
-            _playerFSM.GetPoints.SetHoldTarget(
-                EntityRepository.Instance.GetNearestEnemy(PlayerFSM.Instance.transform.position));
-            _target.enabled = true;
-        }
-        else
-        {
-            CancelTarget();
-        }
-    }
-
-    internal void CancelTarget()
-    {
-        _target.enabled = false;
-        _playerFSM.GetPoints.CancelTarget();
+        _target.enabled = _gameplayHandler.InTarget;
     }
 
     public override void ExitWindow()
     {
-        Instance = null;
         base.ExitWindow();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
@@ -244,10 +226,11 @@ public class WindowGameplay : MAINWindow
         {
             _playerFSM.OnUpdatePlayer -= UpdatePlayerUI;
         }
-//        _dataHandler.CurrentData.BitUpgrade -= UpdateUI;
 
-        _signalBus.Unsubscribe<StartBackTalkSignal>(UpdateSubtitle);
-        _signalBus.Unsubscribe<EndBackTalkSignal>(UpdateSubtitle);
         _signalBus.Unsubscribe<BitUpgradedSignal>(UpdateUI);
+        _signalBus.Unsubscribe<EndBackTalkSignal>(UpdateSubtitle);
+        _signalBus.Unsubscribe<FocusHintSignal>(UpdateHintText);
+        _signalBus.Unsubscribe<StartBackTalkSignal>(UpdateSubtitle);
+        _signalBus.Unsubscribe<WhoInTargetSignal>(UpdateTargetUI);
     }
 }

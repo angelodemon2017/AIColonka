@@ -9,11 +9,20 @@ public abstract class State : ScriptableObject
     [SerializeField] protected List<State> AvailableStates;
     [SerializeField] protected EnumAnimations Animation;
 
-    [Inject]
     protected DiContainer _diContainer;
+    protected GameplayHandler _gameplayHandler;
 
     internal virtual string Key => name;
     protected virtual EnumAnimations GetAnimation => Animation;
+
+    [Inject]
+    private void Construct(
+        DiContainer diContainer,
+        GameplayHandler gameplayHandler)
+    {
+        _diContainer = diContainer;
+        _gameplayHandler = gameplayHandler;
+    }
 
     public void InitState(IStatesCharacter character)
     {

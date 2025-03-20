@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System.Threading.Tasks;
+using Zenject;
 
 public class VirtualObjectChecker : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class VirtualObjectChecker : MonoBehaviour
     [SerializeField] private HashSet<IHinter> _hintsH = new();
     
     private IHinter _lastTransform;
+
+    [Inject]
+    private GameplayHandler _gameplayHandler;
 
     internal IHinter LastHH => _lastTransform;
 
@@ -37,7 +41,7 @@ public class VirtualObjectChecker : MonoBehaviour
         {
             _lastTransform = null;
         }
-        _ = ShowHintAsync();
+        _ = UpdateHint();
     }
 
     internal void CallRelease()
@@ -45,17 +49,14 @@ public class VirtualObjectChecker : MonoBehaviour
         _lastTransform?.Call();
         _hintsH.Remove(_lastTransform);
         _lastTransform = null;
-        _ = ShowHintAsync();
+        _ = UpdateHint();
     }
 
-    private async Task ShowHintAsync()
+    private async Task UpdateHint()
     {
-        if (WindowGameplay.Instance)
-        {
-            var totalHint = await GetLocHintAsync();
+        var totalHint = await GetLocHintAsync();
 
-            WindowGameplay.Instance.SetHintText(totalHint);
-        }
+        _gameplayHandler.SetHint(totalHint);
     }
 
     private async Task<string> GetLocHintAsync()

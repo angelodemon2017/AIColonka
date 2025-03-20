@@ -10,8 +10,8 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
     [SerializeField] private State _startState;
     [SerializeField] private EntityModule _entityModule;
 
-    [Inject]
     private DiContainer _diContainer;
+    private GameplayHandler _gameplayHandler;
     public State _currentState;
 
     internal WhoIs whoIs => _whoIs;
@@ -19,6 +19,15 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
     internal EnumAirGroundState airGroundState => _airGroundState;
 
     public DiContainer Container => _diContainer;
+
+    [Inject]
+    private void Construct(
+        DiContainer diContainer,
+        GameplayHandler gameplayHandler)
+    {
+        _diContainer = diContainer;
+        _gameplayHandler = gameplayHandler;
+    }
 
     private void Awake()
     {
@@ -32,7 +41,7 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
 
     private void Start()
     {
-        EntityRepository.Instance.AddWho(_whoIs);
+        _gameplayHandler.AddWho(_whoIs);
     }
 
     private void Update()

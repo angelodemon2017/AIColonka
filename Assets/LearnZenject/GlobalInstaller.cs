@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 public class GlobalInstaller : MonoInstaller
@@ -17,13 +16,13 @@ public class GlobalInstaller : MonoInstaller
         InstallSignals();
 
         Container.Bind<SceneController>().FromInstance(_sceneController).AsSingle();
-        //        SceneManager.LoadSceneAsync(1);
     }
 
     private void InstallSingletons()
-    {        
+    {
         Container.Bind<DataHandler>().AsSingle();
         Container.Bind<BackTalkHandler>().AsSingle();
+        Container.Bind<GameplayHandler>().AsSingle();
     }
 
     private void InstallSinglePrefabs()
@@ -43,11 +42,12 @@ public class GlobalInstaller : MonoInstaller
     }
 
     private void InstallSignals()
-    {
+    {        
         SignalBusInstaller.Install(Container);
         Container.DeclareSignal<BackTalkSignal>();
         Container.DeclareSignal<BitUpgradedSignal>();
         Container.DeclareSignal<EndBackTalkSignal>();
+        Container.DeclareSignal<FocusHintSignal>();
         Container.DeclareSignal<PlayerDeathSignal>();
         Container.DeclareSignal<SetLevelSignal>();
         Container.DeclareSignal<SetNextDialogSignal>();
@@ -55,7 +55,9 @@ public class GlobalInstaller : MonoInstaller
         Container.DeclareSignal<SetTaskSignal>();
         Container.DeclareSignal<SetWindowSignal>();
         Container.DeclareSignal<StartBackTalkSignal>();
-        Container.DeclareSignal<TaskUpdatedSignal>();        
+        Container.DeclareSignal<TaskUpdatedSignal>();
+        Container.DeclareSignal<WhoInTargetSignal>();
+        Container.DeclareSignal<WhoIsDeathSignal>();
 
         //demo:
         Container.DeclareSignal<ShowSignal>();

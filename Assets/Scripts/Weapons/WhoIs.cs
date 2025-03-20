@@ -11,6 +11,9 @@ public class WhoIs : MonoBehaviour
     [SerializeField] private List<DamageKoef> _damageProtected;
     [SerializeField] private List<CollisionEvent> _collisionEvents;
 
+    [Inject]
+    private SignalBus _signalBus;
+
     private Dictionary<EnumCollisionResult, UnityEvent<WhoIs>> _cashEvents = new();
     private Dictionary<EnumDamageType, int> _cashDamages = new();
 
@@ -83,7 +86,8 @@ public class WhoIs : MonoBehaviour
 
     private void Death()
     {
-        OnDeath?.Invoke();
+        _signalBus.Fire(new WhoIsDeathSignal(this));
+//        OnDeath?.Invoke();
     }
 }
 
