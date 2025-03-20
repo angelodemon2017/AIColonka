@@ -26,16 +26,19 @@ public class PanelDialogWithPeople : MAINWindow
     private DataHandler _dataHandler;
     private SignalBus _signalBus;
     private SceneController _sceneController;
+    private UIFSM _uifsm;
 
     [Inject]
     private void Counstruct(
         SignalBus signalBus,
         DataHandler dataHandler,
-        SceneController sceneController)
+        SceneController sceneController,
+        UIFSM uifsm)
     {
         _signalBus = signalBus;
         _dataHandler = dataHandler;
         _sceneController = sceneController;
+        _uifsm = uifsm;
     }
 
     public override void StartWindow()
@@ -182,7 +185,7 @@ public class PanelDialogWithPeople : MAINWindow
         }
         else
         {
-            UIFSM.Instance.OpenWindow(_defaultNextWindow);
+            _uifsm.OpenWindow(_defaultNextWindow);
         }
     }
 }

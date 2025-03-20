@@ -3,8 +3,6 @@ using Zenject;
 
 public class UIFSM : MonoBehaviour, IUIFSM
 {
-    public static UIFSM Instance;
-
     [SerializeField] private MAINWindow _startWindow;
 
     private Transform _parent;
@@ -31,28 +29,20 @@ public class UIFSM : MonoBehaviour, IUIFSM
     private void Init()
     {
         _signalBus.Subscribe<SetLevelSignal>(LoadLevel);
-    }
-
-    private void Awake()
-    {
-        _parent = transform;
-        Instance = this;
-        OpenWindow(_startWindow);
-    }
-
-    private void Start()
-    {
         _signalBus.Subscribe<SetWindowSignal>(SetWindowSignal);
+
+        _parent = transform;
+        OpenWindow(_startWindow);
     }
 
     private void Update()
     {
-        _currentWindow.Run();
+        _currentWindow?.Run();
     }
 
     private void FixedUpdate()
     {
-        _currentWindow.FixedRun();
+        _currentWindow?.FixedRun();
     }
 
     private void LoadLevel(SetLevelSignal setLevelSignal)

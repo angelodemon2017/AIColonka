@@ -10,14 +10,17 @@ public class SettingsMenuUI : MAINWindow
     [SerializeField] private CheatsPanel _cheatsPanel;
 
     private DataHandler _dataHandler;
+    private UIFSM _uifsm;
 
     private Settings _settings => _dataHandler.Settings;
 
     [Inject]
     private void Construct(
-        DataHandler dataHandler)
+        DataHandler dataHandler,
+        UIFSM uifsm)
     {
         _dataHandler = dataHandler;
+        _uifsm = uifsm;
 
         SetUI(_settings);
     }
@@ -32,7 +35,7 @@ public class SettingsMenuUI : MAINWindow
 
     private void Return()
     {
-        UIFSM.Instance.OpenWindow(_windowByReturn);
+        _uifsm.OpenWindow(_windowByReturn);
     }
 
     private void SetUI(Settings settings)

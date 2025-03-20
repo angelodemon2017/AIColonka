@@ -7,8 +7,19 @@ public class DialogTrigger : MonoBehaviour
     [SerializeField] private ScriptScene scriptScene;
     [SerializeField] private DialogSO dialog;
 
-    [Inject] private SignalBus _signalBus;
+    private SignalBus _signalBus;
+    private UIFSM _uifsm;
+
     private PanelDialogWithPeople tempWindow;
+
+    [Inject]
+    private void Construct(
+        SignalBus signalBus,
+        UIFSM uifsm)
+    {
+        _signalBus = signalBus;
+        _uifsm = uifsm;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,7 +32,7 @@ public class DialogTrigger : MonoBehaviour
     public void RunScript()
     {
         _signalBus.Fire(new SetNextDialogSignal(dialog));
-        tempWindow = (PanelDialogWithPeople)UIFSM.Instance.OpenWindow(_dialogWindow);
+        tempWindow = (PanelDialogWithPeople)_uifsm.OpenWindow(_dialogWindow);
         tempWindow.EndDialog += EndDialog;
         if (scriptScene != null)
         {

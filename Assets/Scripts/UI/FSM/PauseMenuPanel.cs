@@ -12,7 +12,17 @@ public class PauseMenuPanel : MAINWindow
     [SerializeField] private MAINWindow _windowByContinue;
     [SerializeField] private MAINWindow _settingWindow;
 
-    [Inject] private SceneController _sceneController;
+    private SceneController _sceneController;
+    private UIFSM _uifsm;
+
+    [Inject]
+    private void Construct(
+        SceneController sceneController,
+        UIFSM uifsm)
+    {
+        _sceneController = sceneController;
+        _uifsm = uifsm;
+    }
 
     public override void StartWindow()
     {
@@ -25,12 +35,12 @@ public class PauseMenuPanel : MAINWindow
 
     private void Continue()
     {
-        UIFSM.Instance.OpenWindow(_windowByContinue);
+        _uifsm.OpenWindow(_windowByContinue);
     }
 
     private void Settings()
     {
-        UIFSM.Instance.OpenWindow(_settingWindow);
+        _uifsm.OpenWindow(_settingWindow);
     }
 
     private void ToMainMenu()

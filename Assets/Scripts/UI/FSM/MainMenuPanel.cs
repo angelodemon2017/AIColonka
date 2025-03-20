@@ -18,6 +18,7 @@ public class MainMenuPanel : MAINWindow
     private SignalBus _signalBus;
     private SceneController _sceneController;
     private MainData _tempData;
+    private UIFSM _uifsm;
 
     private bool IsEmptyData => _tempData == null || _tempData.EmptyData;
 
@@ -25,11 +26,13 @@ public class MainMenuPanel : MAINWindow
     private void Construct(
         SignalBus signalBus,
         DataHandler dataHandler,
-        SceneController sceneController)
+        SceneController sceneController,
+        UIFSM uifsm)
     {
         _signalBus = signalBus;
         _dataHandler = dataHandler;
         _sceneController = sceneController;
+        _uifsm = uifsm;
     }
 
     public override void StartWindow()
@@ -67,7 +70,7 @@ public class MainMenuPanel : MAINWindow
 
     private void Settings()
     {
-        UIFSM.Instance.OpenWindow(_settingWindow);
+        _uifsm.OpenWindow(_settingWindow);
     }
 
     private void About()
