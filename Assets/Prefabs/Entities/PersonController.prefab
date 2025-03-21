@@ -1211,7 +1211,6 @@ GameObject:
   - component: {fileID: 2996413382871570050}
   - component: {fileID: 5087740095407099654}
   - component: {fileID: 4176115940965244519}
-  - component: {fileID: 6075059370870970207}
   m_Layer: 0
   m_Name: PersonController
   m_TagString: Player
@@ -1253,10 +1252,8 @@ MonoBehaviour:
   _characterController: {fileID: 7687012706516705241}
   _virtualObjectChecker: {fileID: 1891207570648659785}
   _weaponVisualizator: {fileID: 5952619162860424446}
-  _additionalStates: {fileID: 6075059370870970207}
+  _additionalStates: {fileID: 0}
   _bitsController: {fileID: 5533812791469335405}
-  _combo: 0
-  _hit: 0
   _points:
     PointAttackZone1: {fileID: 3081252479321016903}
     Xsensitivity: 20
@@ -1393,18 +1390,6 @@ MonoBehaviour:
   JumpScaleFall: 3
   _isGrounded_: 0
   _gravity: 1
---- !u!114 &6075059370870970207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8630790025869648306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e002e70cbb78db4db3eed89f053c4a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8698701905218878548
 GameObject:
   m_ObjectHideFlags: 0

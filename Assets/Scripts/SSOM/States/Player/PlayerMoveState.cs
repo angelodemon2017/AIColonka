@@ -6,19 +6,8 @@ public class PlayerMoveState : PlayerState
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 10f;
 
-    [SerializeField] private EnumAnimations slowMoveAnimate;
-
     private FallingController _fallingController;
     private float _timeOut = 0.1f;
-
-    private float totalSpeed => IsSlowMove ?
-        moveSpeed / 2f :
-        moveSpeed;
-    private bool IsSlowMove => playerFSM.AdditionalStates.IsSlow;
-    protected override EnumAnimations GetAnimation =>
-        IsSlowMove ?
-        slowMoveAnimate :
-        Animation;
 
     protected override void Init()
     {
@@ -31,7 +20,7 @@ public class PlayerMoveState : PlayerState
     {
         IsFinished = false;
 
-        MovePlayer(hor, ver, totalSpeed, rotationSpeed);
+        MovePlayer(hor, ver, moveSpeed, rotationSpeed);
 
         _timeOut = 0.1f;
 

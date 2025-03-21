@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using System;
 using System.Collections;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,9 +17,6 @@ public class PanelDialogWithPeople : MAINWindow
     bool _skipping = false;
     private DialogSO _currentDialog;
     private int _currentStep = 0;
-
-    public Action NextStep;
-    public Action EndDialog;
 
     private DataHandler _dataHandler;
     private SignalBus _signalBus;
@@ -168,12 +164,6 @@ public class PanelDialogWithPeople : MAINWindow
         {
             SelectVariant(dialogVariant.IdStepDialog);
         }
-    }
-
-    public override void ExitWindow()
-    {
-        base.ExitWindow();
-        EndDialog?.Invoke();
     }
 
     private void NextWindow()

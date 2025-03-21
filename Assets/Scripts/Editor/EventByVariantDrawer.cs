@@ -55,6 +55,10 @@ public class EventByVariantDrawer : PropertyDrawer
                 {
                     keyVariants.Add(variant.KeyPersonTextV0);
                 }
+                foreach (var answer in variant.dialogVariants)
+                {
+                    keyVariants.Add(answer.KeyVariant);
+                }
             }
         }
 

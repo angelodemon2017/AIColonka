@@ -7,7 +7,6 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private VirtualObjectChecker _virtualObjectChecker;
     [SerializeField] private WeaponVisualizator _weaponVisualizator;
-    [SerializeField] private AdditionalStates _additionalStates;
     [SerializeField] private BitsController _bitsController;
     [SerializeField] private Points _points;
     [SerializeField] private HPComponent _hpComponent;
@@ -25,7 +24,6 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     #region properties
     public DiContainer Container => _diContainer;
     internal CharacterController CharacterController => _characterController;
-    internal AdditionalStates AdditionalStates => _additionalStates;
     internal WeaponVisualizator WeaponVisualizator => _weaponVisualizator;
     internal AnimationAdapter AnimationAdapter => _animationAdapter;
     public Transform GetTransform() => _transform;
@@ -104,11 +102,6 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
         _hpComponent.OverrideStats(chap.MaxHP, chap.HPRegenBySecond);
 
         SetState(_startState);
-    }
-
-    internal void SetSlowState(bool isSlow)
-    {
-        _additionalStates.SetSlow(isSlow);
     }
 
     internal void CallTryRelease()

@@ -6,6 +6,7 @@ using Zenject;
 [System.Serializable]
 public class GameplayHandler : IFixedTickable
 {
+    #region Fields
     private SignalBus _signalBus;
 
     private PlayerFSM _instance;
@@ -16,6 +17,8 @@ public class GameplayHandler : IFixedTickable
     public int _combo;
     public int _hit;
     public float _hitUpdate;
+
+    #endregion
 
     #region Properties
 
@@ -54,13 +57,6 @@ public class GameplayHandler : IFixedTickable
         SignalBus signalBus)
     {
         _signalBus = signalBus;
-
-        Init();
-    }
-
-    private void Init()
-    {
-
     }
 
     internal void UpdatePlayerInstance(PlayerFSM instance)

@@ -28,9 +28,25 @@ MonoBehaviour:
     dialogVariants:
     - KeyVariant: D6_S1_V1
       IdStepDialog: 2
-  - KeyPersonTextV0: END
+  - KeyPersonTextV0: END6
     IdStep: 2
     Chapter: 7
     dialogVariants: []
   levelByEndDialog: 0
-  _nextWindow: {fileID: 0}
+  _signalAgregator:
+    _caseSignals:
+    - typeSignal: 1
+      _setTaskSignal:
+        Task: {fileID: 11400000, guid: 13042f0002ae78a4d85a44524faee67c, type: 2}
+      _backTalkSignal:
+        Key: 
+        Time: 0
+        FromLocalTable: 
+      _setWindowSignal:
+        SelectWindow: {fileID: 0}
+      _setNextDialogSignal:
+        NextDialog: {fileID: 0}
+      _setLevelSignal:
+        Level: 0
+      _setPlayerStateSignal:
+        _playerState: {fileID: 0}
