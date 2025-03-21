@@ -48,10 +48,14 @@ public class GlobalInstaller : MonoInstaller
         Container.DeclareSignal<BitUpgradedSignal>();
         Container.DeclareSignal<DialogTriggerKeySignal>();
         Container.DeclareSignal<EndBackTalkSignal>();
+        Container.DeclareSignal<EnterToSceneSignal>();
+        Container.DeclareSignal<ExitFromSceneSignal>();
         Container.DeclareSignal<FocusHintSignal>();
         Container.DeclareSignal<GameModeSignal>();
         Container.DeclareSignal<MetaFightSignal>();
-        Container.DeclareSignal<PlayerDeathSignal>();
+        Container.DeclareSignal<PlayerDamageSignal>();
+        Container.DeclareSignal<PlayerDashSignal>();
+        Container.DeclareSignal<PlayerHealSignal>();
         Container.DeclareSignal<SetLevelSignal>();
         Container.DeclareSignal<SetNextDialogSignal>();
         Container.DeclareSignal<SetPlayerStateSignal>();
@@ -61,8 +65,5 @@ public class GlobalInstaller : MonoInstaller
         Container.DeclareSignal<TaskUpdatedSignal>();
         Container.DeclareSignal<WhoInTargetSignal>();
         Container.DeclareSignal<WhoIsDeathSignal>();
-
-        //demo:
-        Container.DeclareSignal<ShowSignal>();
     }
 }

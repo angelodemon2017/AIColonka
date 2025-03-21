@@ -172,7 +172,7 @@ public class WindowGameplay : MAINWindow
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            _signalBus.Fire(new ShowSignal());
+
         }
     }
 

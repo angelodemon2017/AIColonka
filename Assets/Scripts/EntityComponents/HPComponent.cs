@@ -17,6 +17,7 @@ public class HPComponent : MonoBehaviour
     private float _immuneTime;
     private float _lastHP;
     private float _timeOut;
+    private bool _isPlayer;
 
     internal Action Death;
     internal Action<float, float, float> ChangeHP;
@@ -41,6 +42,7 @@ public class HPComponent : MonoBehaviour
 
     internal void OverrideStats(int maxHp, int regenHP)
     {
+        _isPlayer = true;
         MaxHP = maxHp;
         CurrentHP = MaxHP;
         _regenHP = regenHP;
@@ -59,6 +61,8 @@ public class HPComponent : MonoBehaviour
         {
             return;
         }
+        if(_isPlayer)
+            _signalBus.Fire(new PlayerDamageSignal());
 
         _lastHP = CurrentHP;
         _immuneTime = _immuAfterDamage;
@@ -74,6 +78,8 @@ public class HPComponent : MonoBehaviour
 
     internal void Heal(int healAmount)
     {
+        if (_isPlayer)
+            _signalBus.Fire(new PlayerHealSignal());
         CurrentHP += healAmount;
         if (CurrentHP > MaxHP)
         {

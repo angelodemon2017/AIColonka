@@ -97,6 +97,7 @@ MonoBehaviour:
     Window: {fileID: 2520768843938125354, guid: b2f84fba5669934468a6849e2919cdcc, type: 3}
   _prefabLevelButtonPresent: {fileID: 1524967339547294963, guid: 7c735127d64c40141855d004c0cac054, type: 3}
   _parentButtons: {fileID: 8108807238350212416}
+  _dummyWindow: {fileID: 8087520740953210713, guid: a8c600518a4089e40a67871e22c77c74, type: 3}
   _availableLevels: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b000000
 --- !u!1 &5307213648843553383
 GameObject:
@@ -360,7 +361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4807901508933388476, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 214.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4807901508933388476, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_SizeDelta.y
@@ -396,7 +397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4807901508933388476, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 112.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4807901508933388476, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -416,7 +417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5791151012267476112, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_fontSize
-      value: 31.95
+      value: 22.35
       objectReference: {fileID: 0}
     - target: {fileID: 6861105804001658916, guid: 7c735127d64c40141855d004c0cac054, type: 3}
       propertyPath: m_Name

@@ -6,7 +6,7 @@ public class PanelSelectingLevel : MAINWindow
 {
     [SerializeField] private LevelButtonPresent _prefabLevelButtonPresent;
     [SerializeField] private Transform _parentButtons;
-
+    [SerializeField] private MAINWindow _dummyWindow;
     [SerializeField] private List<EnumLevels> _availableLevels;
 
     private DataHandler _dataHandler;
@@ -54,6 +54,7 @@ public class PanelSelectingLevel : MAINWindow
 
     private void SelectVariant(int selectedVariant)
     {
+        _uifsm.OpenWindow(_dummyWindow);
         _sceneController.LoadLevelByEnum((EnumLevels)selectedVariant);
     }
 }

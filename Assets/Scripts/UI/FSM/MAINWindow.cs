@@ -8,7 +8,7 @@ public class MAINWindow : MonoBehaviour, IWindowFSM
 
     private Dictionary<KeyCode, MAINWindow> _tempKeyCodeMapWindows = new();
 
-    [Inject] private UIFSM _uifsm;
+    [Inject] protected UIFSM _uifsm;
 
     private void InitWindows()
     {

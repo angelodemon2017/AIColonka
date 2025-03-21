@@ -11,7 +11,7 @@ public class PlayerDashState : PlayerState
     [SerializeField] private float _pauseTime;
 
     [Inject]
-    private CameraController _cameraController;
+    private SignalBus _signalBus;
 
     private FallingController _fallingController;
     private Vector3 _startPosition;
@@ -66,6 +66,7 @@ public class PlayerDashState : PlayerState
 
     private void ApplyDashAndEffect()
     {
+        _signalBus.Fire<PlayerDashSignal>();
         var ep = Instantiate(_effectPrefab);
         ep.Init(_startPosition, _transform.position);
 

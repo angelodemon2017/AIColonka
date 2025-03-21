@@ -13,16 +13,20 @@ public class SceneController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _testLoading;
 
     private Color _transColor;
+
+    private SignalBus _signalBus;
     private DataHandler _dataHandler;
     private GameplayHandler _gameplayHandler;
 
     [Inject]
     private void Construct(
         DataHandler dataHandler,
-        GameplayHandler gameplayHandler)
+        GameplayHandler gameplayHandler,
+        SignalBus signalBus)
     {
         _dataHandler = dataHandler;
         _gameplayHandler = gameplayHandler;
+        _signalBus = signalBus;
 
         Init();
     }
@@ -53,17 +57,20 @@ public class SceneController : MonoBehaviour
 
     private void LoadScene(int level)
     {
+        _signalBus.Fire(new ExitFromSceneSignal());
         SetBlack(true, () => StartCoroutine(LoadAsync(level + 1)));
     }
 
-    internal void SetBlack(bool fadeIn, Action onDone)
+    private void SetBlack(bool fadeIn, Action onDone)
     {
         Color targetColor = _transColor;
         targetColor.a = fadeIn ? 1f : 0f;
 
         DOTween.To(() => _transColor, x => _blackImage.color = x, targetColor, 1f)
-            .OnComplete(() => 
+//            .SetDelay(1f)
+            .OnComplete(() =>
             {
+                _transColor = _blackImage.color;
                 onDone?.Invoke();
             });
     }
@@ -91,6 +98,8 @@ public class SceneController : MonoBehaviour
             yield return null;
         }
         _testLoading.text = string.Empty;
+
+        _signalBus.Fire(new EnterToSceneSignal());
         SetBlack(false, null);
     }
 }

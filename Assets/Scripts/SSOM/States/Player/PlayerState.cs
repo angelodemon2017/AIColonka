@@ -13,7 +13,7 @@ public class PlayerState : State
     protected CharacterController _characterController;
 
     [Inject]
-    private CameraController _cameraController;
+    protected CameraController _cameraController;
 
     internal virtual bool IsBladeAttack => false;
 
