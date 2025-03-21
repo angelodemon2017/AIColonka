@@ -26,7 +26,7 @@ public class DialogStep
 }
 
 [System.Serializable]
-public class DialogVariantSO : IEvent
+public class DialogVariantSO
 {
     public string KeyVariant;
     public int IdStepDialog;
