@@ -9183,9 +9183,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3816748726190102712, guid: 43491fb1b2826d641a58ce1bdebed61f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2041409682}
-    - targetCorrespondingSourceObject: {fileID: 3816748726190102712, guid: 43491fb1b2826d641a58ce1bdebed61f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2041409681}
   m_SourcePrefab: {fileID: 100100000, guid: 43491fb1b2826d641a58ce1bdebed61f, type: 3}
 --- !u!4 &2041409679 stripped
 Transform:
@@ -9197,19 +9194,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3816748726190102712, guid: 43491fb1b2826d641a58ce1bdebed61f, type: 3}
   m_PrefabInstance: {fileID: 2041409678}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2041409681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041409680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75af4d2149a4ba74cbd89a1557c92c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogRoomPreset: 0
 --- !u!114 &2041409682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9227,19 +9211,7 @@ MonoBehaviour:
       KeyVariant: D6_S1_V0
     UE:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2041409681}
-          m_TargetAssemblyTypeName: DialogSetter, Assembly-CSharp
-          m_MethodName: SetTask
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: 13042f0002ae78a4d85a44524faee67c, type: 2}
-            m_ObjectArgumentAssemblyTypeName: TaskSO, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
   - variant:
       KeyVariant: END6
     UE:

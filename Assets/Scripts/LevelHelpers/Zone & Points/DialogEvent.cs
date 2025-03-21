@@ -2,19 +2,31 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class DialogEvent : MonoBehaviour
 {
     [SerializeField] private List<KeyPresentAndEvent> eventBies;
 
-    private void Awake()
+    private SignalBus _signalBus;
+
+    [Inject]
+    private void Construct(
+        SignalBus signalBus)
     {
-        PanelDialogWithPeople.ActionByKey += CheckEvent;
+        _signalBus = signalBus;
+
+        _signalBus.Subscribe<DialogTriggerKeySignal>(CheckTrigger);
     }
 
-    public void CheckEvent(string key)
+    private void CheckTrigger(DialogTriggerKeySignal dialogTriggerKeySignal)
     {
-        eventBies.FirstOrDefault(e => e.variant.KeyVariant == key)?.UE?.Invoke();
+        var eb = eventBies.FirstOrDefault(e => e.variant.KeyVariant == dialogTriggerKeySignal.TriggerKey);
+        if (eb != null)
+        {
+            eb.UE?.Invoke();
+            eb.signalAgregator.FireAll(_signalBus);
+        }
     }
 
     private void OnDrawGizmos()
@@ -24,7 +36,7 @@ public class DialogEvent : MonoBehaviour
 
     private void OnDestroy()
     {
-        PanelDialogWithPeople.ActionByKey -= CheckEvent;
+        _signalBus.Unsubscribe<DialogTriggerKeySignal>(CheckTrigger);
     }
 }
 
@@ -33,6 +45,7 @@ public class KeyPresentAndEvent
 {
     public EventByVariant variant = new();
     public UnityEvent UE;
+    public SignalAgregator signalAgregator;
 }
 
 [System.Serializable]

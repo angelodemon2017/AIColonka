@@ -19,7 +19,6 @@ public class PanelDialogWithPeople : MAINWindow
     private DialogSO _currentDialog;
     private int _currentStep = 0;
 
-    public static Action<string> ActionByKey;
     public Action NextStep;
     public Action EndDialog;
 
@@ -108,7 +107,7 @@ public class PanelDialogWithPeople : MAINWindow
         _textNamePerson.text = string.Empty;
         _textPerson.text = string.Empty;
 
-        ActionByKey?.Invoke(dialogStep.KeyPersonTextV0);
+        _signalBus.Fire(new DialogTriggerKeySignal(dialogStep.KeyPersonTextV0));
         _textNamePerson.text = await Localizations.GetLocalizedText(
             Localizations.Tables.Characters, dialogStep.Chapter.ToString());
 
@@ -158,10 +157,11 @@ public class PanelDialogWithPeople : MAINWindow
     private void SelectedVariant(int num)
     {
         var dialogVariant = _currentDialog.dialogSteps[_currentStep].dialogVariants[num];
-        ActionByKey?.Invoke(dialogVariant.KeyVariant);
+
+        _signalBus.Fire(new DialogTriggerKeySignal(dialogVariant.KeyVariant));
         if (dialogVariant.IdStepDialog >= _currentDialog.dialogSteps.Count - 1)
         {
-            ActionByKey?.Invoke(_currentDialog.dialogSteps.LastOrDefault().KeyPersonTextV0);
+            _signalBus.Fire(new DialogTriggerKeySignal(_currentDialog.dialogSteps.LastOrDefault().KeyPersonTextV0));
             NextWindow();
         }
         else

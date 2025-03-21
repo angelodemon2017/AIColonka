@@ -22,7 +22,7 @@ public class GlobalInstaller : MonoInstaller
     {
         Container.Bind<DataHandler>().AsSingle();
         Container.Bind<BackTalkHandler>().AsSingle();
-        Container.Bind<GameplayHandler>().AsSingle();
+        Container.BindInterfacesAndSelfTo<GameplayHandler>().AsSingle();
     }
 
     private void InstallSinglePrefabs()
@@ -46,6 +46,7 @@ public class GlobalInstaller : MonoInstaller
         SignalBusInstaller.Install(Container);
         Container.DeclareSignal<BackTalkSignal>();
         Container.DeclareSignal<BitUpgradedSignal>();
+        Container.DeclareSignal<DialogTriggerKeySignal>();
         Container.DeclareSignal<EndBackTalkSignal>();
         Container.DeclareSignal<FocusHintSignal>();
         Container.DeclareSignal<GameModeSignal>();

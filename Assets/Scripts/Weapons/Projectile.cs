@@ -118,7 +118,7 @@ public class Projectile : AVWeapon, IAccurancy
     {
         if (_exploseZone)
         {
-            var ez = Instantiate(_exploseZone);
+            var ez = _container.InstantiatePrefabForComponent<AttackZone>(_exploseZone);
 //            ez.SetDamage(_damageExpl);
             ez.SetAttackZone(_sizeDecal, 0.5f);
             ez.Init(WhoIs.whoIs);
