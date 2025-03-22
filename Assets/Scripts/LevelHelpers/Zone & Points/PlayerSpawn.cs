@@ -8,22 +8,22 @@ public class PlayerSpawn : MonoBehaviour
     [SerializeField] private List<ConditionPoint> _points;
     [SerializeField] private WindowGameplay _windowGameplay;
 
+    private SignalBus _signalBus;
     private DiContainer _container;
     private DataHandler _dataHandler;
-    private UIFSM _uiFSM;
     private GameplayHandler _gameplayHandler;
 
     [Inject]
     private void Construct(
+        SignalBus signalBus,
         GameplayHandler gameplayHandler,
         DiContainer container,
-        DataHandler dataHandler,
-        UIFSM uiFSM)
+        DataHandler dataHandler)
     {
+        _signalBus = signalBus;
         _gameplayHandler = gameplayHandler;
         _container = container;
         _dataHandler = dataHandler;
-        _uiFSM = uiFSM;
 
         Init();
     }
@@ -41,7 +41,7 @@ public class PlayerSpawn : MonoBehaviour
 
     private void Start()
     {
-        _uiFSM.OpenWindow(_windowGameplay);
+        _signalBus.Fire(new SetWindowSignal(_windowGameplay));
     }
 
     private Transform GetPoint()

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5976098384555895447}
   - component: {fileID: 3771634909997337215}
   - component: {fileID: 1248775990137221747}
+  - component: {fileID: 4711826839489061075}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -116,7 +117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab9120da26040f749a33dd6e0b930245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 4711826839489061075}
   _startWindow: {fileID: 2520768843938125354, guid: b2f84fba5669934468a6849e2919cdcc, type: 3}
+  DebugDATA:
+    _combo: 0
+    _hit: 0
+    _hitUpdate: 0
 --- !u!114 &3771634909997337215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,3 +168,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraController: {fileID: 0}
+  _uifsm: {fileID: 0}
+  _roomMapping: {fileID: 0}
+--- !u!225 &4711826839489061075
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8294095809758195780}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

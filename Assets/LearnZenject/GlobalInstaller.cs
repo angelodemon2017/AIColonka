@@ -63,6 +63,7 @@ public class GlobalInstaller : MonoInstaller
         Container.DeclareSignal<SetWindowSignal>();
         Container.DeclareSignal<StartBackTalkSignal>();
         Container.DeclareSignal<TaskUpdatedSignal>();
+        Container.DeclareSignal<TransitionSignal>();
         Container.DeclareSignal<WhoInTargetSignal>();
         Container.DeclareSignal<WhoIsDeathSignal>();
     }

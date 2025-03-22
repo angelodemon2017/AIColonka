@@ -8,7 +8,8 @@ public class MAINWindow : MonoBehaviour, IWindowFSM
 
     private Dictionary<KeyCode, MAINWindow> _tempKeyCodeMapWindows = new();
 
-    [Inject] protected UIFSM _uifsm;
+    [Inject]
+    private SignalBus _signalBus;
 
     private void InitWindows()
     {
@@ -21,7 +22,7 @@ public class MAINWindow : MonoBehaviour, IWindowFSM
         {
             if (Input.GetKeyDown(kc.Key))
             {
-                _uifsm.OpenWindow(kc.Value);
+                _signalBus.Fire(new SetWindowSignal(kc.Value));
             }
         }
     }

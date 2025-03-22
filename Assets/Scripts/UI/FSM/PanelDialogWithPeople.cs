@@ -14,26 +14,23 @@ public class PanelDialogWithPeople : MAINWindow
     [SerializeField] private TextMeshProUGUI _textPerson;
     [SerializeField] private MAINWindow _defaultNextWindow;
 
-    bool _skipping = false;
+    private bool _skipping = false;
     private DialogSO _currentDialog;
     private int _currentStep = 0;
 
     private DataHandler _dataHandler;
     private SignalBus _signalBus;
     private SceneController _sceneController;
-    private UIFSM _uifsm;
 
     [Inject]
     private void Counstruct(
         SignalBus signalBus,
         DataHandler dataHandler,
-        SceneController sceneController,
-        UIFSM uifsm)
+        SceneController sceneController)
     {
         _signalBus = signalBus;
         _dataHandler = dataHandler;
         _sceneController = sceneController;
-        _uifsm = uifsm;
     }
 
     public override void StartWindow()
@@ -47,7 +44,6 @@ public class PanelDialogWithPeople : MAINWindow
     private void Init()
     {
         _currentDialog = _dataHandler.CurrentDialog;
-//            ControllerDemoSaveFile.Instance.CurrentDialog;
         SelectVariant(0);
     }
 
@@ -175,7 +171,8 @@ public class PanelDialogWithPeople : MAINWindow
         }
         else
         {
-            _uifsm.OpenWindow(_defaultNextWindow);
+            _signalBus.Fire(new TransitionSignal(() =>
+                _signalBus.Fire(new SetWindowSignal(_defaultNextWindow))));
         }
     }
 }

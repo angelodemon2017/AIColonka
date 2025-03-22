@@ -9,6 +9,7 @@ public class PanelSelectingLevel : MAINWindow
     [SerializeField] private MAINWindow _dummyWindow;
     [SerializeField] private List<EnumLevels> _availableLevels;
 
+    private SignalBus _signalBus;
     private DataHandler _dataHandler;
     private TaskConfig _taskConfig;
     private SceneController _sceneController;
@@ -22,10 +23,12 @@ public class PanelSelectingLevel : MAINWindow
 
     [Inject]
     private void Construct(
+        SignalBus signalBus,
         TaskConfig taskConfig,
         DataHandler dataHandler,
         SceneController sceneController)
     {
+        _signalBus = signalBus;
         _taskConfig = taskConfig;
         _dataHandler = dataHandler;
         _sceneController = sceneController;
@@ -54,7 +57,7 @@ public class PanelSelectingLevel : MAINWindow
 
     private void SelectVariant(int selectedVariant)
     {
-        _uifsm.OpenWindow(_dummyWindow);
+        _signalBus.Fire(new SetWindowSignal(_dummyWindow));
         _sceneController.LoadLevelByEnum((EnumLevels)selectedVariant);
     }
 }

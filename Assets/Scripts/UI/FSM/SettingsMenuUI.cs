@@ -10,17 +10,17 @@ public class SettingsMenuUI : MAINWindow
     [SerializeField] private CheatsPanel _cheatsPanel;
 
     private DataHandler _dataHandler;
-    private UIFSM _uifsm;
+    private SignalBus _signalBus;
 
     private Settings _settings => _dataHandler.Settings;
 
     [Inject]
     private void Construct(
         DataHandler dataHandler,
-        UIFSM uifsm)
+        SignalBus signalBus)
     {
         _dataHandler = dataHandler;
-        _uifsm = uifsm;
+        _signalBus = signalBus;
 
         SetUI(_settings);
     }
@@ -35,7 +35,7 @@ public class SettingsMenuUI : MAINWindow
 
     private void Return()
     {
-        _uifsm.OpenWindow(_windowByReturn);
+        _signalBus.Fire(new SetWindowSignal(_windowByReturn));
     }
 
     private void SetUI(Settings settings)

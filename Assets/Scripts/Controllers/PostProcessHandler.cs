@@ -38,15 +38,17 @@ public class PostProcessHandler : MonoBehaviour
         _signalBus.Subscribe<PlayerDamageSignal>(GetDamage);
         _signalBus.Subscribe<PlayerDashSignal>(DashEffect);
         _signalBus.Subscribe<PlayerHealSignal>(HealEffect);
+        _signalBus.Subscribe<TransitionSignal>(TransitionForAct);
     }
 
-    private void OnDisable()
+private void OnDisable()
     {
         _signalBus.Unsubscribe<EnterToSceneSignal>(EnterToScene);
         _signalBus.Unsubscribe<ExitFromSceneSignal>(ExitFromScene);
         _signalBus.Unsubscribe<PlayerDamageSignal>(GetDamage);
         _signalBus.Unsubscribe<PlayerDashSignal>(DashEffect);
         _signalBus.Unsubscribe<PlayerHealSignal>(HealEffect);
+        _signalBus.Unsubscribe<TransitionSignal>(TransitionForAct);
     }
 
     private void GetDamage()
@@ -96,13 +98,27 @@ public class PostProcessHandler : MonoBehaviour
     }
 
     private void EnterToScene()
-    {        
+    {
         AnimProcess(SceneTransition, true, 
             () => 
             {
                 _beautify.downsampling.Override(false);
                 _beautify.outline.Override(true); 
             });
+    }
+
+    private void TransitionForAct(TransitionSignal transSign)
+    {
+        //        Sequence sequence = DOTween.Sequence();
+
+        //        sequence.Append(
+        DOTween.To(() => 0f, x => SceneTransition(x), 0.5f, 0.5f)
+        .OnComplete(() =>
+        {
+            transSign.SomeAction?.Invoke();
+            DOTween.To(() => 0.5f, x => SceneTransition(x), 0f, 0.5f);
+        });
+        //        sequence.Append(DOTween.To(() => 1f, x => SceneTransition(x), 0f, 0.5f));
     }
 
     private void AnimProcess(Action<float> act, bool isInverse = false, Action actByEnd = null)

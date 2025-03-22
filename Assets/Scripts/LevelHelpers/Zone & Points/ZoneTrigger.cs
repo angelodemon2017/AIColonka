@@ -4,8 +4,8 @@ using Zenject;
 
 public class ZoneTrigger : MonoBehaviour
 {
+    [SerializeField] private bool _transitionSignal;
     [SerializeField] private UnityEvent _unityEvent;
-    [SerializeField] private UnityEvent<GameObject> _enterObject;
     [SerializeField] private SignalAgregator _signalAgregator;
 
     [Inject] private SignalBus _signalBus;
@@ -14,8 +14,14 @@ public class ZoneTrigger : MonoBehaviour
     {
         if(other.name == Dicts.SpecNames.Player)
         {
-            RunScript();
-            _enterObject?.Invoke(other.gameObject);
+            if (_transitionSignal)
+            {
+                _signalBus.Fire(new TransitionSignal(RunScript));
+            }
+            else
+            {
+                RunScript();
+            }
         }
     }
 

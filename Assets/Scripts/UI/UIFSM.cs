@@ -3,6 +3,7 @@ using Zenject;
 
 public class UIFSM : MonoBehaviour, IUIFSM
 {
+    [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private MAINWindow _startWindow;
 
     public GameplayHandler DebugDATA;
@@ -78,7 +79,7 @@ public class UIFSM : MonoBehaviour, IUIFSM
         return _currentWindow as MAINWindow;
     }
 
-    public void StartWindow()
+    private void StartWindow()
     {
         if (_currentWindow != null)
         {
