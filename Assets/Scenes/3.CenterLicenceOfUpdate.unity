@@ -1102,6 +1102,7 @@ GameObject:
   - component: {fileID: 686576513}
   - component: {fileID: 686576516}
   - component: {fileID: 686576517}
+  - component: {fileID: 686576518}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1258,6 +1259,27 @@ MonoBehaviour:
   _moveTarget: {fileID: 0}
   _speedMove: 1
   _distanceToTarget: 0.1
+--- !u!95 &686576518
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686576511}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &740791256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,6 +1856,7 @@ GameObject:
   m_Component:
   - component: {fileID: 870044192}
   - component: {fileID: 870044194}
+  - component: {fileID: 870044195}
   m_Layer: 0
   m_Name: Scene1Objects
   m_TagString: Untagged
@@ -1881,6 +1904,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!320 &870044195
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870044191}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: c969c037024c46d4182431bf8e70bca0, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &935657704
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,6 @@ MonoBehaviour:
   shader: {fileID: 4800000, guid: 55d70ca4ea7504a38b66170bbe587b2f, type: 3}
   renderPassEvent: 500
   ignorePostProcessingOption: 0
-  clearXRColorBuffer: 0
   cameraLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -41,7 +40,6 @@ MonoBehaviour:
   m_RendererFeatureMap: 190a7320a02cb672c73e4d85d8f353ed
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
-  xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   shaders:
     blitPS: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}
     copyDepthPS: {fileID: 4800000, guid: d6dae50ee9e1bfa4db75f19f99355220, type: 3}

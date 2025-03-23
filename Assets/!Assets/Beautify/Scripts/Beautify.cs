@@ -3525,14 +3525,7 @@ namespace BeautifyEffect {
             CheckColorSpace();
             currentCamera = GetComponent<Camera>();
 
-            VRCheck.Init();
-            if (VRCheck.isVrRunning) {
-                rtDescBase = UnityEngine.XR.XRSettings.eyeTextureDesc;
-                rtDescBase.msaaSamples = Mathf.Max(1, rtDescBase.msaaSamples);
-            }
-            else {
-                rtDescBase = GetDefaultRenderTextureDescriptor();
-            }
+            rtDescBase = GetDefaultRenderTextureDescriptor();
             rtOutlineColorFormat = SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.R8) ? RenderTextureFormat.R8 : rtDescBase.colorFormat;
             if (_syncWithProfile && _profile != null) {
                 _profile.Load(this);

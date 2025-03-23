@@ -24,39 +24,7 @@ namespace BeautifyEffect {
                 return false;
             }
 
-#else
-
-        static readonly List<XRDisplaySubsystemDescriptor> displaysDescs = new List<XRDisplaySubsystemDescriptor>();
-        static readonly List<XRDisplaySubsystem> displays = new List<XRDisplaySubsystem>();
-
-        static bool IsActive() {
-            displaysDescs.Clear();
-            SubsystemManager.GetSubsystemDescriptors(displaysDescs);
-
-            // If there are registered display descriptors that is a good indication that VR is most likely "enabled"
-            return displaysDescs.Count > 0;
-        }
-
-        static bool IsVrRunning() {
-            bool vrIsRunning = false;
-            displays.Clear();
-            SubsystemManager.GetInstances(displays);
-            foreach (var displaySubsystem in displays) {
-                if (displaySubsystem.running) {
-                    vrIsRunning = true;
-                    break;
-                }
-            }
-
-            return vrIsRunning;
-        }
-
 #endif
-
-        public static void Init() {
-            isActive = IsActive();
-            isVrRunning = IsVrRunning();
-        }
 
     }
 }
