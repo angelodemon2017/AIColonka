@@ -1,7 +1,8 @@
+using DG.Tweening;
 using UnityEngine;
 using Zenject;
 
-public class UIFSM : MonoBehaviour, IUIFSM
+public class UIFSM : MonoBehaviour
 {
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private MAINWindow _startWindow;
@@ -40,7 +41,7 @@ public class UIFSM : MonoBehaviour, IUIFSM
 
         if (_startWindow)
         {
-            OpenWindow(_startWindow);
+            SetWindowSignal(new SetWindowSignal(_startWindow));
         }
     }
 
@@ -61,11 +62,17 @@ public class UIFSM : MonoBehaviour, IUIFSM
 
     private void SetWindowSignal(SetWindowSignal setWindowSignal)
     {
-        OpenWindow(setWindowSignal.SelectWindow);
+        if (setWindowSignal.SelectWindow.NeedTransition)
+        {
+            _signalBus.Fire(new TransitionSignal());
+        }
+        DOTween.To(() => 1f, x => TransitionWindow(x), 0f, 0.5f)
+        .OnComplete(() => OpenWindow(setWindowSignal.SelectWindow));
     }
 
-    public MAINWindow OpenWindow(MAINWindow windowFSM)
+    private void OpenWindow(MAINWindow windowFSM)
     {
+        _canvasGroup.interactable = false;
         if (_currentWindow != null)
         {
             _currentWindow.ExitWindow();
@@ -76,14 +83,24 @@ public class UIFSM : MonoBehaviour, IUIFSM
         _currentWindow = _container.InstantiatePrefabForComponent<MAINWindow>(windowFSM, _parent);
         StartWindow();
 
-        return _currentWindow as MAINWindow;
+        _canvasGroup.interactable = true;
+    }
+
+    private void TransitionWindow(float progress)
+    {
+        _canvasGroup.alpha = progress;
     }
 
     private void StartWindow()
     {
         if (_currentWindow != null)
         {
-            _currentWindow.StartWindow(); 
+            _currentWindow.StartWindow();
+            DOTween.To(() => 0f, x => TransitionWindow(x), 1f, 0.5f);
+            if (_currentWindow.NeedTransition)
+            {
+                _signalBus.Fire(new TransitionSignal(true));
+            }
         }
     }
 

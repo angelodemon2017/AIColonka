@@ -6,6 +6,7 @@ public class PlayerSpawn : MonoBehaviour
 {
     [SerializeField] private PlayerFSM _playerFSM;
     [SerializeField] private List<ConditionPoint> _points;
+    [SerializeField] private List<ConditionPoint> _pointsByCurrentTask;
     [SerializeField] private WindowGameplay _windowGameplay;
 
     private SignalBus _signalBus;
@@ -49,6 +50,14 @@ public class PlayerSpawn : MonoBehaviour
         foreach (var cp in _points)
         {
             if (!_dataHandler.WasDone(cp.Task))
+            {
+                return cp.Point;
+            }
+        }
+
+        foreach (var cp in _pointsByCurrentTask)
+        {
+            if (_dataHandler.IsCurrentTask(cp.Task))
             {
                 return cp.Point;
             }

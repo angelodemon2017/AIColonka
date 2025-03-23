@@ -1,7 +1,7 @@
-using UnityEngine;
-
 public interface IWindowFSM
 {
+    bool NeedTransition { get; }
+
     void StartWindow();
 
     void Run();

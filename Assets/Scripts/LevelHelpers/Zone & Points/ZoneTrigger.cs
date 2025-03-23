@@ -14,14 +14,7 @@ public class ZoneTrigger : MonoBehaviour
     {
         if(other.name == Dicts.SpecNames.Player)
         {
-            if (_transitionSignal)
-            {
-                _signalBus.Fire(new TransitionSignal(RunScript));
-            }
-            else
-            {
-                RunScript();
-            }
+            RunScript();
         }
     }
 

@@ -88,4 +88,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452f70e05efe11c46978e4a6c593837a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _needTransition: 1
   _pareEventWindows: []

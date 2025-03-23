@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e499c0c7037d67c45adaaad01f667919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _needTransition: 1
   _pareEventWindows: []
   _charInterval: 0.02
   _dialogVariantPrefab: {fileID: 1731453951378720923, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}

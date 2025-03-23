@@ -171,8 +171,7 @@ public class PanelDialogWithPeople : MAINWindow
         }
         else
         {
-            _signalBus.Fire(new TransitionSignal(() =>
-                _signalBus.Fire(new SetWindowSignal(_defaultNextWindow))));
+            _signalBus.Fire(new SetWindowSignal(_defaultNextWindow));
         }
     }
 }

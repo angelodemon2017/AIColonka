@@ -9,7 +9,6 @@ public class RoomMapping : MonoBehaviour
     [SerializeField] private List<DialogRoomMap> _dialogRoomMaps;
     [SerializeField] private DialogRoomMap _defaultRoomConfig;
     [SerializeField] private PanelDialogWithPeople _panelDialogWithPeoplePrefab;
-    [SerializeField] private UIFSM _uiFSM;
 
     private DataHandler _dataHandler;
     private SignalBus _signalBus;

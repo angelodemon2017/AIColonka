@@ -4,12 +4,15 @@ using Zenject;
 
 public class MAINWindow : MonoBehaviour, IWindowFSM
 {
+    [SerializeField] private bool _needTransition;
     [SerializeField] private List<PareEventWindow> _pareEventWindows = new();
 
     private Dictionary<KeyCode, MAINWindow> _tempKeyCodeMapWindows = new();
 
     [Inject]
     private SignalBus _signalBus;
+
+    public bool NeedTransition => _needTransition;
 
     private void InitWindows()
     {

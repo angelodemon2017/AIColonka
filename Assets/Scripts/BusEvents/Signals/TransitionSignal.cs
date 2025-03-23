@@ -3,10 +3,10 @@
 [Serializable]
 public class TransitionSignal
 {
-    public Action SomeAction;
+    public bool IsInverse;
 
-    public TransitionSignal(Action someAction)
+    public TransitionSignal(bool isInverse = false)
     {
-        SomeAction = someAction;
+        IsInverse = isInverse;
     }
 }
