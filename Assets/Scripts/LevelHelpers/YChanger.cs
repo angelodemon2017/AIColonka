@@ -11,13 +11,13 @@ public class YChanger : MonoBehaviour
 
     private void FixedUpdate()
     {
-        changer = transform.position;
+        changer = transform.localPosition;
         _progress += Time.fixedDeltaTime * _speedChanging;
         if (_progress > 1f)
         {
             _progress -= 1f;
         }
         changer.y = _curveChanging.Evaluate(_progress) * _multAmplitude;
-        transform.position = changer;
+        transform.localPosition = changer;
     }
 }

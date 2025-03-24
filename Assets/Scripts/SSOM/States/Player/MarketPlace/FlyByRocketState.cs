@@ -3,31 +3,24 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "FSM/PlayerState/Levels/FlyByRocketState", order = 1)]
 public class FlyByRocketState : PlayerState
 {
-    [SerializeField] private float _speed;
-
-    private Transform _leftBorder;
-    private Transform _rightBorder;
-    private Transform _chasingPoint;
-
-    private float _positionPoint;
+    private PositionLerper _moving;
+    private PositionLerper _looker;
 
     protected override void Init()
     {
         base.Init();
     }
 
-    internal void CustomInit(Transform leftBorder, Transform rightBorder, Transform chasingPoint)
+    internal void CustomInit(PositionLerper moving, PositionLerper looker)
     {
-        _leftBorder = leftBorder;
-        _rightBorder = rightBorder;
-        _chasingPoint = chasingPoint;
+        _moving = moving;
+        _looker = looker;
     }
 
     internal override void CallAxisHorVer(float hor, float ver)
     {
-        _positionPoint += hor * _speed * Time.fixedDeltaTime;
-        _positionPoint = Mathf.Clamp(_positionPoint, 0f, 1f);
-        _chasingPoint.position = Vector3.Lerp(_leftBorder.position, _rightBorder.position, _positionPoint);
+        _moving.Move(hor);
+//        _looker.Move(hor);
     }
 
     public override bool CheckRules(IStatesCharacter character)

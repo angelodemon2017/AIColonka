@@ -13,9 +13,8 @@ public class WalletChaseController : MonoBehaviour
     [SerializeField] private Camera _cameraSecondPhase;
     [SerializeField] private SignalAgregator _signalSecondPhase;
 
-    [SerializeField] private Transform _leftBorder;
-    [SerializeField] private Transform _rightBorder;
-    [SerializeField] private Transform _chasingPoint;
+    [SerializeField] private PositionLerper _positionLerper;
+    [SerializeField] private PositionLerper _lookLerper;
 
     private int counterDrons = 0;
     private bool _chasingOn = false;
@@ -65,7 +64,7 @@ public class WalletChaseController : MonoBehaviour
         _followerByPointsPhase2.gameObject.SetActive(true);
 
         var newInst = Instantiate(_stateRocketFly);
-        newInst.CustomInit(_leftBorder, _rightBorder, _chasingPoint);
+        newInst.CustomInit(_positionLerper, _lookLerper);
         _signalBus.Fire(new SetPlayerStateSignal(newInst, true));
 
         _signalBus.Fire(new TransitionSignal(true, () =>

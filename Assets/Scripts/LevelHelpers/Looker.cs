@@ -5,6 +5,7 @@ public class Looker : MonoBehaviour
 {
     [SerializeField] private Transform _target;
     [SerializeField] private bool AtCamera;
+    [SerializeField] private float _speedRotate = 200;
 
     private SignalBus _signalBus;
     private CameraController _cameraController;
@@ -49,7 +50,11 @@ public class Looker : MonoBehaviour
     {
         if (_target)
         {
-            transform.LookAt(_target);
+            Vector3 directionToTarget = _target.position - transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _speedRotate * Time.fixedDeltaTime);
+
+//            transform.LookAt(_target);
         }
     }
 
