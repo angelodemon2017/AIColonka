@@ -38,10 +38,8 @@ public class PlayerState : State
     private Vector3 desiredMoveDirection;
     protected virtual void MovePlayer(float hor, float ver, float speed, float rotSpeed)
     {
-        Vector3 forward = Camera.main.transform.forward;
-//            _cameraTransform.forward;
-        Vector3 right = Camera.main.transform.right;
-        //_cameraTransform.right;
+        Vector3 forward = _cameraController.GetTransform.forward;
+        Vector3 right = _cameraController.GetTransform.right;
 
         forward.y = 0f;
         right.y = 0f;

@@ -61,10 +61,8 @@ public class WhoIs : MonoBehaviour
             {
                 if (colRes == EnumCollisionResult.Enemy && whoIs == EnumWhoIs.Player)
                 {
-                    var asd = gameObject.name;
                     _gameplayHandler.Hit++;
                 }
-//                _collider.enabled = false;
                 _event?.Invoke(isWho);
             }
         }
@@ -72,7 +70,6 @@ public class WhoIs : MonoBehaviour
         {
             if (_cashEvents.TryGetValue(EnumCollisionResult.Other, out UnityEvent<WhoIs> _event))
             {
-//                _collider.enabled = false;
                 _event?.Invoke(this);
             }
         }
@@ -96,7 +93,6 @@ public class WhoIs : MonoBehaviour
     private void Death()
     {
         _signalBus.Fire(new WhoIsDeathSignal(this));
-//        OnDeath?.Invoke();
     }
 }
 

@@ -30,11 +30,13 @@ public class TaskCondition : MonoBehaviour
     private void Init()
     {
         _signalBus.Subscribe<TaskUpdatedSignal>(CheckTask);
+
+        CheckTask();
     }
 
     private void Awake()
     {
-        CheckTask();
+//        CheckTask();
     }
 
     private void CheckTask()

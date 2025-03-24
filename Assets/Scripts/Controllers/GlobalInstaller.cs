@@ -58,6 +58,7 @@ public class GlobalInstaller : MonoInstaller
         Container.DeclareSignal<SetTaskSignal>();
         Container.DeclareSignal<SetWindowSignal>();
         Container.DeclareSignal<StartBackTalkSignal>();
+        Container.DeclareSignal<SwitchCameraSignal>();
         Container.DeclareSignal<TaskUpdatedSignal>();
         Container.DeclareSignal<TransitionSignal>();
         Container.DeclareSignal<WhoInTargetSignal>();

@@ -109,7 +109,11 @@ private void OnDisable()
 
     private void TransitionForAct(TransitionSignal transSign)
     {
-        DOTween.To(() => 0f, x => SceneTransition(transSign.IsInverse ? 0.5f - x : x), 0.5f, 0.5f);
+        DOTween.To(() => 0f, x => SceneTransition(transSign.IsInverse ? 0.5f - x : x), 0.5f, 0.75f)
+            .OnComplete(() => 
+            {
+                transSign.ActionByEnd?.Invoke();
+            });
     }
 
     private void AnimProcess(Action<float> act, bool isInverse = false, Action actByEnd = null)

@@ -1,9 +1,15 @@
 using UnityEngine;
+using Zenject;
 
 public class CustomCameraSwitcher : MonoBehaviour
 {
-    private Camera _mainCamera;
+    [SerializeField] private Camera _mainCamera;
     private Camera _secondCamera;
+
+    [Inject]
+    private SignalBus _signalBus;
+
+    internal Transform GetTransform => _mainCamera.enabled ? _mainCamera.transform : _secondCamera.transform;
 
     private void Awake()
     {
@@ -12,9 +18,14 @@ public class CustomCameraSwitcher : MonoBehaviour
 
     public void SwitchCamera(Camera secondCamera)
     {
+        if (_secondCamera)
+        {
+            _secondCamera.enabled = false;
+        }
         _secondCamera = secondCamera;
         _secondCamera.enabled = true;
         _mainCamera.enabled = false;
+        _signalBus.Fire(new SwitchCameraSignal(_secondCamera));
     }
 
     public void ResetCamera()
@@ -26,5 +37,6 @@ public class CustomCameraSwitcher : MonoBehaviour
         }
 
         _mainCamera.enabled = true;
+        _signalBus.Fire(new SwitchCameraSignal(_mainCamera));
     }
 }

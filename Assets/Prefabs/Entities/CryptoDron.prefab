@@ -192,8 +192,8 @@ MonoBehaviour:
   _eventByDeath:
     m_PersistentCalls:
       m_Calls: []
-  MaxHP: 100
-  CurrentHP: 100
+  MaxHP: 20
+  CurrentHP: 20
   _regenHP: 0
   _immuAfterDamage: 0
   _deathSignal:
@@ -327,7 +327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d50a5dcd1f32f4584b5a07a6522905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSettings: 0
   _target: {fileID: 0}
   AtCamera: 1
 --- !u!1001 &5085366496004378054

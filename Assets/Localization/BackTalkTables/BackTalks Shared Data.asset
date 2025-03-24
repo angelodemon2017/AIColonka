@@ -99,6 +99,14 @@ MonoBehaviour:
     m_Key: 3.ENTER_LICENSE
     m_Metadata:
       m_Items: []
+  - m_Id: 10920845114335232
+    m_Key: 9.ENTER_WALLET
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10973463677231104
+    m_Key: 9.SECOND_PHASE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

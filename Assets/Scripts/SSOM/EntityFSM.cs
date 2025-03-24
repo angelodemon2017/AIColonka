@@ -25,6 +25,8 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
     {
         _diContainer = diContainer;
         _gameplayHandler = gameplayHandler;
+
+        SetState(_startState);
     }
 
     private void Awake()
@@ -33,8 +35,6 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
         _hpComponent.OnChangeHP();
 
         _entityModule?.Init();
-
-        SetState(_startState);
     }
 
     private void Start()

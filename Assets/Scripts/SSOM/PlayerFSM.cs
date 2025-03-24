@@ -64,6 +64,8 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
     private void Init()
     {
         _signalBus.Subscribe<SetPlayerStateSignal>(SetPlayerStateSignal);
+
+        SetState(_startState);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -82,7 +84,6 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
         {
             platform = null;
             UpdateParent();
-            _cameraController.ResetCamera();
         }
     }
 
@@ -102,8 +103,6 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
         var chap = _dataHandler.CurrentData.chapter;
         _hpComponent.OverrideStats(chap.MaxHP, chap.HPRegenBySecond);
-
-        SetState(_startState);
     }
 
     internal void CallTryRelease()
@@ -180,7 +179,9 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
     private void SetPlayerStateSignal(SetPlayerStateSignal signal)
     {
-        var nextState = Instantiate(signal._playerState);
+        var nextState = signal.IsWasInstanting ?
+            signal._playerState :
+            Instantiate(signal._playerState);
 
         SetPreparedState(nextState);
     }
@@ -195,6 +196,7 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
     private void OnDestroy()
     {
+        _signalBus.Unsubscribe<SetPlayerStateSignal>(SetPlayerStateSignal);
         _animationAdapter.EndAnimation -= EndCurrentAnimate;
     }
 

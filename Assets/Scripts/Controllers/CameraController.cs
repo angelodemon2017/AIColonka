@@ -7,7 +7,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] private LayerMask _layerMaskGroundAndWalls;
     [SerializeField] private CustomCameraSwitcher _customCameraSwitcher;
 
-    private PostProcessHandler _postProcessHandler;
     private Transform _pivot;
     private Transform _pLook;
     private RaycastHit hit;
@@ -16,12 +15,7 @@ public class CameraController : MonoBehaviour
     internal Vector3 PointOfLookGround => GetPointOfLook();
     public Vector3 Direct => _directPoint.position - transform.position;
     internal bool IsLookingDown => transform.forward.y < 0f;
-    internal PostProcessHandler PostProcessHandler => _postProcessHandler;
-
-    private void Awake()
-    {
-        _postProcessHandler = GetComponent<PostProcessHandler>();
-    }
+    internal Transform GetTransform => _customCameraSwitcher.GetTransform;
 
     private Vector3 GetPointOfLook()
     {
@@ -69,6 +63,11 @@ public class CameraController : MonoBehaviour
                 ReturnParent();
             }
         }
+    }
+
+    internal void SwitchCamera(Camera camera)
+    {
+        _customCameraSwitcher.SwitchCamera(camera);
     }
 
     private void LerpToPivot(float lerpPos)

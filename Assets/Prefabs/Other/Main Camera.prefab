@@ -205,7 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d50a5dcd1f32f4584b5a07a6522905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSettings: 0
   _target: {fileID: 0}
   AtCamera: 0
 --- !u!114 &4563702657874310807
@@ -251,6 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5233d1c09361df4b8764563bae8b5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 8439035645637370723}
 --- !u!114 &8332403181398091625
 MonoBehaviour:
   m_ObjectHideFlags: 0

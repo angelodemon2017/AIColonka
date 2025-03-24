@@ -1,41 +1,37 @@
-using System;
-using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using Zenject;
 
 public class Looker : MonoBehaviour
 {
-    [SerializeField] private bool IsSettings;
     [SerializeField] private Transform _target;
     [SerializeField] private bool AtCamera;
 
-    [Inject]
+    private SignalBus _signalBus;
     private CameraController _cameraController;
 
-    private Looker()
+    [Inject]
+    private void Construct(
+        CameraController cameraController,
+        SignalBus signalBus)
     {
-        if (IsSettings)
-        {
-            EditorApplication.update += Look;
-        }
+        _signalBus = signalBus;
+        _cameraController = cameraController;
+
+        Init();
     }
 
-    private void Awake()
+    private void Init()
     {
         if (AtCamera)
         {
-            StartCoroutine(InitCamera());
+            _signalBus.Subscribe<SwitchCameraSignal>(SwitchCamera);
+            SetTarget(_cameraController.GetTransform);
         }
     }
 
-    private IEnumerator InitCamera()
+    private void SwitchCamera(SwitchCameraSignal switchCameraSignal)
     {
-        while (!_cameraController)
-        {
-            yield return null;
-        }
-        _target = _cameraController.transform;
+        SetTarget(switchCameraSignal.NewCamera.transform);
     }
 
     private void FixedUpdate()
@@ -51,13 +47,15 @@ public class Looker : MonoBehaviour
     [ContextMenu("LookUpdate")]
     private void Look()
     {
-        try
+        if (_target)
         {
-            if (_target)
-            {
-                transform.LookAt(_target);
-            }
+            transform.LookAt(_target);
         }
-        catch (Exception) { }
+    }
+
+    private void OnDisable()
+    {
+        if (AtCamera)
+            _signalBus.Unsubscribe<SwitchCameraSignal>(SwitchCamera);
     }
 }

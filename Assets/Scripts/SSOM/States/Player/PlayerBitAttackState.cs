@@ -29,7 +29,7 @@ public class PlayerBitAttackState : PlayerState
 
         _fallingController.SwitchGravity();
 
-        Vector3 forward = Camera.main.transform.forward;
+        Vector3 forward = _cameraController.GetTransform.forward;
         forward.y = 0f;
         _playerFSM.AnimationAdapter.transform.rotation = Quaternion.LookRotation(forward);
 
@@ -48,7 +48,7 @@ public class PlayerBitAttackState : PlayerState
             _playerFSM.GetPoints.EnemyIsTarget ?
                 _playerFSM.GetPoints.TargetEnemy.transform :
                 null,
-            Camera.main.transform.rotation);
+            _cameraController.GetTransform.rotation);
     }
 
     internal override void CallPlayerAction(EnumPlayerControlActions playerAction)

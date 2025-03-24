@@ -99,6 +99,14 @@ MonoBehaviour:
     m_Localized: It feels like I left here yesterday
     m_Metadata:
       m_Items: []
+  - m_Id: 10920845114335232
+    m_Localized: Checking documents
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10973463677231104
+    m_Localized: Hold on Astra, it's almost like surfing... I guess...
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
