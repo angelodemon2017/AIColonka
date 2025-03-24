@@ -3,7 +3,6 @@ using Zenject;
 
 public class EntityFSM : MonoBehaviour, IStatesCharacter
 {
-    [SerializeField] private EnumAirGroundState _airGroundState;
     [SerializeField] private WhoIs _whoIs;
     [SerializeField] private PanelHP _UIpanelHP;
     [SerializeField] private HPComponent _hpComponent;
@@ -16,7 +15,6 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
 
     internal WhoIs whoIs => _whoIs;
     public EntityModule GetModule => _entityModule;
-    internal EnumAirGroundState airGroundState => _airGroundState;
 
     public DiContainer Container => _diContainer;
 
@@ -57,11 +55,6 @@ public class EntityFSM : MonoBehaviour, IStatesCharacter
     public void SetState(State state)
     {
         SetState(state, false);
-    }
-
-    internal void SetAGS(EnumAirGroundState airGroundState)
-    {
-        _airGroundState = airGroundState;
     }
 
     public void SetState(State state, bool ignoreEqual = false)

@@ -5,6 +5,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Transform _directPoint;
     [SerializeField] private Looker _looker;
     [SerializeField] private LayerMask _layerMaskGroundAndWalls;
+    [SerializeField] private CustomCameraSwitcher _customCameraSwitcher;
 
     private PostProcessHandler _postProcessHandler;
     private Transform _pivot;
@@ -81,5 +82,10 @@ public class CameraController : MonoBehaviour
         transform.position = _pivot.position;
         transform.SetParent(_pivot);
         _looker.SetTarget(_pLook);
+    }
+
+    internal void ResetCamera()
+    {
+        _customCameraSwitcher.ResetCamera();
     }
 }

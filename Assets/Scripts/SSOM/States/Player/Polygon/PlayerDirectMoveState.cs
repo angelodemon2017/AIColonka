@@ -12,13 +12,13 @@ public class PlayerDirectMoveState : PlayerState
     protected override void Init()
     {
         base.Init();
-        playerFSM.AnimationAdapter.transform.rotation = Quaternion.LookRotation(_directSpeed);
+        _playerFSM.AnimationAdapter.transform.rotation = Quaternion.LookRotation(_directSpeed);
     }
 
     internal override void FixedRun()
     {
         base.FixedRun();
-        _characterController.Move((_directSpeed + _sideSpeed) * Time.fixedDeltaTime);
+        _playerFSM.MovePerson((_directSpeed + _sideSpeed) * Time.fixedDeltaTime);
         _sideSpeed = Vector3.zero;
     }
 

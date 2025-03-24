@@ -8,7 +8,7 @@ public class PlayerWVAttackState : PlayerState, IWVState
 
     private FallingController _fallingController;
 
-    internal bool IsAir => !playerFSM.GetFallingController.IsGrounded;
+    internal bool IsAir => !_playerFSM.GetFallingController.IsGrounded;
 
     public int GetCountLaunched => 1;
     public float GetIntervalLaunched => 0.1f;
@@ -19,7 +19,7 @@ public class PlayerWVAttackState : PlayerState, IWVState
     {
         base.Init();
 
-        _fallingController = playerFSM.GetFallingController;
+        _fallingController = _playerFSM.GetFallingController;
 
         if (IsAir && !_fallingController.AvailableActionInAir)
         {
@@ -27,15 +27,15 @@ public class PlayerWVAttackState : PlayerState, IWVState
             return;
         }
 
-        if (playerFSM.WeaponVisualizator)
+        if (_playerFSM.WeaponVisualizator)
         {
             _fallingController.SwitchGravity();
 
-            playerFSM.WeaponVisualizator.CallAttack(this);
+            _playerFSM.WeaponVisualizator.CallAttack(this);
 
             Vector3 forward = Camera.main.transform.forward;
             forward.y = 0f;
-            playerFSM.AnimationAdapter.transform.rotation = Quaternion.LookRotation(forward.normalized);
+            _playerFSM.AnimationAdapter.transform.rotation = Quaternion.LookRotation(forward.normalized);
         }
         else
         {

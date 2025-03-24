@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25602003ca68a0846b20db006cc8785e, type: 3}
   m_Name: Preparing Attack State
   m_EditorClassIdentifier: 
-  AvailableStates:
-  - {fileID: 11400000, guid: 5d39a9aa7088b25489b3d7f7295d7a57, type: 2}
-  - {fileID: 11400000, guid: 30293feadd5546b459b5e31c6ff2a824, type: 2}
+  AvailableStates: []
   Animation: 0
   DistanceForTrigger: 1
   TimeForPreparing: 0.3

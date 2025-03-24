@@ -13,7 +13,7 @@ public class PlayerMoveState : PlayerState
     {
         base.Init();
         IsFinished = false;
-        _fallingController = playerFSM.GetFallingController;
+        _fallingController = _playerFSM.GetFallingController;
     }
 
     internal override void CallAxisHorVer(float hor, float ver)

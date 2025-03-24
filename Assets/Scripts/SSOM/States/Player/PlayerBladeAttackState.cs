@@ -15,11 +15,10 @@ public class PlayerBladeAttackState : PlayerState
     {
         base.Init();
 
-        var az = _diContainer.InstantiatePrefabForComponent<AttackZone>(_attackZone);
-        az.SetDamage(_damage);
+        var az = _diContainer.InstantiatePrefabForComponent<AttackZone>(_attackZone, _playerFSM.transform);
+        az.transform.position = _playerFSM.GetPoints.PointAttackZone1.position; az.SetDamage(_damage);
         az.SetAttackZone(_size);
         az.Init(EnumWhoIs.Player);
-        az.transform.position = playerFSM.GetPoints.PointAttackZone1.position;
     }
 
     internal override void CallPlayerAction(EnumPlayerControlActions playerAction)

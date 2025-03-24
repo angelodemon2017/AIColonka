@@ -148,6 +148,7 @@ MonoBehaviour:
   _layerMaskGroundAndWalls:
     serializedVersion: 2
     m_Bits: 0
+  _customCameraSwitcher: {fileID: 855977862710421949}
 --- !u!114 &2403817116098443267
 MonoBehaviour:
   m_ObjectHideFlags: 0

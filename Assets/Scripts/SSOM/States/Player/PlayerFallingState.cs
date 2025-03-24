@@ -15,7 +15,7 @@ public class PlayerFallingState : PlayerState
     {
         base.Run();
 
-        if (playerFSM.GetFallingController.IsGrounded)
+        if (_playerFSM.GetFallingController.IsGrounded)
         {
             IsFinished = true;
         }

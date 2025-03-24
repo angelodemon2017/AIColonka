@@ -11,6 +11,7 @@ public class FastAttackOrbit : BitWeapon
     [SerializeField] private float _precentAccelerate = 50f;
     [SerializeField] private float _delayStepAccelrate = 0.2f;
     [SerializeField] private float _timeLifeAfterEnd = 1f;
+    [SerializeField] private bool _lockBySource;
 
     private Vector3 _swiftPos = Vector3.zero;
 
@@ -21,6 +22,10 @@ public class FastAttackOrbit : BitWeapon
     {
         base.StartAttack();
 
+        if (_lockBySource)
+        {
+            transform.SetParent(Points.PointOfCenterOrbit);
+        }
         transform.position = spawnPoint.position;
 
         StartCoroutine(AddBit(BitLevel - 1));

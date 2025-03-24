@@ -22,4 +22,4 @@ MonoBehaviour:
   _damage:
     DamageType: 0
     ValueDamage: 8
-  _size: 0.8
+  _size: 3.2

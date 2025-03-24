@@ -79,6 +79,8 @@ MonoBehaviour:
     DamageType: 1
     ValueDamage: 1
   WhoIs: {fileID: 7739943054673675567}
+  hitPrefab: {fileID: 0}
+  _hitSize: 1
   _timeForEndAttack: 1
   _weaponPrefab: {fileID: 943678645595025540, guid: e584d3100497238438372d9e5e2d8492, type: 3}
   _bitOrbit: {fileID: 8938010657625707521}
@@ -88,6 +90,7 @@ MonoBehaviour:
   _precentAccelerate: 50
   _delayStepAccelrate: 0.2
   _timeLifeAfterEnd: 1
+  _lockBySource: 1
 --- !u!114 &7739943054673675567
 MonoBehaviour:
   m_ObjectHideFlags: 0

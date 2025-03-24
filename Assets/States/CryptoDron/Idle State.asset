@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 820631d5b1e666c4e9e53b3287960e3d, type: 3}
   m_Name: Idle State
   m_EditorClassIdentifier: 
-  AvailableStates:
-  - {fileID: 11400000, guid: 57275877bfa85a745b70f4acf564fbf3, type: 2}
-  - {fileID: 11400000, guid: 8a838799880287e42ac61bc12219fa5f, type: 2}
+  AvailableStates: []
   Animation: 0
   _timeIdle: 2

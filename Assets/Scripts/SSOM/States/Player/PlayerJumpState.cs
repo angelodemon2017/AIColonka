@@ -12,9 +12,9 @@ public class PlayerJumpState : PlayerState
     protected override void Init()
     {
         base.Init();
-        if (playerFSM.GetFallingController.IsGrounded)
+        if (_playerFSM.GetFallingController.IsGrounded)
         {
-            playerFSM.GetFallingController.SetYVelocity(Mathf.Sqrt(jumpHeight * -2f * gravity));
+            _playerFSM.GetFallingController.SetYVelocity(Mathf.Sqrt(jumpHeight * -2f * gravity));
         }
         else
         {
@@ -24,7 +24,7 @@ public class PlayerJumpState : PlayerState
 
     internal override void FixedRun()
     {
-        if (playerFSM.GetFallingController.IsGrounded)
+        if (_playerFSM.GetFallingController.IsGrounded)
         {
 //            IsFinished = true;
         }/**/

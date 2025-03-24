@@ -18,11 +18,12 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
     [SerializeField] private Transform platform;
 
+    private Vector3 _lastPositionPlatform;
+    private Vector3 _platformVelocity;
     private Transform _transform;
     
     #region properties
     public DiContainer Container => _diContainer;
-    internal CharacterController CharacterController => _characterController;
     internal WeaponVisualizator WeaponVisualizator => _weaponVisualizator;
     internal AnimationAdapter AnimationAdapter => _animationAdapter;
     public Transform GetTransform() => _transform;
@@ -70,6 +71,7 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
         if (other.tag == "Platform")
         {
             platform = other.transform;
+            _lastPositionPlatform = platform.position;
             UpdateParent();
         }
     }
@@ -80,6 +82,7 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
         {
             platform = null;
             UpdateParent();
+            _cameraController.ResetCamera();
         }
     }
 
@@ -115,8 +118,22 @@ public class PlayerFSM : MonoBehaviour, IStatesCharacter
 
     private void FixedUpdate()
     {
+        if (platform)
+        {
+            _platformVelocity = _lastPositionPlatform - platform.position;
+            _lastPositionPlatform = platform.position;
+        }
         _currentState.FixedRun();
         _points.FixUpd();
+    }
+
+    internal void MovePerson(Vector3 move)
+    {
+        if (platform)
+        {
+            move -= _platformVelocity;
+        }
+        _characterController.Move(move);
     }
 
     private void EndCurrentAnimate()

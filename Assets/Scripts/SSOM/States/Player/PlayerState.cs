@@ -8,9 +8,8 @@ public class PlayerState : State
     protected Dictionary<EnumPlayerControlActions, PlayerState> _availableControlStates = new();
 
     protected Transform _avatarTransform;
-    protected PlayerFSM playerFSM;
+    protected PlayerFSM _playerFSM;
     protected Transform _cameraTransform;
-    protected CharacterController _characterController;
 
     [Inject]
     protected CameraController _cameraController;
@@ -21,11 +20,9 @@ public class PlayerState : State
     {
         AvailableControlStates.ForEach(acs =>
         _availableControlStates.Add(acs.playerAction, acs.playerState));
-        playerFSM = Character as PlayerFSM;
-        _characterController = playerFSM.CharacterController;
-        _avatarTransform = playerFSM.AnimationAdapter.transform;
+        _playerFSM = Character as PlayerFSM;
+        _avatarTransform = _playerFSM.AnimationAdapter.transform;
         _cameraTransform = _cameraController.transform;
-//            CameraController.Instance.transform;
     }
 
     internal virtual void CallPlayerAction(EnumPlayerControlActions playerAction)
@@ -41,8 +38,10 @@ public class PlayerState : State
     private Vector3 desiredMoveDirection;
     protected virtual void MovePlayer(float hor, float ver, float speed, float rotSpeed)
     {
-        Vector3 forward = _cameraTransform.forward;
-        Vector3 right = _cameraTransform.right;
+        Vector3 forward = Camera.main.transform.forward;
+//            _cameraTransform.forward;
+        Vector3 right = Camera.main.transform.right;
+        //_cameraTransform.right;
 
         forward.y = 0f;
         right.y = 0f;
@@ -51,7 +50,8 @@ public class PlayerState : State
         right.Normalize();
 
         desiredMoveDirection = (forward * ver + right * hor).normalized;
-        _characterController.Move(desiredMoveDirection * speed * Time.fixedDeltaTime);
+        var totalMove = desiredMoveDirection * speed * Time.fixedDeltaTime;
+        _playerFSM.MovePerson(totalMove);
 
         if (desiredMoveDirection != Vector3.zero)
         {
@@ -77,7 +77,7 @@ public class PlayerState : State
     {
         base.Run();
 
-        playerFSM.AnimationAdapter.PlayAnimationEvent(GetAnimation);
+        _playerFSM.AnimationAdapter.PlayAnimationEvent(GetAnimation);
     }
 
     internal override void FixedRun()

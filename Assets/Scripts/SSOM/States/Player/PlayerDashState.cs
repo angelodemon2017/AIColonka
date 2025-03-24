@@ -23,7 +23,7 @@ public class PlayerDashState : PlayerState
     {
         base.Init();
 
-        _fallingController = playerFSM.GetFallingController;
+        _fallingController = _playerFSM.GetFallingController;
         _fallingController.SwitchGravity();
         _cameraController.UnParrent(_cameraTime);
         _transform = Character.GetTransform();
@@ -31,7 +31,7 @@ public class PlayerDashState : PlayerState
 
         if (_customFinish != Vector3.zero)
         {
-            _characterController.Move(_customFinish - _transform.position);
+            _playerFSM.MovePerson(_customFinish - _transform.position);
             ApplyDashAndEffect();
         }
     }
@@ -59,7 +59,7 @@ public class PlayerDashState : PlayerState
         right.Normalize();
 
         var desiredMoveDirection = (forward * ver + right * hor).normalized;
-        _characterController.Move(desiredMoveDirection * _distance);
+        _playerFSM.MovePerson(desiredMoveDirection * _distance);
 
         ApplyDashAndEffect();
     }

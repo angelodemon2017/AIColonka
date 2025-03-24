@@ -13,13 +13,13 @@ public class PlayerBitAttackState : PlayerState
     private float _timeOut = 0f;
 
     private bool _nextAttackIsBit => _lastAction == EnumPlayerControlActions.BitAttack;
-    internal bool IsAir => !playerFSM.GetFallingController.IsGrounded;
+    internal bool IsAir => !_playerFSM.GetFallingController.IsGrounded;
 
     protected override void Init()
     {
         base.Init();
 
-        _fallingController = playerFSM.GetFallingController;
+        _fallingController = _playerFSM.GetFallingController;
 
         if (IsAir && !_fallingController.AvailableActionInAir)
         {
@@ -31,9 +31,9 @@ public class PlayerBitAttackState : PlayerState
 
         Vector3 forward = Camera.main.transform.forward;
         forward.y = 0f;
-        playerFSM.AnimationAdapter.transform.rotation = Quaternion.LookRotation(forward);
+        _playerFSM.AnimationAdapter.transform.rotation = Quaternion.LookRotation(forward);
 
-        playerFSM.BitsController.SetBits(false);
+        _playerFSM.BitsController.SetBits(false);
 
         InitBitWeapon();
     }
@@ -42,12 +42,11 @@ public class PlayerBitAttackState : PlayerState
     {
         var w = _diContainer.InstantiatePrefabForComponent<BitWeapon>(_bitWeapons.GetBorderElement(_gameplayHandler.Combo));
 
-
-        w.SetPBAS(this, playerFSM.GetPoints);
+        w.SetPBAS(this, _playerFSM.GetPoints);
         w.Init(EnumWhoIs.Player,
-            playerFSM.GetPoints.PointOfLookCamera,
-            playerFSM.GetPoints.EnemyIsTarget ?
-                playerFSM.GetPoints.TargetEnemy.transform :
+            _playerFSM.GetPoints.PointOfLookCamera,
+            _playerFSM.GetPoints.EnemyIsTarget ?
+                _playerFSM.GetPoints.TargetEnemy.transform :
                 null,
             Camera.main.transform.rotation);
     }
@@ -97,7 +96,7 @@ public class PlayerBitAttackState : PlayerState
 
         if (!_nextAttackIsBit)
         {
-            playerFSM.BitsController.SetBits(true);
+            _playerFSM.BitsController.SetBits(true);
         }
     }
 

@@ -124,7 +124,12 @@ MonoBehaviour:
     DamageType: 0
     ValueDamage: 0
   WhoIs: {fileID: 7768512233242620783}
+  hitPrefab: {fileID: 0}
+  _hitSize: 1
   _sphereCollider: {fileID: 5584960200149662962}
+  _size: 1
+  _multHit: 0
+  _timeOut: 1
 --- !u!114 &7768512233242620783
 MonoBehaviour:
   m_ObjectHideFlags: 0
