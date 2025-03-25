@@ -10,6 +10,7 @@ public class Projectile : AVWeapon, IAccurancy
     [SerializeField] private float _accuracy;
     [SerializeField] private GameObject _dummyPrefab;
 
+    private bool _cruiseControl;
     private GameObject _dummy;
     protected float _startDistance;
     protected float currentDistance;
@@ -40,6 +41,11 @@ public class Projectile : AVWeapon, IAccurancy
         Destroy(gameObject, _timeOut);
     }
 
+    internal void CruiseActivate()
+    {
+        _cruiseControl = true;
+    }
+
     private void Update()
     {
         UpdateDecal();
@@ -52,8 +58,13 @@ public class Projectile : AVWeapon, IAccurancy
 
     protected virtual void Fly()
     {
-        _startSpeed += _accelSpeed;
+        if (_cruiseControl)
+        {
+            transform.LookAt(_target);
+            _direction = transform.forward;
+        }
 
+        _startSpeed += _accelSpeed;
         transform.position += _direction * _startSpeed * Time.fixedDeltaTime;
     }
 

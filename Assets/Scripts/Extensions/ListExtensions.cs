@@ -10,16 +10,16 @@ public static class ListExtensions
     }
 
     public static T GetBorderElement<T>(this IEnumerable<T> list, int index)
-    {
-        if (index < 0)
+    {        
+/*        if (index < 0)
         {
             index = 0;
         }
         if (index >= list.Count())
         {
             index = list.Count() - 1;
-        }
-        return list.ElementAt(index);
+        }/**/
+        return list.ElementAt(Mathf.Clamp(index, 0, list.Count() - 1));
     }
 
     public static T GetElementByOrder<T>(this IEnumerable<T> list, int index)

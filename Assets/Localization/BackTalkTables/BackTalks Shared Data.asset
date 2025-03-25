@@ -111,6 +111,18 @@ MonoBehaviour:
     m_Key: 9.READY_SHOOT
     m_Metadata:
       m_Items: []
+  - m_Id: 11372823518896128
+    m_Key: 9.READY_SHOOT2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11373079467909120
+    m_Key: 9.READY_SHOOT3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11381476737146880
+    m_Key: 9.READY_FINISH
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

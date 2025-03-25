@@ -8,51 +8,73 @@ public class BitShooter : BitWeapon
     [SerializeField] private Projectile _projectile;
 
     private DamageConfig _curDamConf;
+    private bool _cruseShooter;
 
     internal override void StartAttack()
     {
         base.StartAttack();
 
-        if (PlayerBitAttackState.IsAir)
+        if (PlayerBitAttackState)
         {
-            if (Points.EnemyIsTarget)
+            if (PlayerBitAttackState.IsAir)
             {
-                var tempPos = _target.position;
-                tempPos.y = Points.PointOfTargetForEnemy.position.y + 5f;
-                transform.position = tempPos;
+                if (Points.EnemyIsTarget)
+                {
+                    var tempPos = _target.position;
+                    tempPos.y = Points.PointOfTargetForEnemy.position.y + 5f;
+                    transform.position = tempPos;
 
-                transform.LookAt(Points.TargetEnemy.transform);
+                    transform.LookAt(Points.TargetEnemy.transform);
+                }
+                else
+                {
+                    Vector3 forward = Camera.main.transform.forward.normalized * 2f;
+                    forward.y = 2f;
+
+                    var tempPos = Points.PointOfTargetForEnemy.position;
+                    transform.position = tempPos + forward;
+
+                    transform.rotation = Quaternion.LookRotation(Vector3.down);
+                }
             }
             else
             {
-                Vector3 forward = Camera.main.transform.forward.normalized * 2f;
-                forward.y = 2f;
+                var tempPos = Points.PointOfLookCamera.position;
+                tempPos.y += 0.5f;
+                transform.position = tempPos;
 
-                var tempPos = Points.PointOfTargetForEnemy.position;
-                transform.position = tempPos + forward;
-
-                transform.rotation = Quaternion.LookRotation(Vector3.down);
+                if (Points.EnemyIsTarget)
+                {
+                    transform.LookAt(_target);
+                }
+                else
+                {
+                    transform.rotation = _rotate;
+                }
             }
         }
         else
         {
-            var tempPos = Points.PointOfLookCamera.position;
-            tempPos.y += 0.5f;
-            transform.position = tempPos;
+            transform.SetParent(_gameplayHandler.PlayerInstance.GetPoints.PointOfLookCamera);
+            transform.localPosition = Vector3.zero;
 
-            if (Points.EnemyIsTarget)
+            WhoIs whoIs = _gameplayHandler.InTarget;
+            if (!whoIs)
             {
-                transform.LookAt(_target);
+                whoIs = _gameplayHandler.GetNearestEnemy(transform.position);
             }
-            else
-            {
-                transform.rotation = _rotate;
-            }
+            _target = whoIs.transform;
+            transform.LookAt(_target);
         }
 
         _curDamConf = _damageConfigs[Mathf.Clamp(BitLevel, 0, _damageConfigs.Count - 1)];
 
         _periodicActivator.InitAndStart(SpawnAndShoot, BitLevel - 1, 0.15f, EndSpawning);
+    }
+
+    internal void CruiseActivate()
+    {
+        _cruseShooter = true;
     }
 
     private void SpawnAndShoot(int count)
@@ -62,13 +84,15 @@ public class BitShooter : BitWeapon
             Random.Range(-0.3f, 0.3f));
 
         var bit = _container.InstantiatePrefabForComponent<Projectile>(_projectile, transform.position + fromVect, transform.rotation, null);
-        
         bit.Init(
             WhoIs.whoIs,
             //            transform,
             target: _target,
             rotation: transform.rotation);
-
+        if (_cruseShooter)
+        {
+            bit.CruiseActivate();
+        }
         bit.SetDamage(new Damage(EnumDamageType.BitRange,
             _curDamConf.BaseDamage + (int)(_curDamConf.MultOrder * BitLevel - count)));
     }

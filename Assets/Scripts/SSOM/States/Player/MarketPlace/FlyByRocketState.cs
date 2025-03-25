@@ -4,22 +4,23 @@ using UnityEngine;
 public class FlyByRocketState : PlayerState
 {
     private PositionLerper _moving;
-    private PositionLerper _looker;
+    private PositionLerper _rocketLerper;
 
     protected override void Init()
     {
         base.Init();
     }
 
-    internal void CustomInit(PositionLerper moving, PositionLerper looker)
+    internal void CustomInit(PositionLerper moving, PositionLerper rocketLerper)
     {
         _moving = moving;
-        _looker = looker;
+        _rocketLerper = rocketLerper;
     }
 
     internal override void CallAxisHorVer(float hor, float ver)
     {
-        _moving.Move(hor);
+//        _moving.Move(hor);
+        _rocketLerper.Move(hor);
 //        _looker.Move(hor);
     }
 

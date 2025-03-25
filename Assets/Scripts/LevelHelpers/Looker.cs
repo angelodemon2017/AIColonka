@@ -50,11 +50,16 @@ public class Looker : MonoBehaviour
     {
         if (_target)
         {
-            Vector3 directionToTarget = _target.position - transform.position;
-            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _speedRotate * Time.fixedDeltaTime);
-
-//            transform.LookAt(_target);
+            if (_speedRotate == 0f)
+            {
+                transform.LookAt(_target);
+            }
+            else
+            {
+                Vector3 directionToTarget = _target.position - transform.position;
+                Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _speedRotate * Time.fixedDeltaTime);
+            }
         }
     }
 

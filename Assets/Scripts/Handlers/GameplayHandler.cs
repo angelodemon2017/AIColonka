@@ -102,15 +102,15 @@ public class GameplayHandler : IFixedTickable
         {
             if (HaveEnemies())
             {
-                GetNearestEnemy(_instance.transform.position);
+                _inTarget = GetNearestEnemy(_instance.transform.position);
             }
         }
         _signalBus.Fire(new WhoInTargetSignal(_inTarget));
     }
 
-    private void GetNearestEnemy(Vector3 position)
+    internal WhoIs GetNearestEnemy(Vector3 position)
     {
-        _inTarget = _whoAre
+        return _whoAre
             .Where(w => w.whoIs == EnumWhoIs.Enemy)
             .OrderBy(w => Vector3.Distance(position, w.transform.position))
             .FirstOrDefault();

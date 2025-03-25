@@ -18,6 +18,7 @@ public class HPComponent : MonoBehaviour
     private float _lastHP;
     private float _timeOut;
     private bool _isPlayer;
+    private bool _isDeath = false;
 
     internal Action Death;
     internal Action<float, float, float> ChangeHP;
@@ -70,7 +71,6 @@ public class HPComponent : MonoBehaviour
         _timeOut = TimeoutRegen;
         if (CurrentHP <= 0)
         {
-            CurrentHP = 0;
             Kill();
         }
         OnChangeHP();
@@ -95,6 +95,12 @@ public class HPComponent : MonoBehaviour
 
     public void Kill()
     {
+        if (_isDeath)
+        {
+            return;
+        }
+        _isDeath = true;
+
         CurrentHP = 0;
         _deathSignal.FireAll(_signalBus);
         Death?.Invoke();

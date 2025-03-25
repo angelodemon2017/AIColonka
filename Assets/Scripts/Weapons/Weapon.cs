@@ -12,10 +12,20 @@ public class Weapon : MonoBehaviour
     protected Transform _target;
     protected Quaternion _rotate;
 
-    [Inject]
     protected CameraController _cameraController;
-    [Inject]
     protected DiContainer _container;
+    protected GameplayHandler _gameplayHandler;
+
+    [Inject]
+    private void Construct(
+        DiContainer container,
+        GameplayHandler gameplayHandler,
+        CameraController cameraController)
+    {
+        _container = container;
+        _gameplayHandler = gameplayHandler;
+        _cameraController = cameraController;
+    }
 
     protected virtual float _hitTimeout => 0.1f;
     protected virtual Vector3 _hitPosition => transform.position;

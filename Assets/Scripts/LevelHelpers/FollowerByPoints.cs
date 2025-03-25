@@ -56,11 +56,4 @@ public class FollowerByPoints : MonoBehaviour
             SetTarget(_currentTarget.NextPoint);
         }
     }
-
-    [System.Serializable]
-    private class FollowingPoint
-    {
-        public Transform Target;
-        public Transform NextPoint;
-    }
 }

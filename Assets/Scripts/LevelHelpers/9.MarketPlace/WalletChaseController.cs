@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -5,6 +6,7 @@ public class WalletChaseController : MonoBehaviour
 {
     [SerializeField] private FollowerByPoints _followerByPoints;
     [SerializeField] private FollowerByPoints _followerByPointsPhase2;
+    [SerializeField] private List<HPComponent> _drons;
 
     [SerializeField] private PointOfFollow _pointOfSecondPhase;
     [SerializeField] private GameObject _chaserRocket;
@@ -12,25 +14,32 @@ public class WalletChaseController : MonoBehaviour
     [SerializeField] private Transform _pointOnRocket;
     [SerializeField] private Camera _cameraSecondPhase;
     [SerializeField] private SignalAgregator _signalSecondPhase;
-    [SerializeField] private SignalAgregator _signalReadyToShoot;
+    [SerializeField] private List<SignalAgregator> _signalReadyToShoot;
+    [SerializeField] private SignalAgregator _lastOneDrone;
     [SerializeField] private Mover _rocketMover;
     [SerializeField] private InteractionZone _interactByNear;
     [SerializeField] private PositionLerper _positionLerper;
     [SerializeField] private PositionLerper _lookLerper;
+    [SerializeField] private PositionLerper _rocketLerper;
+    [SerializeField] private BitShooter _bitWeapon;
 
+    private int _tries = 0;
     private int counterDrons = 0;
     private bool _chasingOn = false;
 
+    private DiContainer _diContainer;
     private SignalBus _signalBus;
     private GameplayHandler _gameplayHandler;
     private CameraController _cameraController;
 
     [Inject]
     private void Construct(
+        DiContainer diContainer,
         CameraController cameraController,
         GameplayHandler gameplayHandler,
         SignalBus signalBus)
     {
+        _diContainer = diContainer;
         _cameraController = cameraController;
         _gameplayHandler = gameplayHandler;
         _signalBus = signalBus;
@@ -55,8 +64,19 @@ public class WalletChaseController : MonoBehaviour
 
     public void InterActPhase2()
     {
+        _tries++;
         _speedRocket = 2;
         CheckPhase2();
+        _gameplayHandler.PlayerInstance.BitsController.SetBits(false);
+        var w = _diContainer.InstantiatePrefabForComponent<BitShooter>(_bitWeapon);
+        if (_tries > 2)
+        {
+            w.CruiseActivate();
+        }
+        w.Init(EnumWhoIs.Player,
+            _gameplayHandler.PlayerInstance.GetPoints.PointOfLookCamera,
+            null,
+            _cameraController.GetTransform.rotation);
     }
 
     private void CheckPhase2()
@@ -65,7 +85,8 @@ public class WalletChaseController : MonoBehaviour
         _interactByNear.gameObject.SetActive(_speedRocket > 4);
         if (_speedRocket > 4)
         {
-            _signalReadyToShoot.FireAll(_signalBus);
+            _signalReadyToShoot.GetBorderElement(_tries)
+                .FireAll(_signalBus);
         }
     }
 
@@ -89,6 +110,11 @@ public class WalletChaseController : MonoBehaviour
         }
     }
 
+    public void DeathDronInChasing()
+    {
+        _lastOneDrone.FireAll(_signalBus);
+    }
+
     private void StartSecondPhase()
     {
         SetPlayerOnRocket();
@@ -98,11 +124,13 @@ public class WalletChaseController : MonoBehaviour
         _followerByPointsPhase2.gameObject.SetActive(true);
 
         var newInst = Instantiate(_stateRocketFly);
-        newInst.CustomInit(_positionLerper, _lookLerper);
+        newInst.CustomInit(_positionLerper, _rocketLerper);
         _signalBus.Fire(new SetPlayerStateSignal(newInst, true));
 
         _signalBus.Fire(new TransitionSignal(true, () =>
             _signalSecondPhase.FireAll(_signalBus)));
+
+        _drons.ForEach(d => d.Kill());
     }
 
     [ContextMenu("SetPlayerOnRocket")]

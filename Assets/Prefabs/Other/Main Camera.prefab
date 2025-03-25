@@ -207,6 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   AtCamera: 0
+  _speedRotate: 0
 --- !u!114 &4563702657874310807
 MonoBehaviour:
   m_ObjectHideFlags: 0

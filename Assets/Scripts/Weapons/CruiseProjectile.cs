@@ -8,5 +8,6 @@ public class CruiseProjectile : Weapon
     {
         base.StartAttack();
 
+
     }
 }

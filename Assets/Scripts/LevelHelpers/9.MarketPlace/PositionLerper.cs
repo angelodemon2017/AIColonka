@@ -8,7 +8,7 @@ public class PositionLerper : MonoBehaviour
     [SerializeField] private bool _isReturning;
     [SerializeField] private float _speed;
 
-    private float _positionPoint;
+    private float _positionPoint = 0.5f;
     private float _timeout;
 
     private void FixedUpdate()
