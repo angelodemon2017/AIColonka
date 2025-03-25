@@ -22,7 +22,7 @@ public class WindowGameplay : MAINWindow
     [SerializeField] private Image _backGroundBackTalk;
     [SerializeField] private TextMeshProUGUI _backTalk;
 
-//    private DiContainer _container;
+    private CameraController _cameraController;
     private SignalBus _signalBus;
     private DataHandler _dataHandler;
     private BackTalkHandler _backTalkHandler;
@@ -33,13 +33,13 @@ public class WindowGameplay : MAINWindow
 
     [Inject]
     private void Construct(
-//        DiContainer container,
+        CameraController cameraController,
         SignalBus signalBus,
         DataHandler dataHandler,
         BackTalkHandler backTalkHandler,
         GameplayHandler gameplayHandler)
     {
-//        _container = container;
+        _cameraController = cameraController;
         _signalBus = signalBus;
         _dataHandler = dataHandler;
         _backTalkHandler = backTalkHandler;
@@ -154,12 +154,16 @@ public class WindowGameplay : MAINWindow
 
         if (_target.enabled)
         {
-            _target.rectTransform.position = Camera.main.WorldToScreenPoint(_gameplayHandler.InTarget.transform.position);
+            _target.rectTransform.position =
+                _cameraController.CurrentCamera.WorldToScreenPoint(
+                    _gameplayHandler.InTarget.transform.position);
         }
 
         if (_hintText.enabled && _playerFSM)
         {
-            _hintText.rectTransform.position = Camera.main.WorldToScreenPoint(_playerFSM.virtualObjectChecker.LastHH.GetTransform.position);
+            _hintText.rectTransform.position =
+                _cameraController.CurrentCamera.WorldToScreenPoint(
+                    _playerFSM.virtualObjectChecker.LastHH.GetTransform.position);
         }
 
         if (Input.GetKeyDown(KeyCode.X))

@@ -107,6 +107,10 @@ MonoBehaviour:
     m_Localized: Hold on Astra, it's almost like surfing... I guess...
     m_Metadata:
       m_Items: []
+  - m_Id: 11233962168590336
+    m_Localized: You just have to aim
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

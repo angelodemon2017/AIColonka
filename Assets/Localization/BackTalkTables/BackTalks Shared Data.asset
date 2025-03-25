@@ -107,6 +107,10 @@ MonoBehaviour:
     m_Key: 9.SECOND_PHASE
     m_Metadata:
       m_Items: []
+  - m_Id: 11233962168590336
+    m_Key: 9.READY_SHOOT
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

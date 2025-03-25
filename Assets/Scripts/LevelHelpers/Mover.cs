@@ -26,6 +26,11 @@ public class Mover : MonoBehaviour
         JustMove();
     }
 
+    internal void SetSpeed(float amount)
+    {
+        _speedMove = amount;
+    }
+
     public void SetTarget(Transform newTarget)
     {
         _moveTarget = newTarget;

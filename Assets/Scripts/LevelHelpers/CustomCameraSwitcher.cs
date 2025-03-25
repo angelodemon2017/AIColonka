@@ -10,6 +10,7 @@ public class CustomCameraSwitcher : MonoBehaviour
     private SignalBus _signalBus;
 
     internal Transform GetTransform => _mainCamera.enabled ? _mainCamera.transform : _secondCamera.transform;
+    internal Camera CurrentCamera => _mainCamera.enabled ? _mainCamera : _secondCamera;
 
     private void Awake()
     {

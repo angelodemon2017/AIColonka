@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowerByPoints : MonoBehaviour
@@ -8,8 +7,6 @@ public class FollowerByPoints : MonoBehaviour
     [SerializeField] private float _speedMove;
     [SerializeField] private float _verticalSpeed;
     [SerializeField] private float _distanceTrigger;
-
-    private Dictionary<Transform, Transform> _mapNextPoints = new();
 
     internal float DistanceTrigger => _distanceTrigger;
 

@@ -12,7 +12,9 @@ public class WalletChaseController : MonoBehaviour
     [SerializeField] private Transform _pointOnRocket;
     [SerializeField] private Camera _cameraSecondPhase;
     [SerializeField] private SignalAgregator _signalSecondPhase;
-
+    [SerializeField] private SignalAgregator _signalReadyToShoot;
+    [SerializeField] private Mover _rocketMover;
+    [SerializeField] private InteractionZone _interactByNear;
     [SerializeField] private PositionLerper _positionLerper;
     [SerializeField] private PositionLerper _lookLerper;
 
@@ -39,6 +41,38 @@ public class WalletChaseController : MonoBehaviour
     public void Activate()
     {
         _chasingOn = true;
+        CheckPhase2();
+    }
+
+    private int _speedRocket = 1;
+
+    public void AddSpeed(bool isAdd)
+    {
+        _speedRocket += isAdd ? 1 : -1;
+        _speedRocket = Mathf.Clamp(_speedRocket, 1, 10);
+        CheckPhase2();
+    }
+
+    public void InterActPhase2()
+    {
+        _speedRocket = 2;
+        CheckPhase2();
+    }
+
+    private void CheckPhase2()
+    {
+        _rocketMover.SetSpeed(_speedRocket);
+        _interactByNear.gameObject.SetActive(_speedRocket > 4);
+        if (_speedRocket > 4)
+        {
+            _signalReadyToShoot.FireAll(_signalBus);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        var horizontal = Input.GetAxis("Horizontal");
+        _pointOnRocket.localRotation = Quaternion.Euler(0f, horizontal * 20f, 0f);
     }
 
     private void DeathCryptoDron()

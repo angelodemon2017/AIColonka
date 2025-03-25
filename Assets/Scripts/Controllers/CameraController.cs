@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour
     public Vector3 Direct => _directPoint.position - transform.position;
     internal bool IsLookingDown => transform.forward.y < 0f;
     internal Transform GetTransform => _customCameraSwitcher.GetTransform;
+    internal Camera CurrentCamera => _customCameraSwitcher.CurrentCamera;
 
     private Vector3 GetPointOfLook()
     {
