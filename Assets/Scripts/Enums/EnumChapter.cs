@@ -34,4 +34,6 @@
     /// </summary>
     Lustreon,
     BM_Master,
+    BackGroundTalker,
+    BM_Other,
 }

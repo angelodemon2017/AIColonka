@@ -67,10 +67,10 @@ public class UIFSM : MonoBehaviour
             _signalBus.Fire(new TransitionSignal());
         }
         DOTween.To(() => 1f, x => TransitionWindow(x), 0f, 0.5f)
-        .OnComplete(() => OpenWindow(setWindowSignal.SelectWindow));
+            .OnComplete(() => OpenWindow(setWindowSignal.SelectWindow));
     }
 
-    private void OpenWindow(MAINWindow windowFSM)
+    internal void OpenWindow(MAINWindow windowFSM)
     {
         _canvasGroup.interactable = false;
         if (_currentWindow != null)
@@ -80,7 +80,11 @@ public class UIFSM : MonoBehaviour
         //place for pool
         _parent.DestroyChildrens();
 
-        _currentWindow = _container.InstantiatePrefabForComponent<MAINWindow>(windowFSM, _parent);
+        _currentWindow = Instantiate(windowFSM, _parent);
+            //_container.InstantiatePrefabForComponent<MAINWindow>(windowFSM, _parent);
+
+        _container.Inject(_currentWindow);
+
         StartWindow();
 
         _canvasGroup.interactable = true;

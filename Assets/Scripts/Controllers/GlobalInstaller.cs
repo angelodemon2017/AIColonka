@@ -3,18 +3,16 @@ using Zenject;
 
 public class GlobalInstaller : MonoInstaller
 {
-    [SerializeField] private DialogsConfig _dialogsConfig;
     [SerializeField] private TaskConfig _taskConfig;
     [SerializeField] private SceneController _sceneController;
 
     public override void InstallBindings()
     {
+        InstallSignals();
         InstallSingletons();
         InstallSinglePrefabs();
-        InstallConfigs();
-        InstallSignals();
 
-        Container.Bind<SceneController>().FromInstance(_sceneController).AsSingle();
+        InstallConfigs();
     }
 
     private void InstallSingletons()
@@ -33,8 +31,8 @@ public class GlobalInstaller : MonoInstaller
 
     private void InstallConfigs()
     {
-        Container.Bind<DialogsConfig>().FromScriptableObject(_dialogsConfig).AsSingle();
         Container.Bind<TaskConfig>().FromScriptableObject(_taskConfig).AsSingle();
+        Container.Bind<SceneController>().FromInstance(_sceneController).AsSingle();
     }
 
     private void InstallSignals()

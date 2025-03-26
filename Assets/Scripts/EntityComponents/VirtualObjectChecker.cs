@@ -7,15 +7,24 @@ using Zenject;
 public class VirtualObjectChecker : MonoBehaviour
 {
     [SerializeField] private Transform _checkPoint;
-
+    [SerializeField] private BackTalkSO _lowBitsComment;
     [SerializeField] private HashSet<IHinter> _hintsH = new();
     
     private IHinter _lastTransform;
 
-    [Inject]
+    private SignalBus _signalBus;
     private GameplayHandler _gameplayHandler;
 
     internal IHinter LastHH => _lastTransform;
+
+    [Inject]
+    private void Construct(
+        GameplayHandler gameplayHandler,
+        SignalBus signalBus)
+    {
+        _gameplayHandler = gameplayHandler;
+        _signalBus = signalBus;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -46,10 +55,17 @@ public class VirtualObjectChecker : MonoBehaviour
 
     internal void CallRelease()
     {
-        _lastTransform?.Call();
-        _hintsH.Remove(_lastTransform);
-        _lastTransform = null;
-        _ = UpdateHint();
+        if (_lastTransform.AvailableCall)
+        {
+            _lastTransform?.Call();
+            _hintsH.Remove(_lastTransform);
+            _lastTransform = null;
+            _ = UpdateHint();
+        }
+        else
+        {
+            _signalBus.Fire(new BackTalkSignal(_lowBitsComment));
+        }
     }
 
     private async Task UpdateHint()

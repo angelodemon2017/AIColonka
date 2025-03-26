@@ -8,6 +8,7 @@ public class PlayerSpawn : MonoBehaviour
     [SerializeField] private List<ConditionPoint> _points;
     [SerializeField] private List<ConditionPoint> _pointsByCurrentTask;
     [SerializeField] private WindowGameplay _windowGameplay;
+    [SerializeField] private UIFSM _uiFSM;
 
     private SignalBus _signalBus;
     private DiContainer _container;
@@ -42,7 +43,8 @@ public class PlayerSpawn : MonoBehaviour
 
     private void Start()
     {
-        _signalBus.Fire(new SetWindowSignal(_windowGameplay));
+        _uiFSM.OpenWindow(_windowGameplay);
+//        _signalBus.Fire(new SetWindowSignal(_windowGameplay));
     }
 
     private Transform GetPoint()

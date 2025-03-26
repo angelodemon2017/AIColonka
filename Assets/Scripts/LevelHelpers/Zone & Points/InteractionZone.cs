@@ -18,6 +18,7 @@ public class InteractionZone : MonoBehaviour, IHinter
     }
 
     public Transform GetTransform => transform;
+    public bool AvailableCall => true;
 
     public void Call()
     {

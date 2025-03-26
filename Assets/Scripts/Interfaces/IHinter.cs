@@ -4,6 +4,7 @@ using UnityEngine;
 public interface IHinter
 {
     string GetKeyForInteract => KeyCode.E.ToString();
+    bool AvailableCall { get; }
     Transform GetTransform { get; }
 
     void InFocus();

@@ -16,6 +16,18 @@ public class TaskSO : ScriptableObject, ICachable<string>
     internal EnumLevels GetTargetLvl => _whereTarget;
     public string GetKey => KeyTitle;
 
+    internal async Task<string> GetTitle()
+    {
+        var locResult = await Localizations.GetLocalizedText(
+            Localizations.Tables.Tasks, KeyTitle);
+
+        if (locResult == KeyTitle)
+        {
+            locResult = name;
+        }
+
+        return locResult;
+    }
     internal async Task<string> GetDescription()
     {
         var locResult = await Localizations.GetLocalizedText(
