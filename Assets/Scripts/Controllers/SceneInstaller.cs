@@ -5,6 +5,7 @@ public class SceneInstaller : MonoInstaller
 {
     [SerializeField] private CameraController _cameraController;
     [SerializeField] private RoomMapping _roomMapping;
+    [SerializeField] private PlayerSpawn _playerSpawn;
 
     public override void InstallBindings()
     {

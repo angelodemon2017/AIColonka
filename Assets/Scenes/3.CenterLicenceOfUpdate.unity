@@ -241,6 +241,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 138461429}
     - target: {fileID: 1248775990137221747, guid: 74b0e3266573eba4b9f7fdf83e0a7e72, type: 3}
+      propertyPath: _playerSpawn
+      value: 
+      objectReference: {fileID: 1508559533}
+    - target: {fileID: 1248775990137221747, guid: 74b0e3266573eba4b9f7fdf83e0a7e72, type: 3}
       propertyPath: _cameraController
       value: 
       objectReference: {fileID: 851365871}
@@ -1240,9 +1244,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d50a5dcd1f32f4584b5a07a6522905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSettings: 0
   _target: {fileID: 870044192}
   AtCamera: 0
+  _speedRotate: 200
 --- !u!114 &686576517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1728,6 +1732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5233d1c09361df4b8764563bae8b5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 0}
 --- !u!1 &863700086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2368,6 +2373,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b643843716a55bc4fbef265df571c1cc, type: 3}
+--- !u!114 &1508559533 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4259592149644198849, guid: b643843716a55bc4fbef265df571c1cc, type: 3}
+  m_PrefabInstance: {fileID: 1508559532}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ee356650f8fc7418481a35852f32c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1537098164
 GameObject:
   m_ObjectHideFlags: 0

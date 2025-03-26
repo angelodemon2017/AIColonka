@@ -10,7 +10,7 @@ public class MAINWindow : MonoBehaviour, IWindowFSM
     private Dictionary<KeyCode, MAINWindow> _tempKeyCodeMapWindows = new();
 
     [Inject]
-    private SignalBus _signalBus;
+    protected SignalBus _signalBus;
 
     public bool NeedTransition => _needTransition;
 

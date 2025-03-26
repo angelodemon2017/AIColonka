@@ -9,9 +9,9 @@ public class GlobalInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
+        InstallConfigs();
         InstallSingletons();
         InstallSinglePrefabs();
-        InstallConfigs();
         InstallSignals();
 
         Container.Bind<SceneController>().FromInstance(_sceneController).AsSingle();

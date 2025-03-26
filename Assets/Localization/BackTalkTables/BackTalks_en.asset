@@ -92,7 +92,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5888237531815936
-    m_Localized: I need to recover more.
+    m_Localized: I don't have enough strength for this yet
     m_Metadata:
       m_Items: []
   - m_Id: 6587208881397760
@@ -121,6 +121,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 11381476737146880
     m_Localized: We need to put an end to this.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5801603109658624
+    m_Localized: What does my consciousness consist of...
     m_Metadata:
       m_Items: []
   references:

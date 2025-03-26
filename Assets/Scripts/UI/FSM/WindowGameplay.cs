@@ -1,9 +1,9 @@
-using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
 using Zenject;
+using System.Threading.Tasks;
 
 public class WindowGameplay : MAINWindow
 {
@@ -22,8 +22,10 @@ public class WindowGameplay : MAINWindow
     [SerializeField] private Image _backGroundBackTalk;
     [SerializeField] private TextMeshProUGUI _backTalk;
 
+    [SerializeField] private Image _backGroundTaskNotification;
+    [SerializeField] private TextMeshProUGUI _taskNotification;
+
     private CameraController _cameraController;
-    private SignalBus _signalBus;
     private DataHandler _dataHandler;
     private BackTalkHandler _backTalkHandler;
     private GameplayHandler _gameplayHandler;
@@ -34,13 +36,11 @@ public class WindowGameplay : MAINWindow
     [Inject]
     private void Construct(
         CameraController cameraController,
-        SignalBus signalBus,
         DataHandler dataHandler,
         BackTalkHandler backTalkHandler,
         GameplayHandler gameplayHandler)
     {
         _cameraController = cameraController;
-        _signalBus = signalBus;
         _dataHandler = dataHandler;
         _backTalkHandler = backTalkHandler;
         _gameplayHandler = gameplayHandler;
@@ -55,9 +55,11 @@ public class WindowGameplay : MAINWindow
         _signalBus.Subscribe<FocusHintSignal>(UpdateHintText);
         _signalBus.Subscribe<MetaFightSignal>(UpdateFightMetaUI);
         _signalBus.Subscribe<StartBackTalkSignal>(UpdateSubtitle);
+        _signalBus.Subscribe<TaskUpdatedSignal>(UpdateTaskNotificationAsync);
         _signalBus.Subscribe<WhoInTargetSignal>(UpdateTargetUI);
 
         UpdateSubtitle();
+        UpdateTaskNotificationAsync();
     }
 
     public override void StartWindow()
@@ -111,6 +113,27 @@ public class WindowGameplay : MAINWindow
         targetColor.a = _backTalk.enabled ? 1f : 0f;
 
         DOTween.To(() => _tempColor, x => _backGroundBackTalk.color = x, targetColor, 1f);
+    }
+
+    private void UpdateTaskNotificationAsync()
+    {
+        var curNewTask = _dataHandler.GetNotifTask();
+        if (curNewTask)
+        {
+            _ = UpdateTaskTextNotification(curNewTask);
+            DOTween.To(() => Color.clear, x => _backGroundTaskNotification.color = x, Color.black, 1f)
+                .OnComplete(() =>
+                {
+                    DOTween.To(() => Color.black, x => _backGroundTaskNotification.color = x, Color.clear, 1f)
+                        .SetDelay(1f)
+                        .OnComplete(() => _taskNotification.text = string.Empty);
+                });
+        }
+    }
+
+    private async Task UpdateTaskTextNotification(TaskSO curNewTask)
+    {
+        _taskNotification.text = await curNewTask.GetTitle();
     }
 
     public override void Run()
@@ -228,6 +251,7 @@ public class WindowGameplay : MAINWindow
         _signalBus.Unsubscribe<FocusHintSignal>(UpdateHintText);
         _signalBus.Unsubscribe<MetaFightSignal>(UpdateFightMetaUI);
         _signalBus.Unsubscribe<StartBackTalkSignal>(UpdateSubtitle);
+        _signalBus.Unsubscribe<TaskUpdatedSignal>(UpdateTaskNotificationAsync);
         _signalBus.Unsubscribe<WhoInTargetSignal>(UpdateTargetUI);
     }
 }

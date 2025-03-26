@@ -2,6 +2,7 @@
 
 public class DataHandler
 {
+    private TaskConfig _taskConfig;
     private SignalBus _signalBus;
     private DialogSO _currentDialog;
 
@@ -12,10 +13,27 @@ public class DataHandler
     internal DialogSO CurrentDialog => _currentDialog;
     internal Settings Settings => _settings;
 
+    private string _lastTaskSO;
+    internal TaskSO GetNotifTask()
+    {
+        if (_lastTaskSO == _mainData.progressHistory.KeyTitleMainTask)
+        {
+            return null;
+        }
+        else
+        {
+            _lastTaskSO = _mainData.progressHistory.KeyTitleMainTask;
+            return _taskConfig.GetTaskByKey(_lastTaskSO);
+        }
+    }
+
     [Inject]
-    private void Construct(SignalBus signalBus)
+    private void Construct(
+        SignalBus signalBus,
+        TaskConfig taskConfig)
     {
         _signalBus = signalBus;
+        _taskConfig = taskConfig;
 
         Init();
     }
@@ -42,7 +60,6 @@ public class DataHandler
     {
         _mainData.SetTask(setTaskSignal.Task);
         _signalBus.Fire(new TaskUpdatedSignal());
-        _signalBus.Fire(new BackTalkSignal(setTaskSignal.Task.KeyTitle, 2f, Localizations.Tables.Tasks));
     }
 
     internal void PickProp(EnumLevelProp levelProp)
