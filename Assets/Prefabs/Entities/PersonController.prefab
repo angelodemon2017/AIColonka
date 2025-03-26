@@ -299,7 +299,7 @@ SphereCollider:
     m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 447
+    m_Bits: 959
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -326,7 +326,7 @@ Rigidbody:
     m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 447
+    m_Bits: 959
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
@@ -1252,7 +1252,6 @@ MonoBehaviour:
   _characterController: {fileID: 7687012706516705241}
   _virtualObjectChecker: {fileID: 1891207570648659785}
   _weaponVisualizator: {fileID: 5952619162860424446}
-  _additionalStates: {fileID: 0}
   _bitsController: {fileID: 5533812791469335405}
   _points:
     PointAttackZone1: {fileID: 3081252479321016903}
@@ -1338,6 +1337,7 @@ MonoBehaviour:
         Level: 0
       _setPlayerStateSignal:
         _playerState: {fileID: 0}
+        IsWasInstanting: 0
     - typeSignal: 6
       _setTaskSignal:
         Task: {fileID: 0}
@@ -1353,6 +1353,7 @@ MonoBehaviour:
         Level: 0
       _setPlayerStateSignal:
         _playerState: {fileID: 11400000, guid: 058596f7da28fde47926bf00fc705f4f, type: 2}
+        IsWasInstanting: 0
 --- !u!114 &5087740095407099654
 MonoBehaviour:
   m_ObjectHideFlags: 0

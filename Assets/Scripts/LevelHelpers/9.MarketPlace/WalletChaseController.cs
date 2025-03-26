@@ -18,10 +18,15 @@ public class WalletChaseController : MonoBehaviour
     [SerializeField] private SignalAgregator _lastOneDrone;
     [SerializeField] private Mover _rocketMover;
     [SerializeField] private InteractionZone _interactByNear;
+    [SerializeField] private InteractionZone _interactFinalChasing;
     [SerializeField] private PositionLerper _positionLerper;
     [SerializeField] private PositionLerper _lookLerper;
     [SerializeField] private PositionLerper _rocketLerper;
     [SerializeField] private BitShooter _bitWeapon;
+
+    [SerializeField] private PlayerState _returningState;
+    [SerializeField] private GameObject _walletFinal;
+    [SerializeField] private Transform _pointNearFinalWallet;
 
     private int _tries = 0;
     private int counterDrons = 0;
@@ -79,6 +84,28 @@ public class WalletChaseController : MonoBehaviour
             _cameraController.GetTransform.rotation);
     }
 
+    public void InteractFinal()
+    {
+        _positionLerper.transform.localPosition = Vector3.zero;
+        _signalBus.Fire(new TransitionSignal(false, TransToFinalScene));
+    }
+
+    private void TransToFinalScene()
+    {
+        _interactFinalChasing.gameObject.SetActive(false);
+        _followerByPointsPhase2.gameObject.SetActive(false);
+        _chaserRocket.gameObject.SetActive(false);
+        _walletFinal.SetActive(true);
+        _gameplayHandler.PlayerInstance.transform.SetParent(null);
+        _gameplayHandler.PlayerInstance.transform.position = _pointNearFinalWallet.position;
+        _gameplayHandler.PlayerInstance.transform.rotation = _pointNearFinalWallet.rotation;
+        _signalBus.Fire(new TransitionSignal(true));
+        _signalBus.Fire(new SetPlayerStateSignal(_returningState));
+        _gameplayHandler.PlayerInstance.GetFallingController.ResetFalling();
+        _gameplayHandler.PlayerInstance.BitsController.SetBits(true);
+        _cameraController.ResetCamera();
+    }
+
     private void CheckPhase2()
     {
         _rocketMover.SetSpeed(_speedRocket);
@@ -113,6 +140,8 @@ public class WalletChaseController : MonoBehaviour
     public void DeathDronInChasing()
     {
         _lastOneDrone.FireAll(_signalBus);
+        _interactByNear.enabled = false;
+        _interactFinalChasing.gameObject.SetActive(true);
     }
 
     private void StartSecondPhase()

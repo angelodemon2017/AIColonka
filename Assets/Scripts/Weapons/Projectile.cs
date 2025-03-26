@@ -9,6 +9,7 @@ public class Projectile : AVWeapon, IAccurancy
     [SerializeField] private bool _destroyAtCollision;
     [SerializeField] private float _accuracy;
     [SerializeField] private GameObject _dummyPrefab;
+    [SerializeField] private LayerMask layerMask;
 
     private bool _cruiseControl;
     private GameObject _dummy;
@@ -88,7 +89,6 @@ public class Projectile : AVWeapon, IAccurancy
         Explose();
     }
 
-    [SerializeField] private LayerMask layerMask;
     RaycastHit hit;
     Ray ray;
     Vector3 _endPoint;
