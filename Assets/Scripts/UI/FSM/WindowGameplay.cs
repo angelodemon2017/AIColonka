@@ -18,7 +18,6 @@ public class WindowGameplay : MAINWindow
     [SerializeField] private TextMeshProUGUI _comboLabel;
     [SerializeField] private TextMeshProUGUI _hitLabel;
 
-    [SerializeField] private Color _tempColor;
     [SerializeField] private Image _backGroundBackTalk;
     [SerializeField] private TextMeshProUGUI _backTalk;
 
@@ -113,10 +112,11 @@ public class WindowGameplay : MAINWindow
         _backTalk.text = _backTalkHandler.GetTalk;
 
         _backTalk.enabled = !string.IsNullOrEmpty(_backTalk.text);
-        Color targetColor = _tempColor;
-        targetColor.a = _backTalk.enabled ? 1f : 0f;
 
-        DOTween.To(() => _tempColor, x => _backGroundBackTalk.color = x, targetColor, 1f);
+        DOTween.To(() =>
+            _backTalk.enabled ? Color.clear : Color.black,
+            x => _backGroundBackTalk.color = x,
+            _backTalk.enabled ? Color.black : Color.clear, 1f);
     }
 
     private void UpdateTaskNotificationAsync()

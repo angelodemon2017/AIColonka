@@ -22,6 +22,7 @@ public class WalletChaseController : MonoBehaviour
     [SerializeField] private PositionLerper _positionLerper;
     [SerializeField] private PositionLerper _lookLerper;
     [SerializeField] private PositionLerper _rocketLerper;
+    [SerializeField] private PositionLerper _cameraLerper;
     [SerializeField] private BitShooter _bitWeapon;
 
     [SerializeField] private PlayerState _returningState;
@@ -84,9 +85,11 @@ public class WalletChaseController : MonoBehaviour
             _cameraController.GetTransform.rotation);
     }
 
+    [ContextMenu("InteractFinal")]
     public void InteractFinal()
     {
         _positionLerper.transform.localPosition = Vector3.zero;
+        _rocketMover.SetSpeed(10);
         _signalBus.Fire(new TransitionSignal(false, TransToFinalScene));
     }
 
@@ -95,12 +98,14 @@ public class WalletChaseController : MonoBehaviour
         _interactFinalChasing.gameObject.SetActive(false);
         _followerByPointsPhase2.gameObject.SetActive(false);
         _chaserRocket.gameObject.SetActive(false);
-        _walletFinal.SetActive(true);
-        _signalBus.Fire(new TransitionSignal(true));
-        _signalBus.Fire(new SetPlayerStateSignal(_returningState));
-        _gameplayHandler.PlayerInstance.BitsController.SetBits(true);
 
-        ResetRocket();
+        _walletFinal.SetActive(true);
+        _signalBus.Fire(new SetPlayerStateSignal(_returningState));
+
+        PlayerReset();
+
+        _gameplayHandler.PlayerInstance.BitsController.SetBits(true);
+        _signalBus.Fire(new TransitionSignal(true));
     }
 
     private void CheckPhase2()
@@ -112,12 +117,6 @@ public class WalletChaseController : MonoBehaviour
             _signalReadyToShoot.GetBorderElement(_tries)
                 .FireAll(_signalBus);
         }
-    }
-
-    private void FixedUpdate()
-    {
-        var horizontal = Input.GetAxis("Horizontal");
-        _pointOnRocket.localRotation = Quaternion.Euler(0f, horizontal * 20f, 0f);
     }
 
     private void DeathCryptoDron()
@@ -150,7 +149,7 @@ public class WalletChaseController : MonoBehaviour
         _followerByPointsPhase2.gameObject.SetActive(true);
 
         var newInst = Instantiate(_stateRocketFly);
-        newInst.CustomInit(_positionLerper, _rocketLerper);
+        newInst.CustomInit(_lookLerper, _rocketLerper, _cameraLerper);
         _signalBus.Fire(new SetPlayerStateSignal(newInst, true));
 
         _signalBus.Fire(new TransitionSignal(true, () =>
@@ -169,17 +168,18 @@ public class WalletChaseController : MonoBehaviour
         _gameplayHandler.PlayerInstance.transform.rotation = _pointOnRocket.rotation * Quaternion.Euler(0f, -120f, 0f);
     }
 
-    [ContextMenu("ResetRocket")]
-    private void ResetRocket()
+    [ContextMenu("PlayerReset")]
+    private void PlayerReset()
     {
         _cameraController.ResetCamera();
-        _gameplayHandler.PlayerInstance.GetFallingController.SwitchOffGravity();
+        _gameplayHandler.PlayerInstance.gameObject.SetActive(false);
 
         _gameplayHandler.PlayerInstance.transform.SetParent(_pointNearFinalWallet);
         _gameplayHandler.PlayerInstance.transform.localPosition = Vector3.zero;
         _gameplayHandler.PlayerInstance.transform.rotation = _pointNearFinalWallet.rotation;
 
         _gameplayHandler.PlayerInstance.GetFallingController.ResetFalling();
+        _gameplayHandler.PlayerInstance.gameObject.SetActive(true);
     }
 
     private void OnDisable()

@@ -9,16 +9,26 @@ public class PointMover : MonoBehaviour
     [SerializeField] private float _period;
     [SerializeField] private List<Transform> _points;
 
-    private DiContainer _diContainer;
     private GameplayHandler _gameplayHandler;
 
     [Inject]
     private void Construct(
-        GameplayHandler gameplayHandler,
-        DiContainer diContainer)
+        GameplayHandler gameplayHandler)
     {
-        _diContainer = diContainer;
         _gameplayHandler = gameplayHandler;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, _points[0].position);
+        for (int i = 0; i < _points.Count; i++)
+        {
+            if (i >= _points.Count - 1)
+            {
+                break;
+            }
+            Gizmos.DrawLine(_points[i].position, _points[i+1].position);
+        }
     }
 
     public void MovePlayer()

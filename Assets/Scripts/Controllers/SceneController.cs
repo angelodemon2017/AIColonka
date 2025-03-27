@@ -12,8 +12,6 @@ public class SceneController : MonoBehaviour
     [SerializeField] private Image _blackImage;
     [SerializeField] private TextMeshProUGUI _testLoading;
 
-    private Color _transColor;
-
     private SignalBus _signalBus;
     private DataHandler _dataHandler;
     private GameplayHandler _gameplayHandler;
@@ -34,8 +32,6 @@ public class SceneController : MonoBehaviour
     private void Init()
     {
         DontDestroyOnLoad(gameObject);
-
-        _transColor = _blackImage.color;
 
         SceneManager.LoadSceneAsync(1);
         SetBlack(false, null);
@@ -63,14 +59,10 @@ public class SceneController : MonoBehaviour
 
     private void SetBlack(bool fadeIn, Action onDone)
     {
-        Color targetColor = _transColor;
-        targetColor.a = fadeIn ? 1f : 0f;
-
-        DOTween.To(() => _transColor, x => _blackImage.color = x, targetColor, 1f)
+        DOTween.To(() => fadeIn ? Color.clear : Color.black, x => _blackImage.color = x, fadeIn ? Color.black : Color.clear, 1f)
 //            .SetDelay(1f)
             .OnComplete(() =>
             {
-                _transColor = _blackImage.color;
                 onDone?.Invoke();
             });
     }
