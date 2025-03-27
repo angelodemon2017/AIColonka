@@ -43,8 +43,8 @@ public class PlayerSpawn : MonoBehaviour
 
     private void Start()
     {
-        _uiFSM.OpenWindow(_windowGameplay);
-//        _signalBus.Fire(new SetWindowSignal(_windowGameplay));
+//        _uiFSM.OpenWindow(_windowGameplay);
+        _signalBus.Fire(new SetWindowSignal(_windowGameplay));
     }
 
     private Transform GetPoint()

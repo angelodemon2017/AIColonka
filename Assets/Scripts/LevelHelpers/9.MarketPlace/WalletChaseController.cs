@@ -96,14 +96,11 @@ public class WalletChaseController : MonoBehaviour
         _followerByPointsPhase2.gameObject.SetActive(false);
         _chaserRocket.gameObject.SetActive(false);
         _walletFinal.SetActive(true);
-        _gameplayHandler.PlayerInstance.transform.SetParent(null);
-        _gameplayHandler.PlayerInstance.transform.position = _pointNearFinalWallet.position;
-        _gameplayHandler.PlayerInstance.transform.rotation = _pointNearFinalWallet.rotation;
         _signalBus.Fire(new TransitionSignal(true));
         _signalBus.Fire(new SetPlayerStateSignal(_returningState));
-        _gameplayHandler.PlayerInstance.GetFallingController.ResetFalling();
         _gameplayHandler.PlayerInstance.BitsController.SetBits(true);
-        _cameraController.ResetCamera();
+
+        ResetRocket();
     }
 
     private void CheckPhase2()
@@ -166,7 +163,7 @@ public class WalletChaseController : MonoBehaviour
     private void SetPlayerOnRocket()
     {
         _cameraController.SwitchCamera(_cameraSecondPhase);
-        _gameplayHandler.PlayerInstance.GetFallingController.SwitchGravity();
+        _gameplayHandler.PlayerInstance.GetFallingController.SwitchOffGravity();
         _gameplayHandler.PlayerInstance.transform.position = _pointOnRocket.position;
         _gameplayHandler.PlayerInstance.transform.SetParent(_pointOnRocket);
         _gameplayHandler.PlayerInstance.transform.rotation = _pointOnRocket.rotation * Quaternion.Euler(0f, -120f, 0f);
@@ -176,9 +173,13 @@ public class WalletChaseController : MonoBehaviour
     private void ResetRocket()
     {
         _cameraController.ResetCamera();
-        _gameplayHandler.PlayerInstance.transform.SetParent(null);
+        _gameplayHandler.PlayerInstance.GetFallingController.SwitchOffGravity();
+
+        _gameplayHandler.PlayerInstance.transform.SetParent(_pointNearFinalWallet);
+        _gameplayHandler.PlayerInstance.transform.localPosition = Vector3.zero;
+        _gameplayHandler.PlayerInstance.transform.rotation = _pointNearFinalWallet.rotation;
+
         _gameplayHandler.PlayerInstance.GetFallingController.ResetFalling();
-        _gameplayHandler.PlayerInstance.transform.position = Vector3.zero;
     }
 
     private void OnDisable()

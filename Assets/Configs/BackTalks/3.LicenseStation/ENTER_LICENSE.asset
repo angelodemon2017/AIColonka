@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb88bb489894f4e439c97c8e9a6e086b, type: 3}
   m_Name: ENTER_LICENSE
   m_EditorClassIdentifier: 
+  Changed: 1
   Chapter: 0
   KeyLocal: 3.ENTER_LICENSE
   Seconds: 3
+  SignalAfterEnd:
+    _caseSignals: []

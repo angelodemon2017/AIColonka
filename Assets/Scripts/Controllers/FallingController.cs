@@ -47,9 +47,9 @@ public class FallingController : MonoBehaviour
         _multGravity = newMult;
     }
 
-    internal void SwitchGravity()
+    internal void SwitchOffGravity()
     {
-        _gravity = !_gravity;
+        _gravity = false;
         _availableToActionInAir = false;
     }
 

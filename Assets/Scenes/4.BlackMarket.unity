@@ -293,9 +293,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d50a5dcd1f32f4584b5a07a6522905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSettings: 0
   _target: {fileID: 0}
   AtCamera: 1
+  _speedRotate: 200
 --- !u!114 &73054440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1570,9 +1570,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d50a5dcd1f32f4584b5a07a6522905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSettings: 0
   _target: {fileID: 0}
   AtCamera: 1
+  _speedRotate: 200
 --- !u!114 &583319085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2444,6 +2444,10 @@ PrefabInstance:
       propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.Time
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.BackTalk
+      value: 
+      objectReference: {fileID: 11400000, guid: bb72d1bdfcdcda4408097e95058fbc39, type: 2}
     - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
       propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.FromLocalTable
       value: BackTalks
@@ -3601,6 +3605,10 @@ PrefabInstance:
       propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.Time
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.BackTalk
+      value: 
+      objectReference: {fileID: 11400000, guid: bc374d7a96f0a7c4e93dbcbf745428af, type: 2}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: BackTalkCaller, Assembly-CSharp

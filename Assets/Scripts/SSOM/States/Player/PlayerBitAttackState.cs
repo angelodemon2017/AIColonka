@@ -27,7 +27,7 @@ public class PlayerBitAttackState : PlayerState
             return;
         }
 
-        _fallingController.SwitchGravity();
+        _fallingController.SwitchOffGravity();
 
         Vector3 forward = _cameraController.GetTransform.forward;
         forward.y = 0f;

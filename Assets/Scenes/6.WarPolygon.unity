@@ -301,7 +301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
       propertyPath: _signalAgregator._caseSignals.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.size
@@ -310,6 +310,10 @@ PrefabInstance:
     - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
       propertyPath: _signalAgregator._caseSignals.Array.data[0].typeSignal
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[1].typeSignal
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -332,6 +336,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f8f06cf7e7d0f4b429a72fad51e42e44, type: 2}
     - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[1]._setTaskSignal.Task
+      value: 
+      objectReference: {fileID: 11400000, guid: f8f06cf7e7d0f4b429a72fad51e42e44, type: 2}
+    - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -347,6 +355,10 @@ PrefabInstance:
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: CallTalk
       objectReference: {fileID: 0}
+    - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[1]._backTalkSignal.BackTalk
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a4b7226be754984f80dca88497c28c2, type: 2}
     - target: {fileID: 2723989284634293472, guid: 16e80789cdfdea64ab92efb2bda691ef, type: 3}
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: DialogSetter, Assembly-CSharp
@@ -576,6 +588,10 @@ PrefabInstance:
       propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.Time
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.BackTalk
+      value: 
+      objectReference: {fileID: 11400000, guid: 8c5dca872a288ff4e8ee489a695592ae, type: 2}
     - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
       propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.FromLocalTable
       value: BackTalks
@@ -1348,9 +1364,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d50a5dcd1f32f4584b5a07a6522905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSettings: 0
   _target: {fileID: 0}
   AtCamera: 1
+  _speedRotate: 200
 --- !u!114 &288138151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1726,9 +1742,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d50a5dcd1f32f4584b5a07a6522905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSettings: 0
   _target: {fileID: 0}
   AtCamera: 1
+  _speedRotate: 200
 --- !u!114 &357948373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2125,6 +2141,10 @@ PrefabInstance:
       propertyPath: _unityEvent.m_PersistentCalls.m_Calls.Array.data[10].m_MethodName
       value: SwitchCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.BackTalk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b1be5b07afd8cb4f8c3e899575714a0, type: 2}
     - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
       propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.FromLocalTable
       value: BackTalks
@@ -2571,7 +2591,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5898894a26a3638448fcc1b94c7a489d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _airGroundState: 0
   _whoIs: {fileID: 385056460}
   _UIpanelHP: {fileID: 608190550}
   _hpComponent: {fileID: 385056459}
@@ -3052,7 +3071,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5898894a26a3638448fcc1b94c7a489d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _airGroundState: 0
   _whoIs: {fileID: 643313880}
   _UIpanelHP: {fileID: 917151120}
   _hpComponent: {fileID: 643313879}
@@ -3746,6 +3764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5233d1c09361df4b8764563bae8b5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 0}
 --- !u!4 &777510495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4199725408611337660, guid: 79b2c9868796a304a954a655937bd6ae, type: 3}
@@ -3814,9 +3833,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d50a5dcd1f32f4584b5a07a6522905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSettings: 0
   _target: {fileID: 0}
   AtCamera: 1
+  _speedRotate: 200
 --- !u!114 &793498406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5208,9 +5227,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d50a5dcd1f32f4584b5a07a6522905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSettings: 1
   _target: {fileID: 994515766}
   AtCamera: 0
+  _speedRotate: 200
 --- !u!114 &975070505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7513,7 +7532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5898894a26a3638448fcc1b94c7a489d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _airGroundState: 0
   _whoIs: {fileID: 1649762643}
   _UIpanelHP: {fileID: 972511835}
   _hpComponent: {fileID: 1649762642}
@@ -7804,6 +7822,10 @@ PrefabInstance:
       propertyPath: _enterObject.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetAddState
       objectReference: {fileID: 0}
+    - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.BackTalk
+      value: 
+      objectReference: {fileID: 11400000, guid: 209f1cc47bac84d4d99fc81550a6800e, type: 2}
     - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
       propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.FromLocalTable
       value: BackTalks
@@ -8536,6 +8558,10 @@ PrefabInstance:
       propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.Time
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.BackTalk
+      value: 
+      objectReference: {fileID: 11400000, guid: d917f1cc9d7a42447994fea756de1576, type: 2}
     - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
       propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.FromLocalTable
       value: BackTalks
@@ -9775,6 +9801,10 @@ PrefabInstance:
       value: SetAddState
       objectReference: {fileID: 0}
     - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.BackTalk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3479a0a8368eaaa48b3023fc520a2f9a, type: 2}
+    - target: {fileID: 5649216685255087838, guid: fc79aaa8be56d6e46b0f7c30b2a2944f, type: 3}
       propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.FromLocalTable
       value: BackTalks
       objectReference: {fileID: 0}
@@ -10082,6 +10112,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7726683821023651733, guid: fbd93dce5af57614cb7d237154fa07c3, type: 3}
+      propertyPath: _signalByChangeHP._caseSignals.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726683821023651733, guid: fbd93dce5af57614cb7d237154fa07c3, type: 3}
       propertyPath: _pointForStates.Array.data[0].Points.Array.data[0]
       value: 
       objectReference: {fileID: 1262452194}
@@ -10137,7 +10171,20 @@ PrefabInstance:
       propertyPath: _pointForStates.Array.data[1].Points.Array.data[8]
       value: 
       objectReference: {fileID: 2017911827}
-    m_RemovedComponents: []
+    - target: {fileID: 7726683821023651733, guid: fbd93dce5af57614cb7d237154fa07c3, type: 3}
+      propertyPath: _signalByChangeHP._caseSignals.Array.data[0].typeSignal
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726683821023651733, guid: fbd93dce5af57614cb7d237154fa07c3, type: 3}
+      propertyPath: _eventByChangeHP.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726683821023651733, guid: fbd93dce5af57614cb7d237154fa07c3, type: 3}
+      propertyPath: _signalByChangeHP._caseSignals.Array.data[0]._backTalkSignal.BackTalk
+      value: 
+      objectReference: {fileID: 11400000, guid: 4007fd3c90187614183426350c638de2, type: 2}
+    m_RemovedComponents:
+    - {fileID: 8871321251429123843, guid: fbd93dce5af57614cb7d237154fa07c3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

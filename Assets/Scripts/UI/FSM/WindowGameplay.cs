@@ -25,6 +25,7 @@ public class WindowGameplay : MAINWindow
     [SerializeField] private Image _backGroundTaskNotification;
     [SerializeField] private TextMeshProUGUI _taskNotification;
 
+    private DiContainer _diContainer;
     private CameraController _cameraController;
     private DataHandler _dataHandler;
     private BackTalkHandler _backTalkHandler;
@@ -35,11 +36,13 @@ public class WindowGameplay : MAINWindow
 
     [Inject]
     private void Construct(
+        DiContainer diContainer,
         CameraController cameraController,
         DataHandler dataHandler,
         BackTalkHandler backTalkHandler,
         GameplayHandler gameplayHandler)
     {
+        _diContainer = diContainer;
         _cameraController = cameraController;
         _dataHandler = dataHandler;
         _backTalkHandler = backTalkHandler;
@@ -60,6 +63,7 @@ public class WindowGameplay : MAINWindow
 
         UpdateSubtitle();
         UpdateTaskNotificationAsync();
+        _diContainer.Inject(_taskModule);
     }
 
     public override void StartWindow()
@@ -128,6 +132,10 @@ public class WindowGameplay : MAINWindow
                         .SetDelay(1f)
                         .OnComplete(() => _taskNotification.text = string.Empty);
                 });
+        }
+        else
+        {
+            _taskNotification.text = string.Empty;
         }
     }
 

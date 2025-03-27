@@ -221,6 +221,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[1]._backTalkSignal.BackTalk
+      value: 
+      objectReference: {fileID: 11400000, guid: 5c1a4eb12fe49324e89e9793a92ae589, type: 2}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _interact.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
@@ -1295,6 +1299,10 @@ PrefabInstance:
       propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.Time
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.BackTalk
+      value: 
+      objectReference: {fileID: 11400000, guid: a1678a0868755e848838f2e8a304f64f, type: 2}
     - target: {fileID: 1601668861854741270, guid: 06a6429f3120df1448760493e1f67df5, type: 3}
       propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.FromLocalTable
       value: BackTalks

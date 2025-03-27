@@ -28,16 +28,16 @@ public class BackTalkHandler
 
     private void SetTalk(BackTalkSignal backTalkSignal)
     {
-        _ = SetTalkAsync(backTalkSignal);
+        _ = SetTalkAsync(backTalkSignal.BackTalk);
     }
 
-    private async Task SetTalkAsync(BackTalkSignal backTalkSignal)
+    private async Task SetTalkAsync(BackTalkSO backTalkSO)
     {
-        KeyTalk = backTalkSignal.Key;
+        KeyTalk = backTalkSO.KeyLocal;
 
-        DOVirtual.DelayedCall(backTalkSignal.Time, EndTalk);
+        DOVirtual.DelayedCall(backTalkSO.Seconds, EndTalk);
         LocalText = await Localizations.GetLocalizedText(
-            backTalkSignal.FromLocalTable, KeyTalk);
+            backTalkSO.Table, KeyTalk);
         _signalBus.Fire(new StartBackTalkSignal());
     }
 

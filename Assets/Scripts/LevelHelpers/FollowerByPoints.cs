@@ -15,7 +15,7 @@ public class FollowerByPoints : MonoBehaviour
         SetTarget(_currentTarget);
     }
 
-    internal void SetTarget(PointOfFollow newTarget)
+    public void SetTarget(PointOfFollow newTarget)
     {
         _currentTarget = newTarget;
     }

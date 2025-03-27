@@ -24,7 +24,7 @@ public class PlayerDashState : PlayerState
         base.Init();
 
         _fallingController = _playerFSM.GetFallingController;
-        _fallingController.SwitchGravity();
+        _fallingController.SwitchOffGravity();
         _cameraController.UnParrent(_cameraTime);
         _transform = Character.GetTransform();
         _startPosition = _transform.position;

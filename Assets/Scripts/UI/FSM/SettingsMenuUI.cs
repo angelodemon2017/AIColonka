@@ -9,20 +9,21 @@ public class SettingsMenuUI : MAINWindow
     [SerializeField] private MAINWindow _windowByReturn;
     [SerializeField] private CheatsPanel _cheatsPanel;
 
+    private DiContainer _diContainer;
     private DataHandler _dataHandler;
-    private SignalBus _signalBus;
 
     private Settings _settings => _dataHandler.Settings;
 
     [Inject]
     private void Construct(
-        DataHandler dataHandler,
-        SignalBus signalBus)
+        DiContainer diContainer,
+        DataHandler dataHandler)
     {
+        _diContainer = diContainer;
         _dataHandler = dataHandler;
-        _signalBus = signalBus;
 
         SetUI(_settings);
+        _diContainer.Inject(_cheatsPanel);
     }
 
     public override void StartWindow()

@@ -1,13 +1,17 @@
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class FuryModule : EntityModule, IEntityModuleWithWeaponSpawner, IPhaselable
 {
     [SerializeField] private WeaponVisualizator _weaponVisualizator;
     [SerializeField] private AnimationCurve _phaseByHP;
-    [SerializeField] private UnityEvent _eventByChangeHP;
+    [SerializeField] private SignalAgregator _signalByChangeHP;
 
     private int _lastPhase;
+
+    [SerializeField]
+    private SignalBus _signalBus;
 
     public WeaponVisualizator GetWeaponVisualizator => _weaponVisualizator;
 
@@ -23,7 +27,7 @@ public class FuryModule : EntityModule, IEntityModuleWithWeaponSpawner, IPhasela
     {
         if (_lastPhase != GetPhase())
         {
-            _eventByChangeHP?.Invoke();
+            _signalByChangeHP.FireAll(_signalBus);
             _lastPhase = GetPhase();
         }
     }

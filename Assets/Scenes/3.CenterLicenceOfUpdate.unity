@@ -817,6 +817,10 @@ PrefabInstance:
       value: CallTalk
       objectReference: {fileID: 0}
     - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
+      propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.BackTalk
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d9042f770a477b4cbce7f8d77bfec75, type: 2}
+    - target: {fileID: 6030650922309115540, guid: 057c63cba54a7a248bbf76a73b1803b5, type: 3}
       propertyPath: _signalAgregator._caseSignals.Array.data[0]._backTalkSignal.FromLocalTable
       value: BackTalks
       objectReference: {fileID: 0}

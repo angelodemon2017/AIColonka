@@ -29,7 +29,7 @@ public class PlayerWVAttackState : PlayerState, IWVState
 
         if (_playerFSM.WeaponVisualizator)
         {
-            _fallingController.SwitchGravity();
+            _fallingController.SwitchOffGravity();
 
             _playerFSM.WeaponVisualizator.CallAttack(this);
 

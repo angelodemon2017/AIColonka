@@ -195,7 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _needTransition: 1
   _pareEventWindows: []
-  _charInterval: 0.02
+  _charInterval: 0.01
   _dialogVariantPrefab: {fileID: 1731453951378720923, guid: d1f6b6614afbb6841a98f88c8201d4c6, type: 3}
   _parentVariants: {fileID: 6622404958392508570}
   _textNamePerson: {fileID: 7381656155387449595}
