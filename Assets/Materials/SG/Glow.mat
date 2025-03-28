@@ -76,7 +76,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_878abda7c4bf4743b112fca7d2c0ab54_Out_0_Texture2D:
-        m_Texture: {fileID: 2800000, guid: e6a467a4c71a24898ac842ed6f9a1d52, type: 3}
+        m_Texture: {fileID: 2800000, guid: 204e24b3132c6754abe847f62aa2807b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Triplanar:
@@ -122,10 +122,10 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _GlowIntens: 5
+    - _GlowIntens: 0.2
     - _InvertMask: 1
     - _Metallic: 0
-    - _NoiseScale: 0.5
+    - _NoiseScale: 10
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -149,7 +149,7 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _BaseColor: {r: 0.9553981, g: 1, b: 0, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _CenterSphere: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0, g: 1, b: 0.21081662, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
