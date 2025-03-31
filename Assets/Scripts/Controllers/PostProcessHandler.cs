@@ -33,6 +33,7 @@ public class PostProcessHandler : MonoBehaviour
 
     private void OnEnable()
     {
+        _signalBus.Subscribe<EffectFinalSceneSignal>(EffectFinalScene);
         _signalBus.Subscribe<EnterToSceneSignal>(EnterToScene);
         _signalBus.Subscribe<ExitFromSceneSignal>(ExitFromScene);
         _signalBus.Subscribe<PlayerDamageSignal>(GetDamage);
@@ -43,6 +44,7 @@ public class PostProcessHandler : MonoBehaviour
 
 private void OnDisable()
     {
+        _signalBus.Unsubscribe<EffectFinalSceneSignal>(EffectFinalScene);
         _signalBus.Unsubscribe<EnterToSceneSignal>(EnterToScene);
         _signalBus.Unsubscribe<ExitFromSceneSignal>(ExitFromScene);
         _signalBus.Unsubscribe<PlayerDamageSignal>(GetDamage);
@@ -107,6 +109,11 @@ private void OnDisable()
             });
     }
 
+    private void EffectFinalScene()
+    {
+        DOTween.To(() => -2, x => SetSaturate(x), 1f, 2f);
+    }
+
     private void TransitionForAct(TransitionSignal transSign)
     {
         DOTween.To(() => 0f, x => SceneTransition(transSign.IsInverse ? 0.5f - x : x), 0.5f, 0.75f)
@@ -145,5 +152,10 @@ private void OnDisable()
     private void SetVignetteIntensity(float intensity)
     {
         _vignette?.intensity.Override(intensity);
+    }
+
+    private void SetSaturate(float intensity)
+    {
+        _beautify?.saturate.Override(intensity);
     }
 }

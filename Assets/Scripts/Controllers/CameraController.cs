@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -6,6 +7,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Looker _looker;
     [SerializeField] private LayerMask _layerMaskGroundAndWalls;
     [SerializeField] private CustomCameraSwitcher _customCameraSwitcher;
+    [SerializeField] private Color _summaryFinalSceneColor;
 
     private Transform _pivot;
     private Transform _pLook;
@@ -87,5 +89,10 @@ public class CameraController : MonoBehaviour
     internal void ResetCamera()
     {
         _customCameraSwitcher.ResetCamera();
+    }
+
+    internal void EffectFinalScene()
+    {
+        DOTween.To(() => CurrentCamera.backgroundColor, x => CurrentCamera.backgroundColor = x, _summaryFinalSceneColor, 2f);
     }
 }

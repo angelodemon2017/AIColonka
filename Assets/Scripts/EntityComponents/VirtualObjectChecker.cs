@@ -55,16 +55,19 @@ public class VirtualObjectChecker : MonoBehaviour
 
     internal void CallRelease()
     {
-        if (_lastTransform.AvailableCall)
+        if (_lastTransform != null)
         {
-            _lastTransform?.Call();
-            _hintsH.Remove(_lastTransform);
-            _lastTransform = null;
-            _ = UpdateHint();
-        }
-        else
-        {
-            _signalBus.Fire(new BackTalkSignal(_lowBitsComment));
+            if (_lastTransform.AvailableCall)
+            {
+                _lastTransform?.Call();
+                _hintsH.Remove(_lastTransform);
+                _lastTransform = null;
+                _ = UpdateHint();
+            }
+            else
+            {
+                _signalBus.Fire(new BackTalkSignal(_lowBitsComment));
+            }
         }
     }
 

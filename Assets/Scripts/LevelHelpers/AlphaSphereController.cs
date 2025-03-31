@@ -12,17 +12,24 @@ public class AlphaSphereController : MonoBehaviour
     [SerializeField] private List<Material> _materials;
     [SerializeField] private List<GameObject> _inversePbjects;
     [SerializeField] private Transform _sphere;
+    [SerializeField] private List<Transform> _scalers;
     [SerializeField] private float _radius;
     [SerializeField] private float _maxRad;
     [SerializeField] private float _timeTrans;
 
+    private SignalBus _signalBus;
     private GameplayHandler _gameplayHandler;
+    private CameraController _cameraController;
 
     [Inject]
     private void Construct(
-        GameplayHandler gameplayHandler)
+        CameraController cameraController,
+        GameplayHandler gameplayHandler,
+        SignalBus signalBus)
     {
+        _cameraController = cameraController;
         _gameplayHandler = gameplayHandler;
+        _signalBus = signalBus;
     }
 
     private void OnValidate()
@@ -38,13 +45,6 @@ public class AlphaSphereController : MonoBehaviour
         }
     }
 
-    [ContextMenu("DemoLaunch")]
-    private void DemoLaunch()
-    {
-        SetCenter(_startCenter);
-        DOTween.To(() => 0, x => _radius = x, _maxRad, _timeTrans);
-    }
-
     private void Launch(Vector3 vector)
     {
         SetCenter(vector);
@@ -52,26 +52,27 @@ public class AlphaSphereController : MonoBehaviour
             .OnComplete(() =>
             {
                 _inversePbjects.ForEach(o => o.SetActive(!o.activeSelf));
-                _sphere.localScale = Vector3.zero;
+                _cameraController.EffectFinalScene();
             });
+        _signalBus.Fire(new EffectFinalSceneSignal());
     }
 
     [ContextMenu("SetDemoCenter")]
     private void SetDemoCenter()
     {
         SetCenter(_startCenter);
-        _sphere.localScale = Vector3.zero;
+        _scalers.ForEach(s => s.localScale = Vector3.zero);
     }
 
     internal void SetCenter(Vector3 vector)
     {
-        _sphere.position = vector;
+        _scalers.ForEach(s => s.position = vector);
         _materials.ForEach(m => m.SetVector(CENTER_SPHERE, vector));
     }
 
     internal void SetRadius(float rad)
     {
-        _sphere.localScale = Vector3.one * rad;
+        _scalers.ForEach(s => s.localScale = rad == 0f ? Vector3.zero : Vector3.one * rad);
         _materials.ForEach(m => m.SetFloat(RADIUS_SPHERE, rad));
     }
 }

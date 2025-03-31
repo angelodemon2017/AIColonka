@@ -43,6 +43,7 @@ public class GlobalInstaller : MonoInstaller
         Container.DeclareSignal<BackTalkSignal>();
         Container.DeclareSignal<BitUpgradedSignal>();
         Container.DeclareSignal<DialogTriggerKeySignal>();
+        Container.DeclareSignal<EffectFinalSceneSignal>();
         Container.DeclareSignal<EndBackTalkSignal>();
         Container.DeclareSignal<EnterToSceneSignal>();
         Container.DeclareSignal<ExitFromSceneSignal>();
