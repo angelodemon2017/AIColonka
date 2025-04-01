@@ -15,7 +15,6 @@ public class MainMenuPanel : MAINWindow
     [SerializeField] private MAINWindow _settingWindow;
 
     private DataHandler _dataHandler;
-    private SignalBus _signalBus;
     private SceneController _sceneController;
     private MainData _tempData;
 
@@ -23,11 +22,9 @@ public class MainMenuPanel : MAINWindow
 
     [Inject]
     private void Construct(
-        SignalBus signalBus,
         DataHandler dataHandler,
         SceneController sceneController)
     {
-        _signalBus = signalBus;
         _dataHandler = dataHandler;
         _sceneController = sceneController;
     }

@@ -1,5 +1,4 @@
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -12,15 +11,12 @@ public class PauseMenuPanel : MAINWindow
     [SerializeField] private MAINWindow _windowByContinue;
     [SerializeField] private MAINWindow _settingWindow;
 
-    private SignalBus _signalBus;
     private SceneController _sceneController;
 
     [Inject]
     private void Construct(
-        SignalBus signalBus,
         SceneController sceneController)
     {
-        _signalBus = signalBus;
         _sceneController = sceneController;
     }
 

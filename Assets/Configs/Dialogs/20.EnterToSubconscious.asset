@@ -26,6 +26,6 @@ MonoBehaviour:
     IdStep: 1
     Chapter: 11
     dialogVariants: []
-  levelByEndDialog: 10
+  levelByEndDialog: 0
   _signalAgregator:
     _caseSignals: []

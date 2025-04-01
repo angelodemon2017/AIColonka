@@ -19,16 +19,13 @@ public class PanelDialogWithPeople : MAINWindow
     private int _currentStep = 0;
 
     private DataHandler _dataHandler;
-    private SignalBus _signalBus;
     private SceneController _sceneController;
 
     [Inject]
     private void Counstruct(
-        SignalBus signalBus,
         DataHandler dataHandler,
         SceneController sceneController)
     {
-        _signalBus = signalBus;
         _dataHandler = dataHandler;
         _sceneController = sceneController;
     }
